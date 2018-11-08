@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="​                                               SYC第二次面试报告 此次第二次面试研究的课题是关于水卡数据的破解以及badusb的wifi版的制作。 1. 初学RFID-三中心(13.14.15.16.17栋)水卡的破解研究1.基本知识：Mifare Classic card提供1k-4k的容量，我们经常见到的是Mifare Classic 1k(">
+<meta name="description" content="​                                           此次第二次面试研究的课题是关于水卡数据的破解以及badusb的wifi版的制作。 1. 初学RFID-三中心(13.14.15.16.17栋)水卡的破解研究1.基本知识：Mifare Classic card提供1k-4k的容量，我们经常见到的是Mifare Classic 1k(S50)，也就是所谓的M1卡。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="SYC第二次面试报告">
 <meta property="og:url" content="https://devil0x.github.io/2018/11/09/SYC第二次面试报告/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="​                                               SYC第二次面试报告 此次第二次面试研究的课题是关于水卡数据的破解以及badusb的wifi版的制作。 1. 初学RFID-三中心(13.14.15.16.17栋)水卡的破解研究1.基本知识：Mifare Classic card提供1k-4k的容量，我们经常见到的是Mifare Classic 1k(">
+<meta property="og:description" content="​                                           此次第二次面试研究的课题是关于水卡数据的破解以及badusb的wifi版的制作。 1. 初学RFID-三中心(13.14.15.16.17栋)水卡的破解研究1.基本知识：Mifare Classic card提供1k-4k的容量，我们经常见到的是Mifare Classic 1k(S50)，也就是所谓的M1卡。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="c:/Users/skywa/AppData/Roaming/Typora/typora-user-images/1541320644658.png">
 <meta property="og:image" content="c:/Users/skywa/AppData/Roaming/Typora/typora-user-images/1541320664628.png">
@@ -106,10 +106,10 @@
 <meta property="og:image" content="c:/Users/skywa/AppData/Roaming/Typora/typora-user-images/1541328695589.png">
 <meta property="og:image" content="c:/Users/skywa/AppData/Roaming/Typora/typora-user-images/1541328814663.png">
 <meta property="og:image" content="c:/Users/skywa/AppData/Roaming/Typora/typora-user-images/1541329587154.png">
-<meta property="og:updated_time" content="2018-11-04T11:31:19.757Z">
+<meta property="og:updated_time" content="2018-11-08T18:11:40.982Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="​                                               SYC第二次面试报告 此次第二次面试研究的课题是关于水卡数据的破解以及badusb的wifi版的制作。 1. 初学RFID-三中心(13.14.15.16.17栋)水卡的破解研究1.基本知识：Mifare Classic card提供1k-4k的容量，我们经常见到的是Mifare Classic 1k(">
+<meta name="twitter:title" content="SYC第二次面试报告">
+<meta name="twitter:description" content="​                                           此次第二次面试研究的课题是关于水卡数据的破解以及badusb的wifi版的制作。 1. 初学RFID-三中心(13.14.15.16.17栋)水卡的破解研究1.基本知识：Mifare Classic card提供1k-4k的容量，我们经常见到的是Mifare Classic 1k(S50)，也就是所谓的M1卡。">
 <meta name="twitter:image" content="c:/Users/skywa/AppData/Roaming/Typora/typora-user-images/1541320644658.png">
 
 
@@ -146,7 +146,7 @@
 
 
 
-  <title> | Hexo</title>
+  <title>SYC第二次面试报告 | Hexo</title>
   
 
 
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">SYC第二次面试报告</h1>
         
 
         <div class="post-meta">
@@ -320,7 +320,7 @@
       
 
       
-        <p>​                                               SYC第二次面试报告</p>
+        <p>​                                          </p>
 <p>此次第二次面试研究的课题是关于水卡数据的破解以及badusb的wifi版的制作。</p>
 <h1 id="1-初学RFID-三中心-13-14-15-16-17栋-水卡的破解研究"><a href="#1-初学RFID-三中心-13-14-15-16-17栋-水卡的破解研究" class="headerlink" title="1. 初学RFID-三中心(13.14.15.16.17栋)水卡的破解研究"></a>1. 初学RFID-三中心(13.14.15.16.17栋)水卡的破解研究</h1><h4 id="1-基本知识："><a href="#1-基本知识：" class="headerlink" title="1.基本知识："></a>1.基本知识：</h4><p>Mifare Classic card提供1k-4k的容量，我们经常见到的是Mifare Classic 1k(S50)，也就是所谓的M1卡。M1卡有从0到15共16个扇区，每个扇区配备了从0到3共块个段，每个段分为b0到b15共16个区块，并且可以保存16字节的内容。 </p>
 <p>每个扇区的第4段呢是用来保存KeyA，KeyB和控制位的，每张卡的0扇区还有一个唯一标识的UID号。</p>
@@ -445,22 +445,6 @@
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/11/09/hello-HEXO/" rel="next" title="hello,HEXO!!">
-                <i class="fa fa-chevron-left"></i> hello,HEXO!!
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-          </div>
-        </div>
-      
 
       
       
@@ -533,7 +517,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
