@@ -373,7 +373,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/01/10/固定码逆向分析/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2019/01/10/固定码逆向分析/" itemprop="url">固定码逆向分析</a></h1>
         
 
         <div class="post-meta">
@@ -425,8 +425,7 @@
       
         
           
-            <hr>
-<h2 id="固定码逆向分析"><a href="#固定码逆向分析" class="headerlink" title="固定码逆向分析"></a>固定码逆向分析</h2><h1 id="固定码逆向分析-1"><a href="#固定码逆向分析-1" class="headerlink" title="固定码逆向分析"></a>固定码逆向分析</h1><p> 环境：kali</p>
+            <h1 id="固定码逆向分析"><a href="#固定码逆向分析" class="headerlink" title="固定码逆向分析"></a>固定码逆向分析</h1><p> 环境：kali</p>
 <h2 id="0x01-Analysis-信号分析"><a href="#0x01-Analysis-信号分析" class="headerlink" title="0x01. Analysis 信号分析"></a>0x01. <strong>Analysis 信号分析</strong></h2><p>分析信号可使用音频处理软件Audacity：</p>
 <p>不过这种方式需要肉眼将波形转化成0跟1，看起来比较容易眼花。so用软件辅助一下</p>
 <h2 id="1-1安装软件"><a href="#1-1安装软件" class="headerlink" title="1.1安装软件"></a>1.1<strong>安装软件</strong></h2><h3 id="1-inspectrum"><a href="#1-inspectrum" class="headerlink" title="1.inspectrum"></a>1.inspectrum</h3><p>在这篇文章中我们将通过inspectrum(<a href="https://github.com/miek/inspectrum" target="_blank" rel="noopener">https://github.com/miek/inspectrum</a>)这个工具来分析信号，配合Python将信号转成二进制数据。</p>
@@ -445,33 +444,33 @@
 <h3 id="2-PT226X"><a href="#2-PT226X" class="headerlink" title="2.PT226X"></a>2.PT226X</h3><p><img src="https://image.3001.net/images/20181211/1544496739_5c0f2663762a9.png!small" alt=""></p>
 <p>首先来看一下PT226x的结构</p>
 <p>案例是录制的门铃的文件，433.92mhz，ASK调制。</p>
-<p><img src="C:\Users\skywa\Pictures\1.19/3.png" alt=""></p>
+<p><img src="C:\Users\skywa\Pictures\1.19\3.png" alt=""></p>
 <p>录制的文件是raw格式，我用的win10的udr打开的该文件。</p>
-<p><img src="C:\Users\skywa\AppData\Roaming\Typora\typora-user-images\1547909746899.png" alt=""></p>
+<p><img src="https://github.com/devil0x/picture/raw/master/1.19/4.png" alt=""></p>
 <p>选择ask解调。</p>
 <p>再放大即可</p>
-<p><img src="C:\Users\skywa\Pictures\1.19\6.png" alt=""></p>
+<p><img src="https://github.com/devil0x/picture/raw/master/1.19/6.png" alt=""></p>
 <p>前部是4bit同步码，后半部分根据结构看的话，先是地址码，再之后为数据码。</p>
 <p>图中红线圈起来的刚好是与开始的案例相同的即：FFF0FFFF，再后边的数据码是1111。比对方式见开头图片关于PT226x的部分</p>
 <p>当然用另一种方法，直接在选择这样配置即可看出每段的二进制数据。</p>
 <p>1是11101110</p>
 <p>0是10001000</p>
 <p>F是10001110</p>
-<p><img src="C:\Users\skywa\Pictures\1.19/13.png" alt=""></p>
+<p><img src="https://github.com/devil0x/picture/raw/master/1.19/13.png" alt=""></p>
 <h3 id="3-PT224X"><a href="#3-PT224X" class="headerlink" title="3.PT224X"></a>3.PT224X</h3><p><img src="https://image.3001.net/images/20181211/1544496739_5c0f266399bbe.png!small" alt=""></p>
 <p>首先依旧是PT224X的结构部分，同样是先同步码后地址码再数据位的结构。</p>
 <p>区别就是位数更长。还有一个区别2240和2262的方法，只要有F就肯定是226X。</p>
 <p>案例给了2个录制好的文件，一个niu2.cs8，另一个PT2242.cs8。直接拖进urh打开是混乱的，可以先用audacity选择导入原数据。</p>
-<p><img src="C:\Users\skywa\Pictures\1.19/8.png" alt=""></p>
+<p><img src="https://github.com/devil0x/picture/raw/master/1.19/8.png" alt=""></p>
 <p>其次再选中空白部分直接剪掉即可，在导出为wav文件，直接用urh打开就可以看到波形图，再ASK调制，下方有个Autodetect parameters按钮点击一下即可，然后即可看出转换出的二进制数据。当然也可以选择inspectrum进行，但是感觉用urh似乎跟简单一些。</p>
-<p><img src="C:\Users\skywa\Pictures\1.19/11.png" alt=""></p>
+<p><img src="https://github.com/devil0x/picture/raw/master/1.19/11.png" alt=""></p>
 <p>然后底下就可以看出了、</p>
-<p><img src="C:\Users\skywa\Pictures\1.19/12.png" alt=""></p>
+<p><img src="https://github.com/devil0x/picture/raw/master/1.19/12.png" alt=""></p>
 <p>首先是1以及后边一大串空白是同步码，再然后底下 即可看出了，但是要记得在每行的最后一位空一个1，这个是下一段同步码的开始点位。现在选中的地方就是地址码加数据码的数据，没一个二进制数据由4个数字组成，Bit1 相当于 12A 宽度的高电平脉冲加 4A 宽度低电平的脉冲重复一次，而BIt0正好相反是 4a 高在是 12a 的低重复一次。</p>
 <p>然后直接可以看出1000代表0,1110代表1.</p>
 <h2 id="0x02-自制设备"><a href="#0x02-自制设备" class="headerlink" title="0x02.自制设备"></a>0x02.自制设备</h2><p>在淘宝可以搜到很多的非法设备，such as ：a890，还有什么d10m啥的，一般在淘宝咸鱼都是这样婶儿的。。。</p>
-<p><img src="C:\Users\skywa\Pictures\1.19/15.png" alt=""></p>
-<p><img src="C:\Users\skywa\Pictures\1.19/14.png" alt=""></p>
+<p><img src="https://github.com/devil0x/picture/raw/master/1.19/15.png" alt=""></p>
+<p><img src="https://github.com/devil0x/picture/raw/master/1.19/14.png" alt=""></p>
 <p>一般通常都是用来破解某些东西，自制的话用arduino+cc1101即可。cc1101一般淘宝买的版本呢，中心频率都工作在433mhz，但是并不代表不可以在315工作，cc1101 有各种型号such as ：cc1101 rgpt 这种low power sub -1Ghz。</p>
 <h3 id="工的话有这么几种："><a href="#工的话有这么几种：" class="headerlink" title="工的话有这么几种："></a>工的话有这么几种：</h3><h4 id="1-嗅探攻击"><a href="#1-嗅探攻击" class="headerlink" title="1.嗅探攻击"></a>1.嗅探攻击</h4><h6 id="嗅探到遥控器发射的-信号，再重放出去。"><a href="#嗅探到遥控器发射的-信号，再重放出去。" class="headerlink" title="嗅探到遥控器发射的 信号，再重放出去。"></a>嗅探到遥控器发射的 信号，再重放出去。</h6><h4 id="2-嗅探地址码"><a href="#2-嗅探地址码" class="headerlink" title="2.嗅探地址码"></a>2.嗅探地址码</h4><h6 id="因为地址码确定之后，数据码一般来说只有4种可能：1000-0100-0010-0001。such-as：通过嗅探一串锁车代码就能知道其他开车功能了。"><a href="#因为地址码确定之后，数据码一般来说只有4种可能：1000-0100-0010-0001。such-as：通过嗅探一串锁车代码就能知道其他开车功能了。" class="headerlink" title="因为地址码确定之后，数据码一般来说只有4种可能：1000,0100,0010,0001。such as：通过嗅探一串锁车代码就能知道其他开车功能了。"></a>因为地址码确定之后，数据码一般来说只有4种可能：1000,0100,0010,0001。such as：通过嗅探一串锁车代码就能知道其他开车功能了。</h6><h4 id="3-嗅探攻击"><a href="#3-嗅探攻击" class="headerlink" title="3.嗅探攻击"></a>3.嗅探攻击</h4><h6 id="暴力破解去枚举地址码。"><a href="#暴力破解去枚举地址码。" class="headerlink" title="暴力破解去枚举地址码。"></a>暴力破解去枚举地址码。</h6><h4 id="cc1101-arduino我不会"><a href="#cc1101-arduino我不会" class="headerlink" title="cc1101+arduino我不会"></a>cc1101+arduino我不会</h4><h3 id="用的arduino-超再生模块，RCswitch-h库实现"><a href="#用的arduino-超再生模块，RCswitch-h库实现" class="headerlink" title="用的arduino+超再生模块，RCswitch.h库实现"></a>用的arduino+超再生模块，RCswitch.h库实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;RCSwitch.h&gt;</span><br><span class="line"></span><br><span class="line">RCSwitch mySwitch = RCSwitch();</span><br><span class="line"></span><br><span class="line">void setup() &#123;</span><br><span class="line">  Serial.begin(9600);</span><br><span class="line">  mySwitch.enableTransmit(9);    // 定义发送模块的数据传输针脚</span><br><span class="line">  mySwitch.setPulseLength(170);   // 定义脉冲长度，这个值具体看你使用的遥控器而定</span><br><span class="line">&#125;</span><br><span class="line">void loop() </span><br><span class="line">&#123;</span><br><span class="line">      mySwitch.send(&quot;101111010010110011001&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>可以输出，but没有电动车去做实验。</p>
@@ -524,7 +523,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2018/12/23/auto js学习开发/">
+    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2018/12/23/ing/auto js学习开发/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="devil0x">
@@ -543,7 +542,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/23/auto js学习开发/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2018/12/23/ing/auto js学习开发/" itemprop="url">未命名</a></h1>
         
 
         <div class="post-meta">
@@ -643,7 +642,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2018/12/10/python 入门到入土/">
+    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2018/12/10/ing/python 入门到入土/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="devil0x">
@@ -662,7 +661,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/10/python 入门到入土/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2018/12/10/ing/python 入门到入土/" itemprop="url">python</a></h1>
         
 
         <div class="post-meta">
@@ -780,7 +779,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2018/12/03/pwn入门学习/">
+    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2018/12/03/ing/pwn入门学习/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="devil0x">
@@ -799,7 +798,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/03/pwn入门学习/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2018/12/03/ing/pwn入门学习/" itemprop="url">未命名</a></h1>
         
 
         <div class="post-meta">
@@ -1295,7 +1294,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/11/SYC第三次面试报告/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2018/11/11/SYC第三次面试报告/" itemprop="url">SYC第三次面试报告</a></h1>
         
 
         <div class="post-meta">
@@ -1347,8 +1346,7 @@
       
         
           
-            <hr>
-<h2 id="title-SYC第三次面试报告"><a href="#title-SYC第三次面试报告" class="headerlink" title="title:SYC第三次面试报告"></a>title:SYC第三次面试报告</h2><h1 id="0x01-基础简介"><a href="#0x01-基础简介" class="headerlink" title="0x01.基础简介"></a>0x01.基础简介</h1><h2 id="1-实验设备："><a href="#1-实验设备：" class="headerlink" title="1.实验设备："></a>1.实验设备：</h2><p>kali，安卓手机，咕咕机(GT1), 蓝牙适配器（没有就用电脑自带的hci0）</p>
+            <h1 id="0x01-基础简介"><a href="#0x01-基础简介" class="headerlink" title="0x01.基础简介"></a>0x01.基础简介</h1><h2 id="1-实验设备："><a href="#1-实验设备：" class="headerlink" title="1.实验设备："></a>1.实验设备：</h2><p>kali，安卓手机，咕咕机(GT1), 蓝牙适配器（没有就用电脑自带的hci0）</p>
 <h2 id="2-剧情介绍"><a href="#2-剧情介绍" class="headerlink" title="2.剧情介绍"></a>2.剧情介绍</h2><p>在蓝牙开发中，尤其是咕咕机GT1这种只有蓝牙的型号（咕咕机有些机器可以连接wifi），基本上都是手机App与设备间的通信。手机向设备发送数据，然后等待设备的响应。但当数据发出去的时候，却不能确保设备能否准确的响应。设备属于硬件端，一般不受软件端开发人员控制，除非能和硬件端开发人员一起联调，否则很难调试。但在部分Android手机为开发人员提供了保存蓝牙日志的选项，即可保存手机向设备发送的数据和设备响应的数据。 这个log记录了host与controller通信的全部内容，列出了蓝牙协议栈的各个层的消息通信图谱。注意，由于这个log是协议栈自己生成的，它只列出了协议栈发出去的和接收到的消息，若是由于其它原因，例如UART 驱动丢包等导致的问题，则需要使用其它的log工具来寻找原因（例如uart sniffer）。 不再详述snoop log文件本身的格式。知道了这些格式，其实我们可以用wireshark和fte的capture file viewer都可以用来查看btsnoop log。 在此我把两个都给安装了，感觉wireshark鲨鱼鳍更好用一些。。。。。</p>
 <p><strong>3.</strong> 首先打开wireshark是一脸蒙蔽的，首先去百度一下关于蓝牙各种协议方面的东西，大概知道每个类型的包都代表啥意思。</p>
 <p>１.Hci主机控制器接口，蓝牙协议栈的重要部分，HCI Packet 在 Host 和 Control 之间进行传输，通常有三种类型 Command，Event，Data (ACL 和 SCO/eSCO)。其中 Data 是双向的, Command 只能从 Host 发往 Control, Event 始终是 Control 发向 Host 的。在本文中这点只需要了解即可。</p>
