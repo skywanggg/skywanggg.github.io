@@ -229,6 +229,420 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/01/21/树莓派/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="devil0x">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="devil0x菜鸟">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/21/树莓派/" itemprop="url">树莓派备份</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-21T21:38:25+08:00">
+                2019-01-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>修改wifi连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/wpa_supplicant/wpa_supplicant.conf</span><br></pre></td></tr></table></figure>
+<p>设置wifi自动连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.cnblogs.com/visionsl/p/8117317.html</span><br></pre></td></tr></table></figure>
+<p>安装P4wnp1 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get -y install git</span><br><span class="line">cd /home/pi</span><br><span class="line">git clone --recursive https://github.com/mame82/P4wnP1</span><br><span class="line">cd P4wnP1</span><br><span class="line">./install.sh</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/01/10/固定码逆向分析/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="devil0x">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="devil0x菜鸟">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/10/固定码逆向分析/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-10T22:26:10+08:00">
+                2019-01-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="固定码逆向分析"><a href="#固定码逆向分析" class="headerlink" title="固定码逆向分析"></a>固定码逆向分析</h2><h1 id="固定码逆向分析-1"><a href="#固定码逆向分析-1" class="headerlink" title="固定码逆向分析"></a>固定码逆向分析</h1><p> 环境：kali</p>
+<h2 id="0x01-Analysis-信号分析"><a href="#0x01-Analysis-信号分析" class="headerlink" title="0x01. Analysis 信号分析"></a>0x01. <strong>Analysis 信号分析</strong></h2><p>分析信号可使用音频处理软件Audacity：</p>
+<p>不过这种方式需要肉眼将波形转化成0跟1，看起来比较容易眼花。so用软件辅助一下</p>
+<h2 id="1-1安装软件"><a href="#1-1安装软件" class="headerlink" title="1.1安装软件"></a>1.1<strong>安装软件</strong></h2><h3 id="1-inspectrum"><a href="#1-inspectrum" class="headerlink" title="1.inspectrum"></a>1.inspectrum</h3><p>在这篇文章中我们将通过inspectrum(<a href="https://github.com/miek/inspectrum" target="_blank" rel="noopener">https://github.com/miek/inspectrum</a>)这个工具来分析信号，配合Python将信号转成二进制数据。</p>
+<p>先安装所需的环境，再安装inspectrum。类似的软件还有DSpectrumGUI都行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install qt5-default libfftw3-dev cmake pkg-config libliquid-dev</span><br><span class="line">git clone https://github.com/miek/inspectrum.git </span><br><span class="line">mkdir build </span><br><span class="line">cd build </span><br><span class="line">cmake .. </span><br><span class="line">make </span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<h3 id="2-universal-radio-hacker-urh"><a href="#2-universal-radio-hacker-urh" class="headerlink" title="2. universal radio hacker(urh)"></a>2. universal radio hacker(urh)</h3><p>有windos版直接下载即可</p>
+<h3 id="3-HDSHR"><a href="#3-HDSHR" class="headerlink" title="3.HDSHR"></a>3.HDSHR</h3><p>下载之后需要加载一下rt sdr的驱动</p>
+<p>地址：<a href="https://github.com/devil0x/wireless-analyze/blob/master/%E8%BD%AF%E4%BB%B6/ExtIO_RTL2832.dll" target="_blank" rel="noopener">https://github.com/devil0x/wireless-analyze/blob/master/%E8%BD%AF%E4%BB%B6/ExtIO_RTL2832.dll</a></p>
+<p><img src="https://github.com/devil0x/picture/raw/master/1.19/2.png" alt=""></p>
+<p>即可开始监听特定频段。</p>
+<h2 id="0x02-分析文件"><a href="#0x02-分析文件" class="headerlink" title="0x02.分析文件"></a>0x02.分析文件</h2><p>文件地址：<a href="https://github.com/mobier/WirelessSample" target="_blank" rel="noopener">https://github.com/mobier/WirelessSample</a></p>
+<h3 id="1-原理"><a href="#1-原理" class="headerlink" title="1.原理"></a>1.原理</h3><p><img src="https://image.3001.net/images/20181211/1544496759_5c0f2677573f8.png!small" alt=""></p>
+<p>摘抄：信号脉冲的宽度跟电压，震荡电阻是有关系的。我们可以算出信号的震荡周期（a=两倍的时钟震荡周期）f=2100016/Rosc(kΩ) kHz 其中 Rosc 为振荡电阻。</p>
+<p>我们来看下这两种信号的区别，第一种信号吧 Bit1 相当于 12A 宽度的高电平脉冲加 4A 宽度低电平的脉冲重复一次，而BIt0正好相反是 4a 高在是 12a 的低重复一次。然后说下 BitF，BitF 只会出现在地址位里面，代表该地址位引脚悬空，后面会提到，无效码则不可能出现在 2262 这种协议中，如果出现了只能表示这个信号是 2240 的。</p>
+<p>现在来说下第二种信号格式，第二种与第一种不同，非常明显能看出来第一种是把一段信号重复了两次来表示BIT1 和 BIT0，并且有三种表示方式。第二种呢就是 12A 宽度的高电平脉冲信号加上 4A 的低电平宽度脉冲信号就是 BIT1，相反的就是 BIT0，并且不像第一种那样数据有 3 种表示方式。</p>
+<h3 id="2-PT226X"><a href="#2-PT226X" class="headerlink" title="2.PT226X"></a>2.PT226X</h3><p><img src="https://image.3001.net/images/20181211/1544496739_5c0f2663762a9.png!small" alt=""></p>
+<p>首先来看一下PT226x的结构</p>
+<p>案例是录制的门铃的文件，433.92mhz，ASK调制。</p>
+<p><img src="C:\Users\skywa\Pictures\1.19/3.png" alt=""></p>
+<p>录制的文件是raw格式，我用的win10的udr打开的该文件。</p>
+<p><img src="C:\Users\skywa\AppData\Roaming\Typora\typora-user-images\1547909746899.png" alt=""></p>
+<p>选择ask解调。</p>
+<p>再放大即可</p>
+<p><img src="C:\Users\skywa\Pictures\1.19\6.png" alt=""></p>
+<p>前部是4bit同步码，后半部分根据结构看的话，先是地址码，再之后为数据码。</p>
+<p>图中红线圈起来的刚好是与开始的案例相同的即：FFF0FFFF，再后边的数据码是1111。比对方式见开头图片关于PT226x的部分</p>
+<p>当然用另一种方法，直接在选择这样配置即可看出每段的二进制数据。</p>
+<p>1是11101110</p>
+<p>0是10001000</p>
+<p>F是10001110</p>
+<p><img src="C:\Users\skywa\Pictures\1.19/13.png" alt=""></p>
+<h3 id="3-PT224X"><a href="#3-PT224X" class="headerlink" title="3.PT224X"></a>3.PT224X</h3><p><img src="https://image.3001.net/images/20181211/1544496739_5c0f266399bbe.png!small" alt=""></p>
+<p>首先依旧是PT224X的结构部分，同样是先同步码后地址码再数据位的结构。</p>
+<p>区别就是位数更长。还有一个区别2240和2262的方法，只要有F就肯定是226X。</p>
+<p>案例给了2个录制好的文件，一个niu2.cs8，另一个PT2242.cs8。直接拖进urh打开是混乱的，可以先用audacity选择导入原数据。</p>
+<p><img src="C:\Users\skywa\Pictures\1.19/8.png" alt=""></p>
+<p>其次再选中空白部分直接剪掉即可，在导出为wav文件，直接用urh打开就可以看到波形图，再ASK调制，下方有个Autodetect parameters按钮点击一下即可，然后即可看出转换出的二进制数据。当然也可以选择inspectrum进行，但是感觉用urh似乎跟简单一些。</p>
+<p><img src="C:\Users\skywa\Pictures\1.19/11.png" alt=""></p>
+<p>然后底下就可以看出了、</p>
+<p><img src="C:\Users\skywa\Pictures\1.19/12.png" alt=""></p>
+<p>首先是1以及后边一大串空白是同步码，再然后底下 即可看出了，但是要记得在每行的最后一位空一个1，这个是下一段同步码的开始点位。现在选中的地方就是地址码加数据码的数据，没一个二进制数据由4个数字组成，Bit1 相当于 12A 宽度的高电平脉冲加 4A 宽度低电平的脉冲重复一次，而BIt0正好相反是 4a 高在是 12a 的低重复一次。</p>
+<p>然后直接可以看出1000代表0,1110代表1.</p>
+<h2 id="0x02-自制设备"><a href="#0x02-自制设备" class="headerlink" title="0x02.自制设备"></a>0x02.自制设备</h2><p>在淘宝可以搜到很多的非法设备，such as ：a890，还有什么d10m啥的，一般在淘宝咸鱼都是这样婶儿的。。。</p>
+<p><img src="C:\Users\skywa\Pictures\1.19/15.png" alt=""></p>
+<p><img src="C:\Users\skywa\Pictures\1.19/14.png" alt=""></p>
+<p>一般通常都是用来破解某些东西，自制的话用arduino+cc1101即可。cc1101一般淘宝买的版本呢，中心频率都工作在433mhz，但是并不代表不可以在315工作，cc1101 有各种型号such as ：cc1101 rgpt 这种low power sub -1Ghz。</p>
+<h3 id="工的话有这么几种："><a href="#工的话有这么几种：" class="headerlink" title="工的话有这么几种："></a>工的话有这么几种：</h3><h4 id="1-嗅探攻击"><a href="#1-嗅探攻击" class="headerlink" title="1.嗅探攻击"></a>1.嗅探攻击</h4><h6 id="嗅探到遥控器发射的-信号，再重放出去。"><a href="#嗅探到遥控器发射的-信号，再重放出去。" class="headerlink" title="嗅探到遥控器发射的 信号，再重放出去。"></a>嗅探到遥控器发射的 信号，再重放出去。</h6><h4 id="2-嗅探地址码"><a href="#2-嗅探地址码" class="headerlink" title="2.嗅探地址码"></a>2.嗅探地址码</h4><h6 id="因为地址码确定之后，数据码一般来说只有4种可能：1000-0100-0010-0001。such-as：通过嗅探一串锁车代码就能知道其他开车功能了。"><a href="#因为地址码确定之后，数据码一般来说只有4种可能：1000-0100-0010-0001。such-as：通过嗅探一串锁车代码就能知道其他开车功能了。" class="headerlink" title="因为地址码确定之后，数据码一般来说只有4种可能：1000,0100,0010,0001。such as：通过嗅探一串锁车代码就能知道其他开车功能了。"></a>因为地址码确定之后，数据码一般来说只有4种可能：1000,0100,0010,0001。such as：通过嗅探一串锁车代码就能知道其他开车功能了。</h6><h4 id="3-嗅探攻击"><a href="#3-嗅探攻击" class="headerlink" title="3.嗅探攻击"></a>3.嗅探攻击</h4><h6 id="暴力破解去枚举地址码。"><a href="#暴力破解去枚举地址码。" class="headerlink" title="暴力破解去枚举地址码。"></a>暴力破解去枚举地址码。</h6><h4 id="cc1101-arduino我不会"><a href="#cc1101-arduino我不会" class="headerlink" title="cc1101+arduino我不会"></a>cc1101+arduino我不会</h4><h3 id="用的arduino-超再生模块，RCswitch-h库实现"><a href="#用的arduino-超再生模块，RCswitch-h库实现" class="headerlink" title="用的arduino+超再生模块，RCswitch.h库实现"></a>用的arduino+超再生模块，RCswitch.h库实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;RCSwitch.h&gt;</span><br><span class="line"></span><br><span class="line">RCSwitch mySwitch = RCSwitch();</span><br><span class="line"></span><br><span class="line">void setup() &#123;</span><br><span class="line">  Serial.begin(9600);</span><br><span class="line">  mySwitch.enableTransmit(9);    // 定义发送模块的数据传输针脚</span><br><span class="line">  mySwitch.setPulseLength(170);   // 定义脉冲长度，这个值具体看你使用的遥控器而定</span><br><span class="line">&#125;</span><br><span class="line">void loop() </span><br><span class="line">&#123;</span><br><span class="line">      mySwitch.send(&quot;101111010010110011001&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以输出，but没有电动车去做实验。</p>
+<p>。。。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2018/12/23/auto js学习开发/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="devil0x">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="devil0x菜鸟">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/23/auto js学习开发/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-23T01:14:25+08:00">
+                2018-12-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2018/12/10/python 入门到入土/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -505,7 +919,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/29/路由器·漏洞挖掘/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2018/11/29/路由器·漏洞挖掘/" itemprop="url">360 iot 路由器漏洞挖掘</a></h1>
         
 
         <div class="post-meta">
@@ -557,7 +971,7 @@
       
         
           
-            <h1 id="1-360-iot-路由器漏洞挖掘（不会挖就学习别人挖呗）"><a href="#1-360-iot-路由器漏洞挖掘（不会挖就学习别人挖呗）" class="headerlink" title="1.360 iot 路由器漏洞挖掘（不会挖就学习别人挖呗）"></a>1.360 iot 路由器漏洞挖掘（不会挖就学习别人挖呗）</h1><h2 id="1-复现CVE-2017-17215学习路由器漏洞分析"><a href="#1-复现CVE-2017-17215学习路由器漏洞分析" class="headerlink" title="1.复现CVE-2017-17215学习路由器漏洞分析"></a>1.复现CVE-2017-17215学习路由器漏洞分析</h2><p>然后再复现CVE-2018-17068、CVE-2018-5767、CVE-2016-5367</p>
+            <h2 id="1-复现CVE-2017-17215学习路由器漏洞分析"><a href="#1-复现CVE-2017-17215学习路由器漏洞分析" class="headerlink" title="1.复现CVE-2017-17215学习路由器漏洞分析"></a>1.复现CVE-2017-17215学习路由器漏洞分析</h2><p>然后再复现CVE-2018-17068、CVE-2018-5767、CVE-2016-5367</p>
 <p>华为已经发了漏洞公告，固件已经升级到HG532eV100R001C02B017_upgrade_main.bin。从论坛里找到了带漏洞版本件，HG532eV100R001C02B015_upgrade_main.bin。</p>
 <p>附上下载链接</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://ia601506.us.archive.org/22/items/RouterHG532e/router%20HG532e.rar</span><br></pre></td></tr></table></figure>
@@ -608,7 +1022,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@192.168.127.141</span><br></pre></td></tr></table></figure>
 <p>再次输入密码即可</p>
 <p>将之前解压的固件包拷贝到虚拟机里面：</p>
-<p>scp -r ./squashfs-root  <a href="mailto:root@192.168.127.141" target="_blank" rel="noopener">root@192.168.127.141</a>:/root/</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r ./squashfs-root  root@192.168.127.141:/root/</span><br></pre></td></tr></table></figure>
 <p>完成搭建路由器固件运行的环境。</p>
 <p>找到固件所在的位置，想直接执行下upnp这个文件，报错,缺少相应的so文件造成。</p>
 <p><a href="https://image.3001.net/images/20180111/15156686001122.png" target="_blank" rel="noopener"><img src="https://image.3001.net/images/20180111/15156686001122.png!small" alt="图片.png"></a></p>
@@ -862,138 +1276,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2018/11/12/蓝牙部分资料/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="devil0x">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="devil0x菜鸟">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/12/蓝牙部分资料/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-12T20:08:29+08:00">
-                2018-11-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>我们这里只说1-4的数据类型。</p>
-<p>HCI Command Packet：host发给controller，主要是HCI 命令， 注意是命令，不是数据。</p>
-<p>HCI Event Packet：controller发给host。对应于command packet。</p>
-<p>HCI ACL Data Packet： host发给controller或者相反。主要是L2CAP发送和接收的数据，我们上层的所有数据，注意是数据，而不是命令，都是通过这个type来传递的。</p>
-<p>HCI Synchronous Data Packet：用来传输语音（SCO）数据的。注意一般都会通过PCM接口来传输SCO数据。</p>
-<p>而发送出去的和接收的上层数据都是通过ACL data packet的type来完成的，例如：</p>
-<p>17000400060100ffff0028d0002d121e4b0fa4994eceb531f40579</p>
-<p>a5 b8 0d ba 6a 4b fd 08 c6 c4 05 26 b1 85 c7 0a 0010   ff ff ff ff</p>
-<p>3e 78 63 17 cc 58 28 33 57 7f 37 6b e6 43 ec 0d 0010   ff ff ff ff</p>
-<p>char-write-req 0x0003 020220f301ef0140000befd403aa0e04040b020022000c02000100080004424d3e840000000000003e000000280000005d01000000fdffff010001000000000000000000c40e0000c40e00000200000002000000000000ffffffffff00000000000000000000000000036db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6d01249249249249249249249249249b6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db700000000000000000000000000002db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6db6da849249249249249249249249249235555555555555555555555555555555555555555555555555555555556b00000000000000000000000000009b6eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeead89249249249249249249249249242db5555555555555555555555555555555555555555555555555555555da800000000000000000000000000096dbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbab704924924924924924924924924923aad56d6d6d6d6d6d6d6d6d6d6d6d6d6d6d6d6d6d6d6d6d6d6d6d6d6d75a80000000000000000000000000002b76eab56abab56abab56abab56abab56abab56abab56abab56abab56aed894924aa4a94aa54a552a5252a492da9aaa aa0500030301000149</p>
-<p>char-write-req 0x0003 aa0f00040b020008000c020001000a010029ebaa2e00040b020008000c020002000d0100001101000010010000071400323031382d31312d30392031373a34303a33380aeeaa0f00040b020008000c020003000a01002ae8</p>
-<p>char-write-req 0x0003  aa0e04040b020008000c02000400080004424d0e090000000000003e00000028000000800100002f00000001000100000000000000000000000000000000000200000002000000000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff</p>
-<p>aa050003030100004a</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2018/11/11/SYC第三次面试报告/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1013,7 +1295,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/11/SYC第三次面试报告/" itemprop="url">SYC第三次面试报告</a></h1>
+                <a class="post-title-link" href="/2018/11/11/SYC第三次面试报告/" itemprop="url">未命名</a></h1>
         
 
         <div class="post-meta">
@@ -1065,7 +1347,8 @@
       
         
           
-            <h1 id="0x01-基础简介"><a href="#0x01-基础简介" class="headerlink" title="0x01.基础简介"></a>0x01.基础简介</h1><h2 id="1-实验设备："><a href="#1-实验设备：" class="headerlink" title="1.实验设备："></a>1.实验设备：</h2><p>kali，安卓手机，咕咕机(GT1), 蓝牙适配器（没有就用电脑自带的hci0）</p>
+            <hr>
+<h2 id="title-SYC第三次面试报告"><a href="#title-SYC第三次面试报告" class="headerlink" title="title:SYC第三次面试报告"></a>title:SYC第三次面试报告</h2><h1 id="0x01-基础简介"><a href="#0x01-基础简介" class="headerlink" title="0x01.基础简介"></a>0x01.基础简介</h1><h2 id="1-实验设备："><a href="#1-实验设备：" class="headerlink" title="1.实验设备："></a>1.实验设备：</h2><p>kali，安卓手机，咕咕机(GT1), 蓝牙适配器（没有就用电脑自带的hci0）</p>
 <h2 id="2-剧情介绍"><a href="#2-剧情介绍" class="headerlink" title="2.剧情介绍"></a>2.剧情介绍</h2><p>在蓝牙开发中，尤其是咕咕机GT1这种只有蓝牙的型号（咕咕机有些机器可以连接wifi），基本上都是手机App与设备间的通信。手机向设备发送数据，然后等待设备的响应。但当数据发出去的时候，却不能确保设备能否准确的响应。设备属于硬件端，一般不受软件端开发人员控制，除非能和硬件端开发人员一起联调，否则很难调试。但在部分Android手机为开发人员提供了保存蓝牙日志的选项，即可保存手机向设备发送的数据和设备响应的数据。 这个log记录了host与controller通信的全部内容，列出了蓝牙协议栈的各个层的消息通信图谱。注意，由于这个log是协议栈自己生成的，它只列出了协议栈发出去的和接收到的消息，若是由于其它原因，例如UART 驱动丢包等导致的问题，则需要使用其它的log工具来寻找原因（例如uart sniffer）。 不再详述snoop log文件本身的格式。知道了这些格式，其实我们可以用wireshark和fte的capture file viewer都可以用来查看btsnoop log。 在此我把两个都给安装了，感觉wireshark鲨鱼鳍更好用一些。。。。。</p>
 <p><strong>3.</strong> 首先打开wireshark是一脸蒙蔽的，首先去百度一下关于蓝牙各种协议方面的东西，大概知道每个类型的包都代表啥意思。</p>
 <p>１.Hci主机控制器接口，蓝牙协议栈的重要部分，HCI Packet 在 Host 和 Control 之间进行传输，通常有三种类型 Command，Event，Data (ACL 和 SCO/eSCO)。其中 Data 是双向的, Command 只能从 Host 发往 Control, Event 始终是 Control 发向 Host 的。在本文中这点只需要了解即可。</p>
@@ -1284,48 +1567,48 @@
 <p>以及安卓端：mifare classical tools, M Tools(神器)</p>
 <h4 id="4-实际操作："><a href="#4-实际操作：" class="headerlink" title="4 . 实际操作："></a>4 . 实际操作：</h4><p><strong>1.</strong> <strong>首先把acr122u的驱动叽里呱啦的安装好。</strong></p>
 <p><strong>2.</strong> <strong>把水卡放置道读卡上，正确识别之后灯会变为黄色。</strong></p>
-<p>​           <img src="http://pico0ziv8.bkt.clouddn.com/18-11-18/8767212.jpg" alt="">                                    </p>
+<p>​           <img src="https://github.com/devil0x/picture/raw/master/11.09/1.png" alt="">                                    </p>
 <p>3.打开m1服务软件，正确识别机器之后，点击开始破解。</p>
-<p><img src="http://pico0ziv8.bkt.clouddn.com/18-11-18/8942142.jpg" alt="1541320664628"></p>
+<p><img src="https://github.com/devil0x/picture/raw/master/11.09/2.png" alt="1541320664628"></p>
 <ol start="4">
 <li>破解完成当即获得一个1kb dump文件，现在可以直接拖进sublime text3。但是因为是linux移植软件，所以直接打开会看到很多扇区是缺东西的，win下操作的时候需要用到一个fixdump的工具来填充剩余部分。</li>
 </ol>
 <p>5.先把得到的文件，重新命名为一个简单名称（dumpfile1.dump），然后进行修复dump文件。把dumpfile1.dump拖到fixdump所在文件夹，在空白处按住shift，在右击鼠标，点击在此处打开powershell，然后输入</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\fixdump dumpfile1.dump</span><br></pre></td></tr></table></figure>
-<p>6.获得4kb的dump文件。<img src="http://pico0ziv8.bkt.clouddn.com/18-11-18/45036744.jpg" alt="1541320780834"></p>
+<p>6.获得4kb的dump文件。<img src="https://github.com/devil0x/picture/raw/master/11.09/3.png" alt="1541320780834"></p>
 <p>   6.为了对比金额差别，用手机端app：mifare打开m1卡，</p>
-<p><img src="http://pico0ziv8.bkt.clouddn.com/18-11-18/47495601.jpg" alt="1541321412959"></p>
+<p><img src="https://github.com/devil0x/picture/raw/master/11.09/4.png" alt="1541321412959"></p>
 <p>会发现没有3号4号扇区的key，</p>
 <p>用sublime打开dumpfile1.dump</p>
-<p><img src="http://pico0ziv8.bkt.clouddn.com/18-11-18/63971097.jpg" alt="1541321526563"></p>
+<p><img src="https://github.com/devil0x/picture/raw/master/11.09/5.png" alt="1541321526563"></p>
 <p>每个扇区的第4块区域，前半部为keyA 后半为keyB</p>
 <p>直接导入mifare 工具，手机端图形界面好观察一些。</p>
-<p><img src="http://pico0ziv8.bkt.clouddn.com/18-11-18/68479812.jpg" alt="1541321645940"></p>
+<p><img src="https://github.com/devil0x/picture/raw/master/11.09/6.png" alt="1541321645940"></p>
 <p>直接可以看到改扇区的信息了，然后在读卡器记下现在的金额，并命名一下啊，再去刷卡处，打开机器，然后金额开始变化，再记录下金额，用dump对比工具对比。</p>
-<p><img src="http://pico0ziv8.bkt.clouddn.com/18-11-18/83340440.jpg" alt="1541322018408"></p>
+<p><img src="https://github.com/devil0x/picture/raw/master/11.09/7.png" alt="1541322018408"></p>
 <p>随即就发现了一些端倪。这几个数值出现了变化，</p>
 <p><strong>E4 12</strong>     <strong>DC 90</strong></p>
 <p><strong>E8 12</strong>     <strong>DB 93</strong></p>
 <p>把前两部分导进进制转换器</p>
-<p><img src="http://pico0ziv8.bkt.clouddn.com/18-11-18/542058.jpg" alt="1541322421194"></p>
+<p><img src="https://github.com/devil0x/picture/raw/master/11.09/8.png" alt="1541322421194"></p>
 <p>刚好是金额位，那么剩下的就是。。。。校验位。</p>
 <p>这都8102年了，之前经常逛酷安，知道一款神器，M Tools</p>
-<p><img src="http://pico0ziv8.bkt.clouddn.com/18-11-18/26033786.jpg" alt="1541323524737"></p>
+<p><img src="https://github.com/devil0x/picture/raw/master/11.09/9.png" alt="1541323524737"></p>
 <p>这是一款酷安基佬开发的app，最神奇的是作者录制了视屏教程，but 估计是怕在国内被封把，直接发到了油管，最神奇的是全程有蹩脚的英语进行讲解，可怕可怕。。。。</p>
 <p>这个app也需要提前把密钥导进去，</p>
-<p><img src="http://pico0ziv8.bkt.clouddn.com/18-11-18/21792237.jpg" alt="1541323809934"></p>
+<p><img src="https://github.com/devil0x/picture/raw/master/11.09/10.png" alt="1541323809934"></p>
 <p>这货可以预置常用的算法，什么十六进制倒序，倍数转换啊，直接一点即可。</p>
 <p>然后就找到之前发现的金额位数据，直接就可以转换成47.40，然后下一不是选择校验位的算法，but真的看不出有何端倪，直接先跳过了。。。。</p>
-<p><img src="C:\Users\skywa\AppData\Roaming\Typora\typora-user-images\1541324006788.png" alt="1541324006788"></p>
+<p><img src="https://github.com/devil0x/picture/raw/master/11.09/10.png" alt="1541324006788"></p>
 <p>然后来到这个app的核心功能地方，嗅探校验位算法。于是，在刷卡机器旁边，冲冲放放这样来了十几个来回，嗅探到了一下数据。</p>
-<p><img src="http://pico0ziv8.bkt.clouddn.com/18-11-18/51983611.jpg" alt="1541324174499"></p>
+<p><img src="https://github.com/devil0x/picture/raw/master/11.09/11.png" alt="1541324174499"></p>
 <p>目前已知的校验位计算方法有这么几种：</p>
-<p><img src="http://pico0ziv8.bkt.clouddn.com/18-11-18/9045054.jpg" alt="1541324519138"></p>
+<p><img src="https://github.com/devil0x/picture/raw/master/11.09/12.png" alt="1541324519138"></p>
 <p>这里提供一个异或算法工具：在线BCC校验工具（<a href="http://www.ip33.com/bcc.html）" target="_blank" rel="noopener">http://www.ip33.com/bcc.html）</a></p>
 <p>反正就是加减乘除，异或取反，各种操作挨个试，</p>
 <p>虽说如此，还是看不出来</p>
 <p>but 看了好久没看出来，就去翻着去看了几篇教程，发现了一些端倪。</p>
-<p><img src="http://pico0ziv8.bkt.clouddn.com/18-11-18/15829219.jpg" alt="1541326346471"></p>
+<p><img src="https://github.com/devil0x/picture/raw/master/11.09/13.png" alt="1541326346471"></p>
 <p>但就是这个b12部分一直啥都看不出来，真的是毫无规律可循。但其他部分应该还是很好知道规律的</p>
 <p>such as：第2块与第1块做对比，金额位b0差-4，b1没有差别，b12差+1, b15差-3，刚好钱差0.04</p>
 <p>​          同理第3与第4块的做对比，金额位b0差-8，b1没有差别，b12差+1, b15差-7，刚好钱差0.08</p>
@@ -1335,17 +1618,17 @@
 <p>把这些数换到10进制计算出这个某定值为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">88(hex)+12(hex)+8(hex)-60(hex) = 66(十进制)</span><br></pre></td></tr></table></figure>
 <p>所以b15的公式就是：b15=b0+b1+b12-66</p>
-<p>把公式填进M Tools，直接成功完成验证：<img src="http://pico0ziv8.bkt.clouddn.com/18-11-18/16489466.jpg" alt="1541327523694"></p>
+<p>把公式填进M Tools，直接成功完成验证：<img src="https://github.com/devil0x/picture/raw/master/11.09/14.png" alt="1541327523694"></p>
 <p>但是这个b12什么鬼，什么规律都没有。。。。。。。。</p>
 <p>但后来经过自己观察，这个可能是随机的，从图上可知每刷一次都递增一下，从00开始，such as：08.09.0A。。。。。。</p>
 <p>跳过此步骤，自己开始修改数据，比如39.42，先x100，再用16进制表示3942，再倒置一下：</p>
-<p><img src="http://pico0ziv8.bkt.clouddn.com/18-11-18/75530303.jpg" alt="1541327857383"></p>
-<p>只有3个数字，空余位用0替补，验证一下<img src="http://pico0ziv8.bkt.clouddn.com/18-11-18/88751784.jpg" alt="1541327929322"></p>
+<p><img src="https://github.com/devil0x/picture/raw/master/11.09/15.png" alt="1541327857383"></p>
+<p>只有3个数字，空余位用0替补，验证一下<img src="https://github.com/devil0x/picture/raw/master/11.09/16.png" alt="1541327929322"></p>
 <p>欧克了，那就是金额位就是66 0f，b12既然是随机的就不用管了随便填00都可以，公式再通过算出b15等于15，填上去，再用读卡器acr122u写入到一张空白的uid卡里边，完毕了。</p>
 <p>这都8102年了，提供一个更快的思路，直接用M Tools</p>
-<p><img src="http://pico0ziv8.bkt.clouddn.com/18-11-18/85343748.jpg" alt="1541328695589"></p>
+<p><img src="https://github.com/devil0x/picture/raw/master/11.09/17.png" alt="1541328695589"></p>
 <p>直接交给手机来吧，都不用写个c来计算了。直接充值了</p>
-<p>上图<img src="http://pico0ziv8.bkt.clouddn.com/18-11-18/38607642.jpg" alt="1541328814663"></p>
+<p>上图<img src="https://github.com/devil0x/picture/raw/master/11.09/18.png" alt="1541328814663"></p>
 <h1 id="2-wifi版badusb"><a href="#2-wifi版badusb" class="headerlink" title="2 . wifi版badusb"></a>2 . wifi版badusb</h1><p>BadUSB是今年计算机安全领域的热门话题之一，该漏洞由Karsten Nohl和Jakob Lell共同发现，并在今年的BlackHat安全大会上公布。BadUSB号称是世界上最邪恶的USB外设。</p>
 <p>笔者使用他们的代码做了个类似的U盘，用户插入U盘，就会自动执行预置在固件中的恶意代码，下载服务器上恶意文件，执行恶意操作。</p>
 <p>但是今天制作的东西是wifi版的badusb。可以wifi上传脚本，执行脚本，在线编辑脚本的bad USB。对了，那个九块钱的Digispark能做到这一切，不可能的，毕竟那货都不能免驱动，那还玩个ball啊……</p>
@@ -1355,7 +1638,7 @@
 <p>esp8266固件（<a href="https://github.com/spacehuhn/wifi_ducky/releases）" target="_blank" rel="noopener">https://github.com/spacehuhn/wifi_ducky/releases）</a></p>
 <p>mjmcu 固件（<a href="https://github.com/spacehuhn/wifi_ducky/blob/master/arduino_wifi_duck/arduino_wifi_duck.ino）" target="_blank" rel="noopener">https://github.com/spacehuhn/wifi_ducky/blob/master/arduino_wifi_duck/arduino_wifi_duck.ino）</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;Keyboard.h&gt;</span><br><span class="line">#define BAUD_RATE 57200</span><br><span class="line"></span><br><span class="line">#define ExternSerial Serial1</span><br><span class="line"></span><br><span class="line">String bufferStr = &quot;&quot;;</span><br><span class="line">String last = &quot;&quot;;</span><br><span class="line"></span><br><span class="line">int defaultDelay = 0;</span><br><span class="line"></span><br><span class="line">void Line(String _line)</span><br><span class="line">&#123;</span><br><span class="line">  int firstSpace = _line.indexOf(&quot; &quot;);</span><br><span class="line">  if(firstSpace == -1) Press(_line);</span><br><span class="line">  else if(_line.substring(0,firstSpace) == &quot;STRING&quot;)&#123;</span><br><span class="line">    for(int i=firstSpace+1;i&lt;_line.length();i++) Keyboard.write(_line[i]);</span><br><span class="line">  &#125;</span><br><span class="line">  else if(_line.substring(0,firstSpace) == &quot;DELAY&quot;)&#123;</span><br><span class="line">    int delaytime = _line.substring(firstSpace + 1).toInt();</span><br><span class="line">    delay(delaytime);</span><br><span class="line">  &#125;</span><br><span class="line">  else if(_line.substring(0,firstSpace) == &quot;DEFAULTDELAY&quot;) defaultDelay = _line.substring(firstSpace + 1).toInt();</span><br><span class="line">  else if(_line.substring(0,firstSpace) == &quot;REM&quot;)&#123;&#125; //nothing :/</span><br><span class="line">  else if(_line.substring(0,firstSpace) == &quot;REPLAY&quot;) &#123;</span><br><span class="line">    int replaynum = _line.substring(firstSpace + 1).toInt();</span><br><span class="line">    while(replaynum)</span><br><span class="line">    &#123;</span><br><span class="line">      Line(last);</span><br><span class="line">      --replaynum;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; else&#123;</span><br><span class="line">      String remain = _line;</span><br><span class="line"></span><br><span class="line">      while(remain.length() &gt; 0)&#123;</span><br><span class="line">        int latest_space = remain.indexOf(&quot; &quot;);</span><br><span class="line">        if (latest_space == -1)&#123;</span><br><span class="line">          Press(remain);</span><br><span class="line">          remain = &quot;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">          Press(remain.substring(0, latest_space));</span><br><span class="line">          remain = remain.substring(latest_space + 1);</span><br><span class="line">        &#125;</span><br><span class="line">        delay(5);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Keyboard.releaseAll();</span><br><span class="line">  delay(defaultDelay);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void Press(String b)&#123;</span><br><span class="line">  if(b.length() == 1) Keyboard.press(char(b[0]));</span><br><span class="line">  else if (b.equals(&quot;ENTER&quot;)) Keyboard.press(KEY_RETURN);</span><br><span class="line">  else if (b.equals(&quot;CTRL&quot;)) Keyboard.press(KEY_LEFT_CTRL);</span><br><span class="line">  else if (b.equals(&quot;SHIFT&quot;)) Keyboard.press(KEY_LEFT_SHIFT);</span><br><span class="line">  else if (b.equals(&quot;ALT&quot;)) Keyboard.press(KEY_LEFT_ALT);</span><br><span class="line">  else if (b.equals(&quot;GUI&quot;)) Keyboard.press(KEY_LEFT_GUI);</span><br><span class="line">  else if (b.equals(&quot;UP&quot;) || b.equals(&quot;UPARROW&quot;)) Keyboard.press(KEY_UP_ARROW);</span><br><span class="line">  else if (b.equals(&quot;DOWN&quot;) || b.equals(&quot;DOWNARROW&quot;)) Keyboard.press(KEY_DOWN_ARROW);</span><br><span class="line">  else if (b.equals(&quot;LEFT&quot;) || b.equals(&quot;LEFTARROW&quot;)) Keyboard.press(KEY_LEFT_ARROW);</span><br><span class="line">  else if (b.equals(&quot;RIGHT&quot;) || b.equals(&quot;RIGHTARROW&quot;)) Keyboard.press(KEY_RIGHT_ARROW);</span><br><span class="line">  else if (b.equals(&quot;DELETE&quot;)) Keyboard.press(KEY_DELETE);</span><br><span class="line">  else if (b.equals(&quot;PAGEUP&quot;)) Keyboard.press(KEY_PAGE_UP);</span><br><span class="line">  else if (b.equals(&quot;PAGEDOWN&quot;)) Keyboard.press(KEY_PAGE_DOWN);</span><br><span class="line">  else if (b.equals(&quot;HOME&quot;)) Keyboard.press(KEY_HOME);</span><br><span class="line">  else if (b.equals(&quot;ESC&quot;)) Keyboard.press(KEY_ESC);</span><br><span class="line">  else if (b.equals(&quot;BACKSPACE&quot;)) Keyboard.press(KEY_BACKSPACE);</span><br><span class="line">  else if (b.equals(&quot;INSERT&quot;)) Keyboard.press(KEY_INSERT);</span><br><span class="line">  else if (b.equals(&quot;TAB&quot;)) Keyboard.press(KEY_TAB);</span><br><span class="line">  else if (b.equals(&quot;END&quot;)) Keyboard.press(KEY_END);</span><br><span class="line">  else if (b.equals(&quot;CAPSLOCK&quot;)) Keyboard.press(KEY_CAPS_LOCK);</span><br><span class="line">  else if (b.equals(&quot;F1&quot;)) Keyboard.press(KEY_F1);</span><br><span class="line">  else if (b.equals(&quot;F2&quot;)) Keyboard.press(KEY_F2);</span><br><span class="line">  else if (b.equals(&quot;F3&quot;)) Keyboard.press(KEY_F3);</span><br><span class="line">  else if (b.equals(&quot;F4&quot;)) Keyboard.press(KEY_F4);</span><br><span class="line">  else if (b.equals(&quot;F5&quot;)) Keyboard.press(KEY_F5);</span><br><span class="line">  else if (b.equals(&quot;F6&quot;)) Keyboard.press(KEY_F6);</span><br><span class="line">  else if (b.equals(&quot;F7&quot;)) Keyboard.press(KEY_F7);</span><br><span class="line">  else if (b.equals(&quot;F8&quot;)) Keyboard.press(KEY_F8);</span><br><span class="line">  else if (b.equals(&quot;F9&quot;)) Keyboard.press(KEY_F9);</span><br><span class="line">  else if (b.equals(&quot;F10&quot;)) Keyboard.press(KEY_F10);</span><br><span class="line">  else if (b.equals(&quot;F11&quot;)) Keyboard.press(KEY_F11);</span><br><span class="line">  else if (b.equals(&quot;F12&quot;)) Keyboard.press(KEY_F12);</span><br><span class="line">  else if (b.equals(&quot;SPACE&quot;)) Keyboard.press(&apos; &apos;);</span><br><span class="line">  //else Serial.println(&quot;not found :&apos;&quot;+b+&quot;&apos;(&quot;+String(b.length())+&quot;)&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void setup() &#123;</span><br><span class="line">  </span><br><span class="line">  Serial.begin(BAUD_RATE);</span><br><span class="line">  ExternSerial.begin(BAUD_RATE);</span><br><span class="line"></span><br><span class="line">  pinMode(13,OUTPUT);</span><br><span class="line">  digitalWrite(13,HIGH);</span><br><span class="line"></span><br><span class="line">  Keyboard.begin();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void loop() &#123;</span><br><span class="line">  if(ExternSerial.available()) &#123;</span><br><span class="line">    bufferStr = ExternSerial.readStringUntil(&quot;END&quot;);</span><br><span class="line">    Serial.println(bufferStr);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  if(bufferStr.length() &gt; 0)&#123;</span><br><span class="line">    </span><br><span class="line">    bufferStr.replace(&quot;\r&quot;,&quot;\n&quot;);</span><br><span class="line">    bufferStr.replace(&quot;\n\n&quot;,&quot;\n&quot;);</span><br><span class="line">    </span><br><span class="line">    while(bufferStr.length() &gt; 0)&#123;</span><br><span class="line">      int latest_return = bufferStr.indexOf(&quot;\n&quot;);</span><br><span class="line">      if(latest_return == -1)&#123;</span><br><span class="line">        Serial.println(&quot;run: &quot;+bufferStr);</span><br><span class="line">        Line(bufferStr);</span><br><span class="line">        bufferStr = &quot;&quot;;</span><br><span class="line">      &#125; else&#123;</span><br><span class="line">        Serial.println(&quot;run: &apos;&quot;+bufferStr.substring(0, latest_return)+&quot;&apos;&quot;);</span><br><span class="line">        Line(bufferStr.substring(0, latest_return));</span><br><span class="line">        last=bufferStr.substring(0, latest_return);</span><br><span class="line">        bufferStr = bufferStr.substring(latest_return + 1);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    bufferStr = &quot;&quot;;</span><br><span class="line">    ExternSerial.write(0x99);</span><br><span class="line">    Serial.println(&quot;done&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="http://pico0ziv8.bkt.clouddn.com/18-11-18/34271928.jpg" alt="1541329587154"></p>
+<p><img src="https://github.com/devil0x/picture/raw/master/11.09/19.png" alt="1541329587154"></p>
 <p>然后rx.tx互相反接，vcc，gnd直接连。焊接就完事儿了</p>
 <p>后台登陆一下192.168.4.1</p>
 <p>然后程序的话直接</p>
@@ -1450,7 +1733,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1491,7 +1774,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
