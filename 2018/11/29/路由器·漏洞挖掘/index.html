@@ -1,186 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- Head tag -->
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="keyword" content="">
-    <meta name="theme-color" content="#600090">
-    <meta name="msapplication-navbutton-color" content="#600090">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
-    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
-    <link rel="alternate" type="application/atom+xml" title="devil0x菜鸟" href="/atom.xml">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
     <title>
         
-        360 iot 路由器漏洞挖掘｜undefined
+        360 iot 路由器漏洞挖掘 - undefined
         
     </title>
 
-    <link rel="canonical" href="https://devil0x.github.io/2018/11/29/路由器·漏洞挖掘/">
-
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/blog-style.css">
-
-    <!-- Pygments Github CSS -->
-    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
 </head>
 
-<style>
+<body>
 
-    header.intro-header {
-        background-image: url('')
-    }
-</style>
-<!-- hack iOS CSS :active style -->
-<body ontouchstart="" class="animated fadeIn">
-<!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost="true" data-istags="false
-" data-ishome="false">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand animated pulse" href="/">
-                <span class="brand-logo">
-                    devil0x菜鸟
-                </span>
-                's Blog
-            </a>
-        </div>
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <!-- Known Issue, found by Hux:
-            <nav>'s height woule be hold on by its content.
-            so, when navbar scale out, the <nav> will cover tags.
-            also mask any touch event of tags, unfortunately.
-        -->
-        <!-- /.navbar-collapse -->
-        <div id="huxblog_navbar">
-            <div class="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-					
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-							
-                        <li>
-                            <a href="/ing/python 入门到入土.html">python</a>
-                        </li>
-							
-						
-                    
-                        
-                    
-					
-					
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!-- /.container -->
-</nav>
-<script>
-    // Drop Bootstarp low-performance Navbar
-    // Use customize navbar with high-quality material design animation
-    // in high-perf jank-free CSS3 implementation
-//    var $body   = document.body;
-    var $toggle = document.querySelector('.navbar-toggle');
-    var $navbar = document.querySelector('#huxblog_navbar');
-    var $collapse = document.querySelector('.navbar-collapse');
+<div class="index-about">
+    <i>  </i>
+</div>
 
-    $toggle.addEventListener('click', handleMagic)
-    function handleMagic(e){
-        if ($navbar.className.indexOf('in') > 0) {
-        // CLOSE
-            $navbar.className = " ";
-            // wait until animation end.
-            setTimeout(function(){
-                // prevent frequently toggle
-                if($navbar.className.indexOf('in') < 0) {
-                    $collapse.style.height = "0px"
-                }
-            },400)
-        }else{
-        // OPEN
-            $collapse.style.height = "auto"
-            $navbar.className += " in";
-        }
-    }
-</script>
-
-<!-- Main Content -->
-
-<!--only post-->
-
-
-<img class="wechat-title-img" src="">
-
-
-<style>
+<div class="index-container">
     
-    header.intro-header {
-        background-image: url('')
-    }
-
-    
-</style>
-
-<header class="intro-header">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
-                <div class="post-heading">
-                    <h1>360 iot 路由器漏洞挖掘</h1>
-                    
-                    <span class="meta">
-                         作者 devil0x
-                        <span>
-                          日期 2018-11-29
-                         </span>
-                    </span>
-                    <div class="tags text-center">
-                        
-                    </div>
-                </div>
-            </div>
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/">
+        </div>
+        <div class="name">
+            <i>devil0x</i>
         </div>
     </div>
-    <div class="post-title-haojen">
-        <span>
-            360 iot 路由器漏洞挖掘
-        </span>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
     </div>
-</header>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-复现CVE-2017-17215学习路由器漏洞分析"><span class="toc-text">1.复现CVE-2017-17215学习路由器漏洞分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-先补一下这个漏洞的详情"><span class="toc-text">2.先补一下这个漏洞的详情</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-分析环境是ubuntu-16-04"><span class="toc-text">1.分析环境是ubuntu 16.04.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-配置复现环境"><span class="toc-text">2. 配置复现环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-debian-org-gt-aurel32-qemu-mips-下载对应的debian-mips-qemu镜像"><span class="toc-text">3.debian.org/&gt;~aurel32/qemu/mips/下载对应的debian mips qemu镜像</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#（这部分是抄的，直接借鉴的）"><span class="toc-text">（这部分是抄的，直接借鉴的）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-环境搭建好，进行实际操作"><span class="toc-text">4. 环境搭建好，进行实际操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-甩进ida分析"><span class="toc-text">5.甩进ida分析</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#漏洞分析"><span class="toc-text">漏洞分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-学习IDA-Pro"><span class="toc-text">2.学习IDA Pro</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IDA-Pro基本知识"><span class="toc-text">IDA Pro基本知识</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-基本常识"><span class="toc-text">1. 基本常识</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-安装buildroot的坑"><span class="toc-text">3.安装buildroot的坑</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-MIPS交叉编译环境的搭建（Buildroot）"><span class="toc-text">1. MIPS交叉编译环境的搭建（Buildroot）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-firmware-mod-kit工具的安装"><span class="toc-text">3. firmware-mod-kit工具的安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-安装依赖"><span class="toc-text">1.安装依赖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-下载安装"><span class="toc-text">4. 下载安装</span></a></li></ol></li>
+</div>
+    
+</div>
 
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
-            <!-- Post Container -->
-            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <h2 id="1-复现CVE-2017-17215学习路由器漏洞分析"><a href="#1-复现CVE-2017-17215学习路由器漏洞分析" class="headerlink" title="1.复现CVE-2017-17215学习路由器漏洞分析"></a>1.复现CVE-2017-17215学习路由器漏洞分析</h2><p>然后再复现CVE-2018-17068、CVE-2018-5767、CVE-2016-5367</p>
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i>  </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        360 iot 路由器漏洞挖掘
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-11-29 01:12:23</span></span>
+        
+        
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h2 id="1-复现CVE-2017-17215学习路由器漏洞分析"><a href="#1-复现CVE-2017-17215学习路由器漏洞分析" class="headerlink" title="1.复现CVE-2017-17215学习路由器漏洞分析"></a>1.复现CVE-2017-17215学习路由器漏洞分析</h2><p>然后再复现CVE-2018-17068、CVE-2018-5767、CVE-2016-5367</p>
 <p>华为已经发了漏洞公告，固件已经升级到HG532eV100R001C02B017_upgrade_main.bin。从论坛里找到了带漏洞版本件，HG532eV100R001C02B015_upgrade_main.bin。</p>
 <p>附上下载链接</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://ia601506.us.archive.org/22/items/RouterHG532e/router%20HG532e.rar</span><br></pre></td></tr></table></figure>
@@ -285,166 +229,63 @@
 <h4 id="1-安装依赖"><a href="#1-安装依赖" class="headerlink" title="1.安装依赖"></a>1.安装依赖</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">For Ubuntu 需要安装的依赖库文件</span><br><span class="line">sudo apt-get install git build-essential zlib1g-dev liblzma-dev python-magic</span><br></pre></td></tr></table></figure>
 <h4 id="4-下载安装"><a href="#4-下载安装" class="headerlink" title="4. 下载安装"></a>4. 下载安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/mirror/firmware-mod-kit.git</span><br><span class="line"> </span><br><span class="line"># 进入源码目录</span><br><span class="line">cd firmware-mod-kit/src</span><br><span class="line"> </span><br><span class="line"># 执行configure文件生成Makefile文件然后make编译生成可执行文件</span><br><span class="line">./configure &amp;&amp; make</span><br></pre></td></tr></table></figure>
 
-                <hr>
-                
-
-                <ul class="pager">
-                    
-                    <li class="previous">
-                        <a href="/2019/01/10/固定码逆向分析/" data-toggle="tooltip" data-placement="top" title="固定码逆向分析">&larr; Previous Post</a>
-                    </li>
-                    
-                    
-                    <li class="next">
-                        <a href="/2018/11/28/安洵杯CTF rfid题/" data-toggle="tooltip" data-placement="top" title="安洵杯CTF rfid题">Next Post &rarr;</a>
-                    </li>
-                    
-                </ul>
-
-                
-
-                
-
-
-                <!--加入新的评论系统-->
-                
-
-                
-
-            </div>
-
-            <div class="hidden-xs col-sm-3 toc-col">
-                <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-复现CVE-2017-17215学习路由器漏洞分析"><span class="toc-text">1.复现CVE-2017-17215学习路由器漏洞分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-先补一下这个漏洞的详情"><span class="toc-text">2.先补一下这个漏洞的详情</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-分析环境是ubuntu-16-04"><span class="toc-text">1.分析环境是ubuntu 16.04.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-配置复现环境"><span class="toc-text">2. 配置复现环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-debian-org-gt-aurel32-qemu-mips-下载对应的debian-mips-qemu镜像"><span class="toc-text">3.debian.org/&gt;~aurel32/qemu/mips/下载对应的debian mips qemu镜像</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#（这部分是抄的，直接借鉴的）"><span class="toc-text">（这部分是抄的，直接借鉴的）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-环境搭建好，进行实际操作"><span class="toc-text">4. 环境搭建好，进行实际操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-甩进ida分析"><span class="toc-text">5.甩进ida分析</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#漏洞分析"><span class="toc-text">漏洞分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-学习IDA-Pro"><span class="toc-text">2.学习IDA Pro</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IDA-Pro基本知识"><span class="toc-text">IDA Pro基本知识</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-基本常识"><span class="toc-text">1. 基本常识</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-安装buildroot的坑"><span class="toc-text">3.安装buildroot的坑</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-MIPS交叉编译环境的搭建（Buildroot）"><span class="toc-text">1. MIPS交叉编译环境的搭建（Buildroot）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-firmware-mod-kit工具的安装"><span class="toc-text">3. firmware-mod-kit工具的安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-安装依赖"><span class="toc-text">1.安装依赖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-下载安装"><span class="toc-text">4. 下载安装</span></a></li></ol></li>
-                </div>
-            </div>
+        
+        <br>
+        <div id="comment-container">
         </div>
+        <div id="disqus_thread"></div>
 
-        <div class="row">
-            <!-- Sidebar Container -->
-
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
-
-                <!-- Featured Tags -->
-                
-
-                <!-- Friends Blog -->
-                
-            </div>
+        <div id="lv-container">
         </div>
 
     </div>
-</article>
+</div>
 
-
-
-
-
-
-
-<!-- Footer -->
-<!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
-                <br>
-                <ul class="list-inline text-center">
-                
-                
-                
-
-                
-
-                
-
-                
-
-                
-
-                </ul>
-                <p class="copyright text-muted">
-                    Copyright &copy; devil0x菜鸟 2019
-                    <br>
-                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
-                    <br>
-                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
-                </p>
-
-            </div>
-        </div>
     </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
 </footer>
 
-<!-- jQuery -->
-<script src="/js/jquery.min.js"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="/js/bootstrap.min.js"></script>
 
-<!-- Custom Theme JavaScript -->
-<script src="/js/blog.js"></script>
 
-<!-- async load function -->
+</body>
+
 <script>
-    function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
-    }
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = ""
+    window.hexo_root = "/"
+    window.isPost = true
 </script>
-
-<!-- jquery.tagcloud.js -->
-<script>
-    // only load tagcloud.js in tag.html
-    if($('#tag_cloud').length !== 0){
-        async("https://devil0x.github.io/js/jquery.tagcloud.js",function(){
-            $.fn.tagcloud.defaults = {
-                //size: {start: 1, end: 1, unit: 'em'},
-                color: {start: '#bbbbee', end: '#0085a1'},
-            };
-            $('#tag_cloud a').tagcloud();
-        })
-    }
-</script>
-
-<!--fastClick.js -->
-<script>
-    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
-        var $nav = document.querySelector("nav");
-        if($nav) FastClick.attach($nav);
-    })
-</script>
-
-
-
-<!-- Google Analytics -->
-
-
-
-<!-- Baidu Tongji -->
-
-
-<!-- swiftype -->
-<script type="text/javascript">
-  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-
-  _st('install','','2.0.0');
-</script>
-
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-<!--wechat title img-->
-<img class="wechat-title-img" src="">
-</body>
+
+
 
 </html>
