@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="入门学习pwn1.安装pwntools123456789$ sudo apt-get install python-pip python-dev build-essential$ sudo pip install --upgrade pip$ sudo pip install --upgrade virtualenv（如果失败，可以考虑重装一个更新的Ubuntu系统）接着输入$pip instal">
+<meta name="description" content="1.py字符串类型打引号是字符串, ‘582’字符串   582数字 2. 爬虫urllib.request 模块 3.下载图片1234567import urllib.requestresponse = urllib.request.urlopen(&amp;quot;http://placekitten.com/g/200/100&amp;quot;)cat_img = response.read()with">
 <meta property="og:type" content="website">
 <meta property="og:title" content="devil0x菜鸟">
-<meta property="og:url" content="https://devil0x.github.io/ing/pwn入门学习.html">
+<meta property="og:url" content="https://devil0x.github.io/python study.html">
 <meta property="og:site_name" content="devil0x菜鸟">
-<meta property="og:description" content="入门学习pwn1.安装pwntools123456789$ sudo apt-get install python-pip python-dev build-essential$ sudo pip install --upgrade pip$ sudo pip install --upgrade virtualenv（如果失败，可以考虑重装一个更新的Ubuntu系统）接着输入$pip instal">
+<meta property="og:description" content="1.py字符串类型打引号是字符串, ‘582’字符串   582数字 2. 爬虫urllib.request 模块 3.下载图片1234567import urllib.requestresponse = urllib.request.urlopen(&amp;quot;http://placekitten.com/g/200/100&amp;quot;)cat_img = response.read()with">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-03T09:49:24.772Z">
+<meta property="og:updated_time" content="2019-03-02T15:54:04.868Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="devil0x菜鸟">
-<meta name="twitter:description" content="入门学习pwn1.安装pwntools123456789$ sudo apt-get install python-pip python-dev build-essential$ sudo pip install --upgrade pip$ sudo pip install --upgrade virtualenv（如果失败，可以考虑重装一个更新的Ubuntu系统）接着输入$pip instal">
+<meta name="twitter:description" content="1.py字符串类型打引号是字符串, ‘582’字符串   582数字 2. 爬虫urllib.request 模块 3.下载图片1234567import urllib.requestresponse = urllib.request.urlopen(&amp;quot;http://placekitten.com/g/200/100&amp;quot;)cat_img = response.read()with">
 
 
 
@@ -119,7 +119,7 @@
 
 
 
-  <link rel="canonical" href="https://devil0x.github.io/ing/pwn入门学习.html">
+  <link rel="canonical" href="https://devil0x.github.io/python study.html">
 
 
 
@@ -237,8 +237,12 @@
       <div class="post-body">
         
         
-          <h1 id="入门学习pwn"><a href="#入门学习pwn" class="headerlink" title="入门学习pwn"></a>入门学习pwn</h1><h2 id="1-安装pwntools"><a href="#1-安装pwntools" class="headerlink" title="1.安装pwntools"></a>1.安装pwntools</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install python-pip python-dev build-essential</span><br><span class="line">$ sudo pip install --upgrade pip</span><br><span class="line">$ sudo pip install --upgrade virtualenv</span><br><span class="line"></span><br><span class="line">（如果失败，可以考虑重装一个更新的Ubuntu系统）</span><br><span class="line"></span><br><span class="line">接着输入</span><br><span class="line"></span><br><span class="line">$pip install pwntools</span><br></pre></td></tr></table></figure>
-<h2 id="2-Qira还是Gdb"><a href="#2-Qira还是Gdb" class="headerlink" title="2.Qira还是Gdb"></a>2.Qira还是Gdb</h2>
+          <h1 id="1-py字符串类型"><a href="#1-py字符串类型" class="headerlink" title="1.py字符串类型"></a>1.py字符串类型</h1><p>打引号是字符串,</p>
+<p>‘582’字符串  </p>
+<p>582数字</p>
+<h1 id="2-爬虫"><a href="#2-爬虫" class="headerlink" title="2. 爬虫"></a>2. 爬虫</h1><p>urllib.request 模块</p>
+<h1 id="3-下载图片"><a href="#3-下载图片" class="headerlink" title="3.下载图片"></a>3.下载图片</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request</span><br><span class="line"></span><br><span class="line">response = urllib.request.urlopen(&quot;http://placekitten.com/g/200/100&quot;)</span><br><span class="line">cat_img = response.read()</span><br><span class="line"></span><br><span class="line">with open(&apos;cat_200_100.jpg&apos;, &apos;wb&apos;) as f:</span><br><span class="line">    f.write(cat_img)</span><br></pre></td></tr></table></figure>
+
         
       </div>
       
@@ -342,7 +346,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#入门学习pwn"><span class="nav-number">1.</span> <span class="nav-text">入门学习pwn</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-安装pwntools"><span class="nav-number">1.1.</span> <span class="nav-text">1.安装pwntools</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Qira还是Gdb"><span class="nav-number">1.2.</span> <span class="nav-text">2.Qira还是Gdb</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-py字符串类型"><span class="nav-number">1.</span> <span class="nav-text">1.py字符串类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-爬虫"><span class="nav-number">2.</span> <span class="nav-text">2. 爬虫</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-下载图片"><span class="nav-number">3.</span> <span class="nav-text">3.下载图片</span></a></li></ol></div>
             
 
           </div>

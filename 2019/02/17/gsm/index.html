@@ -79,26 +79,17 @@
 
 
 
-<meta name="description" content="安洵杯CTF rfid题首先，这题我也没拿到flag，但是经过喵师傅的讲解，暂时把校验弄出来了。 ##　１．为啥自己看不出校验方法呢？我觉得吧，有以下几点需要注意应该会好很多: 1.实验一种校验方法之后没有结果，不要死磕，换方法。 2.加几个破解水卡的群，多接触各种稀奇古怪的校验方法。 3.多练习多练习。。。。 4.用好winhex，逆向计算器 5.最重要的，校验的奥义：羊毛出在羊身上。就是说，校">
+<meta name="description" content="0x01.先安装依赖0x01.安装编译依赖包 1sudo apt-get install git cmake libboost-all-dev libcppunit-dev swig doxygen liblog4cpp5-dev python-scipy 1apt-get install gnuradio gnuradio-dev rtl-sdr librtlsdr-dev osmo-sdr l">
 <meta property="og:type" content="article">
-<meta property="og:title" content="安洵杯CTF rfid题">
-<meta property="og:url" content="https://devil0x.github.io/2018/11/28/安洵杯CTF rfid题/index.html">
+<meta property="og:title" content="devil0x菜鸟">
+<meta property="og:url" content="https://devil0x.github.io/2019/02/17/gsm/index.html">
 <meta property="og:site_name" content="devil0x菜鸟">
-<meta property="og:description" content="安洵杯CTF rfid题首先，这题我也没拿到flag，但是经过喵师傅的讲解，暂时把校验弄出来了。 ##　１．为啥自己看不出校验方法呢？我觉得吧，有以下几点需要注意应该会好很多: 1.实验一种校验方法之后没有结果，不要死磕，换方法。 2.加几个破解水卡的群，多接触各种稀奇古怪的校验方法。 3.多练习多练习。。。。 4.用好winhex，逆向计算器 5.最重要的，校验的奥义：羊毛出在羊身上。就是说，校">
+<meta property="og:description" content="0x01.先安装依赖0x01.安装编译依赖包 1sudo apt-get install git cmake libboost-all-dev libcppunit-dev swig doxygen liblog4cpp5-dev python-scipy 1apt-get install gnuradio gnuradio-dev rtl-sdr librtlsdr-dev osmo-sdr l">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://pico0ziv8.bkt.clouddn.com/18-11-28/94754972.jpg">
-<meta property="og:image" content="http://pico0ziv8.bkt.clouddn.com/18-11-28/32155.jpg">
-<meta property="og:image" content="http://pico0ziv8.bkt.clouddn.com/18-11-28/20777601.jpg">
-<meta property="og:image" content="c:/Users/skywa/AppData/Roaming/Typora/typora-user-images/1543335819698.png">
-<meta property="og:image" content="http://pico0ziv8.bkt.clouddn.com/18-11-28/1566315.jpg">
-<meta property="og:image" content="http://pico0ziv8.bkt.clouddn.com/18-11-28/42871262.jpg">
-<meta property="og:image" content="http://pico0ziv8.bkt.clouddn.com/18-11-28/96278271.jpg">
-<meta property="og:image" content="http://pico0ziv8.bkt.clouddn.com/18-11-28/40677886.jpg">
-<meta property="og:updated_time" content="2018-11-27T16:36:23.955Z">
+<meta property="og:updated_time" content="2019-02-17T18:02:37.014Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="安洵杯CTF rfid题">
-<meta name="twitter:description" content="安洵杯CTF rfid题首先，这题我也没拿到flag，但是经过喵师傅的讲解，暂时把校验弄出来了。 ##　１．为啥自己看不出校验方法呢？我觉得吧，有以下几点需要注意应该会好很多: 1.实验一种校验方法之后没有结果，不要死磕，换方法。 2.加几个破解水卡的群，多接触各种稀奇古怪的校验方法。 3.多练习多练习。。。。 4.用好winhex，逆向计算器 5.最重要的，校验的奥义：羊毛出在羊身上。就是说，校">
-<meta name="twitter:image" content="http://pico0ziv8.bkt.clouddn.com/18-11-28/94754972.jpg">
+<meta name="twitter:title" content="devil0x菜鸟">
+<meta name="twitter:description" content="0x01.先安装依赖0x01.安装编译依赖包 1sudo apt-get install git cmake libboost-all-dev libcppunit-dev swig doxygen liblog4cpp5-dev python-scipy 1apt-get install gnuradio gnuradio-dev rtl-sdr librtlsdr-dev osmo-sdr l">
 
 
 
@@ -128,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="https://devil0x.github.io/2018/11/28/安洵杯CTF rfid题/">
+  <link rel="canonical" href="https://devil0x.github.io/2019/02/17/gsm/">
 
 
 
 
 
-  <title>安洵杯CTF rfid题 | devil0x菜鸟</title>
+  <title> | devil0x菜鸟</title>
   
 
 
@@ -241,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2018/11/28/安洵杯CTF rfid题/">
+    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/02/17/gsm/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="devil0x">
@@ -258,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">安洵杯CTF rfid题</h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -270,8 +261,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-28T00:35:10+08:00">
-                2018-11-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-17T10:28:38+08:00">
+                2019-02-17
               </time>
             
 
@@ -308,40 +299,25 @@
       
 
       
-        <h1 id="安洵杯CTF-rfid题"><a href="#安洵杯CTF-rfid题" class="headerlink" title="安洵杯CTF rfid题"></a>安洵杯CTF rfid题</h1><p>首先，这题我也没拿到flag，但是经过喵师傅的讲解，暂时把校验弄出来了。</p>
-<p>##　１．为啥自己看不出校验方法呢？我觉得吧，有以下几点需要注意应该会好很多:</p>
-<p>1.实验一种校验方法之后没有结果，不要死磕，换方法。</p>
-<p>2.加几个破解水卡的群，多接触各种稀奇古怪的校验方法。</p>
-<p>3.多练习多练习。。。。</p>
-<p>4.用好winhex，逆向计算器</p>
-<h6 id="5-最重要的，校验的奥义：羊毛出在羊身上。就是说，校验位在哪里，你可以通过多看几个数据的变化来看出。而校验的产生，总是遵循金额位的变化，校验不管咋变，都是金额位数值通过各种公式组合加计算出来的。"><a href="#5-最重要的，校验的奥义：羊毛出在羊身上。就是说，校验位在哪里，你可以通过多看几个数据的变化来看出。而校验的产生，总是遵循金额位的变化，校验不管咋变，都是金额位数值通过各种公式组合加计算出来的。" class="headerlink" title="5.最重要的，校验的奥义：羊毛出在羊身上。就是说，校验位在哪里，你可以通过多看几个数据的变化来看出。而校验的产生，总是遵循金额位的变化，校验不管咋变，都是金额位数值通过各种公式组合加计算出来的。"></a>5.最重要的，校验的奥义：羊毛出在羊身上。就是说，校验位在哪里，你可以通过多看几个数据的变化来看出。而校验的产生，总是遵循金额位的变化，校验不管咋变，都是金额位数值通过各种公式组合加计算出来的。</h6><h2 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h2><p>1.过一下题目 <img src="http://pico0ziv8.bkt.clouddn.com/18-11-28/94754972.jpg" alt=""></p>
-<p>2.题目提供了4个文件，12.66(2)明显有异常先略过</p>
-<p>3.先以15.00为例，12.76,12.66都是一样的规律。</p>
-<p>可以看出金额是15.00，根据1500十进制转换到十六进制结果为5 DC，故金额位还是常见的倒置转换。</p>
-<p><img src="http://pico0ziv8.bkt.clouddn.com/18-11-28/32155.jpg" alt=""></p>
-<p>4.下一步查看尾部的09 0D</p>
-<p>乍一看啥也看不出，我傻不愣登的还是用之前解学校水卡的方法算这个，发现结果总是+1或者-1.经喵神师傅点拨，应该是xor异或校验。</p>
-<p>故算一下DC xor 05的值 = </p>
-<p><img src="http://pico0ziv8.bkt.clouddn.com/18-11-28/20777601.jpg" alt=""></p>
-<p>出现了东西，因为校验位刚好09 0D。把其他为组也试了一下，通过。</p>
-<p>5。但是只发现一位，没法构建题目所需的233.00金额。</p>
-<p>然后发现DC xor 09 = </p>
-<p> <img src="C:\Users\skywa\AppData\Roaming\Typora\typora-user-images\1543335819698.png" alt=""></p>
-<p><img src="http://pico0ziv8.bkt.clouddn.com/18-11-28/1566315.jpg" alt=""></p>
-<p>还有这个联系。</p>
-<p>6.至此可以先构建23300这个金额以及校验位了</p>
-<p>23300十六进制之后 =  5b 04 </p>
-<p>再5b xor 04 =  5f</p>
-<p>先构建如下</p>
-<p><img src="http://pico0ziv8.bkt.clouddn.com/18-11-28/42871262.jpg" alt=""></p>
-<p>现在还不能百分百确定x这里该补什么</p>
-<p>再经过第二个异或算法：这个xf xor 04 = 5b</p>
-<p>所以反算xf = 5b xor 04</p>
-<p><img src="http://pico0ziv8.bkt.clouddn.com/18-11-28/96278271.jpg" alt=""></p>
-<p>确定x就是5。</p>
-<p>然后补上即可</p>
-<h2 id="3-but这两个地方我还是不会，我菜死了。。。。。"><a href="#3-but这两个地方我还是不会，我菜死了。。。。。" class="headerlink" title="3. but这两个地方我还是不会，我菜死了。。。。。"></a>3. but这两个地方我还是不会，我菜死了。。。。。</h2><p><img src="http://pico0ziv8.bkt.clouddn.com/18-11-28/40677886.jpg" alt=""></p>
-<p>所以还是没有flag难受啊！！！！</p>
+        <h1 id="0x01-先安装依赖"><a href="#0x01-先安装依赖" class="headerlink" title="0x01.先安装依赖"></a>0x01.先安装依赖</h1><p><strong>0x01.安装编译依赖包</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install git cmake libboost-all-dev libcppunit-dev swig doxygen liblog4cpp5-dev python-scipy</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install gnuradio gnuradio-dev rtl-sdr librtlsdr-dev osmo-sdr libosmosdr-dev libosmocore libosmocore-dev cmake libboost-all-dev libcppunit-dev swig doxygen liblog4cpp5-dev python-scipy</span><br></pre></td></tr></table></figure>
+<h1 id="0x02-编译安装gr-gsm"><a href="#0x02-编译安装gr-gsm" class="headerlink" title="0x02.编译安装gr-gsm"></a>0x02.编译安装gr-gsm</h1><h4 id="编译gr-gsm老是不通过"><a href="#编译gr-gsm老是不通过" class="headerlink" title="编译gr-gsm老是不通过"></a>编译gr-gsm老是不通过</h4><p>解决方法：先安装gr-osmosdr再编译gr-gsm，秒过</p>
+<h4 id="1-安装gr-osmosdr"><a href="#1-安装gr-osmosdr" class="headerlink" title="1.安装gr-osmosdr"></a>1.安装gr-osmosdr</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git clone git://git.osmocom.org/gr-osmosdr</span><br><span class="line">cd gr-osmosdr/</span><br><span class="line">mkdir build</span><br><span class="line">cd build/</span><br><span class="line">cmake ../</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br><span class="line">sudo ldconfig</span><br></pre></td></tr></table></figure>
+<p>要是还有问题的话，看这两个链接：有前辈遇到问题是的解决经验</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https://osmocom.org/projects/gr-osmosdr/wiki</span><br><span class="line">https://github.com/ptrkrysik/gr-gsm/issues/431</span><br></pre></td></tr></table></figure>
+<h4 id="2-安装gr-gsm"><a href="#2-安装gr-gsm" class="headerlink" title="2. 安装gr-gsm"></a>2. 安装gr-gsm</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/ptrkrysik/gr-gsm.git</span><br><span class="line">cd gr-gsm</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br><span class="line">sudo ldconfig</span><br></pre></td></tr></table></figure>
+<h1 id="0x03-编译kalibrate"><a href="#0x03-编译kalibrate" class="headerlink" title="0x03.编译kalibrate"></a>0x03.编译kalibrate</h1><p>HackRF</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">kalibrate-hackrf (kalibrate For HackRF)</span><br><span class="line">git clone https://github.com/scateu/kalibrate-hackrf.git</span><br><span class="line">cd kalibrate-hackrf</span><br><span class="line">./bootstrap</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<p>RTL-SDR 电视棒</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">kalibrate-rtl(kalibrate For rtl-sdr)</span><br><span class="line">git clone https://github.com/steve-m/kalibrate-rtl.git</span><br><span class="line">cd kalibrate-rtl</span><br><span class="line">./bootstrap</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<h5 id="0x0-0要是遇到问题"><a href="#0x0-0要是遇到问题" class="headerlink" title="0x0.0要是遇到问题:"></a>0x0.0要是遇到问题:</h5><p>先下载，编译和安装 RTL2832U Osmocom 驱动:</p>
+<p><strong>注意:</strong> </p>
+<ul>
+<li><strong>在从 git 上下载和编译新版本的 rtlsdr 之前，如果已经安装了其它版本需要首先运行 “make uninstall”来卸载该版本。</strong></li>
+<li><strong>为了能够在 Ubuntu 中以普通用户身份使用电视棒RTL-SDR，需要通过在 cmake 命令后指定参数 “-DINSTALL_UDEV_RULES=ON” 来安装合适的 udev 规则文件。</strong> </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git clone git://git.osmocom.org/rtl-sdr.git</span><br><span class="line">cd rtl-sdr/</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake ../ -DINSTALL_UDEV_RULES=ON</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br><span class="line">sudo ldconfig</span><br><span class="line">cp ../rtl-sdr.rules /etc/udev/rules.d/</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -366,8 +342,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/11/SYC第三次面试报告/" rel="next" title="SYC第三次面试报告">
-                <i class="fa fa-chevron-left"></i> SYC第三次面试报告
+              <a href="/2019/02/03/freebuf第一次/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
               </a>
             
           </div>
@@ -375,10 +351,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/29/路由器·漏洞挖掘/" rel="prev" title="360 iot 路由器漏洞挖掘">
-                360 iot 路由器漏洞挖掘 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -492,7 +464,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安洵杯CTF-rfid题"><span class="nav-number">1.</span> <span class="nav-text">安洵杯CTF rfid题</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#5-最重要的，校验的奥义：羊毛出在羊身上。就是说，校验位在哪里，你可以通过多看几个数据的变化来看出。而校验的产生，总是遵循金额位的变化，校验不管咋变，都是金额位数值通过各种公式组合加计算出来的。"><span class="nav-number">1.0.0.0.0.1.</span> <span class="nav-text">5.最重要的，校验的奥义：羊毛出在羊身上。就是说，校验位在哪里，你可以通过多看几个数据的变化来看出。而校验的产生，总是遵循金额位的变化，校验不管咋变，都是金额位数值通过各种公式组合加计算出来的。</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#2"><span class="nav-number">1.1.</span> <span class="nav-text">2.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-but这两个地方我还是不会，我菜死了。。。。。"><span class="nav-number">1.2.</span> <span class="nav-text">3. but这两个地方我还是不会，我菜死了。。。。。</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0x01-先安装依赖"><span class="nav-number">1.</span> <span class="nav-text">0x01.先安装依赖</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x02-编译安装gr-gsm"><span class="nav-number">2.</span> <span class="nav-text">0x02.编译安装gr-gsm</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#编译gr-gsm老是不通过"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">编译gr-gsm老是不通过</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-安装gr-osmosdr"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">1.安装gr-osmosdr</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-安装gr-gsm"><span class="nav-number">2.0.0.3.</span> <span class="nav-text">2. 安装gr-gsm</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#0x03-编译kalibrate"><span class="nav-number">3.</span> <span class="nav-text">0x03.编译kalibrate</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#0x0-0要是遇到问题"><span class="nav-number">3.0.0.0.1.</span> <span class="nav-text">0x0.0要是遇到问题:</span></a></li></ol></li></div>
             
 
           </div>

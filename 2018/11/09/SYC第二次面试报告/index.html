@@ -106,7 +106,7 @@
 <meta property="og:image" content="https://github.com/devil0x/picture/raw/master/11.09/17.png">
 <meta property="og:image" content="https://github.com/devil0x/picture/raw/master/11.09/18.png">
 <meta property="og:image" content="https://github.com/devil0x/picture/raw/master/11.09/19.png">
-<meta property="og:updated_time" content="2019-01-31T17:22:10.263Z">
+<meta property="og:updated_time" content="2019-02-03T14:11:34.955Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SYC第二次面试报告">
 <meta name="twitter:description" content="​                                           此次第二次面试研究的课题是关于水卡数据的破解以及badusb的wifi版的制作。 1. 初学RFID-三中心(13.14.15.16.17栋)水卡的破解研究1.基本知识：Mifare Classic card提供1k-4k的容量，我们经常见到的是Mifare Classic 1k(S50)，也就是所谓的M1卡。">
@@ -326,13 +326,13 @@
 <p>每个扇区的第4段呢是用来保存KeyA，KeyB和控制位的，每张卡的0扇区还有一个唯一标识的UID号。</p>
 <p><strong>破解原理</strong></p>
 <p>这种卡类的攻击方式大概分为这么几种：</p>
-<p><strong>1</strong>）暴力破解**</p>
+<p><strong>1</strong>）暴力破解</p>
 <p>爆破对于M1卡的破解来说比较有效，因为M1卡是被动卡，需要读卡器来供能，切断供能后卡的临时数据就丢失了，也就是说不会存在输入过多错误密码后造成的锁死之类的情况</p>
 <p>FFFFFFFFFFFF、A0B0C0D0E0F0等等都是M1白卡的默认密码，所以当我们使用acr122u的配套软件M1卡服务程序这样的工具来爆破的时候基本上都是用这些默认密码来填充剩余扇区的密码。</p>
 <p><strong>2</strong>）克隆卡片（卡复制）</p>
 <p>M1卡的扇区可以保存数据，所以大部分的卡片会选择加密扇区后保存数据，我们可以用 uid卡来进行复制，每张M1卡在0扇区第1段都有一个唯一标识，而且是保护无法修改的，uid 卡就是没有设定0扇区保护的卡，所以你可以随意的修改你想要的uid，这样我们就可以克隆出一张连uid都相同的卡片了。</p>
 <p><strong>3</strong>）嗅探攻击</p>
-<p>这里要用到PM3这个神器，在卡和机器数据交换的时候嗅探数据，进行攻击，利用XOR算key工具就可以把扇区的密钥计算出来。（后期可在安卓端用app：M Tools进行数据的嗅探） </p>
+<p>在卡和机器数据交换的时候嗅探数据，进行攻击，利用XOR算key工具就可以把扇区的密钥计算出来。（后期可在安卓端用app：M Tools进行数据的嗅探） </p>
 <h4 id="2-所需工具"><a href="#2-所需工具" class="headerlink" title="2. 所需工具:"></a>2. 所需工具:</h4><p>硬件： ACR122u</p>
 <p>软件：m1卡程序，fixdump，sublime Text3，UID写卡程序</p>
 <p>以及安卓端：mifare classical tools, M Tools(神器)</p>
@@ -347,7 +347,7 @@
 <p>5.先把得到的文件，重新命名为一个简单名称（dumpfile1.dump），然后进行修复dump文件。把dumpfile1.dump拖到fixdump所在文件夹，在空白处按住shift，在右击鼠标，点击在此处打开powershell，然后输入</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\fixdump dumpfile1.dump</span><br></pre></td></tr></table></figure>
 <p>6.获得4kb的dump文件。<img src="https://github.com/devil0x/picture/raw/master/11.09/3.png" alt="1541320780834"></p>
-<p>   6.为了对比金额差别，用手机端app：mifare打开m1卡，</p>
+<p>   6.为了容易看出金额差别，用手机端app：mifare打开m1卡，</p>
 <p><img src="https://github.com/devil0x/picture/raw/master/11.09/4.png" alt="1541321412959"></p>
 <p>会发现没有3号4号扇区的key，</p>
 <p>用sublime打开dumpfile1.dump</p>
@@ -365,8 +365,8 @@
 <p>刚好是金额位，那么剩下的就是。。。。校验位。</p>
 <p>这都8102年了，之前经常逛酷安，知道一款神器，M Tools</p>
 <p><img src="https://github.com/devil0x/picture/raw/master/11.09/9.png" alt="1541323524737"></p>
-<p>这是一款酷安基佬开发的app，最神奇的是作者录制了视屏教程，but 估计是怕在国内被封把，直接发到了油管，最神奇的是全程有蹩脚的英语进行讲解，可怕可怕。。。。</p>
-<p>这个app也需要提前把密钥导进去，</p>
+<p>这是一款酷安基佬开发的app，最神奇的是作者录制了视频教程，但是地址确是在油管，并附有中式英语进行讲解。现在还有一款app是M Keys也是该作者的作品，这两款app现在也都支持外置ACR122U了，so没有nfc的手机也可以外置进行操作。</p>
+<p>这个app也需要提前把密钥导进去，然后就可以对扇区数据进行操作</p>
 <p><img src="https://github.com/devil0x/picture/raw/master/11.09/10.png" alt="1541323809934"></p>
 <p>这货可以预置常用的算法，什么十六进制倒序，倍数转换啊，直接一点即可。</p>
 <p>然后就找到之前发现的金额位数据，直接就可以转换成47.40，然后下一不是选择校验位的算法，but真的看不出有何端倪，直接先跳过了。。。。</p>
@@ -532,7 +532,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
