@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="搭建ubertooth环境环境Ubuntu16.04.1 内核版本4.4.0 需要用到的环境及工具：  libbtbbUbertooth toolsWiresharkFirmwarekismet  官方文档： 1https://github.com/greatscottgadgets/ubertooth/wiki/Build-Guide 我的教程可能过时，so一切还是参照官方文档。 0x01 安装">
+<meta name="description" content="配置环境Ubuntu16.04.1 内核版本4.4.0 需要用到的环境及工具：  libbtbbUbertooth toolsWiresharkFirmwarekismet  官方文档： 1https://github.com/greatscottgadgets/ubertooth/wiki/Build-Guide 我的教程可能过时，so一切还是参照官方文档。 0x01 安装依赖库 在构建libb">
 <meta property="og:type" content="article">
 <meta property="og:title" content="搭建ubertooth环境">
 <meta property="og:url" content="https://devil0x.github.io/2019/10/17/ubertooth环境搭建手册/index.html">
 <meta property="og:site_name" content="devil0x菜鸟">
-<meta property="og:description" content="搭建ubertooth环境环境Ubuntu16.04.1 内核版本4.4.0 需要用到的环境及工具：  libbtbbUbertooth toolsWiresharkFirmwarekismet  官方文档： 1https://github.com/greatscottgadgets/ubertooth/wiki/Build-Guide 我的教程可能过时，so一切还是参照官方文档。 0x01 安装">
+<meta property="og:description" content="配置环境Ubuntu16.04.1 内核版本4.4.0 需要用到的环境及工具：  libbtbbUbertooth toolsWiresharkFirmwarekismet  官方文档： 1https://github.com/greatscottgadgets/ubertooth/wiki/Build-Guide 我的教程可能过时，so一切还是参照官方文档。 0x01 安装依赖库 在构建libb">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-25T03:34:58.622Z">
+<meta property="og:updated_time" content="2019-10-25T12:32:55.232Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建ubertooth环境">
-<meta name="twitter:description" content="搭建ubertooth环境环境Ubuntu16.04.1 内核版本4.4.0 需要用到的环境及工具：  libbtbbUbertooth toolsWiresharkFirmwarekismet  官方文档： 1https://github.com/greatscottgadgets/ubertooth/wiki/Build-Guide 我的教程可能过时，so一切还是参照官方文档。 0x01 安装">
+<meta name="twitter:description" content="配置环境Ubuntu16.04.1 内核版本4.4.0 需要用到的环境及工具：  libbtbbUbertooth toolsWiresharkFirmwarekismet  官方文档： 1https://github.com/greatscottgadgets/ubertooth/wiki/Build-Guide 我的教程可能过时，so一切还是参照官方文档。 0x01 安装依赖库 在构建libb">
 
 
 
@@ -299,7 +299,7 @@
       
 
       
-        <h1 id="搭建ubertooth环境"><a href="#搭建ubertooth环境" class="headerlink" title="搭建ubertooth环境"></a>搭建ubertooth环境</h1><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>Ubuntu16.04.1</p>
+        <h1 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h1><p>Ubuntu16.04.1</p>
 <p>内核版本4.4.0</p>
 <p><strong>需要用到的环境及工具：</strong></p>
 <blockquote>
@@ -371,8 +371,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/14/PWN入门学习(2)基本的ROP/" rel="next" title>
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/2019/10/14/PWN入门学习(2)基本的ROP/" rel="next" title="pwn入门学习(2)基本 ROP">
+                <i class="fa fa-chevron-left"></i> pwn入门学习(2)基本 ROP
               </a>
             
           </div>
@@ -381,8 +381,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/21/gdb工具pwndbg与peda与gef配置/" rel="prev" title>
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/10/21/gdb工具pwndbg与peda与gef配置/" rel="prev" title="pwn工具配置与使用">
+                pwn工具配置与使用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -497,7 +497,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#搭建ubertooth环境"><span class="nav-number">1.</span> <span class="nav-text">搭建ubertooth环境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境"><span class="nav-number">1.1.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#libbtbb"><span class="nav-number">1.2.</span> <span class="nav-text">libbtbb</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ubertooth工具"><span class="nav-number">1.3.</span> <span class="nav-text">Ubertooth工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Wireshark"><span class="nav-number">1.4.</span> <span class="nav-text">Wireshark</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#固件问题"><span class="nav-number">2.</span> <span class="nav-text">固件问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#我正在运行什么版本？"><span class="nav-number">2.1.</span> <span class="nav-text">我正在运行什么版本？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开发固件"><span class="nav-number">3.</span> <span class="nav-text">开发固件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#配置环境"><span class="nav-number">1.</span> <span class="nav-text">配置环境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#libbtbb"><span class="nav-number">1.1.</span> <span class="nav-text">libbtbb</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ubertooth工具"><span class="nav-number">1.2.</span> <span class="nav-text">Ubertooth工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Wireshark"><span class="nav-number">1.3.</span> <span class="nav-text">Wireshark</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#固件问题"><span class="nav-number">2.</span> <span class="nav-text">固件问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#我正在运行什么版本？"><span class="nav-number">2.1.</span> <span class="nav-text">我正在运行什么版本？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开发固件"><span class="nav-number">3.</span> <span class="nav-text">开发固件</span></a></li></ol></div>
             
 
           </div>

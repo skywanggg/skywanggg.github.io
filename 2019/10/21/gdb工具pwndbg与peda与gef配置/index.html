@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="title:pwn工具配置与使用checksec详解checksec看到的那些参数含义  NX保护：你不能执行我就不执行，栈里面的内容只负责把程序执行流引入到一个需要的汇编代码的位置处，然后调用程序自己的一些代码来实现攻击。你可以调用含有call或者ret代码这样就能一直连接下去。这就是大佬说的ROP链。  cannary：函数在执行的时候把一个值放入到栈内的某个位置，我们想要溢出返回地址就要改">
+<meta name="description" content="环境安装基础的ubuntu配置1.换国内源1234567891011121314sudo nano /etc/apt/sources.listdeb http://mirrors.aliyun.com/ubuntu/ xenial maindeb-src http://mirrors.aliyun.com/ubuntu/ xenial maindeb http://mirrors.aliyun.c">
 <meta property="og:type" content="article">
-<meta property="og:title" content="devil0x菜鸟">
+<meta property="og:title" content="pwn工具配置与使用">
 <meta property="og:url" content="https://devil0x.github.io/2019/10/21/gdb工具pwndbg与peda与gef配置/index.html">
 <meta property="og:site_name" content="devil0x菜鸟">
-<meta property="og:description" content="title:pwn工具配置与使用checksec详解checksec看到的那些参数含义  NX保护：你不能执行我就不执行，栈里面的内容只负责把程序执行流引入到一个需要的汇编代码的位置处，然后调用程序自己的一些代码来实现攻击。你可以调用含有call或者ret代码这样就能一直连接下去。这就是大佬说的ROP链。  cannary：函数在执行的时候把一个值放入到栈内的某个位置，我们想要溢出返回地址就要改">
+<meta property="og:description" content="环境安装基础的ubuntu配置1.换国内源1234567891011121314sudo nano /etc/apt/sources.listdeb http://mirrors.aliyun.com/ubuntu/ xenial maindeb-src http://mirrors.aliyun.com/ubuntu/ xenial maindeb http://mirrors.aliyun.c">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/0063hjnqly1g85td64840j30gg06ywf5.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/0063hjnqly1g85tei4jztj30m906075u.jpg">
-<meta property="og:updated_time" content="2019-10-25T12:20:44.397Z">
+<meta property="og:updated_time" content="2019-10-25T12:31:18.296Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="devil0x菜鸟">
-<meta name="twitter:description" content="title:pwn工具配置与使用checksec详解checksec看到的那些参数含义  NX保护：你不能执行我就不执行，栈里面的内容只负责把程序执行流引入到一个需要的汇编代码的位置处，然后调用程序自己的一些代码来实现攻击。你可以调用含有call或者ret代码这样就能一直连接下去。这就是大佬说的ROP链。  cannary：函数在执行的时候把一个值放入到栈内的某个位置，我们想要溢出返回地址就要改">
+<meta name="twitter:title" content="pwn工具配置与使用">
+<meta name="twitter:description" content="环境安装基础的ubuntu配置1.换国内源1234567891011121314sudo nano /etc/apt/sources.listdeb http://mirrors.aliyun.com/ubuntu/ xenial maindeb-src http://mirrors.aliyun.com/ubuntu/ xenial maindeb http://mirrors.aliyun.c">
 <meta name="twitter:image" content="http://ww1.sinaimg.cn/large/0063hjnqly1g85td64840j30gg06ywf5.jpg">
 
 
@@ -128,7 +128,7 @@
 
 
 
-  <title> | devil0x菜鸟</title>
+  <title>pwn工具配置与使用 | devil0x菜鸟</title>
   
 
 
@@ -252,7 +252,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">pwn工具配置与使用</h1>
         
 
         <div class="post-meta">
@@ -302,8 +302,11 @@
       
 
       
-        <hr>
-<h2 id="title-pwn工具配置与使用"><a href="#title-pwn工具配置与使用" class="headerlink" title="title:pwn工具配置与使用"></a>title:pwn工具配置与使用</h2><h2 id="checksec详解"><a href="#checksec详解" class="headerlink" title="checksec详解"></a>checksec详解</h2><p>checksec看到的那些参数含义</p>
+        <h2 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h2><h3 id="基础的ubuntu配置"><a href="#基础的ubuntu配置" class="headerlink" title="基础的ubuntu配置"></a>基础的ubuntu配置</h3><h4 id="1-换国内源"><a href="#1-换国内源" class="headerlink" title="1.换国内源"></a>1.换国内源</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/apt/sources.list</span><br><span class="line"></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial main</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial main</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates main</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial universe</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial universe</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-updates universe</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates universe</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-security main</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security main</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-security universe</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security universe</span><br></pre></td></tr></table></figure>
+<h4 id="2-换终端"><a href="#2-换终端" class="headerlink" title="2.换终端"></a>2.换终端</h4><p> 教程：<a href="https://www.jianshu.com/p/27c8088dc8f7" target="_blank" rel="noopener">https://www.jianshu.com/p/27c8088dc8f7</a> </p>
+<h4 id="2-趁手的python环境"><a href="#2-趁手的python环境" class="headerlink" title="2.趁手的python环境"></a>2.趁手的python环境</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.安装python以及pip</span><br><span class="line">2.首先安装交互式Python版本，ipython，</span><br><span class="line">sudo apt install ipython</span><br></pre></td></tr></table></figure>
+<h3 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">1.前提：python环境，同时需要装python-dev</span><br><span class="line">均使用apt安装的方式</span><br><span class="line"></span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install git</span><br><span class="line">sudo apt install python-dev</span><br><span class="line"></span><br><span class="line">2.pip安装（如果pip安装东西慢，可以换源(清华源)）</span><br><span class="line">https://mirrors.tuna.tsinghua.edu.cn/help/pypi/</span><br><span class="line"></span><br><span class="line">3.pwntools安装</span><br><span class="line">1、安装Capstone</span><br><span class="line">Capstone disassembly/disassembler framework: Core (Arm, Arm64, M68K, Mips, PPC, Sparc, SystemZ, X86, X86_64, XCore) + bindings (Python, Java, Ocaml)</span><br><span class="line"></span><br><span class="line">git clone https://github.com/aquynh/capstone</span><br><span class="line">cd capstone</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line"></span><br><span class="line">2、安装pwntools</span><br><span class="line">在终端输入</span><br><span class="line">git clone https://github.com/Gallopsled/pwntools</span><br><span class="line">cd pwntools</span><br><span class="line">python setup.py install</span><br><span class="line">如果没报错，并且终端输入python进入其交互模式后，输入import pwn回车后没报错，差不多就好了。</span><br><span class="line">这时候再尝试pwntools的asm功能</span><br><span class="line">&gt;&gt;&gt; pwn.asm(&quot;xor eax,eax&quot;)</span><br><span class="line">&apos;1\xc0&apos;</span><br><span class="line">如果有正确输出，即说明这个功能是可以用的，到这里就算安装完成。</span><br><span class="line"></span><br><span class="line">3.64位Ubuntu 16.04运行32位程序</span><br><span class="line">sudo dpkg --add-architecture i386</span><br><span class="line">sudo apt install libc6:i386</span><br></pre></td></tr></table></figure>
+<h2 id="checksec详解"><a href="#checksec详解" class="headerlink" title="checksec详解"></a>checksec详解</h2><p>checksec看到的那些参数含义</p>
 <ul>
 <li><p>NX保护：<br>你不能执行我就不执行，栈里面的内容只负责把程序执行流引入到一个需要的汇编代码的位置处，然后调用程序自己的一些代码来实现攻击。你可以调用含有call或者ret代码这样就能一直连接下去。这就是大佬说的ROP链。</p>
 </li>
@@ -502,7 +505,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title-pwn工具配置与使用"><span class="nav-number">1.</span> <span class="nav-text">title:pwn工具配置与使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#checksec详解"><span class="nav-number">2.</span> <span class="nav-text">checksec详解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pwntools使用教程"><span class="nav-number">3.</span> <span class="nav-text">pwntools使用教程</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#gdb工具pwndbg与peda与gef配置"><span class="nav-number"></span> <span class="nav-text">gdb工具pwndbg与peda与gef配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注意"><span class="nav-number"></span> <span class="nav-text">注意</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境安装"><span class="nav-number">1.</span> <span class="nav-text">环境安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础的ubuntu配置"><span class="nav-number">1.1.</span> <span class="nav-text">基础的ubuntu配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-换国内源"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.换国内源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-换终端"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.换终端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-趁手的python环境"><span class="nav-number">1.1.3.</span> <span class="nav-text">2.趁手的python环境</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3"><span class="nav-number">1.2.</span> <span class="nav-text">3.</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#checksec详解"><span class="nav-number">2.</span> <span class="nav-text">checksec详解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pwntools使用教程"><span class="nav-number">3.</span> <span class="nav-text">pwntools使用教程</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#gdb工具pwndbg与peda与gef配置"><span class="nav-number"></span> <span class="nav-text">gdb工具pwndbg与peda与gef配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注意"><span class="nav-number"></span> <span class="nav-text">注意</span></a></li></div>
             
 
           </div>
