@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="title:pwn入门学习(1)栈溢出基础知识栈溢出基础知识栈的介绍栈是一种典型的后进先出 (Last in First Out) 的数据结构，其操作主要有压栈 (push) 与出栈 (pop) 两种操作，如下图所示（维基百科）。两种操作都操作栈顶，当然，它也有栈底。  高级语言在运行时都会被转换为汇编程序，在汇编程序运行过程中，充分利用了这一数据结构。每个程序在运行时都有虚拟地址空间，其中某一">
+<meta name="description" content="0x01栈的介绍栈是一种典型的后进先出 (Last in First Out) 的数据结构，其操作主要有压栈 (push) 与出栈 (pop) 两种操作，如下图所示（维基百科）。两种操作都操作栈顶，当然，它也有栈底。  高级语言在运行时都会被转换为汇编程序，在汇编程序运行过程中，充分利用了这一数据结构。每个程序在运行时都有虚拟地址空间，其中某一部分就是该程序对应的栈，用于保存函数调用信息和局部变量">
 <meta property="og:type" content="article">
-<meta property="og:title" content="devil0x菜鸟">
+<meta property="og:title" content="栈溢出基础知识">
 <meta property="og:url" content="https://devil0x.github.io/2019/10/21/pwn入门学习(1)栈溢出基础知识/index.html">
 <meta property="og:site_name" content="devil0x菜鸟">
-<meta property="og:description" content="title:pwn入门学习(1)栈溢出基础知识栈溢出基础知识栈的介绍栈是一种典型的后进先出 (Last in First Out) 的数据结构，其操作主要有压栈 (push) 与出栈 (pop) 两种操作，如下图所示（维基百科）。两种操作都操作栈顶，当然，它也有栈底。  高级语言在运行时都会被转换为汇编程序，在汇编程序运行过程中，充分利用了这一数据结构。每个程序在运行时都有虚拟地址空间，其中某一">
+<meta property="og:description" content="0x01栈的介绍栈是一种典型的后进先出 (Last in First Out) 的数据结构，其操作主要有压栈 (push) 与出栈 (pop) 两种操作，如下图所示（维基百科）。两种操作都操作栈顶，当然，它也有栈底。  高级语言在运行时都会被转换为汇编程序，在汇编程序运行过程中，充分利用了这一数据结构。每个程序在运行时都有虚拟地址空间，其中某一部分就是该程序对应的栈，用于保存函数调用信息和局部变量">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ctf-wiki.github.io/ctf-wiki/pwn/linux/stackoverflow/figure/Data_stack.png">
-<meta property="og:updated_time" content="2019-10-25T12:18:39.602Z">
+<meta property="og:updated_time" content="2019-10-25T12:27:12.916Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="devil0x菜鸟">
-<meta name="twitter:description" content="title:pwn入门学习(1)栈溢出基础知识栈溢出基础知识栈的介绍栈是一种典型的后进先出 (Last in First Out) 的数据结构，其操作主要有压栈 (push) 与出栈 (pop) 两种操作，如下图所示（维基百科）。两种操作都操作栈顶，当然，它也有栈底。  高级语言在运行时都会被转换为汇编程序，在汇编程序运行过程中，充分利用了这一数据结构。每个程序在运行时都有虚拟地址空间，其中某一">
+<meta name="twitter:title" content="栈溢出基础知识">
+<meta name="twitter:description" content="0x01栈的介绍栈是一种典型的后进先出 (Last in First Out) 的数据结构，其操作主要有压栈 (push) 与出栈 (pop) 两种操作，如下图所示（维基百科）。两种操作都操作栈顶，当然，它也有栈底。  高级语言在运行时都会被转换为汇编程序，在汇编程序运行过程中，充分利用了这一数据结构。每个程序在运行时都有虚拟地址空间，其中某一部分就是该程序对应的栈，用于保存函数调用信息和局部变量">
 <meta name="twitter:image" content="https://ctf-wiki.github.io/ctf-wiki/pwn/linux/stackoverflow/figure/Data_stack.png">
 
 
@@ -127,7 +127,7 @@
 
 
 
-  <title> | devil0x菜鸟</title>
+  <title>栈溢出基础知识 | devil0x菜鸟</title>
   
 
 
@@ -251,7 +251,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">栈溢出基础知识</h1>
         
 
         <div class="post-meta">
@@ -301,11 +301,10 @@
       
 
       
-        <hr>
-<h2 id="title-pwn入门学习-1-栈溢出基础知识"><a href="#title-pwn入门学习-1-栈溢出基础知识" class="headerlink" title="title:pwn入门学习(1)栈溢出基础知识"></a>title:pwn入门学习(1)栈溢出基础知识</h2><h1 id="栈溢出基础知识"><a href="#栈溢出基础知识" class="headerlink" title="栈溢出基础知识"></a>栈溢出基础知识</h1><h2 id="栈的介绍"><a href="#栈的介绍" class="headerlink" title="栈的介绍"></a>栈的介绍</h2><p>栈是一种典型的后进先出 (Last in First Out) 的数据结构，其操作主要有压栈 (push) 与出栈 (pop) 两种操作，如下图所示（维基百科）。两种操作都操作栈顶，当然，它也有栈底。</p>
+        <h2 id="0x01栈的介绍"><a href="#0x01栈的介绍" class="headerlink" title="0x01栈的介绍"></a>0x01栈的介绍</h2><p>栈是一种典型的后进先出 (Last in First Out) 的数据结构，其操作主要有压栈 (push) 与出栈 (pop) 两种操作，如下图所示（维基百科）。两种操作都操作栈顶，当然，它也有栈底。</p>
 <p><img src="https://ctf-wiki.github.io/ctf-wiki/pwn/linux/stackoverflow/figure/Data_stack.png" alt="基本栈操作"></p>
 <p>高级语言在运行时都会被转换为汇编程序，在汇编程序运行过程中，充分利用了这一数据结构。每个程序在运行时都有虚拟地址空间，其中某一部分就是该程序对应的栈，用于保存函数调用信息和局部变量。此外，常见的操作也是压栈与出栈。需要注意的是，<strong>程序的栈是从进程地址空间的高地址向低地址增长的</strong>。</p>
-<h2 id="函数调用栈"><a href="#函数调用栈" class="headerlink" title="函数调用栈"></a>函数调用栈</h2><p>需要注意的是，32 位和 64 位程序有以下简单的区别</p>
+<h4 id="函数调用栈"><a href="#函数调用栈" class="headerlink" title="函数调用栈"></a>函数调用栈</h4><p>需要注意的是，32 位和 64 位程序有以下简单的区别</p>
 <ul>
 <li>x86<ul>
 <li><strong>函数参数</strong>在<strong>函数返回地址</strong>的上方</li>
@@ -320,7 +319,7 @@
 </li>
 </ul>
 <p>所以有时候·可以用ROPgadget工具，去查找pop rdi的地址</p>
-<h1 id="栈溢出原理"><a href="#栈溢出原理" class="headerlink" title="栈溢出原理"></a>栈溢出原理</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p> 栈溢出指的是程序向栈中某个变量中写入的字节数超过了这个变量本身所申请的字节数，因而导致与其相邻的栈中的变量的值被改变。这种问题是一种特定的缓冲区溢出漏洞，类似的还有堆溢出，bss 段溢出等溢出方式。 </p>
+<h1 id="0x02栈溢出原理"><a href="#0x02栈溢出原理" class="headerlink" title="0x02栈溢出原理"></a>0x02栈溢出原理</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p> 栈溢出指的是程序向栈中某个变量中写入的字节数超过了这个变量本身所申请的字节数，因而导致与其相邻的栈中的变量的值被改变。这种问题是一种特定的缓冲区溢出漏洞，类似的还有堆溢出，bss 段溢出等溢出方式。 </p>
 <ul>
 <li>程序必须向栈上写入数据。</li>
 <li>写入的数据大小没有被良好地控制。</li>
@@ -543,7 +542,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title-pwn入门学习-1-栈溢出基础知识"><span class="nav-number">1.</span> <span class="nav-text">title:pwn入门学习(1)栈溢出基础知识</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#栈溢出基础知识"><span class="nav-number"></span> <span class="nav-text">栈溢出基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#栈的介绍"><span class="nav-number">1.</span> <span class="nav-text">栈的介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数调用栈"><span class="nav-number">2.</span> <span class="nav-text">函数调用栈</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#栈溢出原理"><span class="nav-number"></span> <span class="nav-text">栈溢出原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本示例"><span class="nav-number">2.</span> <span class="nav-text">基本示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小总结"><span class="nav-number">3.</span> <span class="nav-text">小总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#寻找危险函数"><span class="nav-number">3.1.</span> <span class="nav-text">寻找危险函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#确定填充长度"><span class="nav-number">3.2.</span> <span class="nav-text">确定填充长度</span></a></li></ol></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01栈的介绍"><span class="nav-number">1.</span> <span class="nav-text">0x01栈的介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数调用栈"><span class="nav-number">1.0.1.</span> <span class="nav-text">函数调用栈</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#0x02栈溢出原理"><span class="nav-number"></span> <span class="nav-text">0x02栈溢出原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本示例"><span class="nav-number">2.</span> <span class="nav-text">基本示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小总结"><span class="nav-number">3.</span> <span class="nav-text">小总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#寻找危险函数"><span class="nav-number">3.1.</span> <span class="nav-text">寻找危险函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#确定填充长度"><span class="nav-number">3.2.</span> <span class="nav-text">确定填充长度</span></a></li></ol></li></ol></li></div>
             
 
           </div>
