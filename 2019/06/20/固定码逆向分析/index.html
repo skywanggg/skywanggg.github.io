@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="固定码逆向分析 环境：kali 0x01. Analysis 信号分析分析信号可使用音频处理软件Audacity： 不过这种方式需要肉眼将波形转化成0跟1，看起来比较容易眼花。so用软件辅助一下 1.1安装软件1.inspectrum在这篇文章中我们将通过inspectrum(https://github.com/miek/inspectrum)这个工具来分析信号，配合Python将信号转成二进制">
+<meta property="og:type" content="article">
+<meta property="og:title" content="固定码逆向分析">
+<meta property="og:url" content="https://devil0x.github.io/2019/06/20/固定码逆向分析/index.html">
+<meta property="og:site_name" content="devil0x菜鸟">
+<meta property="og:description" content="固定码逆向分析 环境：kali 0x01. Analysis 信号分析分析信号可使用音频处理软件Audacity： 不过这种方式需要肉眼将波形转化成0跟1，看起来比较容易眼花。so用软件辅助一下 1.1安装软件1.inspectrum在这篇文章中我们将通过inspectrum(https://github.com/miek/inspectrum)这个工具来分析信号，配合Python将信号转成二进制">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://github.com/devil0x/picture/raw/master/1.19/2.png">
+<meta property="og:image" content="https://image.3001.net/images/20181211/1544496759_5c0f2677573f8.png!small">
+<meta property="og:image" content="https://image.3001.net/images/20181211/1544496739_5c0f2663762a9.png!small">
+<meta property="og:image" content="c:/Users/skywa/Pictures/1.19/3.png">
+<meta property="og:image" content="https://github.com/devil0x/picture/raw/master/1.19/4.png">
+<meta property="og:image" content="https://github.com/devil0x/picture/raw/master/1.19/6.png">
+<meta property="og:image" content="https://github.com/devil0x/picture/raw/master/1.19/13.png">
+<meta property="og:image" content="https://image.3001.net/images/20181211/1544496739_5c0f266399bbe.png!small">
+<meta property="og:image" content="https://github.com/devil0x/picture/raw/master/1.19/8.png">
+<meta property="og:image" content="https://github.com/devil0x/picture/raw/master/1.19/11.png">
+<meta property="og:image" content="https://github.com/devil0x/picture/raw/master/1.19/12.png">
+<meta property="og:image" content="https://github.com/devil0x/picture/raw/master/1.19/15.png">
+<meta property="og:image" content="https://github.com/devil0x/picture/raw/master/1.19/14.png">
+<meta property="og:updated_time" content="2019-03-12T14:51:34.778Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="固定码逆向分析">
+<meta name="twitter:description" content="固定码逆向分析 环境：kali 0x01. Analysis 信号分析分析信号可使用音频处理软件Audacity： 不过这种方式需要肉眼将波形转化成0跟1，看起来比较容易眼花。so用软件辅助一下 1.1安装软件1.inspectrum在这篇文章中我们将通过inspectrum(https://github.com/miek/inspectrum)这个工具来分析信号，配合Python将信号转成二进制">
+<meta name="twitter:image" content="https://github.com/devil0x/picture/raw/master/1.19/2.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://devil0x.github.io/2019/06/20/固定码逆向分析/">
+
+
+
+
+
+  <title>固定码逆向分析 | devil0x菜鸟</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">devil0x菜鸟</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/06/20/固定码逆向分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="devil0x">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="devil0x菜鸟">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">固定码逆向分析</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-20T03:26:52+08:00">
+                2019-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="固定码逆向分析"><a href="#固定码逆向分析" class="headerlink" title="固定码逆向分析"></a>固定码逆向分析</h1><p> 环境：kali</p>
+<h2 id="0x01-Analysis-信号分析"><a href="#0x01-Analysis-信号分析" class="headerlink" title="0x01. Analysis 信号分析"></a>0x01. <strong>Analysis 信号分析</strong></h2><p>分析信号可使用音频处理软件Audacity：</p>
+<p>不过这种方式需要肉眼将波形转化成0跟1，看起来比较容易眼花。so用软件辅助一下</p>
+<h2 id="1-1安装软件"><a href="#1-1安装软件" class="headerlink" title="1.1安装软件"></a>1.1<strong>安装软件</strong></h2><h3 id="1-inspectrum"><a href="#1-inspectrum" class="headerlink" title="1.inspectrum"></a>1.inspectrum</h3><p>在这篇文章中我们将通过inspectrum(<a href="https://github.com/miek/inspectrum" target="_blank" rel="noopener">https://github.com/miek/inspectrum</a>)这个工具来分析信号，配合Python将信号转成二进制数据。</p>
+<p>先安装所需的环境，再安装inspectrum。类似的软件还有DSpectrumGUI都行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install qt5-default libfftw3-dev cmake pkg-config libliquid-dev</span><br><span class="line">git clone https://github.com/miek/inspectrum.git </span><br><span class="line">mkdir build </span><br><span class="line">cd build </span><br><span class="line">cmake .. </span><br><span class="line">make </span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<h3 id="2-universal-radio-hacker-urh"><a href="#2-universal-radio-hacker-urh" class="headerlink" title="2. universal radio hacker(urh)"></a>2. universal radio hacker(urh)</h3><p>有windos版直接下载即可</p>
+<h3 id="3-HDSHR"><a href="#3-HDSHR" class="headerlink" title="3.HDSHR"></a>3.HDSHR</h3><p>下载之后需要加载一下rt sdr的驱动</p>
+<p>地址：<a href="https://github.com/devil0x/wireless-analyze/blob/master/%E8%BD%AF%E4%BB%B6/ExtIO_RTL2832.dll" target="_blank" rel="noopener">https://github.com/devil0x/wireless-analyze/blob/master/%E8%BD%AF%E4%BB%B6/ExtIO_RTL2832.dll</a></p>
+<p><img src="https://github.com/devil0x/picture/raw/master/1.19/2.png" alt></p>
+<p>即可开始监听特定频段。</p>
+<h2 id="0x02-分析文件"><a href="#0x02-分析文件" class="headerlink" title="0x02.分析文件"></a>0x02.分析文件</h2><p>文件地址：<a href="https://github.com/mobier/WirelessSample" target="_blank" rel="noopener">https://github.com/mobier/WirelessSample</a></p>
+<h3 id="1-原理"><a href="#1-原理" class="headerlink" title="1.原理"></a>1.原理</h3><p><img src="https://image.3001.net/images/20181211/1544496759_5c0f2677573f8.png!small" alt></p>
+<p>摘抄：信号脉冲的宽度跟电压，震荡电阻是有关系的。我们可以算出信号的震荡周期（a=两倍的时钟震荡周期）f=2100016/Rosc(kΩ) kHz 其中 Rosc 为振荡电阻。</p>
+<p>我们来看下这两种信号的区别，第一种信号吧 Bit1 相当于 12A 宽度的高电平脉冲加 4A 宽度低电平的脉冲重复一次，而BIt0正好相反是 4a 高在是 12a 的低重复一次。然后说下 BitF，BitF 只会出现在地址位里面，代表该地址位引脚悬空，后面会提到，无效码则不可能出现在 2262 这种协议中，如果出现了只能表示这个信号是 2240 的。</p>
+<p>现在来说下第二种信号格式，第二种与第一种不同，非常明显能看出来第一种是把一段信号重复了两次来表示BIT1 和 BIT0，并且有三种表示方式。第二种呢就是 12A 宽度的高电平脉冲信号加上 4A 的低电平宽度脉冲信号就是 BIT1，相反的就是 BIT0，并且不像第一种那样数据有 3 种表示方式。</p>
+<h3 id="2-PT226X"><a href="#2-PT226X" class="headerlink" title="2.PT226X"></a>2.PT226X</h3><p><img src="https://image.3001.net/images/20181211/1544496739_5c0f2663762a9.png!small" alt></p>
+<p>首先来看一下PT226x的结构</p>
+<p>案例是录制的门铃的文件，433.92mhz，ASK调制。</p>
+<p><img src="C:\Users\skywa\Pictures\1.19\3.png" alt></p>
+<p>录制的文件是raw格式，我用的win10的udr打开的该文件。</p>
+<p><img src="https://github.com/devil0x/picture/raw/master/1.19/4.png" alt></p>
+<p>选择ask解调。</p>
+<p>再放大即可</p>
+<p><img src="https://github.com/devil0x/picture/raw/master/1.19/6.png" alt></p>
+<p>前部是4bit同步码，后半部分根据结构看的话，先是地址码，再之后为数据码。</p>
+<p>图中红线圈起来的刚好是与开始的案例相同的即：FFF0FFFF，再后边的数据码是1111。比对方式见开头图片关于PT226x的部分</p>
+<p>当然用另一种方法，直接在选择这样配置即可看出每段的二进制数据。</p>
+<p>1是11101110</p>
+<p>0是10001000</p>
+<p>F是10001110</p>
+<p><img src="https://github.com/devil0x/picture/raw/master/1.19/13.png" alt></p>
+<h3 id="3-PT224X"><a href="#3-PT224X" class="headerlink" title="3.PT224X"></a>3.PT224X</h3><p><img src="https://image.3001.net/images/20181211/1544496739_5c0f266399bbe.png!small" alt></p>
+<p>首先依旧是PT224X的结构部分，同样是先同步码后地址码再数据位的结构。</p>
+<p>区别就是位数更长。还有一个区别2240和2262的方法，只要有F就肯定是226X。</p>
+<p>案例给了2个录制好的文件，一个niu2.cs8，另一个PT2242.cs8。直接拖进urh打开是混乱的，可以先用audacity选择导入原数据。</p>
+<p><img src="https://github.com/devil0x/picture/raw/master/1.19/8.png" alt></p>
+<p>其次再选中空白部分直接剪掉即可，在导出为wav文件，直接用urh打开就可以看到波形图，再ASK调制，下方有个Autodetect parameters按钮点击一下即可，然后即可看出转换出的二进制数据。当然也可以选择inspectrum进行，但是感觉用urh似乎跟简单一些。</p>
+<p><img src="https://github.com/devil0x/picture/raw/master/1.19/11.png" alt></p>
+<p>然后底下就可以看出了、</p>
+<p><img src="https://github.com/devil0x/picture/raw/master/1.19/12.png" alt></p>
+<p>首先是1以及后边一大串空白是同步码，再然后底下 即可看出了，但是要记得在每行的最后一位空一个1，这个是下一段同步码的开始点位。现在选中的地方就是地址码加数据码的数据，没一个二进制数据由4个数字组成，Bit1 相当于 12A 宽度的高电平脉冲加 4A 宽度低电平的脉冲重复一次，而BIt0正好相反是 4a 高在是 12a 的低重复一次。</p>
+<p>然后直接可以看出1000代表0,1110代表1.</p>
+<h2 id="0x02-自制设备"><a href="#0x02-自制设备" class="headerlink" title="0x02.自制设备"></a>0x02.自制设备</h2><p>在淘宝可以搜到很多的非法设备，such as ：a890，还有什么d10m啥的，一般在淘宝咸鱼都是这样婶儿的。。。</p>
+<p><img src="https://github.com/devil0x/picture/raw/master/1.19/15.png" alt></p>
+<p><img src="https://github.com/devil0x/picture/raw/master/1.19/14.png" alt></p>
+<p>一般通常都是用来破解某些东西，自制的话用arduino+cc1101即可。cc1101一般淘宝买的版本呢，中心频率都工作在433mhz，但是并不代表不可以在315工作，cc1101 有各种型号such as ：cc1101 rgpt 这种low power sub -1Ghz。</p>
+<h3 id="工的话有这么几种："><a href="#工的话有这么几种：" class="headerlink" title="工的话有这么几种："></a>工的话有这么几种：</h3><h4 id="1-嗅探攻击"><a href="#1-嗅探攻击" class="headerlink" title="1.嗅探攻击"></a>1.嗅探攻击</h4><h6 id="嗅探到遥控器发射的-信号，再重放出去。"><a href="#嗅探到遥控器发射的-信号，再重放出去。" class="headerlink" title="嗅探到遥控器发射的 信号，再重放出去。"></a>嗅探到遥控器发射的 信号，再重放出去。</h6><h4 id="2-嗅探地址码"><a href="#2-嗅探地址码" class="headerlink" title="2.嗅探地址码"></a>2.嗅探地址码</h4><h6 id="因为地址码确定之后，数据码一般来说只有4种可能：1000-0100-0010-0001。such-as：通过嗅探一串锁车代码就能知道其他开车功能了。"><a href="#因为地址码确定之后，数据码一般来说只有4种可能：1000-0100-0010-0001。such-as：通过嗅探一串锁车代码就能知道其他开车功能了。" class="headerlink" title="因为地址码确定之后，数据码一般来说只有4种可能：1000,0100,0010,0001。such as：通过嗅探一串锁车代码就能知道其他开车功能了。"></a>因为地址码确定之后，数据码一般来说只有4种可能：1000,0100,0010,0001。such as：通过嗅探一串锁车代码就能知道其他开车功能了。</h6><h4 id="3-嗅探攻击"><a href="#3-嗅探攻击" class="headerlink" title="3.嗅探攻击"></a>3.嗅探攻击</h4><h6 id="暴力破解去枚举地址码。"><a href="#暴力破解去枚举地址码。" class="headerlink" title="暴力破解去枚举地址码。"></a>暴力破解去枚举地址码。</h6><h4 id="cc1101-arduino我不会"><a href="#cc1101-arduino我不会" class="headerlink" title="cc1101+arduino我不会"></a>cc1101+arduino我不会</h4><h3 id="用的arduino-超再生模块，RCswitch-h库实现"><a href="#用的arduino-超再生模块，RCswitch-h库实现" class="headerlink" title="用的arduino+超再生模块，RCswitch.h库实现"></a>用的arduino+超再生模块，RCswitch.h库实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;RCSwitch.h&gt;</span><br><span class="line"></span><br><span class="line">RCSwitch mySwitch = RCSwitch();</span><br><span class="line"></span><br><span class="line">void setup() &#123;</span><br><span class="line">  Serial.begin(9600);</span><br><span class="line">  mySwitch.enableTransmit(9);    // 定义发送模块的数据传输针脚</span><br><span class="line">  mySwitch.setPulseLength(170);   // 定义脉冲长度，这个值具体看你使用的遥控器而定</span><br><span class="line">&#125;</span><br><span class="line">void loop() </span><br><span class="line">&#123;</span><br><span class="line">      mySwitch.send(&quot;101111010010110011001&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以输出，but没有电动车去做实验。</p>
+<p>。。。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/20/ubuntu搭梯子/" rel="next" title>
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/20/安洵杯CTF rfid题/" rel="prev" title="安洵杯CTF rfid题">
+                安洵杯CTF rfid题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">devil0x</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#固定码逆向分析"><span class="nav-number">1.</span> <span class="nav-text">固定码逆向分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-Analysis-信号分析"><span class="nav-number">1.1.</span> <span class="nav-text">0x01. Analysis 信号分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1安装软件"><span class="nav-number">1.2.</span> <span class="nav-text">1.1安装软件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-inspectrum"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.inspectrum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-universal-radio-hacker-urh"><span class="nav-number">1.2.2.</span> <span class="nav-text">2. universal radio hacker(urh)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-HDSHR"><span class="nav-number">1.2.3.</span> <span class="nav-text">3.HDSHR</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-分析文件"><span class="nav-number">1.3.</span> <span class="nav-text">0x02.分析文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-原理"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-PT226X"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.PT226X</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-PT224X"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.PT224X</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-自制设备"><span class="nav-number">1.4.</span> <span class="nav-text">0x02.自制设备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#工的话有这么几种："><span class="nav-number">1.4.1.</span> <span class="nav-text">工的话有这么几种：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-嗅探攻击"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">1.嗅探攻击</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#嗅探到遥控器发射的-信号，再重放出去。"><span class="nav-number">1.4.1.1.0.1.</span> <span class="nav-text">嗅探到遥控器发射的 信号，再重放出去。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-嗅探地址码"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">2.嗅探地址码</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#因为地址码确定之后，数据码一般来说只有4种可能：1000-0100-0010-0001。such-as：通过嗅探一串锁车代码就能知道其他开车功能了。"><span class="nav-number">1.4.1.2.0.1.</span> <span class="nav-text">因为地址码确定之后，数据码一般来说只有4种可能：1000,0100,0010,0001。such as：通过嗅探一串锁车代码就能知道其他开车功能了。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-嗅探攻击"><span class="nav-number">1.4.1.3.</span> <span class="nav-text">3.嗅探攻击</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#暴力破解去枚举地址码。"><span class="nav-number">1.4.1.3.0.1.</span> <span class="nav-text">暴力破解去枚举地址码。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cc1101-arduino我不会"><span class="nav-number">1.4.1.4.</span> <span class="nav-text">cc1101+arduino我不会</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#用的arduino-超再生模块，RCswitch-h库实现"><span class="nav-number">1.4.2.</span> <span class="nav-text">用的arduino+超再生模块，RCswitch.h库实现</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">devil0x</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
