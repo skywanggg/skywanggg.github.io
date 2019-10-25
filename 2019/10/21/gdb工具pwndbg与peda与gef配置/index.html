@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="gdb工具pwndbg与peda与gef配置在调试时有时候需要不同功能，在gdb下需要安装两个工具pwndbg和peda，可惜这两个不兼容 pwndbg在调试堆的数据结构时候很方便 peda在查找字符串等功能时方便 安装pwndbg： 1git clone https://github.com/pwndbg/pwndbgcd pwndbg./setup.sh 安装peda： 1git clone">
+<meta name="description" content="title:pwn工具配置与使用checksec详解checksec看到的那些参数含义  NX保护：你不能执行我就不执行，栈里面的内容只负责把程序执行流引入到一个需要的汇编代码的位置处，然后调用程序自己的一些代码来实现攻击。你可以调用含有call或者ret代码这样就能一直连接下去。这就是大佬说的ROP链。  cannary：函数在执行的时候把一个值放入到栈内的某个位置，我们想要溢出返回地址就要改">
 <meta property="og:type" content="article">
 <meta property="og:title" content="devil0x菜鸟">
 <meta property="og:url" content="https://devil0x.github.io/2019/10/21/gdb工具pwndbg与peda与gef配置/index.html">
 <meta property="og:site_name" content="devil0x菜鸟">
-<meta property="og:description" content="gdb工具pwndbg与peda与gef配置在调试时有时候需要不同功能，在gdb下需要安装两个工具pwndbg和peda，可惜这两个不兼容 pwndbg在调试堆的数据结构时候很方便 peda在查找字符串等功能时方便 安装pwndbg： 1git clone https://github.com/pwndbg/pwndbgcd pwndbg./setup.sh 安装peda： 1git clone">
+<meta property="og:description" content="title:pwn工具配置与使用checksec详解checksec看到的那些参数含义  NX保护：你不能执行我就不执行，栈里面的内容只负责把程序执行流引入到一个需要的汇编代码的位置处，然后调用程序自己的一些代码来实现攻击。你可以调用含有call或者ret代码这样就能一直连接下去。这就是大佬说的ROP链。  cannary：函数在执行的时候把一个值放入到栈内的某个位置，我们想要溢出返回地址就要改">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/0063hjnqly1g85td64840j30gg06ywf5.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/0063hjnqly1g85tei4jztj30m906075u.jpg">
-<meta property="og:updated_time" content="2019-10-22T04:45:49.057Z">
+<meta property="og:updated_time" content="2019-10-25T12:20:44.397Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="devil0x菜鸟">
-<meta name="twitter:description" content="gdb工具pwndbg与peda与gef配置在调试时有时候需要不同功能，在gdb下需要安装两个工具pwndbg和peda，可惜这两个不兼容 pwndbg在调试堆的数据结构时候很方便 peda在查找字符串等功能时方便 安装pwndbg： 1git clone https://github.com/pwndbg/pwndbgcd pwndbg./setup.sh 安装peda： 1git clone">
+<meta name="twitter:description" content="title:pwn工具配置与使用checksec详解checksec看到的那些参数含义  NX保护：你不能执行我就不执行，栈里面的内容只负责把程序执行流引入到一个需要的汇编代码的位置处，然后调用程序自己的一些代码来实现攻击。你可以调用含有call或者ret代码这样就能一直连接下去。这就是大佬说的ROP链。  cannary：函数在执行的时候把一个值放入到栈内的某个位置，我们想要溢出返回地址就要改">
 <meta name="twitter:image" content="http://ww1.sinaimg.cn/large/0063hjnqly1g85td64840j30gg06ywf5.jpg">
 
 
@@ -302,7 +302,38 @@
       
 
       
-        <h1 id="gdb工具pwndbg与peda与gef配置"><a href="#gdb工具pwndbg与peda与gef配置" class="headerlink" title="gdb工具pwndbg与peda与gef配置"></a>gdb工具pwndbg与peda与gef配置</h1><p>在调试时有时候需要不同功能，在gdb下需要安装两个工具pwndbg和peda，可惜这两个不兼容</p>
+        <hr>
+<h2 id="title-pwn工具配置与使用"><a href="#title-pwn工具配置与使用" class="headerlink" title="title:pwn工具配置与使用"></a>title:pwn工具配置与使用</h2><h2 id="checksec详解"><a href="#checksec详解" class="headerlink" title="checksec详解"></a>checksec详解</h2><p>checksec看到的那些参数含义</p>
+<ul>
+<li><p>NX保护：<br>你不能执行我就不执行，栈里面的内容只负责把程序执行流引入到一个需要的汇编代码的位置处，然后调用程序自己的一些代码来实现攻击。你可以调用含有call或者ret代码这样就能一直连接下去。这就是大佬说的ROP链。</p>
+</li>
+<li><p>cannary：<br>函数在执行的时候把一个值放入到栈内的某个位置，我们想要溢出返回地址就要改变这个值，返回的时候系统检查canary值是否改变，如果改变就调用check_failed()函数，打印程序名然后退出。基于这个原理我们可以1、找到canary的值然后填进去。2、可以覆盖掉check_\failed()的调用地址换成system() </p>
+</li>
+<li><p>ASLR</p>
+<p>Linux 平台下还有地址空间分布随机化（ASLR）的机制。简单来说即使可执行文件开启了 PIE 保护，还需要系统开启 ASLR 才会真正打乱基址，否则程序运行时依旧会在加载一个固定的基址上（不过和 No PIE 时基址不同）。我们可以通过修改 <code>/proc/sys/kernel/randomize_va_space</code></p>
+<ul>
+<li>0，关闭 ASLR，没有随机化。栈、堆、.so 的基地址每次都相同。</li>
+<li>1，普通的 ASLR。栈基地址、mmap 基地址、.so 加载基地址都将被随机化，但是堆基地址没有随机化。</li>
+<li>2，增强的 ASLR，在 1 的基础上，增加了堆基地址随机化。</li>
+</ul>
+<p>我们可以使用<code>echo 0 &gt; /proc/sys/kernel/randomize_va_space</code>关闭 Linux 系统的 ASLR，类似的，也可以配置相应的参数。</p>
+</li>
+<li><p>PIE</p>
+<p>在PIE没有开启的情况下，bss段的地址是固定的，所以，可以把shellcode写入bss段，然后跳转到bss段，然后执行shellcode。</p>
+</li>
+</ul>
+<h2 id="pwntools使用教程"><a href="#pwntools使用教程" class="headerlink" title="pwntools使用教程"></a>pwntools使用教程</h2><p>process 指向本地路径<br>remote(“IP”,port)指向地址还有端口<br>p64打包(可以吧数字转换到小端法)，u64解包(还原回去)<br>context.binary= 设置上下文<br>asm</p>
+<p><code>remote(&quot;一个域名或者ip地址&quot;, 端口)</code> 会连接到我们指定的地址及端口。 然后该函数会返回remote对象 (这里，我们将该对象保存到了变量 <code>c</code>). remote对象主要用来进行对远程主机的输入输出. 它有如下几个方法：</p>
+<ul>
+<li><code>send(payload)</code> 发送payload</li>
+<li><code>sendline(payload)</code> 发送payload，并进行换行（末尾<strong>\n</strong>）</li>
+<li><code>sendafter(some_string, payload)</code> 接收到 some_string 后, 发送你的 payload</li>
+<li><code>recvn(N)</code> 接受 N(数字) 字符</li>
+<li><code>recvline()</code> 接收一行输出</li>
+<li><code>recvlines(N)</code> 接收 N(数字) 行输出</li>
+<li><code>recvuntil(some_string)</code> 接收到 some_string 为止</li>
+</ul>
+<h1 id="gdb工具pwndbg与peda与gef配置"><a href="#gdb工具pwndbg与peda与gef配置" class="headerlink" title="gdb工具pwndbg与peda与gef配置"></a>gdb工具pwndbg与peda与gef配置</h1><p>在调试时有时候需要不同功能，在gdb下需要安装两个工具pwndbg和peda，可惜这两个不兼容</p>
 <p>pwndbg在调试堆的数据结构时候很方便</p>
 <p>peda在查找字符串等功能时方便</p>
 <p>安装pwndbg：</p>
@@ -345,8 +376,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/17/ubertooth环境搭建手册/" rel="next" title>
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/2019/10/17/ubertooth环境搭建手册/" rel="next" title="搭建ubertooth环境">
+                <i class="fa fa-chevron-left"></i> 搭建ubertooth环境
               </a>
             
           </div>
@@ -355,7 +386,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/21/pwn基础知识/" rel="prev" title>
+              <a href="/2019/10/21/pwn入门学习(1)栈溢出基础知识/" rel="prev" title>
                  <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -434,7 +465,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -471,7 +502,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#gdb工具pwndbg与peda与gef配置"><span class="nav-number">1.</span> <span class="nav-text">gdb工具pwndbg与peda与gef配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注意"><span class="nav-number">2.</span> <span class="nav-text">注意</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title-pwn工具配置与使用"><span class="nav-number">1.</span> <span class="nav-text">title:pwn工具配置与使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#checksec详解"><span class="nav-number">2.</span> <span class="nav-text">checksec详解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pwntools使用教程"><span class="nav-number">3.</span> <span class="nav-text">pwntools使用教程</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#gdb工具pwndbg与peda与gef配置"><span class="nav-number"></span> <span class="nav-text">gdb工具pwndbg与peda与gef配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注意"><span class="nav-number"></span> <span class="nav-text">注意</span></a></li></div>
             
 
           </div>

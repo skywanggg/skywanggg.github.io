@@ -229,136 +229,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/10/23/pwntools使用教程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="devil0x">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="devil0x菜鸟">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/23/pwntools使用教程/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-23T00:05:07+08:00">
-                2019-10-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="pwntools使用教程"><a href="#pwntools使用教程" class="headerlink" title="pwntools使用教程"></a>pwntools使用教程</h2><p>process 指向本地路径<br>remote(“IP”,port)指向地址还有端口<br>p64打包(可以吧数字转换到小端法)，u64解包(还原回去)<br>context.binary= 设置上下文<br>asm</p>
-<p><code>remote(&quot;一个域名或者ip地址&quot;, 端口)</code> 会连接到我们指定的地址及端口。 然后该函数会返回remote对象 (这里，我们将该对象保存到了变量 <code>c</code>). remote对象主要用来进行对远程主机的输入输出. 它有如下几个方法：</p>
-<ul>
-<li><code>send(payload)</code> 发送payload</li>
-<li><code>sendline(payload)</code> 发送payload，并进行换行（末尾<strong>\n</strong>）</li>
-<li><code>sendafter(some_string, payload)</code> 接收到 some_string 后, 发送你的 payload</li>
-<li><code>recvn(N)</code> 接受 N(数字) 字符</li>
-<li><code>recvline()</code> 接收一行输出</li>
-<li><code>recvlines(N)</code> 接收 N(数字) 行输出</li>
-<li><code>recvuntil(some_string)</code> 接收到 some_string 为止</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/10/22/二进制常见/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -378,7 +248,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/10/22/二进制常见/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2019/10/22/二进制常见/" itemprop="url">常见函数与汇编指令</a></h1>
         
 
         <div class="post-meta">
@@ -430,7 +300,7 @@
       
         
           
-            <h1 id="二进制常见"><a href="#二进制常见" class="headerlink" title="二进制常见"></a>二进制常见</h1><h1 id="常见函数"><a href="#常见函数" class="headerlink" title="常见函数"></a>常见函数</h1><p>strcmp()</p>
+            <h1 id="常见函数与汇编指令"><a href="#常见函数与汇编指令" class="headerlink" title="常见函数与汇编指令"></a>常见函数与汇编指令</h1><h1 id="常见函数"><a href="#常见函数" class="headerlink" title="常见函数"></a>常见函数</h1><p>strcmp()</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">参数 str1 和 str2 是参与比较的两个字符串。</span><br><span class="line">strcmp() 会根据  编码依次比较 str1 和 str2 的每一个字符，直到出现不到的字符，或者到达字符串末尾（遇见）。</span><br><span class="line">- 如果返回值 &lt; 0，则表示 str1 小于 str2。</span><br><span class="line">- 如果返回值 &gt; 0，则表示 str2 小于 str1。</span><br><span class="line">- 如果返回值 = 0，则表示 str1 等于 str2。</span><br><span class="line">such as；</span><br><span class="line">	 if(!strcmp(&amp;v10, &amp;v13))</span><br><span class="line">	 v13与v10进行比较，不相同时进入条件</span><br></pre></td></tr></table></figure>
 <p>strcpy()</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">strcpy(a, b)</span><br><span class="line">- 把b赋值给a</span><br></pre></td></tr></table></figure>
@@ -487,7 +357,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/10/21/pwn基础知识/">
+    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/10/21/pwn入门学习(1)栈溢出基础知识/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="devil0x">
@@ -506,7 +376,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/10/21/pwn基础知识/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2019/10/21/pwn入门学习(1)栈溢出基础知识/" itemprop="url">未命名</a></h1>
         
 
         <div class="post-meta">
@@ -558,18 +428,8 @@
       
         
           
-            <h2 id="pwntools"><a href="#pwntools" class="headerlink" title="pwntools"></a>pwntools</h2><p>process 指向本地路径<br>remote(“IP”,port)指向地址还有端口<br>p64打包(可以吧数字转换到小端法)，u64解包(还原回去)<br>context.binary= 设置上下文<br>asm</p>
-<p><code>remote(&quot;一个域名或者ip地址&quot;, 端口)</code> 会连接到我们指定的地址及端口。 然后该函数会返回remote对象 (这里，我们将该对象保存到了变量 <code>c</code>). remote对象主要用来进行对远程主机的输入输出. 它有如下几个方法：</p>
-<ul>
-<li><code>send(payload)</code> 发送payload</li>
-<li><code>sendline(payload)</code> 发送payload，并进行换行（末尾<strong>\n</strong>）</li>
-<li><code>sendafter(some_string, payload)</code> 接收到 some_string 后, 发送你的 payload</li>
-<li><code>recvn(N)</code> 接受 N(数字) 字符</li>
-<li><code>recvline()</code> 接收一行输出</li>
-<li><code>recvlines(N)</code> 接收 N(数字) 行输出</li>
-<li><code>recvuntil(some_string)</code> 接收到 some_string 为止</li>
-</ul>
-<h1 id="pwn基础知识"><a href="#pwn基础知识" class="headerlink" title="pwn基础知识"></a>pwn基础知识</h1><h2 id="栈的介绍"><a href="#栈的介绍" class="headerlink" title="栈的介绍"></a>栈的介绍</h2><p>栈是一种典型的后进先出 (Last in First Out) 的数据结构，其操作主要有压栈 (push) 与出栈 (pop) 两种操作，如下图所示（维基百科）。两种操作都操作栈顶，当然，它也有栈底。</p>
+            <hr>
+<h2 id="title-pwn入门学习-1-栈溢出基础知识"><a href="#title-pwn入门学习-1-栈溢出基础知识" class="headerlink" title="title:pwn入门学习(1)栈溢出基础知识"></a>title:pwn入门学习(1)栈溢出基础知识</h2><h1 id="栈溢出基础知识"><a href="#栈溢出基础知识" class="headerlink" title="栈溢出基础知识"></a>栈溢出基础知识</h1><h2 id="栈的介绍"><a href="#栈的介绍" class="headerlink" title="栈的介绍"></a>栈的介绍</h2><p>栈是一种典型的后进先出 (Last in First Out) 的数据结构，其操作主要有压栈 (push) 与出栈 (pop) 两种操作，如下图所示（维基百科）。两种操作都操作栈顶，当然，它也有栈底。</p>
 <p><img src="https://ctf-wiki.github.io/ctf-wiki/pwn/linux/stackoverflow/figure/Data_stack.png" alt="基本栈操作"></p>
 <p>高级语言在运行时都会被转换为汇编程序，在汇编程序运行过程中，充分利用了这一数据结构。每个程序在运行时都有虚拟地址空间，其中某一部分就是该程序对应的栈，用于保存函数调用信息和局部变量。此外，常见的操作也是压栈与出栈。需要注意的是，<strong>程序的栈是从进程地址空间的高地址向低地址增长的</strong>。</p>
 <h2 id="函数调用栈"><a href="#函数调用栈" class="headerlink" title="函数调用栈"></a>函数调用栈</h2><p>需要注意的是，32 位和 64 位程序有以下简单的区别</p>
@@ -779,7 +639,38 @@
       
         
           
-            <h1 id="gdb工具pwndbg与peda与gef配置"><a href="#gdb工具pwndbg与peda与gef配置" class="headerlink" title="gdb工具pwndbg与peda与gef配置"></a>gdb工具pwndbg与peda与gef配置</h1><p>在调试时有时候需要不同功能，在gdb下需要安装两个工具pwndbg和peda，可惜这两个不兼容</p>
+            <hr>
+<h2 id="title-pwn工具配置与使用"><a href="#title-pwn工具配置与使用" class="headerlink" title="title:pwn工具配置与使用"></a>title:pwn工具配置与使用</h2><h2 id="checksec详解"><a href="#checksec详解" class="headerlink" title="checksec详解"></a>checksec详解</h2><p>checksec看到的那些参数含义</p>
+<ul>
+<li><p>NX保护：<br>你不能执行我就不执行，栈里面的内容只负责把程序执行流引入到一个需要的汇编代码的位置处，然后调用程序自己的一些代码来实现攻击。你可以调用含有call或者ret代码这样就能一直连接下去。这就是大佬说的ROP链。</p>
+</li>
+<li><p>cannary：<br>函数在执行的时候把一个值放入到栈内的某个位置，我们想要溢出返回地址就要改变这个值，返回的时候系统检查canary值是否改变，如果改变就调用check_failed()函数，打印程序名然后退出。基于这个原理我们可以1、找到canary的值然后填进去。2、可以覆盖掉check_\failed()的调用地址换成system() </p>
+</li>
+<li><p>ASLR</p>
+<p>Linux 平台下还有地址空间分布随机化（ASLR）的机制。简单来说即使可执行文件开启了 PIE 保护，还需要系统开启 ASLR 才会真正打乱基址，否则程序运行时依旧会在加载一个固定的基址上（不过和 No PIE 时基址不同）。我们可以通过修改 <code>/proc/sys/kernel/randomize_va_space</code></p>
+<ul>
+<li>0，关闭 ASLR，没有随机化。栈、堆、.so 的基地址每次都相同。</li>
+<li>1，普通的 ASLR。栈基地址、mmap 基地址、.so 加载基地址都将被随机化，但是堆基地址没有随机化。</li>
+<li>2，增强的 ASLR，在 1 的基础上，增加了堆基地址随机化。</li>
+</ul>
+<p>我们可以使用<code>echo 0 &gt; /proc/sys/kernel/randomize_va_space</code>关闭 Linux 系统的 ASLR，类似的，也可以配置相应的参数。</p>
+</li>
+<li><p>PIE</p>
+<p>在PIE没有开启的情况下，bss段的地址是固定的，所以，可以把shellcode写入bss段，然后跳转到bss段，然后执行shellcode。</p>
+</li>
+</ul>
+<h2 id="pwntools使用教程"><a href="#pwntools使用教程" class="headerlink" title="pwntools使用教程"></a>pwntools使用教程</h2><p>process 指向本地路径<br>remote(“IP”,port)指向地址还有端口<br>p64打包(可以吧数字转换到小端法)，u64解包(还原回去)<br>context.binary= 设置上下文<br>asm</p>
+<p><code>remote(&quot;一个域名或者ip地址&quot;, 端口)</code> 会连接到我们指定的地址及端口。 然后该函数会返回remote对象 (这里，我们将该对象保存到了变量 <code>c</code>). remote对象主要用来进行对远程主机的输入输出. 它有如下几个方法：</p>
+<ul>
+<li><code>send(payload)</code> 发送payload</li>
+<li><code>sendline(payload)</code> 发送payload，并进行换行（末尾<strong>\n</strong>）</li>
+<li><code>sendafter(some_string, payload)</code> 接收到 some_string 后, 发送你的 payload</li>
+<li><code>recvn(N)</code> 接受 N(数字) 字符</li>
+<li><code>recvline()</code> 接收一行输出</li>
+<li><code>recvlines(N)</code> 接收 N(数字) 行输出</li>
+<li><code>recvuntil(some_string)</code> 接收到 some_string 为止</li>
+</ul>
+<h1 id="gdb工具pwndbg与peda与gef配置"><a href="#gdb工具pwndbg与peda与gef配置" class="headerlink" title="gdb工具pwndbg与peda与gef配置"></a>gdb工具pwndbg与peda与gef配置</h1><p>在调试时有时候需要不同功能，在gdb下需要安装两个工具pwndbg和peda，可惜这两个不兼容</p>
 <p>pwndbg在调试堆的数据结构时候很方便</p>
 <p>peda在查找字符串等功能时方便</p>
 <p>安装pwndbg：</p>
@@ -865,7 +756,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/10/17/ubertooth环境搭建手册/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2019/10/17/ubertooth环境搭建手册/" itemprop="url">搭建ubertooth环境</a></h1>
         
 
         <div class="post-meta">
@@ -1013,7 +904,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/10/16/1.测试文档/">
+    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/10/14/PWN入门学习(2)基本的ROP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="devil0x">
@@ -1032,137 +923,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/10/16/1.测试文档/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-16T15:01:08+08:00">
-                2019-10-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>1.测试文档</p>
-<p>基站</p>
-<p>终端 </p>
-<p>4g ，</p>
-<p>白噪音无线压制</p>
-<p>LTE的KPI</p>
-<p>RRC重定向</p>
-<p>2.安全加固文档</p>
-<p>螺丝刀</p>
-<p>t口线</p>
-<p>sd</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/10/14/PWN入门学习/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="devil0x">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="devil0x菜鸟">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/14/PWN入门学习/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2019/10/14/PWN入门学习(2)基本的ROP/" itemprop="url">未命名</a></h1>
         
 
         <div class="post-meta">
@@ -1214,7 +975,8 @@
       
         
           
-            <h1 id="入门学习"><a href="#入门学习" class="headerlink" title="入门学习"></a>入门学习</h1><h1 id="基本-ROP"><a href="#基本-ROP" class="headerlink" title="基本 ROP"></a>基本 ROP</h1><p>随着 NX 保护的开启，以往直接向栈或者堆上直接注入代码的方式难以继续发挥效果。攻击者们也提出来相应的方法来绕过保护，目前主要的是 ROP(Return Oriented Programming)，其主要思想是在<strong>栈缓冲区溢出的基础上，利用程序中已有的小片段 (gadgets) 来改变某些寄存器或者变量的值，从而控制程序的执行流程。</strong>所谓 gadgets 就是以 ret 结尾的指令序列，通过这些指令序列，我们可以修改某些地址的内容，方便控制程序的执行流程。</p>
+            <hr>
+<h2 id="title-Pwn入门学习-2"><a href="#title-Pwn入门学习-2" class="headerlink" title="title:Pwn入门学习(2)"></a>title:Pwn入门学习(2)</h2><h1 id="入门学习"><a href="#入门学习" class="headerlink" title="入门学习"></a>入门学习</h1><h1 id="基本-ROP"><a href="#基本-ROP" class="headerlink" title="基本 ROP"></a>基本 ROP</h1><p>随着 NX 保护的开启，以往直接向栈或者堆上直接注入代码的方式难以继续发挥效果。攻击者们也提出来相应的方法来绕过保护，目前主要的是 ROP(Return Oriented Programming)，其主要思想是在<strong>栈缓冲区溢出的基础上，利用程序中已有的小片段 (gadgets) 来改变某些寄存器或者变量的值，从而控制程序的执行流程。</strong>所谓 gadgets 就是以 ret 结尾的指令序列，通过这些指令序列，我们可以修改某些地址的内容，方便控制程序的执行流程。</p>
 <p>checksec看到的那些参数含义</p>
 <ul>
 <li>NX保护：<br>你不能执行我就不执行，栈里面的内容只负责把程序执行流引入到一个需要的汇编代码的位置处，然后调用程序自己的一些代码来实现攻击。你可以调用含有call或者ret代码这样就能一直连接下去。这就是大佬说的ROP链。</li>
@@ -1233,10 +995,7 @@
 <p>在PIE没有开启的情况下，bss段的地址是固定的，所以，可以把shellcode写入bss段，然后跳转到bss段，然后执行shellcode。</p>
 </li>
 </ul>
-<ul>
-<li><h2 id="CTF-Wiki"><a href="#CTF-Wiki" class="headerlink" title="CTF-Wiki"></a>CTF-Wiki</h2></li>
-</ul>
-<h3 id="1-ret2text"><a href="#1-ret2text" class="headerlink" title="1.ret2text"></a>1.ret2text</h3><p>首先，查看一下程序的保护机制</p>
+<h2 id="CTF-Wiki"><a href="#CTF-Wiki" class="headerlink" title="CTF-Wiki"></a>CTF-Wiki</h2><h3 id="1-ret2text"><a href="#1-ret2text" class="headerlink" title="1.ret2text"></a>1.ret2text</h3><p>首先，查看一下程序的保护机制</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">➜  ret2text checksec ret2text</span><br><span class="line">    Arch:     i386-32-little</span><br><span class="line">    RELRO:    Partial RELRO</span><br><span class="line">    Stack:    No canary found</span><br><span class="line">    NX:       NX enabled</span><br><span class="line">    PIE:      No PIE (0x8048000)</span><br></pre></td></tr></table></figure>
 <p>–该字符串距离 ebp 的长度为 0x14，那么相应的栈结构为</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">             +-----------------+</span><br><span class="line">             |     retaddr     |</span><br><span class="line">             +-----------------+</span><br><span class="line">             |     saved ebp   |</span><br><span class="line">      ebp---&gt;+-----------------+</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">s,ebp-0x14--&gt;+-----------------+</span><br></pre></td></tr></table></figure>
@@ -1346,7 +1105,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/10/12/逆向学习/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2019/10/12/逆向学习/" itemprop="url">逆向学习</a></h1>
         
 
         <div class="post-meta">
@@ -1413,136 +1172,6 @@
 <h3 id="4-open-source"><a href="#4-open-source" class="headerlink" title="4.open-source"></a>4.open-source</h3><p>注意看每句话定义的含义，以及flag产生函数所调用的变量有哪几个.</p>
 <p><img src="http://ww1.sinaimg.cn/large/0063hjnqly1g7wktkle8vj30he07sjsa.jpg" alt="Snipaste_2019-10-13_10-56-19.jpg"></p>
 <h3 id="5-simple-unpack"><a href="#5-simple-unpack" class="headerlink" title="5.simple-unpack"></a>5.simple-unpack</h3>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/10/08/ubuntu14配置/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="devil0x">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="devil0x菜鸟">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/08/ubuntu14配置/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-08T01:09:45+08:00">
-                2019-10-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="ubuntu14配置"><a href="#ubuntu14配置" class="headerlink" title="ubuntu14配置"></a>ubuntu14配置</h1><h2 id="0x01-签名错误"><a href="#0x01-签名错误" class="headerlink" title="0x01 签名错误"></a>0x01 签名错误</h2><p>apt更新遇到无法获取，直接</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-key adv --recv-keys --keyserver keyserver.Ubuntu.com AED4B06F473041FA</span><br></pre></td></tr></table></figure>
-<p>算了直接用aliyun的源吧，放弃中科大</p>
-<h2 id="0x02-右键打开终端"><a href="#0x02-右键打开终端" class="headerlink" title="0x02 右键打开终端"></a>0x02 右键打开终端</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nautilus-open-terminal</span><br></pre></td></tr></table></figure>
-<p><strong>直接下载MIPS程序的交叉编译工具链</strong></p>
-<p>其实MIPS程序的交叉编译工具gcc不必非得自己编译得到，网站<a href="https://uclibc.org/上已经有编译后的mips程序的交叉编译工具提供给我们下载，在ubuntu系统上，可以使用脚本" target="_blank" rel="noopener">https://uclibc.org/上已经有编译后的mips程序的交叉编译工具提供给我们下载，在ubuntu系统上，可以使用脚本</a> config.sh进行下载，脚本文件的内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">#this file aim to download xcompiler and install it</span><br><span class="line">download_url=&quot;https://www.uclibc.org/downloads/binaries/0.9.30.1/cross-compiler-&quot;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">function download_bins &#123;</span><br><span class="line">    echo &quot;ready to download: $1.tar.bz2&quot;</span><br><span class="line">    wget &quot;$&#123;download_url&#125;$1.tar.bz2&quot; &quot;--no-check-certificate&quot;</span><br><span class="line">    echo &quot;ready to tar: $1.tar.bz2&quot;</span><br><span class="line">    tar -jxf $install_path/cross-compiler-$1.tar.bz2</span><br><span class="line">    sed -i &apos;$a\export PATH=$PATH:&apos;$install_path&apos;/cross-compiler-&apos;$1&apos;/bin&apos; /etc/profile </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">if [ $# == 0 ]</span><br><span class="line">then</span><br><span class="line">    echo &quot;Usage: $0  intall_path&quot;</span><br><span class="line">    exit -1</span><br><span class="line">elif [ $# == 1 ]</span><br><span class="line">then</span><br><span class="line">    install_path=$1</span><br><span class="line">fi</span><br><span class="line"> </span><br><span class="line">cd $install_path</span><br><span class="line">download_bins mips</span><br><span class="line">download_bins mipsel</span><br><span class="line">download_bins armv4l</span><br><span class="line">download_bins i686</span><br><span class="line">download_bins x86_64</span><br><span class="line"> </span><br><span class="line">source /etc/profile</span><br><span class="line"> </span><br><span class="line">echo &quot;Done&quot;</span><br></pre></td></tr></table></figure>
-<p>脚本中交叉编译工具链的下载地址为：<a href="https://www.uclibc.org/downloads/binaries/0.9.30.1/。" target="_blank" rel="noopener">https://www.uclibc.org/downloads/binaries/0.9.30.1/。</a></p>
-<p><img src="https://img-blog.csdn.net/20170402164945388?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvUVExMDg0MjgzMTcy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="img"></p>
-<p>这个config.sh脚本来自于《<a href="http://www.freebuf.com/sectool/130091.html?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="noopener">IoT设备程序开发及编译环境搭建初体验</a>》的作者scu-igroup的github上 IoT_bot工程 代码的脚本。config.sh脚本执行完成以后，各种平台的交叉编译链的工具都下载下来了，在 <strong>/cross-compiler-mips/tools/bin</strong> 目录和 <strong>/cross-compiler-mipsel/tools**</strong>/bin**目录下有mips程序的交叉编译工具链，直接拿来使用就可以。IoT_bot工程 的github下载地址为：<a href="https://github.com/scu-igroup/IoT_bot。" target="_blank" rel="noopener">https://github.com/scu-igroup/IoT_bot。</a></p>
-<p><img src="https://img-blog.csdn.net/20170402170038529?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvUVExMDg0MjgzMTcy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="img"></p>
-
           
         
       
@@ -1801,11 +1430,462 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/06/20/常用设备配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="devil0x">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="devil0x菜鸟">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/20/常用设备配置/" itemprop="url">设备常用配置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-20T03:26:52+08:00">
+                2019-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-树莓派"><a href="#1-树莓派" class="headerlink" title="1.树莓派"></a>1.树莓派</h1><h2 id="wifi配置"><a href="#wifi配置" class="headerlink" title="wifi配置"></a>wifi配置</h2><p>修改wifi连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/wpa_supplicant/wpa_supplicant.conf</span><br></pre></td></tr></table></figure>
+<p>设置wifi自动连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.cnblogs.com/visionsl/p/8117317.html</span><br></pre></td></tr></table></figure>
+<p>安装P4wnp1 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get -y install git</span><br><span class="line">cd /home/pi</span><br><span class="line">git clone --recursive https://github.com/mame82/P4wnP1</span><br><span class="line">cd P4wnP1</span><br><span class="line">./install.sh</span><br></pre></td></tr></table></figure>
+<h2 id="2-kali更换国内源"><a href="#2-kali更换国内源" class="headerlink" title="2.kali更换国内源"></a>2.kali更换国内源</h2><h1 id="2-kali更换国内源-1"><a href="#2-kali更换国内源-1" class="headerlink" title="2.kali更换国内源"></a>2.kali更换国内源</h1><p>换中科大源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/apt/sources.list</span><br><span class="line"></span><br><span class="line">deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib</span><br><span class="line"></span><br><span class="line">签名错误</span><br><span class="line">wget -q -O - https://archive.kali.org/archive-key.asc | apt-key add</span><br><span class="line"></span><br><span class="line">apt-get update </span><br><span class="line">//刷新系统</span><br><span class="line"></span><br><span class="line">apt-get dist-upgrade</span><br><span class="line">//安装更新</span><br><span class="line"></span><br><span class="line"># python3下载</span><br><span class="line">下载源码</span><br><span class="line"></span><br><span class="line">cd Python-3.5.2</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line"></span><br><span class="line">Permission denied</span><br><span class="line">解决的办法：</span><br><span class="line">sudo chmod -R 777 configure</span><br></pre></td></tr></table></figure>
+<p>解决办法就是重新获取下签名key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -q -O - https://archive.kali.org/archive-key.asc | apt-key add</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/06/20/安洵杯CTF rfid题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="devil0x">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="devil0x菜鸟">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/20/安洵杯CTF rfid题/" itemprop="url">安洵杯CTF rfid题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-20T03:26:52+08:00">
+                2019-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="安洵杯CTF-rfid题"><a href="#安洵杯CTF-rfid题" class="headerlink" title="安洵杯CTF rfid题"></a>安洵杯CTF rfid题</h1><p>首先，这题我也没拿到flag，但是经过喵师傅的讲解，暂时把校验弄出来了。</p>
+<p>##　１．为啥自己看不出校验方法呢？我觉得吧，有以下几点需要注意应该会好很多:</p>
+<p>1.实验一种校验方法之后没有结果，不要死磕，换方法。</p>
+<p>2.加几个破解水卡的群，多接触各种稀奇古怪的校验方法。</p>
+<p>3.多练习多练习。。。。</p>
+<p>4.用好winhex，逆向计算器</p>
+<h6 id="5-最重要的，校验的奥义：羊毛出在羊身上。就是说，校验位在哪里，你可以通过多看几个数据的变化来看出。而校验的产生，总是遵循金额位的变化，校验不管咋变，都是金额位数值通过各种公式组合加计算出来的。"><a href="#5-最重要的，校验的奥义：羊毛出在羊身上。就是说，校验位在哪里，你可以通过多看几个数据的变化来看出。而校验的产生，总是遵循金额位的变化，校验不管咋变，都是金额位数值通过各种公式组合加计算出来的。" class="headerlink" title="5.最重要的，校验的奥义：羊毛出在羊身上。就是说，校验位在哪里，你可以通过多看几个数据的变化来看出。而校验的产生，总是遵循金额位的变化，校验不管咋变，都是金额位数值通过各种公式组合加计算出来的。"></a>5.最重要的，校验的奥义：羊毛出在羊身上。就是说，校验位在哪里，你可以通过多看几个数据的变化来看出。而校验的产生，总是遵循金额位的变化，校验不管咋变，都是金额位数值通过各种公式组合加计算出来的。</h6><h2 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h2><p>1.过一下题目 <img src="http://pico0ziv8.bkt.clouddn.com/18-11-28/94754972.jpg" alt></p>
+<p>2.题目提供了4个文件，12.66(2)明显有异常先略过</p>
+<p>3.先以15.00为例，12.76,12.66都是一样的规律。</p>
+<p>可以看出金额是15.00，根据1500十进制转换到十六进制结果为5 DC，故金额位还是常见的倒置转换。</p>
+<p><img src="http://pico0ziv8.bkt.clouddn.com/18-11-28/32155.jpg" alt></p>
+<p>4.下一步查看尾部的09 0D</p>
+<p>乍一看啥也看不出，我傻不愣登的还是用之前解学校水卡的方法算这个，发现结果总是+1或者-1.经喵神师傅点拨，应该是xor异或校验。</p>
+<p>故算一下DC xor 05的值 = </p>
+<p><img src="http://pico0ziv8.bkt.clouddn.com/18-11-28/20777601.jpg" alt></p>
+<p>出现了东西，因为校验位刚好09 0D。把其他为组也试了一下，通过。</p>
+<p>5。但是只发现一位，没法构建题目所需的233.00金额。</p>
+<p>然后发现DC xor 09 = </p>
+<p> <img src="C:\Users\skywa\AppData\Roaming\Typora\typora-user-images\1543335819698.png" alt></p>
+<p><img src="http://pico0ziv8.bkt.clouddn.com/18-11-28/1566315.jpg" alt></p>
+<p>还有这个联系。</p>
+<p>6.至此可以先构建23300这个金额以及校验位了</p>
+<p>23300十六进制之后 =  5b 04 </p>
+<p>再5b xor 04 =  5f</p>
+<p>先构建如下</p>
+<p><img src="http://pico0ziv8.bkt.clouddn.com/18-11-28/42871262.jpg" alt></p>
+<p>现在还不能百分百确定x这里该补什么</p>
+<p>再经过第二个异或算法：这个xf xor 04 = 5b</p>
+<p>所以反算xf = 5b xor 04</p>
+<p><img src="http://pico0ziv8.bkt.clouddn.com/18-11-28/96278271.jpg" alt></p>
+<p>确定x就是5。</p>
+<p>然后补上即可</p>
+<h2 id="3-but这两个地方我还是不会，我菜死了。。。。。"><a href="#3-but这两个地方我还是不会，我菜死了。。。。。" class="headerlink" title="3. but这两个地方我还是不会，我菜死了。。。。。"></a>3. but这两个地方我还是不会，我菜死了。。。。。</h2><p><img src="http://pico0ziv8.bkt.clouddn.com/18-11-28/40677886.jpg" alt></p>
+<p>所以还是没有flag难受啊！！！！</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/06/20/固定码逆向分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="devil0x">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="devil0x菜鸟">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/20/固定码逆向分析/" itemprop="url">固定码逆向分析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-20T03:26:52+08:00">
+                2019-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="固定码逆向分析"><a href="#固定码逆向分析" class="headerlink" title="固定码逆向分析"></a>固定码逆向分析</h1><p> 环境：kali</p>
+<h2 id="0x01-Analysis-信号分析"><a href="#0x01-Analysis-信号分析" class="headerlink" title="0x01. Analysis 信号分析"></a>0x01. <strong>Analysis 信号分析</strong></h2><p>分析信号可使用音频处理软件Audacity：</p>
+<p>不过这种方式需要肉眼将波形转化成0跟1，看起来比较容易眼花。so用软件辅助一下</p>
+<h2 id="1-1安装软件"><a href="#1-1安装软件" class="headerlink" title="1.1安装软件"></a>1.1<strong>安装软件</strong></h2><h3 id="1-inspectrum"><a href="#1-inspectrum" class="headerlink" title="1.inspectrum"></a>1.inspectrum</h3><p>在这篇文章中我们将通过inspectrum(<a href="https://github.com/miek/inspectrum" target="_blank" rel="noopener">https://github.com/miek/inspectrum</a>)这个工具来分析信号，配合Python将信号转成二进制数据。</p>
+<p>先安装所需的环境，再安装inspectrum。类似的软件还有DSpectrumGUI都行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install qt5-default libfftw3-dev cmake pkg-config libliquid-dev</span><br><span class="line">git clone https://github.com/miek/inspectrum.git </span><br><span class="line">mkdir build </span><br><span class="line">cd build </span><br><span class="line">cmake .. </span><br><span class="line">make </span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<h3 id="2-universal-radio-hacker-urh"><a href="#2-universal-radio-hacker-urh" class="headerlink" title="2. universal radio hacker(urh)"></a>2. universal radio hacker(urh)</h3><p>有windos版直接下载即可</p>
+<h3 id="3-HDSHR"><a href="#3-HDSHR" class="headerlink" title="3.HDSHR"></a>3.HDSHR</h3><p>下载之后需要加载一下rt sdr的驱动</p>
+<p>地址：<a href="https://github.com/devil0x/wireless-analyze/blob/master/%E8%BD%AF%E4%BB%B6/ExtIO_RTL2832.dll" target="_blank" rel="noopener">https://github.com/devil0x/wireless-analyze/blob/master/%E8%BD%AF%E4%BB%B6/ExtIO_RTL2832.dll</a></p>
+<p><img src="https://github.com/devil0x/picture/raw/master/1.19/2.png" alt></p>
+<p>即可开始监听特定频段。</p>
+<h2 id="0x02-分析文件"><a href="#0x02-分析文件" class="headerlink" title="0x02.分析文件"></a>0x02.分析文件</h2><p>文件地址：<a href="https://github.com/mobier/WirelessSample" target="_blank" rel="noopener">https://github.com/mobier/WirelessSample</a></p>
+<h3 id="1-原理"><a href="#1-原理" class="headerlink" title="1.原理"></a>1.原理</h3><p><img src="https://image.3001.net/images/20181211/1544496759_5c0f2677573f8.png!small" alt></p>
+<p>摘抄：信号脉冲的宽度跟电压，震荡电阻是有关系的。我们可以算出信号的震荡周期（a=两倍的时钟震荡周期）f=2100016/Rosc(kΩ) kHz 其中 Rosc 为振荡电阻。</p>
+<p>我们来看下这两种信号的区别，第一种信号吧 Bit1 相当于 12A 宽度的高电平脉冲加 4A 宽度低电平的脉冲重复一次，而BIt0正好相反是 4a 高在是 12a 的低重复一次。然后说下 BitF，BitF 只会出现在地址位里面，代表该地址位引脚悬空，后面会提到，无效码则不可能出现在 2262 这种协议中，如果出现了只能表示这个信号是 2240 的。</p>
+<p>现在来说下第二种信号格式，第二种与第一种不同，非常明显能看出来第一种是把一段信号重复了两次来表示BIT1 和 BIT0，并且有三种表示方式。第二种呢就是 12A 宽度的高电平脉冲信号加上 4A 的低电平宽度脉冲信号就是 BIT1，相反的就是 BIT0，并且不像第一种那样数据有 3 种表示方式。</p>
+<h3 id="2-PT226X"><a href="#2-PT226X" class="headerlink" title="2.PT226X"></a>2.PT226X</h3><p><img src="https://image.3001.net/images/20181211/1544496739_5c0f2663762a9.png!small" alt></p>
+<p>首先来看一下PT226x的结构</p>
+<p>案例是录制的门铃的文件，433.92mhz，ASK调制。</p>
+<p><img src="C:\Users\skywa\Pictures\1.19\3.png" alt></p>
+<p>录制的文件是raw格式，我用的win10的udr打开的该文件。</p>
+<p><img src="https://github.com/devil0x/picture/raw/master/1.19/4.png" alt></p>
+<p>选择ask解调。</p>
+<p>再放大即可</p>
+<p><img src="https://github.com/devil0x/picture/raw/master/1.19/6.png" alt></p>
+<p>前部是4bit同步码，后半部分根据结构看的话，先是地址码，再之后为数据码。</p>
+<p>图中红线圈起来的刚好是与开始的案例相同的即：FFF0FFFF，再后边的数据码是1111。比对方式见开头图片关于PT226x的部分</p>
+<p>当然用另一种方法，直接在选择这样配置即可看出每段的二进制数据。</p>
+<p>1是11101110</p>
+<p>0是10001000</p>
+<p>F是10001110</p>
+<p><img src="https://github.com/devil0x/picture/raw/master/1.19/13.png" alt></p>
+<h3 id="3-PT224X"><a href="#3-PT224X" class="headerlink" title="3.PT224X"></a>3.PT224X</h3><p><img src="https://image.3001.net/images/20181211/1544496739_5c0f266399bbe.png!small" alt></p>
+<p>首先依旧是PT224X的结构部分，同样是先同步码后地址码再数据位的结构。</p>
+<p>区别就是位数更长。还有一个区别2240和2262的方法，只要有F就肯定是226X。</p>
+<p>案例给了2个录制好的文件，一个niu2.cs8，另一个PT2242.cs8。直接拖进urh打开是混乱的，可以先用audacity选择导入原数据。</p>
+<p><img src="https://github.com/devil0x/picture/raw/master/1.19/8.png" alt></p>
+<p>其次再选中空白部分直接剪掉即可，在导出为wav文件，直接用urh打开就可以看到波形图，再ASK调制，下方有个Autodetect parameters按钮点击一下即可，然后即可看出转换出的二进制数据。当然也可以选择inspectrum进行，但是感觉用urh似乎跟简单一些。</p>
+<p><img src="https://github.com/devil0x/picture/raw/master/1.19/11.png" alt></p>
+<p>然后底下就可以看出了、</p>
+<p><img src="https://github.com/devil0x/picture/raw/master/1.19/12.png" alt></p>
+<p>首先是1以及后边一大串空白是同步码，再然后底下 即可看出了，但是要记得在每行的最后一位空一个1，这个是下一段同步码的开始点位。现在选中的地方就是地址码加数据码的数据，没一个二进制数据由4个数字组成，Bit1 相当于 12A 宽度的高电平脉冲加 4A 宽度低电平的脉冲重复一次，而BIt0正好相反是 4a 高在是 12a 的低重复一次。</p>
+<p>然后直接可以看出1000代表0,1110代表1.</p>
+<h2 id="0x02-自制设备"><a href="#0x02-自制设备" class="headerlink" title="0x02.自制设备"></a>0x02.自制设备</h2><p>在淘宝可以搜到很多的非法设备，such as ：a890，还有什么d10m啥的，一般在淘宝咸鱼都是这样婶儿的。。。</p>
+<p><img src="https://github.com/devil0x/picture/raw/master/1.19/15.png" alt></p>
+<p><img src="https://github.com/devil0x/picture/raw/master/1.19/14.png" alt></p>
+<p>一般通常都是用来破解某些东西，自制的话用arduino+cc1101即可。cc1101一般淘宝买的版本呢，中心频率都工作在433mhz，但是并不代表不可以在315工作，cc1101 有各种型号such as ：cc1101 rgpt 这种low power sub -1Ghz。</p>
+<h3 id="工的话有这么几种："><a href="#工的话有这么几种：" class="headerlink" title="工的话有这么几种："></a>工的话有这么几种：</h3><h4 id="1-嗅探攻击"><a href="#1-嗅探攻击" class="headerlink" title="1.嗅探攻击"></a>1.嗅探攻击</h4><h6 id="嗅探到遥控器发射的-信号，再重放出去。"><a href="#嗅探到遥控器发射的-信号，再重放出去。" class="headerlink" title="嗅探到遥控器发射的 信号，再重放出去。"></a>嗅探到遥控器发射的 信号，再重放出去。</h6><h4 id="2-嗅探地址码"><a href="#2-嗅探地址码" class="headerlink" title="2.嗅探地址码"></a>2.嗅探地址码</h4><h6 id="因为地址码确定之后，数据码一般来说只有4种可能：1000-0100-0010-0001。such-as：通过嗅探一串锁车代码就能知道其他开车功能了。"><a href="#因为地址码确定之后，数据码一般来说只有4种可能：1000-0100-0010-0001。such-as：通过嗅探一串锁车代码就能知道其他开车功能了。" class="headerlink" title="因为地址码确定之后，数据码一般来说只有4种可能：1000,0100,0010,0001。such as：通过嗅探一串锁车代码就能知道其他开车功能了。"></a>因为地址码确定之后，数据码一般来说只有4种可能：1000,0100,0010,0001。such as：通过嗅探一串锁车代码就能知道其他开车功能了。</h6><h4 id="3-嗅探攻击"><a href="#3-嗅探攻击" class="headerlink" title="3.嗅探攻击"></a>3.嗅探攻击</h4><h6 id="暴力破解去枚举地址码。"><a href="#暴力破解去枚举地址码。" class="headerlink" title="暴力破解去枚举地址码。"></a>暴力破解去枚举地址码。</h6><h4 id="cc1101-arduino我不会"><a href="#cc1101-arduino我不会" class="headerlink" title="cc1101+arduino我不会"></a>cc1101+arduino我不会</h4><h3 id="用的arduino-超再生模块，RCswitch-h库实现"><a href="#用的arduino-超再生模块，RCswitch-h库实现" class="headerlink" title="用的arduino+超再生模块，RCswitch.h库实现"></a>用的arduino+超再生模块，RCswitch.h库实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;RCSwitch.h&gt;</span><br><span class="line"></span><br><span class="line">RCSwitch mySwitch = RCSwitch();</span><br><span class="line"></span><br><span class="line">void setup() &#123;</span><br><span class="line">  Serial.begin(9600);</span><br><span class="line">  mySwitch.enableTransmit(9);    // 定义发送模块的数据传输针脚</span><br><span class="line">  mySwitch.setPulseLength(170);   // 定义脉冲长度，这个值具体看你使用的遥控器而定</span><br><span class="line">&#125;</span><br><span class="line">void loop() </span><br><span class="line">&#123;</span><br><span class="line">      mySwitch.send(&quot;101111010010110011001&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以输出，but没有电动车去做实验。</p>
+<p>。。。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1851,7 +1931,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

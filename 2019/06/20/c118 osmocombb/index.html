@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="Ubuntu 编译 OsmocomBB 环境 1.前提准备OsmocomBB项目的所有文章都在这个地址 https://osmocom.org/projects/baseband/wiki ，这里详细记录了每一个细节，请自行研读，博主只写了环境搭建的部分。 MS：Mobile Station，移动终端；IMSI：International Mobile Subscriber Identity，国际">
+<meta name="description" content="title:Ubuntu编译OsmocomBB 环境前提准备OsmocomBB项目的所有文章都在这个地址 https://osmocom.org/projects/baseband/wiki ，这里详细记录了每一个细节，请自行研读，博主只写了环境搭建的部分。 MS：Mobile Station，移动终端；IMSI：International Mobile Subscriber Identity，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="devil0x菜鸟">
 <meta property="og:url" content="https://devil0x.github.io/2019/06/20/c118 osmocombb/index.html">
 <meta property="og:site_name" content="devil0x菜鸟">
-<meta property="og:description" content="Ubuntu 编译 OsmocomBB 环境 1.前提准备OsmocomBB项目的所有文章都在这个地址 https://osmocom.org/projects/baseband/wiki ，这里详细记录了每一个细节，请自行研读，博主只写了环境搭建的部分。 MS：Mobile Station，移动终端；IMSI：International Mobile Subscriber Identity，国际">
+<meta property="og:description" content="title:Ubuntu编译OsmocomBB 环境前提准备OsmocomBB项目的所有文章都在这个地址 https://osmocom.org/projects/baseband/wiki ，这里详细记录了每一个细节，请自行研读，博主只写了环境搭建的部分。 MS：Mobile Station，移动终端；IMSI：International Mobile Subscriber Identity，">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.vuln.cn/wp-content/uploads/drops/20160106/201601061509262473932.jpg">
 <meta property="og:image" content="https://github.com/devil0x/picture/raw/master/5.14/3.png">
@@ -94,10 +94,10 @@
 <meta property="og:image" content="https://github.com/devil0x/picture/raw/master/5.14/6.png">
 <meta property="og:image" content="https://github.com/devil0x/picture/raw/master/5.14/7.jpg">
 <meta property="og:image" content="https://github.com/devil0x/picture/raw/master/5.14/8.png">
-<meta property="og:updated_time" content="2019-07-12T01:43:03.251Z">
+<meta property="og:updated_time" content="2019-10-25T12:22:11.323Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="devil0x菜鸟">
-<meta name="twitter:description" content="Ubuntu 编译 OsmocomBB 环境 1.前提准备OsmocomBB项目的所有文章都在这个地址 https://osmocom.org/projects/baseband/wiki ，这里详细记录了每一个细节，请自行研读，博主只写了环境搭建的部分。 MS：Mobile Station，移动终端；IMSI：International Mobile Subscriber Identity，国际">
+<meta name="twitter:description" content="title:Ubuntu编译OsmocomBB 环境前提准备OsmocomBB项目的所有文章都在这个地址 https://osmocom.org/projects/baseband/wiki ，这里详细记录了每一个细节，请自行研读，博主只写了环境搭建的部分。 MS：Mobile Station，移动终端；IMSI：International Mobile Subscriber Identity，">
 <meta name="twitter:image" content="http://www.vuln.cn/wp-content/uploads/drops/20160106/201601061509262473932.jpg">
 
 
@@ -308,8 +308,8 @@
       
 
       
-        <p>Ubuntu 编译 OsmocomBB 环境</p>
-<h1 id="1-前提准备"><a href="#1-前提准备" class="headerlink" title="1.前提准备"></a>1.前提准备</h1><p>OsmocomBB项目的所有文章都在这个地址 <a href="https://osmocom.org/projects/baseband/wiki" target="_blank" rel="noopener">https://osmocom.org/projects/baseband/wiki </a>，这里详细记录了每一个细节，请自行研读，博主只写了环境搭建的部分。</p>
+        <hr>
+<h2 id="title-Ubuntu编译OsmocomBB-环境"><a href="#title-Ubuntu编译OsmocomBB-环境" class="headerlink" title="title:Ubuntu编译OsmocomBB 环境"></a>title:Ubuntu编译OsmocomBB 环境</h2><h1 id="前提准备"><a href="#前提准备" class="headerlink" title="前提准备"></a>前提准备</h1><p>OsmocomBB项目的所有文章都在这个地址 <a href="https://osmocom.org/projects/baseband/wiki" target="_blank" rel="noopener">https://osmocom.org/projects/baseband/wiki </a>，这里详细记录了每一个细节，请自行研读，博主只写了环境搭建的部分。</p>
 <p>MS：Mobile Station，移动终端；<br>IMSI：International Mobile Subscriber Identity，国际移动用户标识号，是TD系统分给用户的唯一标识号，它存储在SIM卡、HLR/VLR中，最多由15个数字组成；<br>MCC：Mobile Country Code，是移动用户的国家号，中国是460；<br>MNC：Mobile Network Code ，是移动用户的所属PLMN网号，中国移动为00、02，中国联通为01；<br>MSIN：Mobile Subscriber Identification Number，是移动用户标识；<br>NMSI：National Mobile Subscriber Identification，是在某一国家内MS唯一的识别码；<br>BTS：Base Transceiver Station，基站收发器；<br>BSC：Base Station Controller，基站控制器；<br>MSC：Mobile Switching Center，移动交换中心。移动网络完成呼叫连接、过区切换控制、无线信道管理等功能的设备，同时也是移动网与公用电话交换网(PSTN)、综合业务数字网(ISDN)等固定网的接口设备；<br>HLR：Home location register。保存用户的基本信息，如你的SIM的卡号、手机号码、签约信息等，和动态信息，如当前的位置、是否已经关机等；<br>VLR：Visiting location register，保存的是用户的动态信息和状态信息，以及从HLR下载的用户的签约信息；<br>CCCH：Common Control CHannel，公共控制信道。是一种“一点对多点”的双向控制信道，其用途是在呼叫接续阶段，传输链路连接所需要的控制信令与信息。</p>
 <h2 id="0x01-准备c118"><a href="#0x01-准备c118" class="headerlink" title="0x01.准备c118"></a>0x01.准备c118</h2><ul>
 <li>MotorolaC123/C121/C118 (E88) — our primary target</li>
@@ -420,7 +420,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/20/gps欺骗/" rel="prev" title>
+              <a href="/2019/06/20/python study/" rel="prev" title>
                  <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -499,7 +499,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -536,7 +536,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-前提准备"><span class="nav-number">1.</span> <span class="nav-text">1.前提准备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-准备c118"><span class="nav-number">1.1.</span> <span class="nav-text">0x01.准备c118</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-USB转串口模块"><span class="nav-number">1.2.</span> <span class="nav-text">0x02. USB转串口模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03-系统要求"><span class="nav-number">1.3.</span> <span class="nav-text">0x03.系统要求</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-创建ARM编译环境（armtoolchain）"><span class="nav-number">2.</span> <span class="nav-text">2.创建ARM编译环境（armtoolchain）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-编译osmocombb"><span class="nav-number">3.</span> <span class="nav-text">3.编译osmocombb</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-实战操作"><span class="nav-number">4.</span> <span class="nav-text">4.实战操作</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title-Ubuntu编译OsmocomBB-环境"><span class="nav-number">1.</span> <span class="nav-text">title:Ubuntu编译OsmocomBB 环境</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#前提准备"><span class="nav-number"></span> <span class="nav-text">前提准备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-准备c118"><span class="nav-number">1.</span> <span class="nav-text">0x01.准备c118</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-USB转串口模块"><span class="nav-number">2.</span> <span class="nav-text">0x02. USB转串口模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x03-系统要求"><span class="nav-number">3.</span> <span class="nav-text">0x03.系统要求</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-创建ARM编译环境（armtoolchain）"><span class="nav-number"></span> <span class="nav-text">2.创建ARM编译环境（armtoolchain）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-编译osmocombb"><span class="nav-number"></span> <span class="nav-text">3.编译osmocombb</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-实战操作"><span class="nav-number"></span> <span class="nav-text">4.实战操作</span></a></li></div>
             
 
           </div>

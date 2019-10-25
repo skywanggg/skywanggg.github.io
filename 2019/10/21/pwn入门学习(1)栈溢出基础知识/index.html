@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="pwntoolsprocess 指向本地路径remote(“IP”,port)指向地址还有端口p64打包(可以吧数字转换到小端法)，u64解包(还原回去)context.binary= 设置上下文asm remote(&amp;quot;一个域名或者ip地址&amp;quot;, 端口) 会连接到我们指定的地址及端口。 然后该函数会返回remote对象 (这里，我们将该对象保存到了变量 c). remote对象主">
+<meta name="description" content="title:pwn入门学习(1)栈溢出基础知识栈溢出基础知识栈的介绍栈是一种典型的后进先出 (Last in First Out) 的数据结构，其操作主要有压栈 (push) 与出栈 (pop) 两种操作，如下图所示（维基百科）。两种操作都操作栈顶，当然，它也有栈底。  高级语言在运行时都会被转换为汇编程序，在汇编程序运行过程中，充分利用了这一数据结构。每个程序在运行时都有虚拟地址空间，其中某一">
 <meta property="og:type" content="article">
 <meta property="og:title" content="devil0x菜鸟">
-<meta property="og:url" content="https://devil0x.github.io/2019/10/21/pwn基础知识/index.html">
+<meta property="og:url" content="https://devil0x.github.io/2019/10/21/pwn入门学习(1)栈溢出基础知识/index.html">
 <meta property="og:site_name" content="devil0x菜鸟">
-<meta property="og:description" content="pwntoolsprocess 指向本地路径remote(“IP”,port)指向地址还有端口p64打包(可以吧数字转换到小端法)，u64解包(还原回去)context.binary= 设置上下文asm remote(&amp;quot;一个域名或者ip地址&amp;quot;, 端口) 会连接到我们指定的地址及端口。 然后该函数会返回remote对象 (这里，我们将该对象保存到了变量 c). remote对象主">
+<meta property="og:description" content="title:pwn入门学习(1)栈溢出基础知识栈溢出基础知识栈的介绍栈是一种典型的后进先出 (Last in First Out) 的数据结构，其操作主要有压栈 (push) 与出栈 (pop) 两种操作，如下图所示（维基百科）。两种操作都操作栈顶，当然，它也有栈底。  高级语言在运行时都会被转换为汇编程序，在汇编程序运行过程中，充分利用了这一数据结构。每个程序在运行时都有虚拟地址空间，其中某一">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ctf-wiki.github.io/ctf-wiki/pwn/linux/stackoverflow/figure/Data_stack.png">
-<meta property="og:updated_time" content="2019-10-22T16:04:29.726Z">
+<meta property="og:updated_time" content="2019-10-25T12:18:39.602Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="devil0x菜鸟">
-<meta name="twitter:description" content="pwntoolsprocess 指向本地路径remote(“IP”,port)指向地址还有端口p64打包(可以吧数字转换到小端法)，u64解包(还原回去)context.binary= 设置上下文asm remote(&amp;quot;一个域名或者ip地址&amp;quot;, 端口) 会连接到我们指定的地址及端口。 然后该函数会返回remote对象 (这里，我们将该对象保存到了变量 c). remote对象主">
+<meta name="twitter:description" content="title:pwn入门学习(1)栈溢出基础知识栈溢出基础知识栈的介绍栈是一种典型的后进先出 (Last in First Out) 的数据结构，其操作主要有压栈 (push) 与出栈 (pop) 两种操作，如下图所示（维基百科）。两种操作都操作栈顶，当然，它也有栈底。  高级语言在运行时都会被转换为汇编程序，在汇编程序运行过程中，充分利用了这一数据结构。每个程序在运行时都有虚拟地址空间，其中某一">
 <meta name="twitter:image" content="https://ctf-wiki.github.io/ctf-wiki/pwn/linux/stackoverflow/figure/Data_stack.png">
 
 
@@ -121,7 +121,7 @@
 
 
 
-  <link rel="canonical" href="https://devil0x.github.io/2019/10/21/pwn基础知识/">
+  <link rel="canonical" href="https://devil0x.github.io/2019/10/21/pwn入门学习(1)栈溢出基础知识/">
 
 
 
@@ -234,7 +234,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/10/21/pwn基础知识/">
+    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/10/21/pwn入门学习(1)栈溢出基础知识/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="devil0x">
@@ -301,18 +301,8 @@
       
 
       
-        <h2 id="pwntools"><a href="#pwntools" class="headerlink" title="pwntools"></a>pwntools</h2><p>process 指向本地路径<br>remote(“IP”,port)指向地址还有端口<br>p64打包(可以吧数字转换到小端法)，u64解包(还原回去)<br>context.binary= 设置上下文<br>asm</p>
-<p><code>remote(&quot;一个域名或者ip地址&quot;, 端口)</code> 会连接到我们指定的地址及端口。 然后该函数会返回remote对象 (这里，我们将该对象保存到了变量 <code>c</code>). remote对象主要用来进行对远程主机的输入输出. 它有如下几个方法：</p>
-<ul>
-<li><code>send(payload)</code> 发送payload</li>
-<li><code>sendline(payload)</code> 发送payload，并进行换行（末尾<strong>\n</strong>）</li>
-<li><code>sendafter(some_string, payload)</code> 接收到 some_string 后, 发送你的 payload</li>
-<li><code>recvn(N)</code> 接受 N(数字) 字符</li>
-<li><code>recvline()</code> 接收一行输出</li>
-<li><code>recvlines(N)</code> 接收 N(数字) 行输出</li>
-<li><code>recvuntil(some_string)</code> 接收到 some_string 为止</li>
-</ul>
-<h1 id="pwn基础知识"><a href="#pwn基础知识" class="headerlink" title="pwn基础知识"></a>pwn基础知识</h1><h2 id="栈的介绍"><a href="#栈的介绍" class="headerlink" title="栈的介绍"></a>栈的介绍</h2><p>栈是一种典型的后进先出 (Last in First Out) 的数据结构，其操作主要有压栈 (push) 与出栈 (pop) 两种操作，如下图所示（维基百科）。两种操作都操作栈顶，当然，它也有栈底。</p>
+        <hr>
+<h2 id="title-pwn入门学习-1-栈溢出基础知识"><a href="#title-pwn入门学习-1-栈溢出基础知识" class="headerlink" title="title:pwn入门学习(1)栈溢出基础知识"></a>title:pwn入门学习(1)栈溢出基础知识</h2><h1 id="栈溢出基础知识"><a href="#栈溢出基础知识" class="headerlink" title="栈溢出基础知识"></a>栈溢出基础知识</h1><h2 id="栈的介绍"><a href="#栈的介绍" class="headerlink" title="栈的介绍"></a>栈的介绍</h2><p>栈是一种典型的后进先出 (Last in First Out) 的数据结构，其操作主要有压栈 (push) 与出栈 (pop) 两种操作，如下图所示（维基百科）。两种操作都操作栈顶，当然，它也有栈底。</p>
 <p><img src="https://ctf-wiki.github.io/ctf-wiki/pwn/linux/stackoverflow/figure/Data_stack.png" alt="基本栈操作"></p>
 <p>高级语言在运行时都会被转换为汇编程序，在汇编程序运行过程中，充分利用了这一数据结构。每个程序在运行时都有虚拟地址空间，其中某一部分就是该程序对应的栈，用于保存函数调用信息和局部变量。此外，常见的操作也是压栈与出栈。需要注意的是，<strong>程序的栈是从进程地址空间的高地址向低地址增长的</strong>。</p>
 <h2 id="函数调用栈"><a href="#函数调用栈" class="headerlink" title="函数调用栈"></a>函数调用栈</h2><p>需要注意的是，32 位和 64 位程序有以下简单的区别</p>
@@ -437,8 +427,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/22/二进制常见/" rel="prev" title>
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/10/22/二进制常见/" rel="prev" title="常见函数与汇编指令">
+                常见函数与汇编指令 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -516,7 +506,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -553,7 +543,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#pwntools"><span class="nav-number">1.</span> <span class="nav-text">pwntools</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#pwn基础知识"><span class="nav-number"></span> <span class="nav-text">pwn基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#栈的介绍"><span class="nav-number">1.</span> <span class="nav-text">栈的介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数调用栈"><span class="nav-number">2.</span> <span class="nav-text">函数调用栈</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#栈溢出原理"><span class="nav-number"></span> <span class="nav-text">栈溢出原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本示例"><span class="nav-number">2.</span> <span class="nav-text">基本示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小总结"><span class="nav-number">3.</span> <span class="nav-text">小总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#寻找危险函数"><span class="nav-number">3.1.</span> <span class="nav-text">寻找危险函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#确定填充长度"><span class="nav-number">3.2.</span> <span class="nav-text">确定填充长度</span></a></li></ol></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title-pwn入门学习-1-栈溢出基础知识"><span class="nav-number">1.</span> <span class="nav-text">title:pwn入门学习(1)栈溢出基础知识</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#栈溢出基础知识"><span class="nav-number"></span> <span class="nav-text">栈溢出基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#栈的介绍"><span class="nav-number">1.</span> <span class="nav-text">栈的介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数调用栈"><span class="nav-number">2.</span> <span class="nav-text">函数调用栈</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#栈溢出原理"><span class="nav-number"></span> <span class="nav-text">栈溢出原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本示例"><span class="nav-number">2.</span> <span class="nav-text">基本示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小总结"><span class="nav-number">3.</span> <span class="nav-text">小总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#寻找危险函数"><span class="nav-number">3.1.</span> <span class="nav-text">寻找危险函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#确定填充长度"><span class="nav-number">3.2.</span> <span class="nav-text">确定填充长度</span></a></li></ol></li></ol></li></div>
             
 
           </div>

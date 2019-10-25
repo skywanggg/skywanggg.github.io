@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="入门学习基本 ROP随着 NX 保护的开启，以往直接向栈或者堆上直接注入代码的方式难以继续发挥效果。攻击者们也提出来相应的方法来绕过保护，目前主要的是 ROP(Return Oriented Programming)，其主要思想是在栈缓冲区溢出的基础上，利用程序中已有的小片段 (gadgets) 来改变某些寄存器或者变量的值，从而控制程序的执行流程。所谓 gadgets 就是以 ret 结尾的指令">
+<meta name="description" content="title:Pwn入门学习(2)入门学习基本 ROP随着 NX 保护的开启，以往直接向栈或者堆上直接注入代码的方式难以继续发挥效果。攻击者们也提出来相应的方法来绕过保护，目前主要的是 ROP(Return Oriented Programming)，其主要思想是在栈缓冲区溢出的基础上，利用程序中已有的小片段 (gadgets) 来改变某些寄存器或者变量的值，从而控制程序的执行流程。所谓 gadg">
 <meta property="og:type" content="article">
 <meta property="og:title" content="devil0x菜鸟">
-<meta property="og:url" content="https://devil0x.github.io/2019/10/14/PWN入门学习/index.html">
+<meta property="og:url" content="https://devil0x.github.io/2019/10/14/PWN入门学习(2)基本的ROP/index.html">
 <meta property="og:site_name" content="devil0x菜鸟">
-<meta property="og:description" content="入门学习基本 ROP随着 NX 保护的开启，以往直接向栈或者堆上直接注入代码的方式难以继续发挥效果。攻击者们也提出来相应的方法来绕过保护，目前主要的是 ROP(Return Oriented Programming)，其主要思想是在栈缓冲区溢出的基础上，利用程序中已有的小片段 (gadgets) 来改变某些寄存器或者变量的值，从而控制程序的执行流程。所谓 gadgets 就是以 ret 结尾的指令">
+<meta property="og:description" content="title:Pwn入门学习(2)入门学习基本 ROP随着 NX 保护的开启，以往直接向栈或者堆上直接注入代码的方式难以继续发挥效果。攻击者们也提出来相应的方法来绕过保护，目前主要的是 ROP(Return Oriented Programming)，其主要思想是在栈缓冲区溢出的基础上，利用程序中已有的小片段 (gadgets) 来改变某些寄存器或者变量的值，从而控制程序的执行流程。所谓 gadg">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/0063hjnqly1g87euwegj4j30io089js6.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/0063hjnqly1g87f1gjc4jj308z055glu.jpg">
-<meta property="og:updated_time" content="2019-10-23T10:55:41.887Z">
+<meta property="og:updated_time" content="2019-10-25T12:16:20.492Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="devil0x菜鸟">
-<meta name="twitter:description" content="入门学习基本 ROP随着 NX 保护的开启，以往直接向栈或者堆上直接注入代码的方式难以继续发挥效果。攻击者们也提出来相应的方法来绕过保护，目前主要的是 ROP(Return Oriented Programming)，其主要思想是在栈缓冲区溢出的基础上，利用程序中已有的小片段 (gadgets) 来改变某些寄存器或者变量的值，从而控制程序的执行流程。所谓 gadgets 就是以 ret 结尾的指令">
+<meta name="twitter:description" content="title:Pwn入门学习(2)入门学习基本 ROP随着 NX 保护的开启，以往直接向栈或者堆上直接注入代码的方式难以继续发挥效果。攻击者们也提出来相应的方法来绕过保护，目前主要的是 ROP(Return Oriented Programming)，其主要思想是在栈缓冲区溢出的基础上，利用程序中已有的小片段 (gadgets) 来改变某些寄存器或者变量的值，从而控制程序的执行流程。所谓 gadg">
 <meta name="twitter:image" content="http://ww1.sinaimg.cn/large/0063hjnqly1g87euwegj4j30io089js6.jpg">
 
 
@@ -122,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="https://devil0x.github.io/2019/10/14/PWN入门学习/">
+  <link rel="canonical" href="https://devil0x.github.io/2019/10/14/PWN入门学习(2)基本的ROP/">
 
 
 
@@ -235,7 +235,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/10/14/PWN入门学习/">
+    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/10/14/PWN入门学习(2)基本的ROP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="devil0x">
@@ -302,7 +302,8 @@
       
 
       
-        <h1 id="入门学习"><a href="#入门学习" class="headerlink" title="入门学习"></a>入门学习</h1><h1 id="基本-ROP"><a href="#基本-ROP" class="headerlink" title="基本 ROP"></a>基本 ROP</h1><p>随着 NX 保护的开启，以往直接向栈或者堆上直接注入代码的方式难以继续发挥效果。攻击者们也提出来相应的方法来绕过保护，目前主要的是 ROP(Return Oriented Programming)，其主要思想是在<strong>栈缓冲区溢出的基础上，利用程序中已有的小片段 (gadgets) 来改变某些寄存器或者变量的值，从而控制程序的执行流程。</strong>所谓 gadgets 就是以 ret 结尾的指令序列，通过这些指令序列，我们可以修改某些地址的内容，方便控制程序的执行流程。</p>
+        <hr>
+<h2 id="title-Pwn入门学习-2"><a href="#title-Pwn入门学习-2" class="headerlink" title="title:Pwn入门学习(2)"></a>title:Pwn入门学习(2)</h2><h1 id="入门学习"><a href="#入门学习" class="headerlink" title="入门学习"></a>入门学习</h1><h1 id="基本-ROP"><a href="#基本-ROP" class="headerlink" title="基本 ROP"></a>基本 ROP</h1><p>随着 NX 保护的开启，以往直接向栈或者堆上直接注入代码的方式难以继续发挥效果。攻击者们也提出来相应的方法来绕过保护，目前主要的是 ROP(Return Oriented Programming)，其主要思想是在<strong>栈缓冲区溢出的基础上，利用程序中已有的小片段 (gadgets) 来改变某些寄存器或者变量的值，从而控制程序的执行流程。</strong>所谓 gadgets 就是以 ret 结尾的指令序列，通过这些指令序列，我们可以修改某些地址的内容，方便控制程序的执行流程。</p>
 <p>checksec看到的那些参数含义</p>
 <ul>
 <li>NX保护：<br>你不能执行我就不执行，栈里面的内容只负责把程序执行流引入到一个需要的汇编代码的位置处，然后调用程序自己的一些代码来实现攻击。你可以调用含有call或者ret代码这样就能一直连接下去。这就是大佬说的ROP链。</li>
@@ -321,10 +322,7 @@
 <p>在PIE没有开启的情况下，bss段的地址是固定的，所以，可以把shellcode写入bss段，然后跳转到bss段，然后执行shellcode。</p>
 </li>
 </ul>
-<ul>
-<li><h2 id="CTF-Wiki"><a href="#CTF-Wiki" class="headerlink" title="CTF-Wiki"></a>CTF-Wiki</h2></li>
-</ul>
-<h3 id="1-ret2text"><a href="#1-ret2text" class="headerlink" title="1.ret2text"></a>1.ret2text</h3><p>首先，查看一下程序的保护机制</p>
+<h2 id="CTF-Wiki"><a href="#CTF-Wiki" class="headerlink" title="CTF-Wiki"></a>CTF-Wiki</h2><h3 id="1-ret2text"><a href="#1-ret2text" class="headerlink" title="1.ret2text"></a>1.ret2text</h3><p>首先，查看一下程序的保护机制</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">➜  ret2text checksec ret2text</span><br><span class="line">    Arch:     i386-32-little</span><br><span class="line">    RELRO:    Partial RELRO</span><br><span class="line">    Stack:    No canary found</span><br><span class="line">    NX:       NX enabled</span><br><span class="line">    PIE:      No PIE (0x8048000)</span><br></pre></td></tr></table></figure>
 <p>–该字符串距离 ebp 的长度为 0x14，那么相应的栈结构为</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">             +-----------------+</span><br><span class="line">             |     retaddr     |</span><br><span class="line">             +-----------------+</span><br><span class="line">             |     saved ebp   |</span><br><span class="line">      ebp---&gt;+-----------------+</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">s,ebp-0x14--&gt;+-----------------+</span><br></pre></td></tr></table></figure>
@@ -391,8 +389,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/12/逆向学习/" rel="next" title>
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/2019/10/12/逆向学习/" rel="next" title="逆向学习">
+                <i class="fa fa-chevron-left"></i> 逆向学习
               </a>
             
           </div>
@@ -401,8 +399,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/16/1.测试文档/" rel="prev" title>
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/10/17/ubertooth环境搭建手册/" rel="prev" title="搭建ubertooth环境">
+                搭建ubertooth环境 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -480,7 +478,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -517,7 +515,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#入门学习"><span class="nav-number">1.</span> <span class="nav-text">入门学习</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本-ROP"><span class="nav-number">2.</span> <span class="nav-text">基本 ROP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CTF-Wiki"><span class="nav-number">2.1.</span> <span class="nav-text">CTF-Wiki</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-ret2text"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.ret2text</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-ret2shellcode"><span class="nav-number">2.2.</span> <span class="nav-text">2.ret2shellcode</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-ret2syscall"><span class="nav-number">2.2.1.</span> <span class="nav-text">3.ret2syscall</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-hello"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.hello</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bugku"><span class="nav-number">2.3.</span> <span class="nav-text">Bugku</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-pwn2"><span class="nav-number">2.3.1.</span> <span class="nav-text">2.pwn2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-pwn4"><span class="nav-number">2.3.2.</span> <span class="nav-text">3.pwn4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#极客大挑战2019"><span class="nav-number">2.4.</span> <span class="nav-text">极客大挑战2019</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-pwn2"><span class="nav-number">2.4.1.</span> <span class="nav-text">1.pwn2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Test"><span class="nav-number">2.5.</span> <span class="nav-text">Test</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-static-x86"><span class="nav-number">2.5.1.</span> <span class="nav-text">1.static x86</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#f"><span class="nav-number">2.5.2.</span> <span class="nav-text">f</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境安装"><span class="nav-number">2.6.</span> <span class="nav-text">环境安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-基础的ubuntu配置"><span class="nav-number">2.6.1.</span> <span class="nav-text">0x01 基础的ubuntu配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-换国内源"><span class="nav-number">2.6.1.1.</span> <span class="nav-text">1.换国内源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-换终端"><span class="nav-number">2.6.1.2.</span> <span class="nav-text">2.换终端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-趁手的python环境"><span class="nav-number">2.6.1.3.</span> <span class="nav-text">2.趁手的python环境</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3"><span class="nav-number">2.6.2.</span> <span class="nav-text">3.</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title-Pwn入门学习-2"><span class="nav-number">1.</span> <span class="nav-text">title:Pwn入门学习(2)</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#入门学习"><span class="nav-number"></span> <span class="nav-text">入门学习</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本-ROP"><span class="nav-number"></span> <span class="nav-text">基本 ROP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CTF-Wiki"><span class="nav-number">1.</span> <span class="nav-text">CTF-Wiki</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-ret2text"><span class="nav-number">1.1.</span> <span class="nav-text">1.ret2text</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-ret2shellcode"><span class="nav-number">2.</span> <span class="nav-text">2.ret2shellcode</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-ret2syscall"><span class="nav-number">2.1.</span> <span class="nav-text">3.ret2syscall</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-hello"><span class="nav-number">2.2.</span> <span class="nav-text">2.hello</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bugku"><span class="nav-number">3.</span> <span class="nav-text">Bugku</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-pwn2"><span class="nav-number">3.1.</span> <span class="nav-text">2.pwn2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-pwn4"><span class="nav-number">3.2.</span> <span class="nav-text">3.pwn4</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#极客大挑战2019"><span class="nav-number">4.</span> <span class="nav-text">极客大挑战2019</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-pwn2"><span class="nav-number">4.1.</span> <span class="nav-text">1.pwn2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Test"><span class="nav-number">5.</span> <span class="nav-text">Test</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-static-x86"><span class="nav-number">5.1.</span> <span class="nav-text">1.static x86</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#f"><span class="nav-number">5.2.</span> <span class="nav-text">f</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境安装"><span class="nav-number">6.</span> <span class="nav-text">环境安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0x01-基础的ubuntu配置"><span class="nav-number">6.1.</span> <span class="nav-text">0x01 基础的ubuntu配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-换国内源"><span class="nav-number">6.1.1.</span> <span class="nav-text">1.换国内源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-换终端"><span class="nav-number">6.1.2.</span> <span class="nav-text">2.换终端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-趁手的python环境"><span class="nav-number">6.1.3.</span> <span class="nav-text">2.趁手的python环境</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3"><span class="nav-number">6.2.</span> <span class="nav-text">3.</span></a></li></ol></li></ol></li></div>
             
 
           </div>

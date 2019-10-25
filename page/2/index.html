@@ -229,638 +229,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/06/20/常用设备配置/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="devil0x">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="devil0x菜鸟">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/20/常用设备配置/" itemprop="url">常用配置</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-20T03:26:52+08:00">
-                2019-06-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="1-树莓派"><a href="#1-树莓派" class="headerlink" title="1.树莓派"></a>1.树莓派</h1><h2 id="wifi配置"><a href="#wifi配置" class="headerlink" title="wifi配置"></a>wifi配置</h2><p>修改wifi连接</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/wpa_supplicant/wpa_supplicant.conf</span><br></pre></td></tr></table></figure>
-<p>设置wifi自动连接</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.cnblogs.com/visionsl/p/8117317.html</span><br></pre></td></tr></table></figure>
-<p>安装P4wnp1 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get -y install git</span><br><span class="line">cd /home/pi</span><br><span class="line">git clone --recursive https://github.com/mame82/P4wnP1</span><br><span class="line">cd P4wnP1</span><br><span class="line">./install.sh</span><br></pre></td></tr></table></figure>
-<h2 id="2-kali更换国内源"><a href="#2-kali更换国内源" class="headerlink" title="2.kali更换国内源"></a>2.kali更换国内源</h2><h1 id="2-kali更换国内源-1"><a href="#2-kali更换国内源-1" class="headerlink" title="2.kali更换国内源"></a>2.kali更换国内源</h1><p>换中科大源</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/apt/sources.list</span><br><span class="line"></span><br><span class="line">deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib</span><br><span class="line"></span><br><span class="line">签名错误</span><br><span class="line">wget -q -O - https://archive.kali.org/archive-key.asc | apt-key add</span><br><span class="line"></span><br><span class="line">apt-get update </span><br><span class="line">//刷新系统</span><br><span class="line"></span><br><span class="line">apt-get dist-upgrade</span><br><span class="line">//安装更新</span><br><span class="line"></span><br><span class="line"># python3下载</span><br><span class="line">下载源码</span><br><span class="line"></span><br><span class="line">cd Python-3.5.2</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line"></span><br><span class="line">Permission denied</span><br><span class="line">解决的办法：</span><br><span class="line">sudo chmod -R 777 configure</span><br></pre></td></tr></table></figure>
-<p>解决办法就是重新获取下签名key</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -q -O - https://archive.kali.org/archive-key.asc | apt-key add</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/06/20/安洵杯CTF rfid题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="devil0x">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="devil0x菜鸟">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/20/安洵杯CTF rfid题/" itemprop="url">安洵杯CTF rfid题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-20T03:26:52+08:00">
-                2019-06-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="安洵杯CTF-rfid题"><a href="#安洵杯CTF-rfid题" class="headerlink" title="安洵杯CTF rfid题"></a>安洵杯CTF rfid题</h1><p>首先，这题我也没拿到flag，但是经过喵师傅的讲解，暂时把校验弄出来了。</p>
-<p>##　１．为啥自己看不出校验方法呢？我觉得吧，有以下几点需要注意应该会好很多:</p>
-<p>1.实验一种校验方法之后没有结果，不要死磕，换方法。</p>
-<p>2.加几个破解水卡的群，多接触各种稀奇古怪的校验方法。</p>
-<p>3.多练习多练习。。。。</p>
-<p>4.用好winhex，逆向计算器</p>
-<h6 id="5-最重要的，校验的奥义：羊毛出在羊身上。就是说，校验位在哪里，你可以通过多看几个数据的变化来看出。而校验的产生，总是遵循金额位的变化，校验不管咋变，都是金额位数值通过各种公式组合加计算出来的。"><a href="#5-最重要的，校验的奥义：羊毛出在羊身上。就是说，校验位在哪里，你可以通过多看几个数据的变化来看出。而校验的产生，总是遵循金额位的变化，校验不管咋变，都是金额位数值通过各种公式组合加计算出来的。" class="headerlink" title="5.最重要的，校验的奥义：羊毛出在羊身上。就是说，校验位在哪里，你可以通过多看几个数据的变化来看出。而校验的产生，总是遵循金额位的变化，校验不管咋变，都是金额位数值通过各种公式组合加计算出来的。"></a>5.最重要的，校验的奥义：羊毛出在羊身上。就是说，校验位在哪里，你可以通过多看几个数据的变化来看出。而校验的产生，总是遵循金额位的变化，校验不管咋变，都是金额位数值通过各种公式组合加计算出来的。</h6><h2 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h2><p>1.过一下题目 <img src="http://pico0ziv8.bkt.clouddn.com/18-11-28/94754972.jpg" alt></p>
-<p>2.题目提供了4个文件，12.66(2)明显有异常先略过</p>
-<p>3.先以15.00为例，12.76,12.66都是一样的规律。</p>
-<p>可以看出金额是15.00，根据1500十进制转换到十六进制结果为5 DC，故金额位还是常见的倒置转换。</p>
-<p><img src="http://pico0ziv8.bkt.clouddn.com/18-11-28/32155.jpg" alt></p>
-<p>4.下一步查看尾部的09 0D</p>
-<p>乍一看啥也看不出，我傻不愣登的还是用之前解学校水卡的方法算这个，发现结果总是+1或者-1.经喵神师傅点拨，应该是xor异或校验。</p>
-<p>故算一下DC xor 05的值 = </p>
-<p><img src="http://pico0ziv8.bkt.clouddn.com/18-11-28/20777601.jpg" alt></p>
-<p>出现了东西，因为校验位刚好09 0D。把其他为组也试了一下，通过。</p>
-<p>5。但是只发现一位，没法构建题目所需的233.00金额。</p>
-<p>然后发现DC xor 09 = </p>
-<p> <img src="C:\Users\skywa\AppData\Roaming\Typora\typora-user-images\1543335819698.png" alt></p>
-<p><img src="http://pico0ziv8.bkt.clouddn.com/18-11-28/1566315.jpg" alt></p>
-<p>还有这个联系。</p>
-<p>6.至此可以先构建23300这个金额以及校验位了</p>
-<p>23300十六进制之后 =  5b 04 </p>
-<p>再5b xor 04 =  5f</p>
-<p>先构建如下</p>
-<p><img src="http://pico0ziv8.bkt.clouddn.com/18-11-28/42871262.jpg" alt></p>
-<p>现在还不能百分百确定x这里该补什么</p>
-<p>再经过第二个异或算法：这个xf xor 04 = 5b</p>
-<p>所以反算xf = 5b xor 04</p>
-<p><img src="http://pico0ziv8.bkt.clouddn.com/18-11-28/96278271.jpg" alt></p>
-<p>确定x就是5。</p>
-<p>然后补上即可</p>
-<h2 id="3-but这两个地方我还是不会，我菜死了。。。。。"><a href="#3-but这两个地方我还是不会，我菜死了。。。。。" class="headerlink" title="3. but这两个地方我还是不会，我菜死了。。。。。"></a>3. but这两个地方我还是不会，我菜死了。。。。。</h2><p><img src="http://pico0ziv8.bkt.clouddn.com/18-11-28/40677886.jpg" alt></p>
-<p>所以还是没有flag难受啊！！！！</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/06/20/固定码逆向分析/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="devil0x">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="devil0x菜鸟">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/20/固定码逆向分析/" itemprop="url">固定码逆向分析</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-20T03:26:52+08:00">
-                2019-06-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="固定码逆向分析"><a href="#固定码逆向分析" class="headerlink" title="固定码逆向分析"></a>固定码逆向分析</h1><p> 环境：kali</p>
-<h2 id="0x01-Analysis-信号分析"><a href="#0x01-Analysis-信号分析" class="headerlink" title="0x01. Analysis 信号分析"></a>0x01. <strong>Analysis 信号分析</strong></h2><p>分析信号可使用音频处理软件Audacity：</p>
-<p>不过这种方式需要肉眼将波形转化成0跟1，看起来比较容易眼花。so用软件辅助一下</p>
-<h2 id="1-1安装软件"><a href="#1-1安装软件" class="headerlink" title="1.1安装软件"></a>1.1<strong>安装软件</strong></h2><h3 id="1-inspectrum"><a href="#1-inspectrum" class="headerlink" title="1.inspectrum"></a>1.inspectrum</h3><p>在这篇文章中我们将通过inspectrum(<a href="https://github.com/miek/inspectrum" target="_blank" rel="noopener">https://github.com/miek/inspectrum</a>)这个工具来分析信号，配合Python将信号转成二进制数据。</p>
-<p>先安装所需的环境，再安装inspectrum。类似的软件还有DSpectrumGUI都行。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install qt5-default libfftw3-dev cmake pkg-config libliquid-dev</span><br><span class="line">git clone https://github.com/miek/inspectrum.git </span><br><span class="line">mkdir build </span><br><span class="line">cd build </span><br><span class="line">cmake .. </span><br><span class="line">make </span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
-<h3 id="2-universal-radio-hacker-urh"><a href="#2-universal-radio-hacker-urh" class="headerlink" title="2. universal radio hacker(urh)"></a>2. universal radio hacker(urh)</h3><p>有windos版直接下载即可</p>
-<h3 id="3-HDSHR"><a href="#3-HDSHR" class="headerlink" title="3.HDSHR"></a>3.HDSHR</h3><p>下载之后需要加载一下rt sdr的驱动</p>
-<p>地址：<a href="https://github.com/devil0x/wireless-analyze/blob/master/%E8%BD%AF%E4%BB%B6/ExtIO_RTL2832.dll" target="_blank" rel="noopener">https://github.com/devil0x/wireless-analyze/blob/master/%E8%BD%AF%E4%BB%B6/ExtIO_RTL2832.dll</a></p>
-<p><img src="https://github.com/devil0x/picture/raw/master/1.19/2.png" alt></p>
-<p>即可开始监听特定频段。</p>
-<h2 id="0x02-分析文件"><a href="#0x02-分析文件" class="headerlink" title="0x02.分析文件"></a>0x02.分析文件</h2><p>文件地址：<a href="https://github.com/mobier/WirelessSample" target="_blank" rel="noopener">https://github.com/mobier/WirelessSample</a></p>
-<h3 id="1-原理"><a href="#1-原理" class="headerlink" title="1.原理"></a>1.原理</h3><p><img src="https://image.3001.net/images/20181211/1544496759_5c0f2677573f8.png!small" alt></p>
-<p>摘抄：信号脉冲的宽度跟电压，震荡电阻是有关系的。我们可以算出信号的震荡周期（a=两倍的时钟震荡周期）f=2100016/Rosc(kΩ) kHz 其中 Rosc 为振荡电阻。</p>
-<p>我们来看下这两种信号的区别，第一种信号吧 Bit1 相当于 12A 宽度的高电平脉冲加 4A 宽度低电平的脉冲重复一次，而BIt0正好相反是 4a 高在是 12a 的低重复一次。然后说下 BitF，BitF 只会出现在地址位里面，代表该地址位引脚悬空，后面会提到，无效码则不可能出现在 2262 这种协议中，如果出现了只能表示这个信号是 2240 的。</p>
-<p>现在来说下第二种信号格式，第二种与第一种不同，非常明显能看出来第一种是把一段信号重复了两次来表示BIT1 和 BIT0，并且有三种表示方式。第二种呢就是 12A 宽度的高电平脉冲信号加上 4A 的低电平宽度脉冲信号就是 BIT1，相反的就是 BIT0，并且不像第一种那样数据有 3 种表示方式。</p>
-<h3 id="2-PT226X"><a href="#2-PT226X" class="headerlink" title="2.PT226X"></a>2.PT226X</h3><p><img src="https://image.3001.net/images/20181211/1544496739_5c0f2663762a9.png!small" alt></p>
-<p>首先来看一下PT226x的结构</p>
-<p>案例是录制的门铃的文件，433.92mhz，ASK调制。</p>
-<p><img src="C:\Users\skywa\Pictures\1.19\3.png" alt></p>
-<p>录制的文件是raw格式，我用的win10的udr打开的该文件。</p>
-<p><img src="https://github.com/devil0x/picture/raw/master/1.19/4.png" alt></p>
-<p>选择ask解调。</p>
-<p>再放大即可</p>
-<p><img src="https://github.com/devil0x/picture/raw/master/1.19/6.png" alt></p>
-<p>前部是4bit同步码，后半部分根据结构看的话，先是地址码，再之后为数据码。</p>
-<p>图中红线圈起来的刚好是与开始的案例相同的即：FFF0FFFF，再后边的数据码是1111。比对方式见开头图片关于PT226x的部分</p>
-<p>当然用另一种方法，直接在选择这样配置即可看出每段的二进制数据。</p>
-<p>1是11101110</p>
-<p>0是10001000</p>
-<p>F是10001110</p>
-<p><img src="https://github.com/devil0x/picture/raw/master/1.19/13.png" alt></p>
-<h3 id="3-PT224X"><a href="#3-PT224X" class="headerlink" title="3.PT224X"></a>3.PT224X</h3><p><img src="https://image.3001.net/images/20181211/1544496739_5c0f266399bbe.png!small" alt></p>
-<p>首先依旧是PT224X的结构部分，同样是先同步码后地址码再数据位的结构。</p>
-<p>区别就是位数更长。还有一个区别2240和2262的方法，只要有F就肯定是226X。</p>
-<p>案例给了2个录制好的文件，一个niu2.cs8，另一个PT2242.cs8。直接拖进urh打开是混乱的，可以先用audacity选择导入原数据。</p>
-<p><img src="https://github.com/devil0x/picture/raw/master/1.19/8.png" alt></p>
-<p>其次再选中空白部分直接剪掉即可，在导出为wav文件，直接用urh打开就可以看到波形图，再ASK调制，下方有个Autodetect parameters按钮点击一下即可，然后即可看出转换出的二进制数据。当然也可以选择inspectrum进行，但是感觉用urh似乎跟简单一些。</p>
-<p><img src="https://github.com/devil0x/picture/raw/master/1.19/11.png" alt></p>
-<p>然后底下就可以看出了、</p>
-<p><img src="https://github.com/devil0x/picture/raw/master/1.19/12.png" alt></p>
-<p>首先是1以及后边一大串空白是同步码，再然后底下 即可看出了，但是要记得在每行的最后一位空一个1，这个是下一段同步码的开始点位。现在选中的地方就是地址码加数据码的数据，没一个二进制数据由4个数字组成，Bit1 相当于 12A 宽度的高电平脉冲加 4A 宽度低电平的脉冲重复一次，而BIt0正好相反是 4a 高在是 12a 的低重复一次。</p>
-<p>然后直接可以看出1000代表0,1110代表1.</p>
-<h2 id="0x02-自制设备"><a href="#0x02-自制设备" class="headerlink" title="0x02.自制设备"></a>0x02.自制设备</h2><p>在淘宝可以搜到很多的非法设备，such as ：a890，还有什么d10m啥的，一般在淘宝咸鱼都是这样婶儿的。。。</p>
-<p><img src="https://github.com/devil0x/picture/raw/master/1.19/15.png" alt></p>
-<p><img src="https://github.com/devil0x/picture/raw/master/1.19/14.png" alt></p>
-<p>一般通常都是用来破解某些东西，自制的话用arduino+cc1101即可。cc1101一般淘宝买的版本呢，中心频率都工作在433mhz，但是并不代表不可以在315工作，cc1101 有各种型号such as ：cc1101 rgpt 这种low power sub -1Ghz。</p>
-<h3 id="工的话有这么几种："><a href="#工的话有这么几种：" class="headerlink" title="工的话有这么几种："></a>工的话有这么几种：</h3><h4 id="1-嗅探攻击"><a href="#1-嗅探攻击" class="headerlink" title="1.嗅探攻击"></a>1.嗅探攻击</h4><h6 id="嗅探到遥控器发射的-信号，再重放出去。"><a href="#嗅探到遥控器发射的-信号，再重放出去。" class="headerlink" title="嗅探到遥控器发射的 信号，再重放出去。"></a>嗅探到遥控器发射的 信号，再重放出去。</h6><h4 id="2-嗅探地址码"><a href="#2-嗅探地址码" class="headerlink" title="2.嗅探地址码"></a>2.嗅探地址码</h4><h6 id="因为地址码确定之后，数据码一般来说只有4种可能：1000-0100-0010-0001。such-as：通过嗅探一串锁车代码就能知道其他开车功能了。"><a href="#因为地址码确定之后，数据码一般来说只有4种可能：1000-0100-0010-0001。such-as：通过嗅探一串锁车代码就能知道其他开车功能了。" class="headerlink" title="因为地址码确定之后，数据码一般来说只有4种可能：1000,0100,0010,0001。such as：通过嗅探一串锁车代码就能知道其他开车功能了。"></a>因为地址码确定之后，数据码一般来说只有4种可能：1000,0100,0010,0001。such as：通过嗅探一串锁车代码就能知道其他开车功能了。</h6><h4 id="3-嗅探攻击"><a href="#3-嗅探攻击" class="headerlink" title="3.嗅探攻击"></a>3.嗅探攻击</h4><h6 id="暴力破解去枚举地址码。"><a href="#暴力破解去枚举地址码。" class="headerlink" title="暴力破解去枚举地址码。"></a>暴力破解去枚举地址码。</h6><h4 id="cc1101-arduino我不会"><a href="#cc1101-arduino我不会" class="headerlink" title="cc1101+arduino我不会"></a>cc1101+arduino我不会</h4><h3 id="用的arduino-超再生模块，RCswitch-h库实现"><a href="#用的arduino-超再生模块，RCswitch-h库实现" class="headerlink" title="用的arduino+超再生模块，RCswitch.h库实现"></a>用的arduino+超再生模块，RCswitch.h库实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;RCSwitch.h&gt;</span><br><span class="line"></span><br><span class="line">RCSwitch mySwitch = RCSwitch();</span><br><span class="line"></span><br><span class="line">void setup() &#123;</span><br><span class="line">  Serial.begin(9600);</span><br><span class="line">  mySwitch.enableTransmit(9);    // 定义发送模块的数据传输针脚</span><br><span class="line">  mySwitch.setPulseLength(170);   // 定义脉冲长度，这个值具体看你使用的遥控器而定</span><br><span class="line">&#125;</span><br><span class="line">void loop() </span><br><span class="line">&#123;</span><br><span class="line">      mySwitch.send(&quot;101111010010110011001&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>可以输出，but没有电动车去做实验。</p>
-<p>。。。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/06/20/ubuntu搭梯子/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="devil0x">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="devil0x菜鸟">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/20/ubuntu搭梯子/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-20T03:26:52+08:00">
-                2019-06-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<h2 id="ubuntu搭梯子"><a href="#ubuntu搭梯子" class="headerlink" title="ubuntu搭梯子"></a>ubuntu搭梯子</h2><ul>
-<li><h3 id="下载软件"><a href="#下载软件" class="headerlink" title="下载软件"></a>下载软件</h3></li>
-<li><ol>
-<li>点击左侧用户中心(手机需先点左上角按钮调出导航菜单)</li>
-<li>找到快速添加节点</li>
-<li>点击下载客户端</li>
-<li><img src="https://sscap.ml/images/c_win_1.png" alt="img"></li>
-</ol>
-</li>
-<li><h3 id="导入节点"><a href="#导入节点" class="headerlink" title="导入节点"></a>导入节点</h3></li>
-<li><ul>
-<li><p>解压客户端，双击shadowsocksr4.0的客户端(打不开就用2.0，2.0打不开请下载安装net.framework3.0，还打不开麻烦升级到win7)</p>
-</li>
-<li><p>方法一：</p>
-</li>
-<li><ol>
-<li>在快速添加节点中找到【备用节点导入方法】</li>
-<li>点击其中的链接</li>
-<li><p><img src="https://sscap.ml/images/c_win_2.png" alt="img"></p>
-</li>
-<li><p>找到系统托盘菜单中的SSR纸飞机图标右键调出菜单</p>
-</li>
-<li>点击剪贴板批量导入ssr://链接</li>
-<li><img src="https://sscap.ml/images/c_win_3.png" alt="img"></li>
-</ol>
-</li>
-<li><p>方法二(推荐)：</p>
-</li>
-<li><ol>
-<li>在快速添加节点中找到节点订阅地址</li>
-<li>点击按钮复制订阅链接</li>
-<li><p><img src="https://sscap.ml/images/c_win_4.png" alt="img"></p>
-</li>
-<li><p>找到系统托盘菜单中的SSR纸飞机图标右键调出菜单</p>
-</li>
-<li>打开SSR服务器订阅链接设置</li>
-<li><p><img src="https://sscap.ml/images/c_win_5.png" alt="img"></p>
-</li>
-<li><p>点击add添加一个订阅，将复制的链接填入右侧框内点击确定</p>
-</li>
-<li><p><img src="https://sscap.ml/images/c_win_6.png" alt="img"></p>
-</li>
-<li><p>找到系统托盘菜单中的SSR纸飞机图标右键调出菜单</p>
-</li>
-<li>点击更新SSR服务器订阅(不通过代理)</li>
-<li><img src="https://sscap.ml/images/c_win_7.png" alt="img"></li>
-</ol>
-</li>
-</ul>
-</li>
-<li><h3 id="选择节点"><a href="#选择节点" class="headerlink" title="选择节点"></a>选择节点</h3></li>
-<li><ol>
-<li>找到系统托盘菜单中的SSR纸飞机图标右键调出菜单</li>
-<li>服务器-&gt;找到对应本站的节点组-&gt;选择一个节点单击</li>
-<li><p><img src="https://sscap.ml/images/c_win_8.png" alt="img"></p>
-</li>
-<li><p>打开浏览器输入<a href="http://www.google.com试试吧！" target="_blank" rel="noopener">www.google.com试试吧！</a></p>
-</li>
-</ol>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/06/20/SYC第二次面试报告/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1449,7 +817,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/06/20/freebuf第一次/" itemprop="url">freebuf</a></h1>
+                <a class="post-title-link" href="/2019/06/20/freebuf第一次/" itemprop="url">freebuf第一次</a></h1>
         
 
         <div class="post-meta">
@@ -1612,131 +980,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/06/20/在下的玩具/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="devil0x">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="devil0x菜鸟">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/20/在下的玩具/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-20T03:26:51+08:00">
-                2019-06-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>我的手机 2019/3/29 18:11:33</p>
-<p>姓名：王进杰<br>账号：devil0x<br>密码：aGa4f6A3^FPZ</p>
-<p>快递<br>15183859340 Skywang144<br>15243894571<br>迅雷<br>账号17181444597—-qkkd2966<br>账号17102803402—-yagx9158<br>账号18349755288—-heku8080<br>账号16504466406—-qipg4708<br>账号13555091706—-cnuq1234<br>账号16505297304—-ijhm5070<br>账号13846568452—-pfog0471<br>账号16508923415—-wslg4913<br>账号16505472924—-amsk5318<br>账号15668353057—-bmyp4927<br>账号13188933583—-bemr6107<br>账号19942108016—-xqxb5655<br>账号15628830295—-bwct7461<br>账号17069740044—-ztot8853<br>账号13046019487—-eibh6469<br>账号16505474374—-nwqh6540<br>账号13127133291—-fdxh4967<br>账号15946350193—-twtl7673<br>账号17102807809—-pklf4355<br>账号17092902584—-yohg3402<br>账号17068785289—-sjvb6412<br>账号13297462295—-cvpg8225<br>账号16509121183—-gvcm6281</p>
-<p>卡密卡密<br>qq：2153808073—-pkni2345<br>微博<br>1。<a href="mailto:ygvzlu@163.com----hgiycnxaz" target="_blank" rel="noopener">ygvzlu@163.com----hgiycnxaz</a><br>2。<a href="mailto:kmqhmu@163.com----nzboyvvdk" target="_blank" rel="noopener">kmqhmu@163.com----nzboyvvdk</a><br>3。<a href="mailto:mgdiyo@163.com----kvqorysuz" target="_blank" rel="noopener">mgdiyo@163.com----kvqorysuz</a><br>4。<a href="mailto:wknrqi@163.com----odoxqacif" target="_blank" rel="noopener">wknrqi@163.com----odoxqacif</a><br>5。<a href="mailto:niitji@163.com----fahggeisl" target="_blank" rel="noopener">niitji@163.com----fahggeisl</a><br>6。<a href="mailto:fmcdxi@163.com----jsfochmlq" target="_blank" rel="noopener">fmcdxi@163.com----jsfochmlq</a><br>7。<a href="mailto:ilyuha@163.com----cqnvhgewo" target="_blank" rel="noopener">ilyuha@163.com----cqnvhgewo</a><br>8。<a href="mailto:kmyklu@163.com----jkhlkxdoa" target="_blank" rel="noopener">kmyklu@163.com----jkhlkxdoa</a><br>9。<a href="mailto:qkhshe@163.com----nbumihdxh" target="_blank" rel="noopener">qkhshe@163.com----nbumihdxh</a><br>10。<a href="mailto:iaenzh@163.com----dxazkufyp" target="_blank" rel="noopener">iaenzh@163.com----dxazkufyp</a><br>11。<a href="mailto:lblhsh@163.com----lrdtiwopu" target="_blank" rel="noopener">lblhsh@163.com----lrdtiwopu</a><br>12。<a href="mailto:whciya@163.com----tfdsuzjnk" target="_blank" rel="noopener">whciya@163.com----tfdsuzjnk</a><br>13。<a href="mailto:bssfdi@163.com----dafszhecj" target="_blank" rel="noopener">bssfdi@163.com----dafszhecj</a><br>14。<a href="mailto:zolcra@163.com----fwnbnrvhg" target="_blank" rel="noopener">zolcra@163.com----fwnbnrvhg</a><br>15。<a href="mailto:oajhbe@163.com----dayhnscvs" target="_blank" rel="noopener">oajhbe@163.com----dayhnscvs</a><br>16。<a href="mailto:mobtbe@163.com----nagvakmgi" target="_blank" rel="noopener">mobtbe@163.com----nagvakmgi</a><br>17。<a href="mailto:usczli@163.com----fvjqblrwl" target="_blank" rel="noopener">usczli@163.com----fvjqblrwl</a><br>18。<a href="mailto:oiszyu@163.com----jrtswuram" target="_blank" rel="noopener">oiszyu@163.com----jrtswuram</a><br>19。<a href="mailto:kfkyro@163.com----bgzdgbuhh" target="_blank" rel="noopener">kfkyro@163.com----bgzdgbuhh</a><br>20。<a href="mailto:jskhgu@163.com----rjogkzvel" target="_blank" rel="noopener">jskhgu@163.com----rjogkzvel</a><br>21。<a href="mailto:yqgpyi@163.com----cyokllatp" target="_blank" rel="noopener">yqgpyi@163.com----cyokllatp</a><br>22。<a href="mailto:uyktla@163.com----wsgtdwwgxk" target="_blank" rel="noopener">uyktla@163.com----wsgtdwwgxk</a><br>23。<a href="mailto:jptomi@163.com----xlzqvrqgu" target="_blank" rel="noopener">jptomi@163.com----xlzqvrqgu</a><br>24。<a href="mailto:xevitu@163.com----fdorjoyhq" target="_blank" rel="noopener">xevitu@163.com----fdorjoyhq</a><br>25。<a href="mailto:eelrch@163.com----xerjybpww" target="_blank" rel="noopener">eelrch@163.com----xerjybpww</a></p>
-<p>徒弟入口：<a href="http://hpg.zr44.com/public/apprentice.php" target="_blank" rel="noopener">http://hpg.zr44.com/public/apprentice.php</a> </p>
-<p>师傅入口：<a href="http://hpg.zr44.com/public/master.php" target="_blank" rel="noopener">http://hpg.zr44.com/public/master.php</a> 可以收藏登入 </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/06/20/python study/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1808,7 +1051,8 @@
       
         
           
-            <h1 id="0x01-py字符串类型"><a href="#0x01-py字符串类型" class="headerlink" title="0x01.py字符串类型"></a>0x01.py字符串类型</h1><h2 id="1-字符串类型"><a href="#1-字符串类型" class="headerlink" title="1.字符串类型"></a>1.字符串类型</h2><p>打引号是字符串,</p>
+            <hr>
+<h2 id="title-Python入门"><a href="#title-Python入门" class="headerlink" title="title:Python入门"></a>title:Python入门</h2><h2 id="1-字符串类型"><a href="#1-字符串类型" class="headerlink" title="1.字符串类型"></a>1.字符串类型</h2><p>打引号是字符串,</p>
 <p>‘582’字符串  </p>
 <p>582数字</p>
 <h2 id="3-列表"><a href="#3-列表" class="headerlink" title="3. 列表"></a>3. 列表</h2><h3 id="1-列表的操作"><a href="#1-列表的操作" class="headerlink" title="1.列表的操作"></a>1.列表的操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1.	member.append([&apos;qwe&apos;, &apos;hello&apos;])	#添加成员</span><br><span class="line">	member</span><br><span class="line">	[&apos;hekki &apos;, &apos;hello world&apos;, &apos;qwe&apos;, [&apos;qwe&apos;, &apos;hello&apos;]]</span><br><span class="line">2.	member.extend([&apos;qwe&apos;, &apos;hello&apos;])	#扩充成员</span><br><span class="line">	member</span><br><span class="line">	[&apos;hekki &apos;, &apos;hello world&apos;, &apos;qwe&apos;, [&apos;qwe&apos;, &apos;hello&apos;], &apos;qwe&apos;, &apos;hello&apos;] </span><br><span class="line">3.	member.insert(0, &apos;qwe&apos;)	#把qwe添加到0位置</span><br><span class="line">	member</span><br><span class="line">	[&apos;qwe&apos;, &apos;hekki &apos;, &apos;hello world&apos;, &apos;qwe&apos;, [&apos;qwe&apos;, &apos;hello&apos;], &apos;qwe&apos;, &apos;hello&apos;]</span><br><span class="line">4.	member.remove(&apos;qwe&apos;)	#移除确定的字符</span><br><span class="line">	member</span><br><span class="line">	[&apos;hekki &apos;, &apos;hello world&apos;, &apos;qwe&apos;, [&apos;qwe&apos;, &apos;hello&apos;], &apos;qwe&apos;, &apos;hello&apos;] </span><br><span class="line">5.	del member[1]	#直接删除</span><br><span class="line">	member</span><br><span class="line">	[&apos;hekki &apos;, &apos;qwe&apos;, [&apos;qwe&apos;, &apos;hello&apos;], &apos;qwe&apos;, &apos;hello&apos;]</span><br><span class="line">6.	member.pop()	#删除列表的最后一个,并打印删除的字符</span><br><span class="line">	member.pop(0)</span><br></pre></td></tr></table></figure>
@@ -1863,11 +1107,731 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/06/20/c118 osmocombb/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="devil0x">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="devil0x菜鸟">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/20/c118 osmocombb/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-20T03:26:51+08:00">
+                2019-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="title-Ubuntu编译OsmocomBB-环境"><a href="#title-Ubuntu编译OsmocomBB-环境" class="headerlink" title="title:Ubuntu编译OsmocomBB 环境"></a>title:Ubuntu编译OsmocomBB 环境</h2><h1 id="前提准备"><a href="#前提准备" class="headerlink" title="前提准备"></a>前提准备</h1><p>OsmocomBB项目的所有文章都在这个地址 <a href="https://osmocom.org/projects/baseband/wiki" target="_blank" rel="noopener">https://osmocom.org/projects/baseband/wiki </a>，这里详细记录了每一个细节，请自行研读，博主只写了环境搭建的部分。</p>
+<p>MS：Mobile Station，移动终端；<br>IMSI：International Mobile Subscriber Identity，国际移动用户标识号，是TD系统分给用户的唯一标识号，它存储在SIM卡、HLR/VLR中，最多由15个数字组成；<br>MCC：Mobile Country Code，是移动用户的国家号，中国是460；<br>MNC：Mobile Network Code ，是移动用户的所属PLMN网号，中国移动为00、02，中国联通为01；<br>MSIN：Mobile Subscriber Identification Number，是移动用户标识；<br>NMSI：National Mobile Subscriber Identification，是在某一国家内MS唯一的识别码；<br>BTS：Base Transceiver Station，基站收发器；<br>BSC：Base Station Controller，基站控制器；<br>MSC：Mobile Switching Center，移动交换中心。移动网络完成呼叫连接、过区切换控制、无线信道管理等功能的设备，同时也是移动网与公用电话交换网(PSTN)、综合业务数字网(ISDN)等固定网的接口设备；<br>HLR：Home location register。保存用户的基本信息，如你的SIM的卡号、手机号码、签约信息等，和动态信息，如当前的位置、是否已经关机等；<br>VLR：Visiting location register，保存的是用户的动态信息和状态信息，以及从HLR下载的用户的签约信息；<br>CCCH：Common Control CHannel，公共控制信道。是一种“一点对多点”的双向控制信道，其用途是在呼叫接续阶段，传输链路连接所需要的控制信令与信息。</p>
+<h2 id="0x01-准备c118"><a href="#0x01-准备c118" class="headerlink" title="0x01.准备c118"></a>0x01.准备c118</h2><ul>
+<li>MotorolaC123/C121/C118 (E88) — our primary target</li>
+<li>MotorolaC140/C139 (E86)</li>
+<li>MotorolaC155 (E99) — our secondary target</li>
+<li>MotorolaV171 (E68/E69)</li>
+<li>SonyEricssonJ100i</li>
+<li>Pirelli DP-L10</li>
+<li>Neo 1973 (GTA01)</li>
+<li>OpenMoko – Neo Freerunner (GTA02)</li>
+<li>SciphoneDreamG2 (MT6235 based)<br>我们选择Moto C118，因为官方支持的最好、硬件成本低，￥35/台（手机+电池+充电器）<br><img src="http://www.vuln.cn/wp-content/uploads/drops/20160106/201601061509262473932.jpg" alt="p3"></li>
+</ul>
+<h2 id="0x02-USB转串口模块"><a href="#0x02-USB转串口模块" class="headerlink" title="0x02. USB转串口模块"></a>0x02. USB转串口模块</h2><p>CH340,CP2102叽里呱啦的都是可以的，能正常识别就行。</p>
+<h2 id="0x03-系统要求"><a href="#0x03-系统要求" class="headerlink" title="0x03.系统要求"></a>0x03.系统要求</h2><p>这是我的系统，64位的ubuntu16.0.4，内核版本4.15.0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Linux box 4.15.0-47-generic #50~16.04.1-Ubuntu SMP Fri Mar 15 16:06:21 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux</span><br><span class="line"></span><br><span class="line">No LSB modules are available.</span><br><span class="line">Distributor ID:	Ubuntu</span><br><span class="line">Description:	Ubuntu 16.04.6 LTS</span><br><span class="line">Release:	16.04</span><br><span class="line">Codename:	xenial</span><br></pre></td></tr></table></figure>
+<p>我的机器是skywangg@box，所以以下操作都是在/home/skywangg 目录下进行。</p>
+<h1 id="2-创建ARM编译环境（armtoolchain）"><a href="#2-创建ARM编译环境（armtoolchain）" class="headerlink" title="2.创建ARM编译环境（armtoolchain）"></a>2.创建ARM编译环境（armtoolchain）</h1><p>OsmocomBB项目是运行在一个移动终端也就是一个手机上面，生成了一个固件并刷入手机，用于控制手机的各种操作并提供一个接口给电脑接收电脑传过去的指令，那么就需要本地电脑有一个用于连接手机的通道，在这里叫做osmocon，制作手机固件需要使用ARM编译环境编译生成最终的.bin文件，所以首先就是搭建这个ARM编译环境。</p>
+<p>开始搭建环境之前，我认为你已经准备好了Linux环境并更新到最新版本，创建一个文件夹用来存放ARM编译环境的所需文件，这里假设创建的文件夹为armtoolchain，进入文件夹后下载构建脚本并赋予其可执行权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir armtoolchain</span><br><span class="line">cd armtoolchain</span><br><span class="line">wget https://osmocom.org/attachments/download/2052/gnu-arm-build.3.sh</span><br><span class="line">sudo chmod +x gnu-arm-build.3.sh</span><br></pre></td></tr></table></figure>
+<p>接着创建几个文件夹</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir build install src</span><br></pre></td></tr></table></figure>
+<p>这几个文件夹分别存放了对应的文件，切换到src文件夹下载必要的文件包</p>
+<p>注意：这里的下载地址可能很慢或者无法下载，请自行准备好梯子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd src/</span><br><span class="line">wget https://ftp.gnu.org/gnu/gcc/gcc-4.8.2/gcc-4.8.2.tar.bz2</span><br><span class="line">wget https://ftp.gnu.org/gnu/binutils/binutils-2.21.1a.tar.bz2</span><br><span class="line">wget ftp://sources.redhat.com/pub/newlib/newlib-1.19.0.tar.gz</span><br></pre></td></tr></table></figure>
+<p>这个时候不要着急构建，先安装一些必须的依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install build-essential libgmp3-dev libmpfr-dev libx11-6 libx11-dev texinfo flex bison libncurses5 libncurses5-dbg libncurses5-dev libncursesw5 libncursesw5-dbg libncursesw5-dev zlibc zlib1g-dev libmpfr4 libmpc-dev</span><br></pre></td></tr></table></figure>
+<p>然后就可以执行构建脚本了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ..</span><br><span class="line">./gnu-arm-build.3.sh</span><br></pre></td></tr></table></figure>
+<p>按任意键开始执行构建，直到出现以下提示信息则构建成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Build complete! Add /home/skywnagg/armtoolchain/install/bin to your PATH to make arm-none-eabi-gcc and friends</span><br><span class="line">accessible directly.</span><br></pre></td></tr></table></figure>
+<p>根据提示信息把上面的路径添加到环境变量中，环境变量在/home/kbdancer/.bashrc，使用vim编辑然后将下面的这行添加到环境变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=$PATH:home/skywangg/armtoolchain/install/bin</span><br></pre></td></tr></table></figure>
+<p>这里注意把路径改成你自己的，然后执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /home/kbdancer/.bashrc</span><br></pre></td></tr></table></figure>
+<p>让环境变量生效，接下来就可以编译osmocombb了。</p>
+<h1 id="3-编译osmocombb"><a href="#3-编译osmocombb" class="headerlink" title="3.编译osmocombb"></a>3.编译osmocombb</h1><p>开始之前需要安装一些必要的依赖包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install libtool shtool automake autoconf git-core pkg-config make gcc</span><br></pre></td></tr></table></figure>
+<p>这些依赖包是编译必备的软件包，osmocomBB项目是基于libosmocore的，所以要先搞定 libosmocore，libosmocore的编译安装也有一些依赖需要安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install build-essential libtool libtalloc-dev shtool autoconf automake git-core pkg-config make gcc</span><br></pre></td></tr></table></figure>
+<p>接下来还必须安装一些库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libpcsclite-dev</span><br></pre></td></tr></table></figure>
+<p>下面就可以把代码同步下来了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git://git.osmocom.org/libosmocore.git</span><br></pre></td></tr></table></figure>
+<p>同步代码之后就可以编译了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd libosmocore/</span><br><span class="line">autoreconf -i</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br><span class="line">sudo ldconfig -i</span><br><span class="line">cd ..</span><br></pre></td></tr></table></figure>
+<p>编译安装完libosmocore就可以继续编译osmocombb了，首先同步最新代码（注意：请自备梯子）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone git://git.osmocom.org/osmocom-bb.git</span><br><span class="line">cd osmocom-bb</span><br><span class="line">git pull --rebase</span><br></pre></td></tr></table></figure>
+<p>代码拉取回来之后执行编译</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd src</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+<p>遇到这些缺乏某些依赖的，根据报错，百度。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">No package &apos;libpcsclite&apos; found</span><br><span class="line">No package &apos;gnutls&apos; found</span><br></pre></td></tr></table></figure>
+<p><img src="https://github.com/devil0x/picture/raw/master/5.14/3.png" alt></p>
+<p>如果遇到红字这种(这张图片转载自安全客：<a href="https://www.anquanke.com/post/id/84627，当时我忘记截图了。)都是OsmocomBB交叉编译环境出现问题，因为网上很多文章说一半不说一半导致" target="_blank" rel="noopener">https://www.anquanke.com/post/id/84627，当时我忘记截图了。)都是OsmocomBB交叉编译环境出现问题，因为网上很多文章说一半不说一半导致</a> 没安装好标题二里面的环境包又或者你的环境包下载错了。这时候重新指向一下gcc编译环境目录。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export PATH=/home/skywangg/armtoolchain/install/bin:$PATH</span><br><span class="line">实际路径根据你的机器来操作。</span><br></pre></td></tr></table></figure>
+<p>再有其他报错，就先复制报错第一天，复制粘贴搜索解决方法。</p>
+<p>这篇文章有详细的改错方法:<a href="https://www.anquanke.com/post/id/84627" target="_blank" rel="noopener">https://www.anquanke.com/post/id/84627</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">修改问题文件（如果你是gnu-arm-build.2.sh并且没有出现cell扫描不动的问题，请跳过这一步）</span><br><span class="line"></span><br><span class="line">进入osmocom-bb找到这些文件并修改他们            </span><br><span class="line">vi osmocom-bb/src/target/firmware/board/compal/highram.lds</span><br><span class="line">vi osmocom-bb/src/target/firmware/board/compal/ram.lds</span><br><span class="line">vi osmocom-bb/src/target/firmware/board/compal_e88/flash.lds</span><br><span class="line">vi osmocom-bb/src/target/firmware/board/compal_e88/loader.lds</span><br><span class="line">vi osmocom-bb/src/target/firmware/board/mediatek/ram.lds</span><br><span class="line"></span><br><span class="line">找到里面的这一串代码            </span><br><span class="line"></span><br><span class="line">KEEP(*(SORT(.ctors)))</span><br><span class="line">在下面加入</span><br><span class="line">KEEP(*(SORT(.init_array)))  </span><br><span class="line"></span><br><span class="line">保存即可，全部修改好，在进入osmocom-bb/src重新编译一下</span><br><span class="line"></span><br><span class="line">$ make -e CROSS_TOOL_PREFIX=arm-none-eabi-</span><br></pre></td></tr></table></figure>
+<h1 id="4-实战操作"><a href="#4-实战操作" class="headerlink" title="4.实战操作"></a>4.实战操作</h1><p>先用ttl转usb连接c118手机，插入usb孔</p>
+<p><img src="https://github.com/devil0x/picture/raw/master/5.14/1.jpg" alt></p>
+<p>lsusb   //查看是否插入成功</p>
+<p><img src="https://github.com/devil0x/picture/raw/master/5.14/4.png" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd /home/skywangg/osmocombb/osmocom-bb/src/host/osmocon/ </span><br><span class="line">//cd进osmocombb目录</span><br><span class="line"></span><br><span class="line">sudo ./osmocon -m c123xor -p /dev/ttyUSB0 ../../target/firmware/board/compal_e88/layer1.compalram.bin</span><br><span class="line">//键入该底下的命令</span><br></pre></td></tr></table></figure>
+<p><img src="https://github.com/devil0x/picture/raw/master/5.14/5.png" alt></p>
+<p>按一下开机键（短按，不是长按）</p>
+<p>有时候停了 就按一下开机键（我有时候需要按几次才完全写入的）</p>
+<p><img src="https://github.com/devil0x/picture/raw/master/5.14/6.png" alt></p>
+<p>看到这里就写入成功了。手机上也出现 layer 1 osmocom bb</p>
+<p><img src="https://github.com/devil0x/picture/raw/master/5.14/7.jpg" alt></p>
+<p><strong>六.打开新终端输入</strong></p>
+<p>新建一个终端</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd /home/skywangg/osmocombb/osmocom-bb/src/host/layer23/src/misc </span><br><span class="line">//cd进osmocombb目录</span><br><span class="line"></span><br><span class="line">sudo ./cell_log -O  </span><br><span class="line">//搜索附近伪基站</span><br></pre></td></tr></table></figure>
+<p><img src="https://github.com/devil0x/picture/raw/master/5.14/8.png" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd /home/skywangg/osmocombb/osmocom-bb/src/host/layer23/src/misc </span><br><span class="line">//cd进osmocombb下的目录</span><br><span class="line"></span><br><span class="line">sudo ./ccch_scan -i 127.0.0.1 -a ARFCN</span><br><span class="line">//刚刚搜索附近的伪基站 </span><br><span class="line"></span><br><span class="line">sudo ./ccch_scan -i 127.0.0.1 -a 46</span><br></pre></td></tr></table></figure>
+<p>D终端</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo wireshark -k -i lo   </span><br><span class="line">//打开wireshark并开始，立即抓包</span><br></pre></td></tr></table></figure>
+<p>选gsm_sms即可</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/06/20/bladerf/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="devil0x">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="devil0x菜鸟">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/20/bladerf/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-20T03:26:51+08:00">
+                2019-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="title-blaedrf入门学习"><a href="#title-blaedrf入门学习" class="headerlink" title="title:blaedrf入门学习"></a>title:blaedrf入门学习</h2><p>bladerf入门学习</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">add-apt-repository ppa:bladerf/bladerf</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install bladerf</span><br><span class="line">sudo apt -get install libbladerf-dev</span><br><span class="line">sudo apt-get install bladerf-firmware-fx3</span><br><span class="line">sudo apt-get install bladerf-fpga-hos tedx40</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/06/20/51学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="devil0x">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="devil0x菜鸟">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/20/51学习/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-20T03:26:51+08:00">
+                2019-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="title-51单片机学习"><a href="#title-51单片机学习" class="headerlink" title="title:51单片机学习"></a>title:51单片机学习</h2><h1 id="点灯"><a href="#点灯" class="headerlink" title="点灯"></a>点灯</h1><p>typedef重定义</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">typedef unsigned char u8;</span><br><span class="line"></span><br><span class="line">typedef unsigned int u16;</span><br><span class="line">字节数针对keil</span><br></pre></td></tr></table></figure>
+<h1 id="流水灯"><a href="#流水灯" class="headerlink" title="流水灯"></a>流水灯</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#define A P0</span><br><span class="line"></span><br><span class="line">#inlcude &quot;intrins.h&quot; // 所在库</span><br><span class="line">_crol_(a,b)  //a为左移的数，b为移动的位数</span><br><span class="line">_cror_(a,b)</span><br></pre></td></tr></table></figure>
+<h1 id="中断"><a href="#中断" class="headerlink" title="中断"></a>中断</h1><h2 id="1-原理"><a href="#1-原理" class="headerlink" title="1.原理"></a>1.原理</h2><p>处理某一件事的时候转去干a的时候，转身去做b事情</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/06/20/32学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="devil0x">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="devil0x菜鸟">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/20/32学习/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-20T03:26:51+08:00">
+                2019-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="title-stm32入门学习"><a href="#title-stm32入门学习" class="headerlink" title="title:stm32入门学习"></a>title:stm32入门学习</h2><h1 id="1-stm32初探"><a href="#1-stm32初探" class="headerlink" title="1.stm32初探"></a>1.stm32初探</h1><h2 id="1-GPIO开始设定"><a href="#1-GPIO开始设定" class="headerlink" title="1.GPIO开始设定"></a>1.GPIO开始设定</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GPIO_InitTypeDef  GPIO_InitStructure;</span><br><span class="line">	</span><br><span class="line"> GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5; <span class="comment">//LED0--&gt;PB.5 端口配置</span></span><br><span class="line"> GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;  <span class="comment">//推挽输出</span></span><br><span class="line"> GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; <span class="comment">//IO口速度为50MHz</span></span><br><span class="line"> GPIO_Init(GPIOB, &amp;GPIO_InitStructure);	 <span class="comment">//根据设定参数初始化GPIOB.5</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-库函数点灯"><a href="#2-库函数点灯" class="headerlink" title="2.库函数点灯"></a>2.库函数点灯</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1.使能IO口时钟。调用函数RCC_APB2PeriphColckCmd();</span><br><span class="line">  不同的IO组，调用的时钟使能函数不一样。</span><br><span class="line">2.初始化IO口模式。调用函数GPIO_Init();</span><br><span class="line">3.操作IO口，输出高低电平。</span><br><span class="line">  GPIO_SetBits();</span><br><span class="line">  GPIO_ResetBits();</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/06/20/arduino入门/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="devil0x">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="devil0x菜鸟">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/20/arduino入门/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-20T03:26:51+08:00">
+                2019-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="title-arduino入门"><a href="#title-arduino入门" class="headerlink" title="title:arduino入门"></a>title:arduino入门</h2><h1 id="1-数字输入"><a href="#1-数字输入" class="headerlink" title="1.数字输入"></a>1.数字输入</h1><p>用按键控制输出</p>
+<p>1.先用pinMode设定输入输出</p>
+<p>2.设定8号默认设定，下拉电阻</p>
+<p>3.写判断去检测输入的状态(digitalRead)</p>
+<p>4.然后输出</p>
+<h1 id="2-呼吸灯"><a href="#2-呼吸灯" class="headerlink" title="2.呼吸灯"></a>2.呼吸灯</h1><p>1.在模拟输出端口</p>
+<p>2.仅需一个模拟输出函数即可（analogWrite）</p>
+<h1 id="3-呼吸流水灯"><a href="#3-呼吸流水灯" class="headerlink" title="3.呼吸流水灯"></a>3.呼吸流水灯</h1><p>1.设定输出</p>
+<p>2.使每个口都模拟输出</p>
+<p>3.一共4个灯，使其呼吸流水滚动起来。首先，是其每次+1，然后&lt;= 6即可 </p>
+<h1 id="4-台灯的原理"><a href="#4-台灯的原理" class="headerlink" title="4.台灯的原理"></a>4.台灯的原理</h1><p>1.led 电位器</p>
+<h1 id="5-51单片机"><a href="#5-51单片机" class="headerlink" title="5.51单片机"></a>5.51单片机</h1><h2 id="1-LED"><a href="#1-LED" class="headerlink" title="1.LED"></a>1.LED</h2><p>1.把文件加到项目中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_crol_()左移函数</span><br><span class="line">_cror_()右移函数</span><br></pre></td></tr></table></figure>
+<p>2.先挂库</p>
+<p>后定义</p>
+<p>然后main函数，</p>
+<p>3.点led</p>
+<p>给端口低电平就可以亮了。</p>
+<p>给成高电平即熄灭。</p>
+<p>4.c语言</p>
+<p>unsigned int （0~65535）</p>
+<ol start="5">
+<li><p>led闪烁</p>
+<p>写个delay延时函数，即可调用。</p>
+<h2 id="2-流水灯实验"><a href="#2-流水灯实验" class="headerlink" title="2.流水灯实验"></a>2.流水灯实验</h2></li>
+</ol>
+<p>1.流水灯要用到左右移函数&lt;intrins.h&gt;</p>
+<p>2.定义主io口，方便移植。</p>
+<p>3.咋感觉延时函数有点恶心呢。。。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">1、 11.0592MHz</span><br><span class="line"></span><br><span class="line">//N ms延时 </span><br><span class="line">void delay_ms(uint n) </span><br><span class="line">&#123; </span><br><span class="line">uint i,j; </span><br><span class="line">for(i=n;i&gt;0;i–) </span><br><span class="line">for(y=114;y&gt;0;y–); </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">2、12MHz晶振</span><br><span class="line">//延时n毫秒</span><br><span class="line">void delay_ms(unsigned int n)</span><br><span class="line">&#123;</span><br><span class="line">    unsigned int i=0,j=0;</span><br><span class="line">    for(i=0;i&lt;n;i++)</span><br><span class="line">        for(j=0;j&lt;123;j++);</span><br><span class="line">&#125;</span><br><span class="line">//延时n秒</span><br><span class="line">void delay_m(unsigned int n)</span><br><span class="line">&#123;</span><br><span class="line">    unsigned int i=0,j=0;</span><br><span class="line">    for(i=0;i&lt;n;i++)</span><br><span class="line">        for(j=0;j&lt;21738;j++);</span><br><span class="line">&#125;</span><br><span class="line">//延时10*n微秒</span><br><span class="line">void delay_10um(unsigned int n)</span><br><span class="line">&#123;</span><br><span class="line">    while(n--);</span><br><span class="line">&#125;</span><br><span class="line">3、24MHz晶振</span><br><span class="line"></span><br><span class="line">//延时n毫秒 </span><br><span class="line">void delay_ms(unsigned int n) </span><br><span class="line">&#123; </span><br><span class="line">unsigned int i=0,j=0; </span><br><span class="line">for(i=0;i</span><br><span class="line"></span><br><span class="line">//延时n秒  </span><br><span class="line">void delay_s(unsigned int n)  </span><br><span class="line">&#123;  </span><br><span class="line">    unsigned int i=0,j=0;  </span><br><span class="line">    for(i=0;i&lt;n;i++)  </span><br><span class="line">        for(j=0;j&lt;54053;j++);   </span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line">//延时10*n微秒  </span><br><span class="line">void delay_10us(unsigned int n)  </span><br><span class="line">&#123;  </span><br><span class="line">    unsigned int i=0;  </span><br><span class="line">    char j=0;  </span><br><span class="line">    for(i=0;i&lt;n;i++)  </span><br><span class="line">        for(j=0;j&lt;2;j++);  </span><br><span class="line">&#125;  </span><br><span class="line">--------------------- </span><br><span class="line">作者：feike24 </span><br><span class="line">来源：CSDN </span><br><span class="line">原文：https://blog.csdn.net/feike24/article/details/52357772</span><br></pre></td></tr></table></figure>
+<p>4.8个led，移动7个就行。</p>
+<h1 id="3-按键输入"><a href="#3-按键输入" class="headerlink" title="3. 按键输入"></a>3. 按键输入</h1><p>1.延时消抖</p>
+<p>2.先检测按键是否按下执行下一步，再检测按键是否松手。</p>
+<p>3.sbit K1=P3^1;把P3^1定义到k1。</p>
+<h1 id="4-静态数码管"><a href="#4-静态数码管" class="headerlink" title="4.静态数码管"></a>4.静态数码管</h1><p>1.分为共阴和共阳极。gnd在一起的是共阴极。</p>
+<p>2.16进制倒着显示：0x3f=00111111= abcdef （g ，dp）</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
   </nav>
 
 
@@ -1913,7 +1877,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
