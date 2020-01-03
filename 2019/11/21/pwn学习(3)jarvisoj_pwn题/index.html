@@ -22,7 +22,7 @@
     <meta name="description" content>
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>王过年&#39;s Studio</title>
+    <title>pwn学习(3)jarvisoj_pwn题 · 王过年&#39;s Studio</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -203,12 +203,23 @@
 </head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >王过年&#39;s Studio.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">pwn学习(3)jarvisoj_pwn题</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>王过年's Studio.</a>
 </header>
@@ -220,24 +231,68 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            pwn学习(3)jarvisoj_pwn题
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">0</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/11/21</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -338,301 +393,53 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/12/15/newifi2-编程器救砖/" >
-            
-                <span>newifi2 编程器救砖·</span>
-        </a>
-        <div class="abstract-content">
-            0x01设备详情newifi d1 
-mtk7621a双核四线程mips 1004kc处理器
-256m运存，32m spi flash MX25L25635E
-直接拆解，看到spi flash。
-
-0x02救砖直接通过编程器去连接，我的是 8脚的25 spi flash编程器。但是路由器的flash是sop16封装，有转接图，接上去就可用。
-
-
-拿夹子直接一夹，直接读取即可。
-0x03 刷机1.读取原路由器flash数据，提取eeprom(地址0x4000-0x4ffff)。2.擦除原数据，直接写入h大的不死breed。直接附上地址：  https://breed.hackpascal....
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/12/15</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
+            <main class="main post-page">
+    <article class="article-entry">
+        
     </article>
+    <!-- license  -->
     
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/12/11/固件逆向环境搭建/" >
-            
-                <span>固件逆向环境搭建</span>
-        </a>
-        <div class="abstract-content">
-            
-0x01.qemu2.4安装1.下载qemu源码
-1wget https://download.qemu.org/qemu-2.4.0.tar.xz1
-qemu下载地址：https://www.qemu.org/download/2.解压qemu
-1tar xvJf qemu-2.4.0.tar.xz1
-3.进入qemu文件
-1cd qemu-3.0.01
-4.编译qemu源码./configure
-
-报错：
-
-1ERROR: Python not found. Use --python=/path/to/python1
-解决方法：apt-get install python
-
-报错：...
+        <div class="license-wrapper">
+            <p>原文作者：<a href="https://devil0x.github.io">devil0x</a>
+            <p>原文链接：<a href="https://devil0x.github.io/2019/11/21/pwn学习(3)jarvisoj_pwn题/">https://devil0x.github.io/2019/11/21/pwn学习(3)jarvisoj_pwn题/</a>
+            <p>发表日期：<a href="https://devil0x.github.io/2019/11/21/pwn学习(3)jarvisoj_pwn题/">November 21st 2019, 8:33:57 pm</a>
+            <p>更新日期：<a href="https://devil0x.github.io/2019/11/21/pwn学习(3)jarvisoj_pwn题/">November 21st 2019, 8:33:59 pm</a>
+            <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/12/11</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/12/10/破解360摄像头固件密码/" >
-            
-                <span>破解360摄像头固件密码</span>
-        </a>
-        <div class="abstract-content">
-            0x01设备详情设备：360摄像头ai云台版 D916
-主控：hi3518
-flash：华邦w25q128叽里呱啦一串
-
-0x02提取固件使用编程器提取固件，建议用烧录座读取固件
-这里推荐一下这个玩意儿，XTW2，淘宝26包邮，用的是GD32F103C8T6，估计架构上和stm32是一个玩意儿，主频更高有103mhz，高于stm32的72mhz，价格却更低，国产真棒！！！
-速度吊打CH341a啥的，快很多很多。。。。。上图：
-
-提取出来之后重命名为1.bin。
-扔到ubuntu，提前装好binwalk。安装教程在《固件逆向环境搭建》有讲。
-直接binwalk 1.bin看一下文件的结构。...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/12/10</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/12/08/orange-pi折腾日记(1)/" >
-            
-                <span>orange pi折腾日记(1)</span>
-        </a>
-        <div class="abstract-content">
-            0x01更新源sudo nano /etc/apt/source.list
-1234deb https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch main contrib non-freedeb https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch-updates main contrib non-freedeb https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch-backports main contrib non-freedeb...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/12/08</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/11/26/blaedrf GPS欺骗/" >
-            
-                <span>blaedrf GPS欺骗</span>
-        </a>
-        <div class="abstract-content">
-            bladerf入门学习
-123456add-apt-repository ppa:bladerf/bladerfsudo apt-get updatesudo apt-get install bladerfsudo apt -get install libbladerf-devsudo apt-get install bladerf-firmware-fx3sudo apt-get install bladerf-fpga-hos tedx40
-
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/26</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/11/21/pwn学习(3)jarvisoj_pwn题/" >
-            
-                <span>pwn学习(3)jarvisoj_pwn题</span>
-        </a>
-        <div class="abstract-content">
-            
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/21</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/11/19/路由器pwn环境搭建/" >
-            
-                <span>固件逆向环境搭建</span>
-        </a>
-        <div class="abstract-content">
-            
-0x01.qemu2.4安装1.下载qemu源码
-1wget https://download.qemu.org/qemu-2.4.0.tar.xz1
-qemu下载地址：https://www.qemu.org/download/2.解压qemu
-1tar xvJf qemu-2.4.0.tar.xz1
-3.进入qemu文件
-1cd qemu-3.0.01
-4.编译qemu源码./configure
-
-报错：
-
-1ERROR: Python not found. Use --python=/path/to/python1
-解决方法：apt-get install python
-
-报错：...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/19</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/11/19/路由器实验复现（1）hg532e/" >
-            
-                <span>路由器漏洞实验复现(1)HG532e</span>
-        </a>
-        <div class="abstract-content">
-            1.复现CVE-2017-17215学习路由器漏洞分析然后再复现CVE-2018-17068、CVE-2018-5767、CVE-2016-5367
-华为已经发了漏洞公告，固件已经升级到HG532eV100R001C02B017_upgrade_main.bin。从论坛里找到了带漏洞版本件，HG532eV100R001C02B015_upgrade_main.bin。
-附上下载链接
-1https://ia601506.us.archive.org/22/items/RouterHG532e/router%20HG532e.rar
-2.先补一下这个漏洞的详情零日（CVE-2017-1721...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/19</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/11/14/pwn工具配置与使用，并且自动切换gdb脚本/" >
-            
-                <span>pwn工具配置与使用，并且自动切换gdb脚本</span>
-        </a>
-        <div class="abstract-content">
-            环境安装基础的ubuntu配置1.换国内源1234567891011121314sudo nano /etc/apt/sources.listdeb http://mirrors.aliyun.com/ubuntu/ xenial maindeb-src http://mirrors.aliyun.com/ubuntu/ xenial maindeb http://mirrors.aliyun.com/ubuntu/ xenial-updates maindeb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates maindeb ht...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/14</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/22/常见函数与汇编指令/" >
-            
-                <span>常见函数与汇编指令</span>
-        </a>
-        <div class="abstract-content">
-            常见函数strcmp()
-12345678参数 str1 和 str2 是参与比较的两个字符串。strcmp() 会根据  编码依次比较 str1 和 str2 的每一个字符，直到出现不到的字符，或者到达字符串末尾（遇见）。- 如果返回值 &lt; 0，则表示 str1 小于 str2。- 如果返回值 &gt; 0，则表示 str2 小于 str1。- 如果返回值 = 0，则表示 str1 等于 str2。such as；	 if(!strcmp(&amp;v10, &amp;v13))	 v13与v10进行比较，不相同时进入条件
-strcpy()
-12strcpy(a, b)- 把b赋...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/22</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2019/11/26/blaedrf GPS欺骗/" title= "blaedrf GPS欺骗">
+                    <div class="nextTitle">blaedrf GPS欺骗</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2019/11/19/路由器pwn环境搭建/" title= "固件逆向环境搭建">
+                    <div class="prevTitle">固件逆向环境搭建</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
-    <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">NEXT &#62;</a>
-    </nav>
     
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -717,6 +524,24 @@ strcpy()
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -1403,6 +1228,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>
