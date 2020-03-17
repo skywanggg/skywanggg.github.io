@@ -359,20 +359,17 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/06/20/SYC第二次面试报告/" >
+        <a class="abstract-title" href = "/2019/11/14/pwn工具配置与使用，并且自动切换gdb脚本/" >
             
-                <span>SYC第二次面试报告</span>
+                <span>pwn工具配置与使用，并且自动切换gdb脚本</span>
         </a>
         <div class="abstract-content">
-            ​                                          
-此次第二次面试研究的课题是关于水卡数据的破解以及badusb的wifi版的制作。
-1. 初学RFID-三中心(13.14.15.16.17栋)水卡的破解研究1.基本知识：Mifare Classic card提供1k-4k的容量，我们经常见到的是Mifare Classic 1k(S50)，也就是所谓的M1卡。M1卡有从0到15共16个扇区，每个扇区配备了从0到3共块个段，每个段分为b0到b15共16个区块，并且可以保存16字节的内容。 
-每个扇区的第4段呢是用来保存KeyA，KeyB和控制位的，每张...
+            环境安装基础的ubuntu配置1.换国内源1234567891011121314sudo nano /etc/apt/sources.listdeb http://mirrors.aliyun.com/ubuntu/ xenial maindeb-src http://mirrors.aliyun.com/ubuntu/ xenial maindeb http://mirrors.aliyun.com/ubuntu/ xenial-updates maindeb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates maindeb ht...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/20</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/14</span>
             </div>
             <!-- tags  -->
             
@@ -385,18 +382,20 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/06/20/SYC第三次面试报告/" >
+        <a class="abstract-title" href = "/2019/10/22/常见函数与汇编指令/" >
             
-                <span>SYC第三次面试报告</span>
+                <span>常见函数与汇编指令</span>
         </a>
         <div class="abstract-content">
-            0x01.基础简介1.实验设备：kali，安卓手机，咕咕机(GT1), 蓝牙适配器（没有就用电脑自带的hci0）
-2.剧情介绍在蓝牙开发中，尤其是咕咕机GT1这种只有蓝牙的型号（咕咕机有些机器可以连接wifi），基本上都是手机App与设备间的通信。手机向设备发送数据，然后等待设备的响应。但当数据发出去的时候，却不能确保设备能否准确的响应。设备属于硬件端，一般不受软件端开发人员控制，除非能和硬件端开发人员一起联调，否则很难调试。但在部分Android手机为开发人员提供了保存蓝牙日志的选项，即可保存手机向设备发送的数据和设备响应的数据。 这个log记录了host与controller通信的全...
+            常见函数strcmp()
+12345678参数 str1 和 str2 是参与比较的两个字符串。strcmp() 会根据  编码依次比较 str1 和 str2 的每一个字符，直到出现不到的字符，或者到达字符串末尾（遇见）。- 如果返回值 &lt; 0，则表示 str1 小于 str2。- 如果返回值 &gt; 0，则表示 str2 小于 str1。- 如果返回值 = 0，则表示 str1 等于 str2。such as；	 if(!strcmp(&amp;v10, &amp;v13))	 v13与v10进行比较，不相同时进入条件
+strcpy()
+12strcpy(a, b)- 把b赋...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/20</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/22</span>
             </div>
             <!-- tags  -->
             
@@ -409,144 +408,160 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/06/20/gsm/" >
+        <a class="abstract-title" href = "/2019/10/21/pwn入门学习(1)栈溢出基础知识/" >
             
-                <span>gsm</span>
+                <span>栈溢出基础知识</span>
         </a>
         <div class="abstract-content">
-            0x01.先安装依赖0x01.安装编译依赖包
-1sudo apt-get install git cmake libboost-all-dev libcppunit-dev swig doxygen liblog4cpp5-dev python-scipy
-1apt-get install gnuradio gnuradio-dev rtl-sdr librtlsdr-dev osmo-sdr libosmosdr-dev libosmocore libosmocore-dev cmake libboost-all-dev libcppunit-dev swig doxygen libl...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/20</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/06/20/freebuf第一次/" >
-            
-                <span>freebuf第一次</span>
-        </a>
-        <div class="abstract-content">
-            初学RFID1.前情提要Mifare Classic card提供1k-4k的容量，我们经常见到的是Mifare Classic 1k(S50)，也就是所谓的M1卡。M1卡有从0到15共16个扇区，每个扇区配备了从0到3共块个段，每个段分为b0到b15共16个区块，并且可以保存16字节的内容。
-每个扇区的第4段呢是用来保存KeyA，KeyB和控制位的，每张卡的0扇区还有一个唯一标识的UID号。
-破解原理
-这种卡类的攻击方式大概分为这么几种：
-1）暴力破解
-爆破对于M1卡的破解来说比较有效，因为M1卡是被动卡，需要读卡器来供能，切断供能后卡的临时数据就丢失了，也就是说不会存在输入过多错误密...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/20</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/06/20/python study/" >
-            
-                <span>Python入门</span>
-        </a>
-        <div class="abstract-content">
-            1.字符串类型打引号是字符串,
-‘582’字符串  
-582数字
-3. 列表1.列表的操作1234567891011121314151617181.	member.append([&apos;qwe&apos;, &apos;hello&apos;])	#添加成员	member	[&apos;hekki &apos;, &apos;hello world&apos;, &apos;qwe&apos;, [&apos;qwe&apos;, &apos;hello&apos;]]2.	member.extend([&apos;qwe&apos;, &apos;hello&apos;])	#扩...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/20</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/06/20/c118 osmocombb/" >
-            
-                <span>Ubuntu编译OsmocomBB 环境</span>
-        </a>
-        <div class="abstract-content">
-            前提准备OsmocomBB项目的所有文章都在这个地址 https://osmocom.org/projects/baseband/wiki ，这里详细记录了每一个细节，请自行研读，博主只写了环境搭建的部分。
-MS：Mobile Station，移动终端；IMSI：International Mobile Subscriber Identity，国际移动用户标识号，是TD系统分给用户的唯一标识号，它存储在SIM卡、HLR/VLR中，最多由15个数字组成；MCC：Mobile Country Code，是移动用户的国家号，中国是460；MNC：Mobile Network Code ，是移动...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/20</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/06/20/bladerf/" >
-            
-                <span>blaedrf入门学习</span>
-        </a>
-        <div class="abstract-content">
-            bladerf入门学习
-123456add-apt-repository ppa:bladerf/bladerfsudo apt-get updatesudo apt-get install bladerfsudo apt -get install libbladerf-devsudo apt-get install bladerf-firmware-fx3sudo apt-get install bladerf-fpga-hos tedx40
+            0x01栈的介绍栈是一种典型的后进先出 (Last in First Out) 的数据结构，其操作主要有压栈 (push) 与出栈 (pop) 两种操作，如下图所示（维基百科）。两种操作都操作栈顶，当然，它也有栈底。
 
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/20</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/06/20/51学习/" >
-            
-                <span>51单片机学习</span>
-        </a>
-        <div class="abstract-content">
-            点灯typedef重定义
-1234typedef unsigned char u8;typedef unsigned int u16;字节数针对keil
-流水灯12345#define A P0#inlcude &quot;intrins.h&quot; // 所在库_crol_(a,b)  //a为左移的数，b为移动的位数_cror_(a,b)
-中断1.原理处理某一件事的时候转去干a的时候，转身去做b事情
+高级语言在运行时都会被转换为汇编程序，在汇编程序运行过程中，充分利用了这一数据结构。每个程序在运行时都有虚拟地址空间，其中某一部分就是该程序对应的栈，用于保存函数调用信息和局部变量。此外，常见的操作也是压栈与出栈。需要注意的是，程序的栈是从进程地址空间的高地址向低地址增长的。
+函数调用栈需要注意的是，32 位和 64 位程序有以下简单的区别
 
+x86
+函数参数在函数返回地...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/21</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/10/21/gdb工具pwndbg与peda与gef配置/" >
+            
+                <span>pwn工具配置与使用，并且自动切换gdb脚本</span>
+        </a>
+        <div class="abstract-content">
+            环境安装基础的ubuntu配置1.换国内源1234567891011121314sudo nano /etc/apt/sources.listdeb http://mirrors.aliyun.com/ubuntu/ xenial maindeb-src http://mirrors.aliyun.com/ubuntu/ xenial maindeb http://mirrors.aliyun.com/ubuntu/ xenial-updates maindeb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates maindeb ht...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/21</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/10/17/ubertooth环境搭建手册/" >
+            
+                <span>搭建ubertooth环境</span>
+        </a>
+        <div class="abstract-content">
+            配置环境Ubuntu16.04.1
+内核版本4.4.0
+需要用到的环境及工具：
+
+libbtbbUbertooth toolsWiresharkFirmwarekismet
+
+官方文档：
+1https://github.com/greatscottgadgets/ubertooth/wiki/Build-Guide
+我的教程可能过时，so一切还是参照官方文档。
+0x01 安装依赖库
+在构建libbtbb和Ubertooth工具之前，需要先安装一些依赖。您可以从操作系统的软件包存储库中找到许多这些文件，例如：
+Debian / Ubuntu
+12sudo apt-get install c...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/17</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/10/14/PWN入门学习(2)基本的ROP/" >
+            
+                <span>pwn入门学习(2)pwn-wiki（basic ROP)</span>
+        </a>
+        <div class="abstract-content">
+            基本 ROP随着 NX 保护的开启，以往直接向栈或者堆上直接注入代码的方式难以继续发挥效果。攻击者们也提出来相应的方法来绕过保护，目前主要的是 ROP(Return Oriented Programming)，其主要思想是在栈缓冲区溢出的基础上，利用程序中已有的小片段 (gadgets) 来改变某些寄存器或者变量的值，从而控制程序的执行流程。所谓 gadgets 就是以 ret 结尾的指令序列，通过这些指令序列，我们可以修改某些地址的内容，方便控制程序的执行流程。
+0x01.checksec看到的那些参数含义
+NX保护：你不能执行我就不执行，栈里面的内容只负责把程序执行流引入到一个需要的...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/14</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/10/12/逆向学习/" >
+            
+                <span>逆向学习</span>
+        </a>
+        <div class="abstract-content">
+            逆向学习刚写的文档忘记保存了，我丢typora。。。
+难受记得随手crtl s吧。
+功放世界1.re1普通直接看到字符串的题
+反编译的结果不是一定正确的，IDA采用递归下降法进行反编译，它的优点在于很少会在反编译时把数据当作代码来处理，不过这次IDA很明显把flag当成代码，进行了反编译，因此在string界面无法找到flag
+解决方法是在IDA打开文件时选择binary file,在此模式下IDA不会进行反编译，此时再打开strings界面就可发现flag  
+2.game一个字符串游戏
+直接查看打印flag的函数
+
+我觉得自己的c语言学的太菜了。。。。。写个脚本即可得出结果
+1c =...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/12</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/06/20/路由器·漏洞挖掘/" >
+            
+                <span>路由器pwn环境搭建</span>
+        </a>
+        <div class="abstract-content">
+            1.复现CVE-2017-17215学习路由器漏洞分析然后再复现CVE-2018-17068、CVE-2018-5767、CVE-2016-5367
+华为已经发了漏洞公告，固件已经升级到HG532eV100R001C02B017_upgrade_main.bin。从论坛里找到了带漏洞版本件，HG532eV100R001C02B015_upgrade_main.bin。
+附上下载链接
+1https://ia601506.us.archive.org/22/items/RouterHG532e/router%20HG532e.rar
+2.先补一下这个漏洞的详情零日（CVE-2017-1721...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -564,12 +579,19 @@ MS：Mobile Station，移动终端；IMSI：International Mobile Subscriber Iden
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/06/20/32学习/" >
+        <a class="abstract-title" href = "/2019/06/20/常用设备配置/" >
             
-                <span>stm32入门学习</span>
+                <span>设备常用配置</span>
         </a>
         <div class="abstract-content">
-            1.stm32初探1.GPIO开始设定123456GPIO_InitTypeDef  GPIO_InitStructure;	 GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5; //LED0--&gt;PB.5 端口配置 GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;  //推挽输出 GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; //IO口速度为50MHz GPIO_Init(GPIOB, &amp;GPIO_InitStructure);	 //根据...
+            1.树莓派wifi配置修改wifi连接
+1sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+设置wifi自动连接
+1https://www.cnblogs.com/visionsl/p/8117317.html
+安装P4wnp1 
+12345sudo apt-get -y install gitcd /home/pigit clone --recursive https://github.com/mame82/P4wnP1cd P4wnP1./install.sh
+2.kali更换国内源2.kali更换国内源换中科大源
+123456789...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -587,29 +609,19 @@ MS：Mobile Station，移动终端；IMSI：International Mobile Subscriber Iden
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/06/20/arduino入门/" >
+        <a class="abstract-title" href = "/2019/06/20/安洵杯CTF rfid题/" >
             
-                <span>arduino入门</span>
+                <span>安洵杯CTF rfid题</span>
         </a>
         <div class="abstract-content">
-            1.数字输入用按键控制输出
-1.先用pinMode设定输入输出
-2.设定8号默认设定，下拉电阻
-3.写判断去检测输入的状态(digitalRead)
-4.然后输出
-2.呼吸灯1.在模拟输出端口
-2.仅需一个模拟输出函数即可（analogWrite）
-3.呼吸流水灯1.设定输出
-2.使每个口都模拟输出
-3.一共4个灯，使其呼吸流水滚动起来。首先，是其每次+1，然后&lt;= 6即可 
-4.台灯的原理1.led 电位器
-5.51单片机1.LED1.把文件加到项目中
-12_crol_()左移函数_cror_()右移函数
-2.先挂库
-后定义
-然后main函数，
-3.点led
-给端口低电平就可以亮...
+            安洵杯CTF rfid题首先，这题我也没拿到flag，但是经过喵师傅的讲解，暂时把校验弄出来了。
+##　１．为啥自己看不出校验方法呢？我觉得吧，有以下几点需要注意应该会好很多:
+1.实验一种校验方法之后没有结果，不要死磕，换方法。
+2.加几个破解水卡的群，多接触各种稀奇古怪的校验方法。
+3.多练习多练习。。。。
+4.用好winhex，逆向计算器
+5.最重要的，校验的奥义：羊毛出在羊身上。就是说，校验位在哪里，你可以通过多看几个数据的变化来看出。而校验的产生，总是遵循金额位的变化，校验不管咋变，都是金额位数值通过各种公式组合加计算出来的。2.1.过一下题目 
+2.题目提供了4个文件，12....
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -624,7 +636,7 @@ MS：Mobile Station，移动终端；IMSI：International Mobile Subscriber Iden
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/page/2/">&#60; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+        <a class="extend prev" rel="prev" href="/page/2/">&#60; PREV</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">NEXT &#62;</a>
     </nav>
     
 </main>
@@ -1177,9 +1189,180 @@ MS：Mobile Station，移动终端；IMSI：International Mobile Subscriber Iden
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 30
+        Total : 41
         </div>
         <!-- search  -->
         
@@ -1189,6 +1372,20 @@ MS：Mobile Station，移动终端；IMSI：International Mobile Subscriber Iden
     
     
     
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/04</span><a class="archive-post-title" href= "/2020/03/04/C++学习基础语法/" >C学习基础语法</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
     
     <div class="archive-year"> Invalid date </div>
     <ul class="year-list">
@@ -1209,7 +1406,7 @@ MS：Mobile Station，移动终端；IMSI：International Mobile Subscriber Iden
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/arduino入门/" >arduino入门</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/32学习/" >stm32入门学习</a>
         </li>
     
     
@@ -1218,40 +1415,37 @@ MS：Mobile Station，移动终端；IMSI：International Mobile Subscriber Iden
     
         </ul>
     
-    <div class="archive-year"> Invalid date </div>
+    <div class="archive-year"> 2020 </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/26/blaedrf GPS欺骗/" >blaedrf GPS欺骗</a>
+            <span class="archive-post-date">03/08</span><a class="archive-post-title" href= "/2020/03/08/avr逆向学习(一)/" >avr逆向学习(一)</a>
         </li>
     
     
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/c118 osmocombb/" >Ubuntu编译OsmocomBB 环境</a>
+            <span class="archive-post-date">03/02</span><a class="archive-post-title" href= "/2020/03/02/esp8266 arduino开发(一)/" >esp8266 arduino开发(一)</a>
         </li>
     
     
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/27</span><a class="archive-post-title" href= "/2020/02/27/VScode开发arduino-for-esp8266/" >VScode平台arduino插件</a>
+        </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/bladerf/" >blaedrf入门学习</a>
+            <span class="archive-post-date">02/24</span><a class="archive-post-title" href= "/2020/02/24/esp8266-arduino开发/" >esp8266 arduino开发(一)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/09</span><a class="archive-post-title" href= "/2020/02/09/android Studio 3.5.2的配置过程/" >[Untitled Post]</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/05</span><a class="archive-post-title" href= "/2020/02/05/android studio开发/" >[Untitled Post]</a>
         </li>
     
     
@@ -1291,11 +1485,6 @@ MS：Mobile Station，移动终端；IMSI：International Mobile Subscriber Iden
     
         <li class="archive-post-item">
             <span class="archive-post-date">11/19</span><a class="archive-post-title" href= "/2019/11/19/路由器实验复现（1）hg532e/" >路由器漏洞实验复现(1)HG532e</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/21</span><a class="archive-post-title" href= "/2019/10/21/gdb工具pwndbg与peda与gef配置/" >pwn工具配置与使用，并且自动切换gdb脚本</a>
         </li>
     
     
@@ -1344,6 +1533,90 @@ MS：Mobile Station，移动终端；IMSI：International Mobile Subscriber Iden
         </li>
     
     
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/arduino入门/" >arduino入门</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/26/blaedrf GPS欺骗/" >blaedrf GPS欺骗</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/bladerf/" >blaedrf入门学习</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/c118 osmocombb/" >Ubuntu编译OsmocomBB 环境</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/02/esp8266-arduino开发(二)TCP-&-Client/" >esp8266 arduino开发(二)TCP & Client</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/21</span><a class="archive-post-title" href= "/2019/10/21/gdb工具pwndbg与peda与gef配置/" >pwn工具配置与使用，并且自动切换gdb脚本</a>
+        </li>
+    
+    
         <li class="archive-post-item">
             <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/gsm/" >gsm</a>
         </li>
@@ -1364,7 +1637,7 @@ MS：Mobile Station，移动终端；IMSI：International Mobile Subscriber Iden
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/32学习/" >stm32入门学习</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/11/html快速入门(一)/" >html快速入门(一)</a>
         </li>
     
     
@@ -1378,7 +1651,21 @@ MS：Mobile Station，移动终端；IMSI：International Mobile Subscriber Iden
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/python study/" >Python入门</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/03/platformIO-IDE环境搭建(VScode)/" >platformIO IDE环境搭建(VScode)</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/14/pwn工具配置与使用，并且自动切换gdb脚本/" >pwn工具配置与使用，并且自动切换gdb脚本</a>
         </li>
     
     
@@ -1406,7 +1693,35 @@ MS：Mobile Station，移动终端；IMSI：International Mobile Subscriber Iden
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/14/pwn工具配置与使用，并且自动切换gdb脚本/" >pwn工具配置与使用，并且自动切换gdb脚本</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/02/10/win10配置python2，python3环境/" >win10配置python2，python3环境</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/python study/" >Python入门</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/01/03/嵌入式linux设备修改shadow文件破解root密码/" >嵌入式linux设备修改shadow文件破解root密码</a>
         </li>
     
     
@@ -1435,20 +1750,6 @@ MS：Mobile Station，移动终端；IMSI：International Mobile Subscriber Iden
     
         <li class="archive-post-item">
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/19/路由器pwn环境搭建/" >固件逆向环境搭建</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/01/03/嵌入式linux设备修改shadow文件破解root密码/" >嵌入式linux设备修改shadow文件破解root密码</a>
         </li>
     
     </div>

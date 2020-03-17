@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="devil0x">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="devil0x">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content>
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>esp8266 arduino开发(一) · 王过年&#39;s Studio</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href="/assets/devil0x.ico">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >王过年&#39;s Studio.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">esp8266 arduino开发(一)</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>王过年's Studio.</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            esp8266 arduino开发(一)
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">1,373</span>阅读时长: <span class="post-count reading-time">5 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2020/02/24</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="0x01-引脚图"><a href="#0x01-引脚图" class="headerlink" title="0x01.引脚图"></a>0x01.引脚图</h1><p>arduino Ide选到nodemcu 1.0开发板。</p>
+<p>板载为esp 12e芯片</p>
+<p>flash 4m(32Mbit)</p>
+<p><img src="http://q5p73ywy9.bkt.clouddn.com/picGO/20200224220903.png" alt></p>
+<h1 id="0x02-呼吸灯"><a href="#0x02-呼吸灯" class="headerlink" title="0x02.呼吸灯"></a>0x02.呼吸灯</h1><ol>
+<li>模拟输出0-1023，对应电压为0v-5v;</li>
+<li>Arduino Uno 输出0-255，对应0v-5v</li>
+</ol>
+<p><img src="http://q5p73ywy9.bkt.clouddn.com/picGO/20200224225827.png" alt></p>
+<h1 id="0x03-ADC"><a href="#0x03-ADC" class="headerlink" title="0x03.ADC"></a>0x03.ADC</h1><h3 id="1-模拟输入"><a href="#1-模拟输入" class="headerlink" title="1.模拟输入"></a>1.模拟输入</h3><ol>
+<li>esp8266的输入只有0v-1v，对应0-1023</li>
+<li>uno输入是0-5v，对应0-255</li>
+</ol>
+<p><img src="http://q5p73ywy9.bkt.clouddn.com/picGO/20200225001836.png" alt></p>
+<h3 id="2-DC测量系统电压"><a href="#2-DC测量系统电压" class="headerlink" title="2.DC测量系统电压"></a>2.DC测量系统电压</h3><h4 id="相关方法"><a href="#相关方法" class="headerlink" title="相关方法"></a>相关方法</h4><p>        ESP.getVcc()，读取NodeMCU模块的VCC电压，单位是mV；</p>
+<h4 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h4><p>        ADC引脚必须保持悬空；在读取VCC电源电压之前，应更改ADC模式以读取系统电压。<br>要ADC_MODE(mode)在#include行后面改变ADC模式。<br>模式是ADC_TOUT（对于外部电压），ADC_VCC（对于系统电压）。默认情况下，它读取外部电压。</p>
+<h1 id="0x04-看门狗，喂狗操作"><a href="#0x04-看门狗，喂狗操作" class="headerlink" title="0x04.看门狗，喂狗操作"></a>0x04.看门狗，喂狗操作</h1><p><img src="D:\blog\source\_posts\esp8266-arduino开发.assets\image-20200226203220929.png" alt="image-20200226203220929"></p>
+<h5 id="代码讲解："><a href="#代码讲解：" class="headerlink" title="代码讲解："></a>代码讲解：</h5><p>    1.setup函数里面,主要设置了串口通信波特率115200（串口调试器的波特率需要设置成一致），同时设置了软件看门狗WatchDog的触发间隔5s（看门狗的作用就是如果不喂狗就会在触发时间到达的时候自动复位，很多）；<br>    2.在loop函数中，会不断循环执行，所以需要喂狗，然后就打印ESP8266 Arduino Core的当前版本、芯片id、flash实际大小、Arduino IDE配置Flash大小、通信频率以及flash的连接模式（这些信息都可以称为ESP8266模块的物理信息）。</p>
+<h1 id="0x05-GPIO口布局"><a href="#0x05-GPIO口布局" class="headerlink" title="0x05.GPIO口布局"></a>0x05.GPIO口布局</h1><p><img src="http://q5p73ywy9.bkt.clouddn.com/picGO/20200226210543.png" alt></p>
+<h5 id="GPIO端口复用"><a href="#GPIO端口复用" class="headerlink" title="GPIO端口复用"></a>GPIO端口复用</h5><ul>
+<li>1.中间的DEVKIT部分，就是NodeMcu提供给外界的端口，对应实物图上标注的端口名称；</li>
+<li>2.除开中间部分，其他部分基本上对应ESP8266引脚，以不同颜色块来区分不同功能；</li>
+<li>3.NodeMcu上的CLK、SD0、CMD、SD1、SD2引脚，是用于连接外接flash芯片，不应该用于连接其他模块，悬空即可，以防程序奔溃。</li>
+<li>4.从上面表格可以看出，我们大约11个GPIO引脚可用。而11个中的2个引脚通常被保留用于RX和TX，以便进行串口通信。因此最后，只剩下8个通用I / O引脚，即D0到D8（除开D3特殊用途）。</li>
+<li>请注意，D0 / GPIO16引脚只能用作GPIO读/写，不支持特殊功能。</li>
+</ul>
+<p><img src="http://q5p73ywy9.bkt.clouddn.com/picGO/20200226211156.png" alt></p>
+<h1 id="0x06-中断"><a href="#0x06-中断" class="headerlink" title="0x06.中断"></a>0x06.中断</h1><h3 id="1-esp8266中断详情："><a href="#1-esp8266中断详情：" class="headerlink" title="1.esp8266中断详情："></a>1.esp8266中断详情：</h3><p>基于ESP8266的NodeMcu的数字IO的中断功能是通过attachInterrupt，detachInterrupt函数所支持的。<strong><em>除了D0/GPIO16</em></strong>，中断可以绑定到任意GPIO的引脚上。所支持的标准中断类型有：<strong>CHANGE</strong>（改变沿，电平从低到高或者从高到低）、<strong>RISING</strong>（上升沿，电平从低到高）、<strong>FALLING</strong>（下降沿，电平从高到低）。</p>
+<h4 id="函数：1-attachInterrupt-pin-function-mode"><a href="#函数：1-attachInterrupt-pin-function-mode" class="headerlink" title="函数：1.attachInterrupt(pin, function, mode);"></a>函数：1.attachInterrupt(pin, function, mode);</h4><p>    该功能用于在将指定引脚设置为响应中断。</p>
+<p><strong>参数：</strong></p>
+<p>        pin：要设置中断编号，注意，这里不是引脚编号。<br>        function：中断发生时运行的函数, 这个函数不带任何参数，不返回任何内容。<br>        Interrupt type/mode：它定义中断被触发的条件方式。</p>
+<p>               CHANGE：改变沿，引脚电平从低变为高或者从高变为低时触发中断。<br>          RISING：上升沿，引脚电平从低变为高时触发中断。<br>         FALLING：下降沿，引脚电平从高变为低时触发中断。<br>返回值： 无；</p>
+<h4 id="2-detachInterrupt-pin"><a href="#2-detachInterrupt-pin" class="headerlink" title="2.detachInterrupt(pin)"></a>2.<strong>detachInterrupt(pin)</strong></h4><p>    该功能用于禁用指定GPIO引脚上的中断。<br><strong>参数：</strong><br>        pin：要禁用的中断的GPIO引脚。<br><strong>返回值：</strong> 无；</p>
+<h4 id="3-digitalPinToInterrupt-pin"><a href="#3-digitalPinToInterrupt-pin" class="headerlink" title="3.digitalPinToInterrupt(pin)"></a><strong>3.digitalPinToInterrupt(pin)</strong></h4><p>    该功能用于获取指定GPIO引脚的中断号。<br><strong>参数：</strong><br>        pin：要获取中断号的GPIO引脚。</p>
+<h1 id="0x07-Ticker定时器库"><a href="#0x07-Ticker定时器库" class="headerlink" title="0x07.Ticker定时器库"></a>0x07.Ticker定时器库</h1><p><img src="http://q5p73ywy9.bkt.clouddn.com/picGO/20200227002312.png" alt></p>
+<p><img src="http://q5p73ywy9.bkt.clouddn.com/picGO/20200227002509.png" alt></p>
+<h4 id="1-定时器管理方法"><a href="#1-定时器管理方法" class="headerlink" title="1.定时器管理方法"></a>1.定时器管理方法</h4><p>(ps:其实不太懂)</p>
+<h1 id="0x08-Arduino-core"><a href="#0x08-Arduino-core" class="headerlink" title="0x08.Arduino core"></a>0x08.Arduino core</h1><p><img src="http://q5p73ywy9.bkt.clouddn.com/picGO/20200301214423.png" alt></p>
+<ol>
+<li>Arduino功能，把ESP8266 当做 Arduino来使用</li>
+</ol>
+<ul>
+<li>SD —— SD卡库</li>
+<li>Servo —— 伺服电机库</li>
+<li>Wire —— I2C库</li>
+<li>SPI —— spi库</li>
+<li>EEPROM —— eeprom库</li>
+</ul>
+<ol start="2">
+<li>WiFi功能，其中又可以分为网络服务功能以及无线更新ESP8266功能。提供了使用TCP和UDP通过WiFi进行通信的库等等。</li>
+</ol>
+<ul>
+<li>ESP8266WiFi —— wifi基础功能</li>
+<li>ESP8266HTTPClient —— http客户端功能</li>
+<li>ESP8266WiFiMulti —— ESP8266WiFi多连接功能</li>
+<li>ESP8266WebServer —— 局域网web服务器功能</li>
+<li>WiFiUdp —— UDP服务</li>
+<li>ESP8266mDNS —— 局域网本地发现功能</li>
+<li>DNSServer —— 真正的DNS域名服务</li>
+<li>ArduinoOTA —— OTA无线更新</li>
+</ul>
+<h3 id="判断函数是否执行：三元表达式"><a href="#判断函数是否执行：三元表达式" class="headerlink" title="判断函数是否执行：三元表达式"></a>判断函数是否执行：三元表达式</h3><p><img src="http://q5p73ywy9.bkt.clouddn.com/picGO/20200302000742.png" alt></p>
+<p>三元运算符是软件编程中的一个固定格式，语法是“条件表达式Q？表达式A：表达式B”。使用这个算法可以使调用数据时逐级筛选。</p>
+<p>1.条件表达式Q成立时，输出表达式A。</p>
+<p>2.不成立时，输出表达式B。</p>
+<h1 id="0x09-WiFiSta"><a href="#0x09-WiFiSta" class="headerlink" title="0x09.WiFiSta"></a>0x09.WiFiSta</h1><p><img src="http://q5p73ywy9.bkt.clouddn.com/picGO/20200302090802.jpg" alt></p>
+<h2 id="注意输出格式"><a href="#注意输出格式" class="headerlink" title="注意输出格式"></a>注意输出格式</h2><p>注意println输出ip和mac地址时转换格式</p>
+<p><img src="http://q5p73ywy9.bkt.clouddn.com/picGO/20200302095223.png" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DebugPrintln(String(&quot;softAP IPAddress is =&quot;) + WiFi.softAPIP().toString());</span><br><span class="line">DebugPrintln(String(&quot;softAP MAC address is =&quot;) + WiFi.softAPmacAddress().c_str());</span><br></pre></td></tr></table></figure>
+<h1 id="0x10-WifiGeneric库"><a href="#0x10-WifiGeneric库" class="headerlink" title="0x10.WifiGeneric库"></a>0x10.WifiGeneric库</h1><p><img src="D:\blog\source\_posts\esp8266-arduino开发.assets\20200302144825.png" alt></p>
+<h3 id="用途："><a href="#用途：" class="headerlink" title="用途："></a>用途：</h3><p>​    它包括处理程序来管理wi-fi事件，如连接，断开连接或获得ip，wi-fi模式的变化，管理模块睡眠模式的功能，以ip地址解析的hostName等；</p>
+<p>​    ESP8266在使用过程中并非会一直如希望般稳定运行的，为了应对这些情况就需要能够了解WiFi状态，并对WiFi突发事件作出响应。</p>
+<h1 id="0x11-TCP-Server-amp-TCP-Client"><a href="#0x11-TCP-Server-amp-TCP-Client" class="headerlink" title="0x11.TCP Server&amp; TCP Client"></a>0x11.TCP Server&amp; TCP Client</h1><ul>
+<li>TCP client，对应 <strong>WiFiClient</strong> 库</li>
+<li>TCP Server，对应 <strong>WiFiServer</strong> 库。</li>
+</ul>
+<p>至于什么是TCP传输协议，大家执行查资料吧。</p>
+<ul>
+<li>TCP是底层通讯协议，定义的是数据传输和连接方式的规范；</li>
+<li>HTTP是应用层协议，定义的是传输数据的内容的规范；</li>
+<li>HTTP协议中的数据是利用TCP协议传输的，所以支持HTTP也就一定支持TCP；</li>
+</ul>
+<p><img src="D:\blog\source\_posts\esp8266-arduino开发.assets\20200302152013.jpg" alt></p>
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>原文作者：<a href="https://devil0x.github.io">devil0x</a>
+            <p>原文链接：<a href="https://devil0x.github.io/2020/02/24/esp8266-arduino开发/">https://devil0x.github.io/2020/02/24/esp8266-arduino开发/</a>
+            <p>发表日期：<a href="https://devil0x.github.io/2020/02/24/esp8266-arduino开发/">February 24th 2020, 10:50:17 pm</a>
+            <p>更新日期：<a href="https://devil0x.github.io/2020/02/24/esp8266-arduino开发/">March 2nd 2020, 9:53:32 pm</a>
+            <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2020/02/27/VScode开发arduino-for-esp8266/" title= "VScode平台arduino插件">
+                    <div class="nextTitle">VScode平台arduino插件</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2020/02/10/win10配置python2，python3环境/" title= "win10配置python2，python3环境">
+                    <div class="prevTitle">win10配置python2，python3环境</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:1442661932@qq.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/devil0x" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/devil0x.jpg" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0x01-引脚图"><span class="toc-number">1.</span> <span class="toc-text">0x01.引脚图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x02-呼吸灯"><span class="toc-number">2.</span> <span class="toc-text">0x02.呼吸灯</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x03-ADC"><span class="toc-number">3.</span> <span class="toc-text">0x03.ADC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-模拟输入"><span class="toc-number">3.0.1.</span> <span class="toc-text">1.模拟输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-DC测量系统电压"><span class="toc-number">3.0.2.</span> <span class="toc-text">2.DC测量系统电压</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#相关方法"><span class="toc-number">3.0.2.1.</span> <span class="toc-text">相关方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#注意点"><span class="toc-number">3.0.2.2.</span> <span class="toc-text">注意点</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x04-看门狗，喂狗操作"><span class="toc-number">4.</span> <span class="toc-text">0x04.看门狗，喂狗操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#代码讲解："><span class="toc-number">4.0.0.0.1.</span> <span class="toc-text">代码讲解：</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x05-GPIO口布局"><span class="toc-number">5.</span> <span class="toc-text">0x05.GPIO口布局</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#GPIO端口复用"><span class="toc-number">5.0.0.0.1.</span> <span class="toc-text">GPIO端口复用</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x06-中断"><span class="toc-number">6.</span> <span class="toc-text">0x06.中断</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-esp8266中断详情："><span class="toc-number">6.0.1.</span> <span class="toc-text">1.esp8266中断详情：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#函数：1-attachInterrupt-pin-function-mode"><span class="toc-number">6.0.1.1.</span> <span class="toc-text">函数：1.attachInterrupt(pin, function, mode);</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-detachInterrupt-pin"><span class="toc-number">6.0.1.2.</span> <span class="toc-text">2.detachInterrupt(pin)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-digitalPinToInterrupt-pin"><span class="toc-number">6.0.1.3.</span> <span class="toc-text">3.digitalPinToInterrupt(pin)</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x07-Ticker定时器库"><span class="toc-number">7.</span> <span class="toc-text">0x07.Ticker定时器库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-定时器管理方法"><span class="toc-number">7.0.0.1.</span> <span class="toc-text">1.定时器管理方法</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x08-Arduino-core"><span class="toc-number">8.</span> <span class="toc-text">0x08.Arduino core</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#判断函数是否执行：三元表达式"><span class="toc-number">8.0.1.</span> <span class="toc-text">判断函数是否执行：三元表达式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x09-WiFiSta"><span class="toc-number">9.</span> <span class="toc-text">0x09.WiFiSta</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#注意输出格式"><span class="toc-number">9.1.</span> <span class="toc-text">注意输出格式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x10-WifiGeneric库"><span class="toc-number">10.</span> <span class="toc-text">0x10.WifiGeneric库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#用途："><span class="toc-number">10.0.1.</span> <span class="toc-text">用途：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x11-TCP-Server-amp-TCP-Client"><span class="toc-number">11.</span> <span class="toc-text">0x11.TCP Server&amp; TCP Client</span></a></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 41
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/04</span><a class="archive-post-title" href= "/2020/03/04/C++学习基础语法/" >C学习基础语法</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/51学习/" >51单片机学习</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/32学习/" >stm32入门学习</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/08</span><a class="archive-post-title" href= "/2020/03/08/avr逆向学习(一)/" >avr逆向学习(一)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/02</span><a class="archive-post-title" href= "/2020/03/02/esp8266 arduino开发(一)/" >esp8266 arduino开发(一)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/27</span><a class="archive-post-title" href= "/2020/02/27/VScode开发arduino-for-esp8266/" >VScode平台arduino插件</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/24</span><a class="archive-post-title" href= "/2020/02/24/esp8266-arduino开发/" >esp8266 arduino开发(一)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/09</span><a class="archive-post-title" href= "/2020/02/09/android Studio 3.5.2的配置过程/" >[Untitled Post]</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/05</span><a class="archive-post-title" href= "/2020/02/05/android studio开发/" >[Untitled Post]</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/15</span><a class="archive-post-title" href= "/2019/12/15/newifi2-编程器救砖/" >newifi2 编程器救砖·</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/11</span><a class="archive-post-title" href= "/2019/12/11/固件逆向环境搭建/" >固件逆向环境搭建</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/10</span><a class="archive-post-title" href= "/2019/12/10/破解360摄像头固件密码/" >破解360摄像头固件密码</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/08</span><a class="archive-post-title" href= "/2019/12/08/orange-pi折腾日记(1)/" >orange pi折腾日记(1)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/21</span><a class="archive-post-title" href= "/2019/11/21/pwn学习(3)jarvisoj_pwn题/" >pwn学习(3)jarvisoj_pwn题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/19</span><a class="archive-post-title" href= "/2019/11/19/路由器实验复现（1）hg532e/" >路由器漏洞实验复现(1)HG532e</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/17</span><a class="archive-post-title" href= "/2019/10/17/ubertooth环境搭建手册/" >搭建ubertooth环境</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/14</span><a class="archive-post-title" href= "/2019/10/14/PWN入门学习(2)基本的ROP/" >pwn入门学习(2)pwn-wiki（basic ROP)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/12</span><a class="archive-post-title" href= "/2019/10/12/逆向学习/" >逆向学习</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/路由器·漏洞挖掘/" >路由器pwn环境搭建</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/常用设备配置/" >设备常用配置</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/安洵杯CTF rfid题/" >安洵杯CTF rfid题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/固定码逆向分析/" >固定码逆向分析</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/SYC第二次面试报告/" >SYC第二次面试报告</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/SYC第三次面试报告/" >SYC第三次面试报告</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/arduino入门/" >arduino入门</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/26/blaedrf GPS欺骗/" >blaedrf GPS欺骗</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/bladerf/" >blaedrf入门学习</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/c118 osmocombb/" >Ubuntu编译OsmocomBB 环境</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/02/esp8266-arduino开发(二)TCP-&-Client/" >esp8266 arduino开发(二)TCP & Client</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/21</span><a class="archive-post-title" href= "/2019/10/21/gdb工具pwndbg与peda与gef配置/" >pwn工具配置与使用，并且自动切换gdb脚本</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/gsm/" >gsm</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/freebuf第一次/" >freebuf第一次</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/11/html快速入门(一)/" >html快速入门(一)</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/03/platformIO-IDE环境搭建(VScode)/" >platformIO IDE环境搭建(VScode)</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/14/pwn工具配置与使用，并且自动切换gdb脚本/" >pwn工具配置与使用，并且自动切换gdb脚本</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/10/21/pwn入门学习(1)栈溢出基础知识/" >栈溢出基础知识</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/02/10/win10配置python2，python3环境/" >win10配置python2，python3环境</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/python study/" >Python入门</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/01/03/嵌入式linux设备修改shadow文件破解root密码/" >嵌入式linux设备修改shadow文件破解root密码</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/10/22/常见函数与汇编指令/" >常见函数与汇编指令</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/19/路由器pwn环境搭建/" >固件逆向环境搭建</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "devil0x"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+

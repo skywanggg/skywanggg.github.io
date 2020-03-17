@@ -359,31 +359,17 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2020/01/03/嵌入式linux设备修改shadow文件破解root密码/" >
+        <a class="abstract-title" href = "/2020/03/11/html快速入门(一)/" >
             
-                <span>嵌入式linux设备修改shadow文件破解root密码</span>
+                <span>html快速入门(一)</span>
         </a>
         <div class="abstract-content">
-            0x01设备详情网件WNDR3800路由器固件为例
-0x02.环境搭建github下载源码，安装binwalk 
-环境：ubuntu 16.04
-0x03.binwalk分析首先，使用binwalk简单分析
-如图所示，这个固件由两部分组成。
-
-
-接下来我们提取出两个文件系统
-
-解压第二个文件系统(较大的那个)
-之后我们进入相应目录修改文件，在修改完成之后。我们进行打包的操作，部分数据保持一致.
-之后我们将生成的squashfs.bin和first.bin进行拼接
-
-之后，我们看到的new.bin就是我们生成的新固件。刷入路由器之后，就可以使用已知的密码去访问路由器管理页面   
-
+            0x01.基本规则
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/01/03</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/11</span>
             </div>
             <!-- tags  -->
             
@@ -396,26 +382,31 @@ height:50vh;
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/12/15/newifi2-编程器救砖/" >
+        <a class="abstract-title" href = "/2020/03/08/avr逆向学习(一)/" >
             
-                <span>newifi2 编程器救砖·</span>
+                <span>avr逆向学习(一)</span>
         </a>
         <div class="abstract-content">
-            0x01设备详情newifi d1 
-mtk7621a双核四线程mips 1004kc处理器
-256m运存，32m spi flash MX25L25635E
-直接拆解，看到spi flash。
+            0x01.环境搭建1.simavr avr模拟器
+2.radare2 静态
+3.gdb-avr 动调
+0x02.安装simavr1.依赖安装
+gcc
+make
+gcc-avr
+avr-libc
 
-0x02救砖直接通过编程器去连接，我的是 8脚的25 spi flash编程器。但是路由器的flash是sop16封装，有转接图，接上去就可用。
-
-
-拿夹子直接一夹，直接读取即可。
-0x03 刷机1.读取原路由器flash数据，提取eeprom(地址0x4000-0x4ffff)。2.擦除原数据，直接写入h大的不死breed。直接附上地址：  https://breed.hackpascal....
+Ubuntu 10.10 / Debian：
+12sudo apt-get install gcc makesudo apt-get install gcc-avr avr-libc
+要构建模拟器，您还需要ELF软件包：
+1sudo apt-get install libelf-dev
+以及用于GUI示例的Open GL Utility Toolkit:
+1sudo apt-get instal...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/12/15</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/08</span>
             </div>
             <!-- tags  -->
             
@@ -428,31 +419,28 @@ mtk7621a双核四线程mips 1004kc处理器
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/12/11/固件逆向环境搭建/" >
+        <a class="abstract-title" href = "/2020/03/04/C++学习基础语法/" >
             
-                <span>固件逆向环境搭建</span>
+                <span>C学习基础语法</span>
         </a>
         <div class="abstract-content">
-            
-0x01.qemu2.4安装1.下载qemu源码
-1wget https://download.qemu.org/qemu-2.4.0.tar.xz1
-qemu下载地址：https://www.qemu.org/download/2.解压qemu
-1tar xvJf qemu-2.4.0.tar.xz1
-3.进入qemu文件
-1cd qemu-3.0.01
-4.编译qemu源码./configure
+            0x01.字符串类型1.符号
+“ ”与‘ ’ 
+12&quot;&quot;表示字符串  &apos;&apos;引号表示字符
 
-报错：
 
-1ERROR: Python not found. Use --python=/path/to/python1
-解决方法：apt-get install python
 
-报错：...
+&amp; 与 &amp;&amp;
+12&amp;表示按位与运算，另外也是取地址符&amp;&amp;表示逻辑与运算
+
+
+  4
+
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/12/11</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/04</span>
             </div>
             <!-- tags  -->
             
@@ -465,27 +453,22 @@ qemu下载地址：https://www.qemu.org/download/2.解压qemu
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/12/10/破解360摄像头固件密码/" >
+        <a class="abstract-title" href = "/2020/03/03/platformIO-IDE环境搭建(VScode)/" >
             
-                <span>破解360摄像头固件密码</span>
+                <span>platformIO IDE环境搭建(VScode)</span>
         </a>
         <div class="abstract-content">
-            0x01设备详情设备：360摄像头ai云台版 D916
-主控：hi3518
-flash：华邦w25q128叽里呱啦一串
-
-0x02提取固件使用编程器提取固件，建议用烧录座读取固件
-这里推荐一下这个玩意儿，XTW2，淘宝26包邮，用的是GD32F103C8T6，估计架构上和stm32是一个玩意儿，主频更高有103mhz，高于stm32的72mhz，价格却更低，国产真棒！！！
-速度吊打CH341a啥的，快很多很多。。。。。上图：
-
-提取出来之后重命名为1.bin。
-扔到ubuntu，提前装好binwalk。安装教程在《固件逆向环境搭建》有讲。
-直接binwalk 1.bin看一下文件的结构。...
+            0x01.vscode For arduino尽管用上了arduino的插件，但是其编译器依旧用的来自arduino IDE的编译器，效率贼慢，编译速度让人抓狂。
+在arduino ide平台还有上传时是否验证代码这个选项，而在巨硬开发的arduino插件上，直接没有这个选项，每次上传都要重新编译一遍代码，，，，，我人都傻了。
+0x02.安装platformIO IDE直接vscode
+搜索就行，貌似需要科学上网工具的帮助才行。。。
+0x03.PlatformIO IDE修改默认波特率这ide默认进行修改的时候是9600波特率。
+进入C:\Users(你的用户文件夹).platformi...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/12/10</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/03</span>
             </div>
             <!-- tags  -->
             
@@ -498,18 +481,32 @@ flash：华邦w25q128叽里呱啦一串
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/12/08/orange-pi折腾日记(1)/" >
+        <a class="abstract-title" href = "/2020/03/02/esp8266 arduino开发(一)/" >
             
-                <span>orange pi折腾日记(1)</span>
+                <span>esp8266 arduino开发(一)</span>
         </a>
         <div class="abstract-content">
-            0x01更新源sudo nano /etc/apt/source.list
-1234deb https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch main contrib non-freedeb https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch-updates main contrib non-freedeb https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch-backports main contrib non-freedeb...
+            0x01.引脚图arduino Ide选到nodemcu 1.0开发板。
+板载为esp 12e芯片
+flash 4m(32Mbit)
+
+0x02.呼吸灯
+模拟输出0-1023，对应电压为0v-5v;
+Arduino Uno 输出0-255，对应0v-5v
+
+
+0x03.ADC1.模拟输入
+esp8266的输入只有0v-1v，对应0-1023
+uno输入是0-5v，对应0-255
+
+
+2.DC测量系统电压相关方法        ESP.getVcc()，读取NodeMCU模块的VCC电压，单位是mV；
+注意点        ADC引脚必须保持悬空；在读取VCC电源电压之前，应更改ADC模式...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/12/08</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/02</span>
             </div>
             <!-- tags  -->
             
@@ -522,19 +519,65 @@ flash：华邦w25q128叽里呱啦一串
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/11/26/blaedrf GPS欺骗/" >
+        <a class="abstract-title" href = "/2020/03/02/esp8266-arduino开发(二)TCP-&-Client/" >
             
-                <span>blaedrf GPS欺骗</span>
+                <span>esp8266 arduino开发(二)TCP &amp; Client</span>
         </a>
         <div class="abstract-content">
-            bladerf入门学习
-123456add-apt-repository ppa:bladerf/bladerfsudo apt-get updatesudo apt-get install bladerfsudo apt -get install libbladerf-devsudo apt-get install bladerf-firmware-fx3sudo apt-get install bladerf-fpga-hos tedx40
+            
+0x01.TCP Client客户端
+整体上来说，方法可以分为4类：
+
+第一类方法，连接操作；
+第二类方法，发送请求操作；
+第三类方法，响应操作；
+第四类方法，普通设置；
+
+0x02.TCP Server服务端
+1.设置server服务端
+2.获取client的访问是否有效
+3.通过WiFiClient去响应。4444444
+0x03.smartconfig智能配网1.智能配网只需三步
+beginSmartConfig
+stopSmartConfig
+smartConfigDone
+
+0x04.httpClient服务1.HTTP简介    HTTP协议是Hyper Text Tran...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/03/02</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2020/02/27/VScode开发arduino-for-esp8266/" >
+            
+                <span>VScode平台arduino插件</span>
+        </a>
+        <div class="abstract-content">
+            0x01.arduino ide缺点无法自动补全，只有极为粗糙的代码高亮。
+0x02.安装插件安装第一个巨硬出品的就完事儿了
+
+0x03.可能会出现的报错可能会出现库函数没有配置对，就会出现各种函数未定义。
+直接进vscode 软件-》文件-》首选项-》搜索：intelli sense engine修改成Tag Parser,重启。我的是这么解决的
+0x04.库函数不存在报错https://cloud.tencent.com/developer/ask/188975
+
 
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/26</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/27</span>
             </div>
             <!-- tags  -->
             
@@ -547,54 +590,32 @@ flash：华邦w25q128叽里呱啦一串
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/11/21/pwn学习(3)jarvisoj_pwn题/" >
+        <a class="abstract-title" href = "/2020/02/24/esp8266-arduino开发/" >
             
-                <span>pwn学习(3)jarvisoj_pwn题</span>
+                <span>esp8266 arduino开发(一)</span>
         </a>
         <div class="abstract-content">
-            
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/21</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/11/19/路由器pwn环境搭建/" >
-            
-                <span>固件逆向环境搭建</span>
-        </a>
-        <div class="abstract-content">
-            
-0x01.qemu2.4安装1.下载qemu源码
-1wget https://download.qemu.org/qemu-2.4.0.tar.xz1
-qemu下载地址：https://www.qemu.org/download/2.解压qemu
-1tar xvJf qemu-2.4.0.tar.xz1
-3.进入qemu文件
-1cd qemu-3.0.01
-4.编译qemu源码./configure
+            0x01.引脚图arduino Ide选到nodemcu 1.0开发板。
+板载为esp 12e芯片
+flash 4m(32Mbit)
 
-报错：
+0x02.呼吸灯
+模拟输出0-1023，对应电压为0v-5v;
+Arduino Uno 输出0-255，对应0v-5v
 
-1ERROR: Python not found. Use --python=/path/to/python1
-解决方法：apt-get install python
 
-报错：...
+0x03.ADC1.模拟输入
+esp8266的输入只有0v-1v，对应0-1023
+uno输入是0-5v，对应0-255
+
+
+2.DC测量系统电压相关方法        ESP.getVcc()，读取NodeMCU模块的VCC电压，单位是mV；
+注意点        ADC引脚必须保持悬空；在读取VCC电源电压之前，应更改ADC模式...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/19</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/24</span>
             </div>
             <!-- tags  -->
             
@@ -607,21 +628,25 @@ qemu下载地址：https://www.qemu.org/download/2.解压qemu
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/11/19/路由器实验复现（1）hg532e/" >
+        <a class="abstract-title" href = "/2020/02/10/win10配置python2，python3环境/" >
             
-                <span>路由器漏洞实验复现(1)HG532e</span>
+                <span>win10配置python2，python3环境</span>
         </a>
         <div class="abstract-content">
-            1.复现CVE-2017-17215学习路由器漏洞分析然后再复现CVE-2018-17068、CVE-2018-5767、CVE-2016-5367
-华为已经发了漏洞公告，固件已经升级到HG532eV100R001C02B017_upgrade_main.bin。从论坛里找到了带漏洞版本件，HG532eV100R001C02B015_upgrade_main.bin。
-附上下载链接
-1https://ia601506.us.archive.org/22/items/RouterHG532e/router%20HG532e.rar
-2.先补一下这个漏洞的详情零日（CVE-2017-1721...
+            1.直接官网下载安装我这个放到了：C:/Python27和C:/Python37这两个文件夹
+然后配置环境变量如图
+
+2.修改python.exe和pythonw.exe文件名然后开始进入各个文件夹，然后把python27的文件夹中的python.exe,pythonw.exe分别修改成python2.exe,pythonw2.exe,然后python37的文件夹中的改成python3.exe,pythonw3.exe.
+
+
+3.然后直接安装pip2和pip3python3
+1python3 -m pip install --upgrade pip --force-reinstall
+p...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/19</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/10</span>
             </div>
             <!-- tags  -->
             
@@ -634,17 +659,23 @@ qemu下载地址：https://www.qemu.org/download/2.解压qemu
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/11/14/pwn工具配置与使用，并且自动切换gdb脚本/" >
+        <a class="abstract-title" href = "/2020/02/09/android Studio 3.5.2的配置过程/" >
             
-                <span>pwn工具配置与使用，并且自动切换gdb脚本</span>
+                <span>[Untitled Post]</span>
         </a>
         <div class="abstract-content">
-            环境安装基础的ubuntu配置1.换国内源1234567891011121314sudo nano /etc/apt/sources.listdeb http://mirrors.aliyun.com/ubuntu/ xenial maindeb-src http://mirrors.aliyun.com/ubuntu/ xenial maindeb http://mirrors.aliyun.com/ubuntu/ xenial-updates maindeb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates maindeb ht...
+            android Studio 3.5.2的配置过程
+把项目中的build.gradle中google()和jcenter()注释掉，换成阿里云的就可以了。
+将Android Studio中所有的代理全部取消
+另外将~/.gradle/gradle.properties中关于代理的内容全部注释掉。
+
+build.gradle内容改为如下：
+1234567891011121314151617181920212223242526272829303132// Top-level build file where you can add configuration options common t...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/14</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/09</span>
             </div>
             <!-- tags  -->
             
@@ -654,7 +685,7 @@ qemu下载地址：https://www.qemu.org/download/2.解压qemu
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a>
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">NEXT &#62;</a>
     </nav>
     
 </main>
@@ -1207,9 +1238,180 @@ qemu下载地址：https://www.qemu.org/download/2.解压qemu
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 30
+        Total : 41
         </div>
         <!-- search  -->
         
@@ -1219,6 +1421,20 @@ qemu下载地址：https://www.qemu.org/download/2.解压qemu
     
     
     
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/04</span><a class="archive-post-title" href= "/2020/03/04/C++学习基础语法/" >C学习基础语法</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
     
     <div class="archive-year"> Invalid date </div>
     <ul class="year-list">
@@ -1239,7 +1455,7 @@ qemu下载地址：https://www.qemu.org/download/2.解压qemu
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/arduino入门/" >arduino入门</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/32学习/" >stm32入门学习</a>
         </li>
     
     
@@ -1248,40 +1464,37 @@ qemu下载地址：https://www.qemu.org/download/2.解压qemu
     
         </ul>
     
-    <div class="archive-year"> Invalid date </div>
+    <div class="archive-year"> 2020 </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/26/blaedrf GPS欺骗/" >blaedrf GPS欺骗</a>
+            <span class="archive-post-date">03/08</span><a class="archive-post-title" href= "/2020/03/08/avr逆向学习(一)/" >avr逆向学习(一)</a>
         </li>
     
     
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/c118 osmocombb/" >Ubuntu编译OsmocomBB 环境</a>
+            <span class="archive-post-date">03/02</span><a class="archive-post-title" href= "/2020/03/02/esp8266 arduino开发(一)/" >esp8266 arduino开发(一)</a>
         </li>
     
     
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/27</span><a class="archive-post-title" href= "/2020/02/27/VScode开发arduino-for-esp8266/" >VScode平台arduino插件</a>
+        </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/bladerf/" >blaedrf入门学习</a>
+            <span class="archive-post-date">02/24</span><a class="archive-post-title" href= "/2020/02/24/esp8266-arduino开发/" >esp8266 arduino开发(一)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/09</span><a class="archive-post-title" href= "/2020/02/09/android Studio 3.5.2的配置过程/" >[Untitled Post]</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/05</span><a class="archive-post-title" href= "/2020/02/05/android studio开发/" >[Untitled Post]</a>
         </li>
     
     
@@ -1321,11 +1534,6 @@ qemu下载地址：https://www.qemu.org/download/2.解压qemu
     
         <li class="archive-post-item">
             <span class="archive-post-date">11/19</span><a class="archive-post-title" href= "/2019/11/19/路由器实验复现（1）hg532e/" >路由器漏洞实验复现(1)HG532e</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/21</span><a class="archive-post-title" href= "/2019/10/21/gdb工具pwndbg与peda与gef配置/" >pwn工具配置与使用，并且自动切换gdb脚本</a>
         </li>
     
     
@@ -1374,6 +1582,90 @@ qemu下载地址：https://www.qemu.org/download/2.解压qemu
         </li>
     
     
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/arduino入门/" >arduino入门</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/26/blaedrf GPS欺骗/" >blaedrf GPS欺骗</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/bladerf/" >blaedrf入门学习</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/c118 osmocombb/" >Ubuntu编译OsmocomBB 环境</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/02/esp8266-arduino开发(二)TCP-&-Client/" >esp8266 arduino开发(二)TCP & Client</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/21</span><a class="archive-post-title" href= "/2019/10/21/gdb工具pwndbg与peda与gef配置/" >pwn工具配置与使用，并且自动切换gdb脚本</a>
+        </li>
+    
+    
         <li class="archive-post-item">
             <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/gsm/" >gsm</a>
         </li>
@@ -1394,7 +1686,7 @@ qemu下载地址：https://www.qemu.org/download/2.解压qemu
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/32学习/" >stm32入门学习</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/11/html快速入门(一)/" >html快速入门(一)</a>
         </li>
     
     
@@ -1408,7 +1700,21 @@ qemu下载地址：https://www.qemu.org/download/2.解压qemu
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/python study/" >Python入门</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/03/platformIO-IDE环境搭建(VScode)/" >platformIO IDE环境搭建(VScode)</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/14/pwn工具配置与使用，并且自动切换gdb脚本/" >pwn工具配置与使用，并且自动切换gdb脚本</a>
         </li>
     
     
@@ -1436,7 +1742,35 @@ qemu下载地址：https://www.qemu.org/download/2.解压qemu
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/14/pwn工具配置与使用，并且自动切换gdb脚本/" >pwn工具配置与使用，并且自动切换gdb脚本</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/02/10/win10配置python2，python3环境/" >win10配置python2，python3环境</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/python study/" >Python入门</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/01/03/嵌入式linux设备修改shadow文件破解root密码/" >嵌入式linux设备修改shadow文件破解root密码</a>
         </li>
     
     
@@ -1465,20 +1799,6 @@ qemu下载地址：https://www.qemu.org/download/2.解压qemu
     
         <li class="archive-post-item">
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/19/路由器pwn环境搭建/" >固件逆向环境搭建</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/01/03/嵌入式linux设备修改shadow文件破解root密码/" >嵌入式linux设备修改shadow文件破解root密码</a>
         </li>
     
     </div>

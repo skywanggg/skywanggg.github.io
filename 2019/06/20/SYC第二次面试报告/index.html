@@ -266,7 +266,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">2,759</span>阅读时长: <span class="post-count reading-time">12 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">2,757</span>阅读时长: <span class="post-count reading-time">12 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -397,7 +397,7 @@ height:50vh;
     <article class="article-entry">
         <p>​                                          </p>
 <p>此次第二次面试研究的课题是关于水卡数据的破解以及badusb的wifi版的制作。</p>
-<h1 id="1-初学RFID-三中心-13-14-15-16-17栋-水卡的破解研究"><a href="#1-初学RFID-三中心-13-14-15-16-17栋-水卡的破解研究" class="headerlink" title="1. 初学RFID-三中心(13.14.15.16.17栋)水卡的破解研究"></a>1. 初学RFID-三中心(13.14.15.16.17栋)水卡的破解研究</h1><h4 id="1-基本知识："><a href="#1-基本知识：" class="headerlink" title="1.基本知识："></a>1.基本知识：</h4><p>Mifare Classic card提供1k-4k的容量，我们经常见到的是Mifare Classic 1k(S50)，也就是所谓的M1卡。M1卡有从0到15共16个扇区，每个扇区配备了从0到3共块个段，每个段分为b0到b15共16个区块，并且可以保存16字节的内容。 </p>
+<h1 id="0x01-初学RFID-三中心-13-14-15-16-17栋-水卡的破解研究"><a href="#0x01-初学RFID-三中心-13-14-15-16-17栋-水卡的破解研究" class="headerlink" title="0x01. 初学RFID-三中心(13.14.15.16.17栋)水卡的破解研究"></a>0x01. 初学RFID-三中心(13.14.15.16.17栋)水卡的破解研究</h1><h4 id="0x01-基本知识："><a href="#0x01-基本知识：" class="headerlink" title="0x01.基本知识："></a>0x01.基本知识：</h4><p>Mifare Classic card提供1k-4k的容量，我们经常见到的是Mifare Classic 1k(S50)，也就是所谓的M1卡。M1卡有从0到15共16个扇区，每个扇区配备了从0到3共块个段，每个段分为b0到b15共16个区块，并且可以保存16字节的内容。 </p>
 <p>每个扇区的第4段呢是用来保存KeyA，KeyB和控制位的，每张卡的0扇区还有一个唯一标识的UID号。</p>
 <p><strong>破解原理</strong></p>
 <p>这种卡类的攻击方式大概分为这么几种：</p>
@@ -408,53 +408,51 @@ height:50vh;
 <p>M1卡的扇区可以保存数据，所以大部分的卡片会选择加密扇区后保存数据，我们可以用 uid卡来进行复制，每张M1卡在0扇区第1段都有一个唯一标识，而且是保护无法修改的，uid 卡就是没有设定0扇区保护的卡，所以你可以随意的修改你想要的uid，这样我们就可以克隆出一张连uid都相同的卡片了。</p>
 <p><strong>3</strong>）嗅探攻击</p>
 <p>在卡和机器数据交换的时候嗅探数据，进行攻击，利用XOR算key工具就可以把扇区的密钥计算出来。（后期可在安卓端用app：M Tools进行数据的嗅探） </p>
-<h4 id="2-所需工具"><a href="#2-所需工具" class="headerlink" title="2. 所需工具:"></a>2. 所需工具:</h4><p>硬件： ACR122u</p>
+<h4 id="0x02-所需工具"><a href="#0x02-所需工具" class="headerlink" title="0x02. 所需工具:"></a>0x02. 所需工具:</h4><p>硬件： ACR122u</p>
 <p>软件：m1卡程序，fixdump，sublime Text3，UID写卡程序</p>
 <p>以及安卓端：mifare classical tools, M Tools(神器)</p>
-<h4 id="4-实际操作："><a href="#4-实际操作：" class="headerlink" title="4 . 实际操作："></a>4 . 实际操作：</h4><p><strong>1.</strong> <strong>首先把acr122u的驱动叽里呱啦的安装好。</strong></p>
-<p><strong>2.</strong> <strong>把水卡放置道读卡上，正确识别之后灯会变为黄色。</strong></p>
-<p>​           <img src="https://github.com/devil0x/picture/raw/master/11.09/1.png" alt>                                    </p>
-<p>3.打开m1服务软件，正确识别机器之后，点击开始破解。</p>
-<p><img src="https://github.com/devil0x/picture/raw/master/11.09/2.png" alt="1541320664628"></p>
-<ol start="4">
-<li>破解完成当即获得一个1kb dump文件，现在可以直接拖进sublime text3。但是因为是linux移植软件，所以直接打开会看到很多扇区是缺东西的，win下操作的时候需要用到一个fixdump的工具来填充剩余部分。</li>
-</ol>
-<p>5.先把得到的文件，重新命名为一个简单名称（dumpfile1.dump），然后进行修复dump文件。把dumpfile1.dump拖到fixdump所在文件夹，在空白处按住shift，在右击鼠标，点击在此处打开powershell，然后输入</p>
+<h4 id="0x03-实际操作："><a href="#0x03-实际操作：" class="headerlink" title="0x03 . 实际操作："></a>0x03 . 实际操作：</h4><p><strong>1). </strong>首先把acr122u的驱动叽里呱啦的安装好。</p>
+<p><strong>2). </strong>把水卡放置道读卡上，正确识别之后灯会变为黄色.</p>
+<p><img src="http://q5p73ywy9.bkt.clouddn.com/picGO/1.png" alt></p>
+<p><strong>3). </strong>打开m1服务软件，正确识别机器之后，点击开始破解。</p>
+<p><img src="http://q5p73ywy9.bkt.clouddn.com/picGO/2.png" alt></p>
+<p><strong>4). </strong>破解完成当即获得一个1kb dump文件，现在可以直接拖进sublime text3。但是因为是linux移植软件，所以直接打开会看到很多扇区是缺东西的，win下操作的时候需要用到一个fixdump的工具来填充剩余部分。</p>
+<p><strong>5).</strong>先把得到的文件，重新命名为一个简单名称（dumpfile1.dump），然后进行修复dump文件。把dumpfile1.dump拖到fixdump所在文件夹，在空白处按住shift，在右击鼠标，点击在此处打开powershell，然后输入</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\fixdump dumpfile1.dump</span><br></pre></td></tr></table></figure>
-<p>6.获得4kb的dump文件。<img src="https://github.com/devil0x/picture/raw/master/11.09/3.png" alt="1541320780834"></p>
+<p><strong>6). </strong>获得4kb的dump文件。<img src="http://q5p73ywy9.bkt.clouddn.com/picGO/3.png" alt></p>
 <p>   6.为了容易看出金额差别，用手机端app：mifare打开m1卡，</p>
-<p><img src="https://github.com/devil0x/picture/raw/master/11.09/4.png" alt="1541321412959"></p>
+<p><img src="http://q5p73ywy9.bkt.clouddn.com/picGO/4.png" alt></p>
 <p>会发现没有3号4号扇区的key，</p>
 <p>用sublime打开dumpfile1.dump</p>
-<p><img src="https://github.com/devil0x/picture/raw/master/11.09/5.png" alt="1541321526563"></p>
+<p><img src="http://q5p73ywy9.bkt.clouddn.com/picGO/5.png" alt></p>
 <p>每个扇区的第4块区域，前半部为keyA 后半为keyB</p>
 <p>直接导入mifare 工具，手机端图形界面好观察一些。</p>
-<p><img src="https://github.com/devil0x/picture/raw/master/11.09/6.png" alt="1541321645940"></p>
+<p><img src="http://q5p73ywy9.bkt.clouddn.com/picGO/6.png" alt></p>
 <p>直接可以看到改扇区的信息了，然后在读卡器记下现在的金额，并命名一下啊，再去刷卡处，打开机器，然后金额开始变化，再记录下金额，用dump对比工具对比。</p>
-<p><img src="https://github.com/devil0x/picture/raw/master/11.09/7.png" alt="1541322018408"></p>
+<p><img src="http://q5p73ywy9.bkt.clouddn.com/picGO/7.png" alt></p>
 <p>随即就发现了一些端倪。这几个数值出现了变化，</p>
 <p><strong>E4 12</strong>     <strong>DC 90</strong></p>
 <p><strong>E8 12</strong>     <strong>DB 93</strong></p>
 <p>把前两部分导进进制转换器</p>
-<p><img src="https://github.com/devil0x/picture/raw/master/11.09/8.png" alt="1541322421194"></p>
+<p><img src="http://q5p73ywy9.bkt.clouddn.com/picGO/8.png" alt></p>
 <p>刚好是金额位，那么剩下的就是。。。。校验位。</p>
 <p>这都8102年了，之前经常逛酷安，知道一款神器，M Tools</p>
-<p><img src="https://github.com/devil0x/picture/raw/master/11.09/9.png" alt="1541323524737"></p>
+<p><img src="http://q5p73ywy9.bkt.clouddn.com/picGO/9.png" alt></p>
 <p>这是一款酷安基佬开发的app，最神奇的是作者录制了视频教程，但是地址确是在油管，并附有中式英语进行讲解。现在还有一款app是M Keys也是该作者的作品，这两款app现在也都支持外置ACR122U了，so没有nfc的手机也可以外置进行操作。</p>
 <p>这个app也需要提前把密钥导进去，然后就可以对扇区数据进行操作</p>
-<p><img src="https://github.com/devil0x/picture/raw/master/11.09/10.png" alt="1541323809934"></p>
+<p><img src="http://q5p73ywy9.bkt.clouddn.com/picGO/10.png" alt></p>
 <p>这货可以预置常用的算法，什么十六进制倒序，倍数转换啊，直接一点即可。</p>
 <p>然后就找到之前发现的金额位数据，直接就可以转换成47.40，然后下一不是选择校验位的算法，but真的看不出有何端倪，直接先跳过了。。。。</p>
-<p><img src="https://github.com/devil0x/picture/raw/master/11.09/10.png" alt="1541324006788"></p>
+<p><img src="http://q5p73ywy9.bkt.clouddn.com/picGO/10.png" alt></p>
 <p>然后来到这个app的核心功能地方，嗅探校验位算法。于是，在刷卡机器旁边，冲冲放放这样来了十几个来回，嗅探到了一下数据。</p>
-<p><img src="https://github.com/devil0x/picture/raw/master/11.09/11.png" alt="1541324174499"></p>
+<p><img src="http://q5p73ywy9.bkt.clouddn.com/picGO/11.png" alt></p>
 <p>目前已知的校验位计算方法有这么几种：</p>
-<p><img src="https://github.com/devil0x/picture/raw/master/11.09/12.png" alt="1541324519138"></p>
+<p><img src="http://q5p73ywy9.bkt.clouddn.com/picGO/12.png" alt></p>
 <p>这里提供一个异或算法工具：在线BCC校验工具（<a href="http://www.ip33.com/bcc.html）" target="_blank" rel="noopener">http://www.ip33.com/bcc.html）</a></p>
 <p>反正就是加减乘除，异或取反，各种操作挨个试，</p>
 <p>虽说如此，还是看不出来</p>
 <p>but 看了好久没看出来，就去翻着去看了几篇教程，发现了一些端倪。</p>
-<p><img src="https://github.com/devil0x/picture/raw/master/11.09/13.png" alt="1541326346471"></p>
+<p><img src="http://q5p73ywy9.bkt.clouddn.com/picGO/13.png" alt></p>
 <p>但就是这个b12部分一直啥都看不出来，真的是毫无规律可循。但其他部分应该还是很好知道规律的</p>
 <p>such as：第2块与第1块做对比，金额位b0差-4，b1没有差别，b12差+1, b15差-3，刚好钱差0.04</p>
 <p>​          同理第3与第4块的做对比，金额位b0差-8，b1没有差别，b12差+1, b15差-7，刚好钱差0.08</p>
@@ -464,17 +462,17 @@ height:50vh;
 <p>把这些数换到10进制计算出这个某定值为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">88(hex)+12(hex)+8(hex)-60(hex) = 66(十进制)</span><br></pre></td></tr></table></figure>
 <p>所以b15的公式就是：b15=b0+b1+b12-66</p>
-<p>把公式填进M Tools，直接成功完成验证：<img src="https://github.com/devil0x/picture/raw/master/11.09/14.png" alt="1541327523694"></p>
+<p>把公式填进M Tools，直接成功完成验证：<img src="http://q5p73ywy9.bkt.clouddn.com/picGO/14.png" alt></p>
 <p>但是这个b12什么鬼，什么规律都没有。。。。。。。。</p>
 <p>但后来经过自己观察，这个可能是随机的，从图上可知每刷一次都递增一下，从00开始，such as：08.09.0A。。。。。。</p>
 <p>跳过此步骤，自己开始修改数据，比如39.42，先x100，再用16进制表示3942，再倒置一下：</p>
-<p><img src="https://github.com/devil0x/picture/raw/master/11.09/15.png" alt="1541327857383"></p>
-<p>只有3个数字，空余位用0替补，验证一下<img src="https://github.com/devil0x/picture/raw/master/11.09/16.png" alt="1541327929322"></p>
+<p><img src="http://q5p73ywy9.bkt.clouddn.com/picGO/15.png" alt></p>
+<p>只有3个数字，空余位用0替补，验证一下<img src="http://q5p73ywy9.bkt.clouddn.com/picGO/16.png" alt></p>
 <p>欧克了，那就是金额位就是66 0f，b12既然是随机的就不用管了随便填00都可以，公式再通过算出b15等于15，填上去，再用读卡器acr122u写入到一张空白的uid卡里边，完毕了。</p>
 <p>这都8102年了，提供一个更快的思路，直接用M Tools</p>
-<p><img src="https://github.com/devil0x/picture/raw/master/11.09/17.png" alt="1541328695589"></p>
+<p><img src="http://q5p73ywy9.bkt.clouddn.com/picGO/17.png" alt></p>
 <p>直接交给手机来吧，都不用写个c来计算了。直接充值了</p>
-<p>上图<img src="https://github.com/devil0x/picture/raw/master/11.09/18.png" alt="1541328814663"></p>
+<p><img src="http://q5p73ywy9.bkt.clouddn.com/picGO/18.png" alt></p>
 <h1 id="2-wifi版badusb"><a href="#2-wifi版badusb" class="headerlink" title="2 . wifi版badusb"></a>2 . wifi版badusb</h1><p>BadUSB是今年计算机安全领域的热门话题之一，该漏洞由Karsten Nohl和Jakob Lell共同发现，并在今年的BlackHat安全大会上公布。BadUSB号称是世界上最邪恶的USB外设。</p>
 <p>笔者使用他们的代码做了个类似的U盘，用户插入U盘，就会自动执行预置在固件中的恶意代码，下载服务器上恶意文件，执行恶意操作。</p>
 <p>但是今天制作的东西是wifi版的badusb。可以wifi上传脚本，执行脚本，在线编辑脚本的bad USB。对了，那个九块钱的Digispark能做到这一切，不可能的，毕竟那货都不能免驱动，那还玩个ball啊……</p>
@@ -484,7 +482,7 @@ height:50vh;
 <p>esp8266固件（<a href="https://github.com/spacehuhn/wifi_ducky/releases）" target="_blank" rel="noopener">https://github.com/spacehuhn/wifi_ducky/releases）</a></p>
 <p>mjmcu 固件（<a href="https://github.com/spacehuhn/wifi_ducky/blob/master/arduino_wifi_duck/arduino_wifi_duck.ino）" target="_blank" rel="noopener">https://github.com/spacehuhn/wifi_ducky/blob/master/arduino_wifi_duck/arduino_wifi_duck.ino）</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;Keyboard.h&gt;</span><br><span class="line">#define BAUD_RATE 57200</span><br><span class="line"></span><br><span class="line">#define ExternSerial Serial1</span><br><span class="line"></span><br><span class="line">String bufferStr = &quot;&quot;;</span><br><span class="line">String last = &quot;&quot;;</span><br><span class="line"></span><br><span class="line">int defaultDelay = 0;</span><br><span class="line"></span><br><span class="line">void Line(String _line)</span><br><span class="line">&#123;</span><br><span class="line">  int firstSpace = _line.indexOf(&quot; &quot;);</span><br><span class="line">  if(firstSpace == -1) Press(_line);</span><br><span class="line">  else if(_line.substring(0,firstSpace) == &quot;STRING&quot;)&#123;</span><br><span class="line">    for(int i=firstSpace+1;i&lt;_line.length();i++) Keyboard.write(_line[i]);</span><br><span class="line">  &#125;</span><br><span class="line">  else if(_line.substring(0,firstSpace) == &quot;DELAY&quot;)&#123;</span><br><span class="line">    int delaytime = _line.substring(firstSpace + 1).toInt();</span><br><span class="line">    delay(delaytime);</span><br><span class="line">  &#125;</span><br><span class="line">  else if(_line.substring(0,firstSpace) == &quot;DEFAULTDELAY&quot;) defaultDelay = _line.substring(firstSpace + 1).toInt();</span><br><span class="line">  else if(_line.substring(0,firstSpace) == &quot;REM&quot;)&#123;&#125; //nothing :/</span><br><span class="line">  else if(_line.substring(0,firstSpace) == &quot;REPLAY&quot;) &#123;</span><br><span class="line">    int replaynum = _line.substring(firstSpace + 1).toInt();</span><br><span class="line">    while(replaynum)</span><br><span class="line">    &#123;</span><br><span class="line">      Line(last);</span><br><span class="line">      --replaynum;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; else&#123;</span><br><span class="line">      String remain = _line;</span><br><span class="line"></span><br><span class="line">      while(remain.length() &gt; 0)&#123;</span><br><span class="line">        int latest_space = remain.indexOf(&quot; &quot;);</span><br><span class="line">        if (latest_space == -1)&#123;</span><br><span class="line">          Press(remain);</span><br><span class="line">          remain = &quot;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">          Press(remain.substring(0, latest_space));</span><br><span class="line">          remain = remain.substring(latest_space + 1);</span><br><span class="line">        &#125;</span><br><span class="line">        delay(5);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Keyboard.releaseAll();</span><br><span class="line">  delay(defaultDelay);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void Press(String b)&#123;</span><br><span class="line">  if(b.length() == 1) Keyboard.press(char(b[0]));</span><br><span class="line">  else if (b.equals(&quot;ENTER&quot;)) Keyboard.press(KEY_RETURN);</span><br><span class="line">  else if (b.equals(&quot;CTRL&quot;)) Keyboard.press(KEY_LEFT_CTRL);</span><br><span class="line">  else if (b.equals(&quot;SHIFT&quot;)) Keyboard.press(KEY_LEFT_SHIFT);</span><br><span class="line">  else if (b.equals(&quot;ALT&quot;)) Keyboard.press(KEY_LEFT_ALT);</span><br><span class="line">  else if (b.equals(&quot;GUI&quot;)) Keyboard.press(KEY_LEFT_GUI);</span><br><span class="line">  else if (b.equals(&quot;UP&quot;) || b.equals(&quot;UPARROW&quot;)) Keyboard.press(KEY_UP_ARROW);</span><br><span class="line">  else if (b.equals(&quot;DOWN&quot;) || b.equals(&quot;DOWNARROW&quot;)) Keyboard.press(KEY_DOWN_ARROW);</span><br><span class="line">  else if (b.equals(&quot;LEFT&quot;) || b.equals(&quot;LEFTARROW&quot;)) Keyboard.press(KEY_LEFT_ARROW);</span><br><span class="line">  else if (b.equals(&quot;RIGHT&quot;) || b.equals(&quot;RIGHTARROW&quot;)) Keyboard.press(KEY_RIGHT_ARROW);</span><br><span class="line">  else if (b.equals(&quot;DELETE&quot;)) Keyboard.press(KEY_DELETE);</span><br><span class="line">  else if (b.equals(&quot;PAGEUP&quot;)) Keyboard.press(KEY_PAGE_UP);</span><br><span class="line">  else if (b.equals(&quot;PAGEDOWN&quot;)) Keyboard.press(KEY_PAGE_DOWN);</span><br><span class="line">  else if (b.equals(&quot;HOME&quot;)) Keyboard.press(KEY_HOME);</span><br><span class="line">  else if (b.equals(&quot;ESC&quot;)) Keyboard.press(KEY_ESC);</span><br><span class="line">  else if (b.equals(&quot;BACKSPACE&quot;)) Keyboard.press(KEY_BACKSPACE);</span><br><span class="line">  else if (b.equals(&quot;INSERT&quot;)) Keyboard.press(KEY_INSERT);</span><br><span class="line">  else if (b.equals(&quot;TAB&quot;)) Keyboard.press(KEY_TAB);</span><br><span class="line">  else if (b.equals(&quot;END&quot;)) Keyboard.press(KEY_END);</span><br><span class="line">  else if (b.equals(&quot;CAPSLOCK&quot;)) Keyboard.press(KEY_CAPS_LOCK);</span><br><span class="line">  else if (b.equals(&quot;F1&quot;)) Keyboard.press(KEY_F1);</span><br><span class="line">  else if (b.equals(&quot;F2&quot;)) Keyboard.press(KEY_F2);</span><br><span class="line">  else if (b.equals(&quot;F3&quot;)) Keyboard.press(KEY_F3);</span><br><span class="line">  else if (b.equals(&quot;F4&quot;)) Keyboard.press(KEY_F4);</span><br><span class="line">  else if (b.equals(&quot;F5&quot;)) Keyboard.press(KEY_F5);</span><br><span class="line">  else if (b.equals(&quot;F6&quot;)) Keyboard.press(KEY_F6);</span><br><span class="line">  else if (b.equals(&quot;F7&quot;)) Keyboard.press(KEY_F7);</span><br><span class="line">  else if (b.equals(&quot;F8&quot;)) Keyboard.press(KEY_F8);</span><br><span class="line">  else if (b.equals(&quot;F9&quot;)) Keyboard.press(KEY_F9);</span><br><span class="line">  else if (b.equals(&quot;F10&quot;)) Keyboard.press(KEY_F10);</span><br><span class="line">  else if (b.equals(&quot;F11&quot;)) Keyboard.press(KEY_F11);</span><br><span class="line">  else if (b.equals(&quot;F12&quot;)) Keyboard.press(KEY_F12);</span><br><span class="line">  else if (b.equals(&quot;SPACE&quot;)) Keyboard.press(&apos; &apos;);</span><br><span class="line">  //else Serial.println(&quot;not found :&apos;&quot;+b+&quot;&apos;(&quot;+String(b.length())+&quot;)&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void setup() &#123;</span><br><span class="line">  </span><br><span class="line">  Serial.begin(BAUD_RATE);</span><br><span class="line">  ExternSerial.begin(BAUD_RATE);</span><br><span class="line"></span><br><span class="line">  pinMode(13,OUTPUT);</span><br><span class="line">  digitalWrite(13,HIGH);</span><br><span class="line"></span><br><span class="line">  Keyboard.begin();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void loop() &#123;</span><br><span class="line">  if(ExternSerial.available()) &#123;</span><br><span class="line">    bufferStr = ExternSerial.readStringUntil(&quot;END&quot;);</span><br><span class="line">    Serial.println(bufferStr);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  if(bufferStr.length() &gt; 0)&#123;</span><br><span class="line">    </span><br><span class="line">    bufferStr.replace(&quot;\r&quot;,&quot;\n&quot;);</span><br><span class="line">    bufferStr.replace(&quot;\n\n&quot;,&quot;\n&quot;);</span><br><span class="line">    </span><br><span class="line">    while(bufferStr.length() &gt; 0)&#123;</span><br><span class="line">      int latest_return = bufferStr.indexOf(&quot;\n&quot;);</span><br><span class="line">      if(latest_return == -1)&#123;</span><br><span class="line">        Serial.println(&quot;run: &quot;+bufferStr);</span><br><span class="line">        Line(bufferStr);</span><br><span class="line">        bufferStr = &quot;&quot;;</span><br><span class="line">      &#125; else&#123;</span><br><span class="line">        Serial.println(&quot;run: &apos;&quot;+bufferStr.substring(0, latest_return)+&quot;&apos;&quot;);</span><br><span class="line">        Line(bufferStr.substring(0, latest_return));</span><br><span class="line">        last=bufferStr.substring(0, latest_return);</span><br><span class="line">        bufferStr = bufferStr.substring(latest_return + 1);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    bufferStr = &quot;&quot;;</span><br><span class="line">    ExternSerial.write(0x99);</span><br><span class="line">    Serial.println(&quot;done&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://github.com/devil0x/picture/raw/master/11.09/19.png" alt="1541329587154"></p>
+<p><img src="http://q5p73ywy9.bkt.clouddn.com/picGO/18.png" alt></p>
 <p>然后rx.tx互相反接，vcc，gnd直接连。焊接就完事儿了</p>
 <p>后台登陆一下192.168.4.1</p>
 <p>然后程序的话直接</p>
@@ -506,7 +504,7 @@ height:50vh;
             <p>原文作者：<a href="https://devil0x.github.io">devil0x</a>
             <p>原文链接：<a href="https://devil0x.github.io/2019/06/20/SYC第二次面试报告/">https://devil0x.github.io/2019/06/20/SYC第二次面试报告/</a>
             <p>发表日期：<a href="https://devil0x.github.io/2019/06/20/SYC第二次面试报告/">June 20th 2019, 3:26:52 am</a>
-            <p>更新日期：<a href="https://devil0x.github.io/2019/06/20/SYC第二次面试报告/">February 3rd 2019, 10:11:34 pm</a>
+            <p>更新日期：<a href="https://devil0x.github.io/2019/06/20/SYC第二次面试报告/">February 15th 2020, 12:19:43 am</a>
             <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -643,7 +641,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-初学RFID-三中心-13-14-15-16-17栋-水卡的破解研究"><span class="toc-number">1.</span> <span class="toc-text">1. 初学RFID-三中心(13.14.15.16.17栋)水卡的破解研究</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-基本知识："><span class="toc-number">1.0.0.1.</span> <span class="toc-text">1.基本知识：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-所需工具"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">2. 所需工具:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-实际操作："><span class="toc-number">1.0.0.3.</span> <span class="toc-text">4 . 实际操作：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-wifi版badusb"><span class="toc-number">2.</span> <span class="toc-text">2 . wifi版badusb</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#所需材料："><span class="toc-number">2.0.1.</span> <span class="toc-text">所需材料：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-进阶玩法"><span class="toc-number">2.0.1.1.</span> <span class="toc-text">2. 进阶玩法</span></a></li></ol></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0x01-初学RFID-三中心-13-14-15-16-17栋-水卡的破解研究"><span class="toc-number">1.</span> <span class="toc-text">0x01. 初学RFID-三中心(13.14.15.16.17栋)水卡的破解研究</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#0x01-基本知识："><span class="toc-number">1.0.0.1.</span> <span class="toc-text">0x01.基本知识：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#0x02-所需工具"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">0x02. 所需工具:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#0x03-实际操作："><span class="toc-number">1.0.0.3.</span> <span class="toc-text">0x03 . 实际操作：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-wifi版badusb"><span class="toc-number">2.</span> <span class="toc-text">2 . wifi版badusb</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#所需材料："><span class="toc-number">2.0.1.</span> <span class="toc-text">所需材料：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-进阶玩法"><span class="toc-number">2.0.1.1.</span> <span class="toc-text">2. 进阶玩法</span></a></li></ol></li></ol></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -1014,9 +1012,180 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 30
+        Total : 41
         </div>
         <!-- search  -->
         
@@ -1026,6 +1195,20 @@ top:50vh;
     
     
     
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/04</span><a class="archive-post-title" href= "/2020/03/04/C++学习基础语法/" >C学习基础语法</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
     
     <div class="archive-year"> Invalid date </div>
     <ul class="year-list">
@@ -1046,7 +1229,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/arduino入门/" >arduino入门</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/32学习/" >stm32入门学习</a>
         </li>
     
     
@@ -1055,40 +1238,37 @@ top:50vh;
     
         </ul>
     
-    <div class="archive-year"> Invalid date </div>
+    <div class="archive-year"> 2020 </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/26/blaedrf GPS欺骗/" >blaedrf GPS欺骗</a>
+            <span class="archive-post-date">03/08</span><a class="archive-post-title" href= "/2020/03/08/avr逆向学习(一)/" >avr逆向学习(一)</a>
         </li>
     
     
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/c118 osmocombb/" >Ubuntu编译OsmocomBB 环境</a>
+            <span class="archive-post-date">03/02</span><a class="archive-post-title" href= "/2020/03/02/esp8266 arduino开发(一)/" >esp8266 arduino开发(一)</a>
         </li>
     
     
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/27</span><a class="archive-post-title" href= "/2020/02/27/VScode开发arduino-for-esp8266/" >VScode平台arduino插件</a>
+        </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/bladerf/" >blaedrf入门学习</a>
+            <span class="archive-post-date">02/24</span><a class="archive-post-title" href= "/2020/02/24/esp8266-arduino开发/" >esp8266 arduino开发(一)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/09</span><a class="archive-post-title" href= "/2020/02/09/android Studio 3.5.2的配置过程/" >[Untitled Post]</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/05</span><a class="archive-post-title" href= "/2020/02/05/android studio开发/" >[Untitled Post]</a>
         </li>
     
     
@@ -1128,11 +1308,6 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">11/19</span><a class="archive-post-title" href= "/2019/11/19/路由器实验复现（1）hg532e/" >路由器漏洞实验复现(1)HG532e</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/21</span><a class="archive-post-title" href= "/2019/10/21/gdb工具pwndbg与peda与gef配置/" >pwn工具配置与使用，并且自动切换gdb脚本</a>
         </li>
     
     
@@ -1181,6 +1356,90 @@ top:50vh;
         </li>
     
     
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/arduino入门/" >arduino入门</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/26/blaedrf GPS欺骗/" >blaedrf GPS欺骗</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/bladerf/" >blaedrf入门学习</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/c118 osmocombb/" >Ubuntu编译OsmocomBB 环境</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/02/esp8266-arduino开发(二)TCP-&-Client/" >esp8266 arduino开发(二)TCP & Client</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/21</span><a class="archive-post-title" href= "/2019/10/21/gdb工具pwndbg与peda与gef配置/" >pwn工具配置与使用，并且自动切换gdb脚本</a>
+        </li>
+    
+    
         <li class="archive-post-item">
             <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/gsm/" >gsm</a>
         </li>
@@ -1201,7 +1460,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/32学习/" >stm32入门学习</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/11/html快速入门(一)/" >html快速入门(一)</a>
         </li>
     
     
@@ -1215,7 +1474,21 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/python study/" >Python入门</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/03/platformIO-IDE环境搭建(VScode)/" >platformIO IDE环境搭建(VScode)</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/14/pwn工具配置与使用，并且自动切换gdb脚本/" >pwn工具配置与使用，并且自动切换gdb脚本</a>
         </li>
     
     
@@ -1243,7 +1516,35 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/14/pwn工具配置与使用，并且自动切换gdb脚本/" >pwn工具配置与使用，并且自动切换gdb脚本</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/02/10/win10配置python2，python3环境/" >win10配置python2，python3环境</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/python study/" >Python入门</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/01/03/嵌入式linux设备修改shadow文件破解root密码/" >嵌入式linux设备修改shadow文件破解root密码</a>
         </li>
     
     
@@ -1272,20 +1573,6 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/19/路由器pwn环境搭建/" >固件逆向环境搭建</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/01/03/嵌入式linux设备修改shadow文件破解root密码/" >嵌入式linux设备修改shadow文件破解root密码</a>
         </li>
     
     </div>

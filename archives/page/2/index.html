@@ -346,49 +346,23 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/22/常见函数与汇编指令/" >
+        <a class="abstract-title" href = "/2020/02/05/android studio开发/" >
             
-                <span>常见函数与汇编指令</span>
+                <span>[Untitled Post]</span>
         </a>
         <div class="abstract-content">
-            常见函数strcmp()
-12345678参数 str1 和 str2 是参与比较的两个字符串。strcmp() 会根据  编码依次比较 str1 和 str2 的每一个字符，直到出现不到的字符，或者到达字符串末尾（遇见）。- 如果返回值 &lt; 0，则表示 str1 小于 str2。- 如果返回值 &gt; 0，则表示 str2 小于 str1。- 如果返回值 = 0，则表示 str1 等于 str2。such as；	 if(!strcmp(&amp;v10, &amp;v13))	 v13与v10进行比较，不相同时进入条件
-strcpy()
-12strcpy(a, b)- 把b赋...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/22</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/21/pwn入门学习(1)栈溢出基础知识/" >
-            
-                <span>栈溢出基础知识</span>
-        </a>
-        <div class="abstract-content">
-            0x01栈的介绍栈是一种典型的后进先出 (Last in First Out) 的数据结构，其操作主要有压栈 (push) 与出栈 (pop) 两种操作，如下图所示（维基百科）。两种操作都操作栈顶，当然，它也有栈底。
+            android studio开发(1)0x01.第一章1.android Studio 3.5.2的配置过程
+把项目中的build.gradle中google()和jcenter()注释掉，换成阿里云的就可以了。
+将Android Studio中所有的代理全部取消
+另外将~/.gradle/gradle.properties中关于代理的内容全部注释掉。
 
-高级语言在运行时都会被转换为汇编程序，在汇编程序运行过程中，充分利用了这一数据结构。每个程序在运行时都有虚拟地址空间，其中某一部分就是该程序对应的栈，用于保存函数调用信息和局部变量。此外，常见的操作也是压栈与出栈。需要注意的是，程序的栈是从进程地址空间的高地址向低地址增长的。
-函数调用栈需要注意的是，32 位和 64 位程序有以下简单的区别
-
-x86
-函数参数在函数返回地...
+build.gradle内容改为如下：
+1234567891011121314151617181920212223242526272829303132// Top-level build file where you can add c...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/21</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/02/05</span>
             </div>
             <!-- tags  -->
             
@@ -401,17 +375,31 @@ x86
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/21/gdb工具pwndbg与peda与gef配置/" >
+        <a class="abstract-title" href = "/2020/01/03/嵌入式linux设备修改shadow文件破解root密码/" >
             
-                <span>pwn工具配置与使用，并且自动切换gdb脚本</span>
+                <span>嵌入式linux设备修改shadow文件破解root密码</span>
         </a>
         <div class="abstract-content">
-            环境安装基础的ubuntu配置1.换国内源1234567891011121314sudo nano /etc/apt/sources.listdeb http://mirrors.aliyun.com/ubuntu/ xenial maindeb-src http://mirrors.aliyun.com/ubuntu/ xenial maindeb http://mirrors.aliyun.com/ubuntu/ xenial-updates maindeb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates maindeb ht...
+            0x01设备详情网件WNDR3800路由器固件为例
+0x02.环境搭建github下载源码，安装binwalk 
+环境：ubuntu 16.04
+0x03.binwalk分析首先，使用binwalk简单分析
+如图所示，这个固件由两部分组成。
+
+
+接下来我们提取出两个文件系统
+
+解压第二个文件系统(较大的那个)
+之后我们进入相应目录修改文件，在修改完成之后。我们进行打包的操作，部分数据保持一致.
+之后我们将生成的squashfs.bin和first.bin进行拼接
+
+之后，我们看到的new.bin就是我们生成的新固件。刷入路由器之后，就可以使用已知的密码去访问路由器管理页面   
+
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/21</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2020/01/03</span>
             </div>
             <!-- tags  -->
             
@@ -424,29 +412,25 @@ x86
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/17/ubertooth环境搭建手册/" >
+        <a class="abstract-title" href = "/2019/12/15/newifi2-编程器救砖/" >
             
-                <span>搭建ubertooth环境</span>
+                <span>newifi2 编程器救砖·</span>
         </a>
         <div class="abstract-content">
-            配置环境Ubuntu16.04.1
-内核版本4.4.0
-需要用到的环境及工具：
+            0x01设备详情newifi d1 
+mtk7621a双核四线程mips 1004kc处理器
+256m运存，32m spi flash MX25L25635E
+直接拆解，看到spi flash。
 
-libbtbbUbertooth toolsWiresharkFirmwarekismet
+0x02救砖直接通过编程器去连接，我的是 8脚的25 spi flash编程器。但是路由器的flash是sop16封装，有转接图，接上去就可用。
 
-官方文档：
-1https://github.com/greatscottgadgets/ubertooth/wiki/Build-Guide
-我的教程可能过时，so一切还是参照官方文档。
-0x01 安装依赖库
-在构建libbtbb和Ubertooth工具之前，需要先安装一些依赖。您可以从操作系统的软件包存储库中找到许多这些文件，例如：
-Debian / Ubuntu
-12sudo apt-get install c...
+拿夹子直接一夹，直接读取即可。
+0x03 刷机1.读取原路由器flash数据，提取eeprom(地址0x4000-0x4ffff)。2.擦除原数据，直接写入h大的不死breed。直接附上地址：  https://breed.hackpascal.n...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/17</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/12/15</span>
             </div>
             <!-- tags  -->
             
@@ -459,19 +443,31 @@ Debian / Ubuntu
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/14/PWN入门学习(2)基本的ROP/" >
+        <a class="abstract-title" href = "/2019/12/11/固件逆向环境搭建/" >
             
-                <span>pwn入门学习(2)pwn-wiki（basic ROP)</span>
+                <span>固件逆向环境搭建</span>
         </a>
         <div class="abstract-content">
-            基本 ROP随着 NX 保护的开启，以往直接向栈或者堆上直接注入代码的方式难以继续发挥效果。攻击者们也提出来相应的方法来绕过保护，目前主要的是 ROP(Return Oriented Programming)，其主要思想是在栈缓冲区溢出的基础上，利用程序中已有的小片段 (gadgets) 来改变某些寄存器或者变量的值，从而控制程序的执行流程。所谓 gadgets 就是以 ret 结尾的指令序列，通过这些指令序列，我们可以修改某些地址的内容，方便控制程序的执行流程。
-0x01.checksec看到的那些参数含义
-NX保护：你不能执行我就不执行，栈里面的内容只负责把程序执行流引入到一个需要的...
+            
+0x01.qemu2.4安装1.下载qemu源码
+1wget https://download.qemu.org/qemu-2.4.0.tar.xz1
+qemu下载地址：https://www.qemu.org/download/2.解压qemu
+1tar xvJf qemu-2.4.0.tar.xz1
+3.进入qemu文件
+1cd qemu-3.0.01
+4.编译qemu源码./configure
+
+报错：
+
+1ERROR: Python not found. Use --python=/path/to/python1
+解决方法：apt-get install python
+
+报错：...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/14</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/12/11</span>
             </div>
             <!-- tags  -->
             
@@ -484,26 +480,27 @@ NX保护：你不能执行我就不执行，栈里面的内容只负责把程序
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/12/逆向学习/" >
+        <a class="abstract-title" href = "/2019/12/10/破解360摄像头固件密码/" >
             
-                <span>逆向学习</span>
+                <span>破解360摄像头固件密码</span>
         </a>
         <div class="abstract-content">
-            逆向学习刚写的文档忘记保存了，我丢typora。。。
-难受记得随手crtl s吧。
-功放世界1.re1普通直接看到字符串的题
-反编译的结果不是一定正确的，IDA采用递归下降法进行反编译，它的优点在于很少会在反编译时把数据当作代码来处理，不过这次IDA很明显把flag当成代码，进行了反编译，因此在string界面无法找到flag
-解决方法是在IDA打开文件时选择binary file,在此模式下IDA不会进行反编译，此时再打开strings界面就可发现flag  
-2.game一个字符串游戏
-直接查看打印flag的函数
+            0x01设备详情设备：360摄像头ai云台版 D916
+主控：hi3518
+flash：华邦w25q128叽里呱啦一串
+0x02提取固件使用编程器提取固件，建议用烧录座读取固件
+这里推荐一下这个玩意儿，XTW2，淘宝26包邮，用的是GD32F103C8T6，估计架构上和stm32是一个玩意儿，主频更高有103mhz，高于stm32的72mhz，价格却更低，国产真棒！！！
+速度吊打CH341a啥的，快很多很多
 
-我觉得自己的c语言学的太菜了。。。。。写个脚本即可得出结果
-1c =...
+提取出来之后重命名为1.bin。
+扔到ubuntu，提前装好binwalk。安装教程在《固件逆向环境搭建》有讲。
+直接binwalk 1.bin看一下文件的结构。
+使用kali自带...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/12</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/12/10</span>
             </div>
             <!-- tags  -->
             
@@ -516,9 +513,118 @@ NX保护：你不能执行我就不执行，栈里面的内容只负责把程序
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/06/20/路由器·漏洞挖掘/" >
+        <a class="abstract-title" href = "/2019/12/08/orange-pi折腾日记(1)/" >
             
-                <span>路由器pwn环境搭建</span>
+                <span>orange pi折腾日记(1)</span>
+        </a>
+        <div class="abstract-content">
+            0x01更新源sudo nano /etc/apt/source.list
+1234deb https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch main contrib non-freedeb https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch-updates main contrib non-freedeb https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch-backports main contrib non-freedeb...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/12/08</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/11/26/blaedrf GPS欺骗/" >
+            
+                <span>blaedrf GPS欺骗</span>
+        </a>
+        <div class="abstract-content">
+            bladerf入门学习
+123456add-apt-repository ppa:bladerf/bladerfsudo apt-get updatesudo apt-get install bladerfsudo apt -get install libbladerf-devsudo apt-get install bladerf-firmware-fx3sudo apt-get install bladerf-fpga-hos tedx40
+
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/26</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/11/21/pwn学习(3)jarvisoj_pwn题/" >
+            
+                <span>pwn学习(3)jarvisoj_pwn题</span>
+        </a>
+        <div class="abstract-content">
+            
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/21</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/11/19/路由器pwn环境搭建/" >
+            
+                <span>固件逆向环境搭建</span>
+        </a>
+        <div class="abstract-content">
+            
+0x01.qemu2.4安装1.下载qemu源码
+1wget https://download.qemu.org/qemu-2.4.0.tar.xz1
+qemu下载地址：https://www.qemu.org/download/2.解压qemu
+1tar xvJf qemu-2.4.0.tar.xz1
+3.进入qemu文件
+1cd qemu-3.0.01
+4.编译qemu源码./configure
+
+报错：
+
+1ERROR: Python not found. Use --python=/path/to/python1
+解决方法：apt-get install python
+
+报错：...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/19</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/11/19/路由器实验复现（1）hg532e/" >
+            
+                <span>路由器漏洞实验复现(1)HG532e</span>
         </a>
         <div class="abstract-content">
             1.复现CVE-2017-17215学习路由器漏洞分析然后再复现CVE-2018-17068、CVE-2018-5767、CVE-2016-5367
@@ -530,95 +636,7 @@ NX保护：你不能执行我就不执行，栈里面的内容只负责把程序
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/20</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/06/20/常用设备配置/" >
-            
-                <span>设备常用配置</span>
-        </a>
-        <div class="abstract-content">
-            1.树莓派wifi配置修改wifi连接
-1sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
-设置wifi自动连接
-1https://www.cnblogs.com/visionsl/p/8117317.html
-安装P4wnp1 
-12345sudo apt-get -y install gitcd /home/pigit clone --recursive https://github.com/mame82/P4wnP1cd P4wnP1./install.sh
-2.kali更换国内源2.kali更换国内源换中科大源
-123456789...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/20</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/06/20/安洵杯CTF rfid题/" >
-            
-                <span>安洵杯CTF rfid题</span>
-        </a>
-        <div class="abstract-content">
-            安洵杯CTF rfid题首先，这题我也没拿到flag，但是经过喵师傅的讲解，暂时把校验弄出来了。
-##　１．为啥自己看不出校验方法呢？我觉得吧，有以下几点需要注意应该会好很多:
-1.实验一种校验方法之后没有结果，不要死磕，换方法。
-2.加几个破解水卡的群，多接触各种稀奇古怪的校验方法。
-3.多练习多练习。。。。
-4.用好winhex，逆向计算器
-5.最重要的，校验的奥义：羊毛出在羊身上。就是说，校验位在哪里，你可以通过多看几个数据的变化来看出。而校验的产生，总是遵循金额位的变化，校验不管咋变，都是金额位数值通过各种公式组合加计算出来的。2.1.过一下题目 
-2.题目提供了4个文件，12....
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/20</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/06/20/固定码逆向分析/" >
-            
-                <span>固定码逆向分析</span>
-        </a>
-        <div class="abstract-content">
-            固定码逆向分析 环境：kali
-0x01. Analysis 信号分析分析信号可使用音频处理软件Audacity：
-不过这种方式需要肉眼将波形转化成0跟1，看起来比较容易眼花。so用软件辅助一下
-1.1安装软件1.inspectrum在这篇文章中我们将通过inspectrum(https://github.com/miek/inspectrum)这个工具来分析信号，配合Python将信号转成二进制数据。
-先安装所需的环境，再安装inspectrum。类似的软件还有DSpectrumGUI都行。
-1234567sudo apt-get install qt5-default libfftw...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/20</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/11/19</span>
             </div>
             <!-- tags  -->
             
@@ -628,7 +646,7 @@ NX保护：你不能执行我就不执行，栈里面的内容只负责把程序
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/archives/">&#60; PREV</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/3/">NEXT &#62;</a>
+        <a class="extend prev" rel="prev" href="/archives/">&#60; PREV</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/3/">NEXT &#62;</a>
     </nav>
     
 </main>
@@ -1084,9 +1102,180 @@ NX保护：你不能执行我就不执行，栈里面的内容只负责把程序
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 30
+        Total : 41
         </div>
         <!-- search  -->
         
@@ -1096,6 +1285,20 @@ NX保护：你不能执行我就不执行，栈里面的内容只负责把程序
     
     
     
+    
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/04</span><a class="archive-post-title" href= "/2020/03/04/C++学习基础语法/" >C学习基础语法</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
     
     <div class="archive-year"> Invalid date </div>
     <ul class="year-list">
@@ -1116,7 +1319,7 @@ NX保护：你不能执行我就不执行，栈里面的内容只负责把程序
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/arduino入门/" >arduino入门</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/32学习/" >stm32入门学习</a>
         </li>
     
     
@@ -1125,40 +1328,37 @@ NX保护：你不能执行我就不执行，栈里面的内容只负责把程序
     
         </ul>
     
-    <div class="archive-year"> Invalid date </div>
+    <div class="archive-year"> 2020 </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/26/blaedrf GPS欺骗/" >blaedrf GPS欺骗</a>
+            <span class="archive-post-date">03/08</span><a class="archive-post-title" href= "/2020/03/08/avr逆向学习(一)/" >avr逆向学习(一)</a>
         </li>
     
     
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/c118 osmocombb/" >Ubuntu编译OsmocomBB 环境</a>
+            <span class="archive-post-date">03/02</span><a class="archive-post-title" href= "/2020/03/02/esp8266 arduino开发(一)/" >esp8266 arduino开发(一)</a>
         </li>
     
     
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/27</span><a class="archive-post-title" href= "/2020/02/27/VScode开发arduino-for-esp8266/" >VScode平台arduino插件</a>
+        </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/bladerf/" >blaedrf入门学习</a>
+            <span class="archive-post-date">02/24</span><a class="archive-post-title" href= "/2020/02/24/esp8266-arduino开发/" >esp8266 arduino开发(一)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/09</span><a class="archive-post-title" href= "/2020/02/09/android Studio 3.5.2的配置过程/" >[Untitled Post]</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/05</span><a class="archive-post-title" href= "/2020/02/05/android studio开发/" >[Untitled Post]</a>
         </li>
     
     
@@ -1198,11 +1398,6 @@ NX保护：你不能执行我就不执行，栈里面的内容只负责把程序
     
         <li class="archive-post-item">
             <span class="archive-post-date">11/19</span><a class="archive-post-title" href= "/2019/11/19/路由器实验复现（1）hg532e/" >路由器漏洞实验复现(1)HG532e</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/21</span><a class="archive-post-title" href= "/2019/10/21/gdb工具pwndbg与peda与gef配置/" >pwn工具配置与使用，并且自动切换gdb脚本</a>
         </li>
     
     
@@ -1251,6 +1446,90 @@ NX保护：你不能执行我就不执行，栈里面的内容只负责把程序
         </li>
     
     
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/arduino入门/" >arduino入门</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/26/blaedrf GPS欺骗/" >blaedrf GPS欺骗</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/bladerf/" >blaedrf入门学习</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/c118 osmocombb/" >Ubuntu编译OsmocomBB 环境</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/02/esp8266-arduino开发(二)TCP-&-Client/" >esp8266 arduino开发(二)TCP & Client</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/21</span><a class="archive-post-title" href= "/2019/10/21/gdb工具pwndbg与peda与gef配置/" >pwn工具配置与使用，并且自动切换gdb脚本</a>
+        </li>
+    
+    
         <li class="archive-post-item">
             <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/gsm/" >gsm</a>
         </li>
@@ -1271,7 +1550,7 @@ NX保护：你不能执行我就不执行，栈里面的内容只负责把程序
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/32学习/" >stm32入门学习</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/11/html快速入门(一)/" >html快速入门(一)</a>
         </li>
     
     
@@ -1285,7 +1564,21 @@ NX保护：你不能执行我就不执行，栈里面的内容只负责把程序
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/python study/" >Python入门</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/03/platformIO-IDE环境搭建(VScode)/" >platformIO IDE环境搭建(VScode)</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/14/pwn工具配置与使用，并且自动切换gdb脚本/" >pwn工具配置与使用，并且自动切换gdb脚本</a>
         </li>
     
     
@@ -1313,7 +1606,35 @@ NX保护：你不能执行我就不执行，栈里面的内容只负责把程序
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/14/pwn工具配置与使用，并且自动切换gdb脚本/" >pwn工具配置与使用，并且自动切换gdb脚本</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/02/10/win10配置python2，python3环境/" >win10配置python2，python3环境</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/python study/" >Python入门</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/01/03/嵌入式linux设备修改shadow文件破解root密码/" >嵌入式linux设备修改shadow文件破解root密码</a>
         </li>
     
     
@@ -1342,20 +1663,6 @@ NX保护：你不能执行我就不执行，栈里面的内容只负责把程序
     
         <li class="archive-post-item">
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/19/路由器pwn环境搭建/" >固件逆向环境搭建</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/01/03/嵌入式linux设备修改shadow文件破解root密码/" >嵌入式linux设备修改shadow文件破解root密码</a>
         </li>
     
     </div>
