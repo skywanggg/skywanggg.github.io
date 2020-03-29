@@ -400,14 +400,14 @@ height:50vh;
 <p>环境：ubuntu 16.04</p>
 <h1 id="0x03-binwalk分析"><a href="#0x03-binwalk分析" class="headerlink" title="0x03.binwalk分析"></a>0x03.binwalk分析</h1><p>首先，使用binwalk简单分析</p>
 <p>如图所示，这个固件由两部分组成。</p>
-<p><img src="http://ww1.sinaimg.cn/large/0063hjnqgy1gajfu0p27yj31gj04oq4p.jpg" alt="7.jpg"></p>
-<p><img src="http://ww1.sinaimg.cn/large/0063hjnqgy1gajfvitrquj31000ezaca.jpg" alt="8.jpg"></p>
+<p><img src="http://image.skywang.fun//picGO/20200327170240.png" alt></p>
+<p><img src="http://image.skywang.fun//picGO/20200327170258.png" alt></p>
 <p>接下来我们提取出两个文件系统</p>
-<p><img src="http://ww1.sinaimg.cn/large/0063hjnqgy1gajfwd98yfj312205ign7.jpg" alt="9.jpg"></p>
+<p><img src="http://image.skywang.fun//picGO/20200327170227.png" alt></p>
 <p>解压第二个文件系统(较大的那个)</p>
-<p><img src="http://ww1.sinaimg.cn/large/0063hjnqgy1gajfws9yk2j312404cdgl.jpg" alt="10.jpg">之后我们进入相应目录修改文件，在修改完成之后。我们进行打包的操作，部分数据保持一<br>致.</p>
-<p><img src="http://ww1.sinaimg.cn/large/0063hjnqgy1gajfxjrr64j31240ck778.jpg" alt="11.jpg"><br>之后我们将生成的squashfs.bin和first.bin进行拼接</p>
-<p><img src="http://ww1.sinaimg.cn/large/0063hjnqgy1gajfy2w0gnj312l0b50uk.jpg" alt="12.jpg"></p>
+<p><img src="http://image.skywang.fun//picGO/20200327170213.png" alt>之后我们进入相应目录修改文件，在修改完成之后。我们进行打包的操作，部分数据保持一<br>致.</p>
+<p><img src="http://image.skywang.fun//picGO/20200327170158.png" alt><br>之后我们将生成的squashfs.bin和first.bin进行拼接</p>
+<p><img src="http://image.skywang.fun//picGO/20200327170138.png" alt></p>
 <p>之后，我们看到的new.bin就是我们生成的新固件。刷入路由器之后，就可以使用已知的密码去访问路由器管理页面   </p>
 
     </article>
@@ -417,7 +417,7 @@ height:50vh;
             <p>原文作者：<a href="https://skywanggg.github.io">devil0x</a>
             <p>原文链接：<a href="https://skywanggg.github.io/2020/01/03/嵌入式linux设备修改shadow文件破解root密码/">https://skywanggg.github.io/2020/01/03/嵌入式linux设备修改shadow文件破解root密码/</a>
             <p>发表日期：<a href="https://skywanggg.github.io/2020/01/03/嵌入式linux设备修改shadow文件破解root密码/">January 3rd 2020, 4:15:17 pm</a>
-            <p>更新日期：<a href="https://skywanggg.github.io/2020/01/03/嵌入式linux设备修改shadow文件破解root密码/">January 3rd 2020, 4:15:30 pm</a>
+            <p>更新日期：<a href="https://skywanggg.github.io/2020/01/03/嵌入式linux设备修改shadow文件破解root密码/">March 27th 2020, 5:03:05 pm</a>
             <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -1092,6 +1092,8 @@ top:50vh;
     
     
     
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
         Total : 41
@@ -1110,7 +1112,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/51学习/" >51单片机学习</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/32学习/" >stm32入门学习</a>
         </li>
     
     
@@ -1124,7 +1126,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/32学习/" >stm32入门学习</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/51学习/" >51单片机学习</a>
         </li>
     
     
@@ -1212,6 +1214,11 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">10/21</span><a class="archive-post-title" href= "/2019/10/21/gdb工具pwndbg与peda与gef配置/" >pwn工具配置与使用，并且自动切换gdb脚本</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">10/17</span><a class="archive-post-title" href= "/2019/10/17/ubertooth环境搭建手册/" >搭建ubertooth环境</a>
         </li>
     
@@ -1233,11 +1240,6 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/常用设备配置/" >设备常用配置</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/安洵杯CTF rfid题/" >安洵杯CTF rfid题</a>
         </li>
     
     
@@ -1294,20 +1296,6 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/26/blaedrf GPS欺骗/" >blaedrf GPS欺骗</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/c118 osmocombb/" >Ubuntu编译OsmocomBB 环境</a>
         </li>
     
@@ -1322,7 +1310,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/02/esp8266-arduino开发(二)TCP-&-Client/" >esp8266 arduino开发(二)TCP & Client</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/26/blaedrf GPS欺骗/" >blaedrf GPS欺骗</a>
         </li>
     
     
@@ -1336,7 +1324,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/21</span><a class="archive-post-title" href= "/2019/10/21/gdb工具pwndbg与peda与gef配置/" >pwn工具配置与使用，并且自动切换gdb脚本</a>
+            <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/安洵杯CTF rfid题/" >安洵杯CTF rfid题</a>
         </li>
     
     
@@ -1347,6 +1335,20 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/freebuf第一次/" >freebuf第一次</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/02/esp8266-arduino开发(二)TCP-&-Client/" >esp8266 arduino开发(二)TCP & Client</a>
         </li>
     
     
@@ -1388,7 +1390,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/14/pwn工具配置与使用，并且自动切换gdb脚本/" >pwn工具配置与使用，并且自动切换gdb脚本</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/10/21/pwn入门学习(1)栈溢出基础知识/" >栈溢出基础知识</a>
         </li>
     
     
@@ -1402,7 +1404,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/10/21/pwn入门学习(1)栈溢出基础知识/" >栈溢出基础知识</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/14/pwn工具配置与使用，并且自动切换gdb脚本/" >pwn工具配置与使用，并且自动切换gdb脚本</a>
         </li>
     
     

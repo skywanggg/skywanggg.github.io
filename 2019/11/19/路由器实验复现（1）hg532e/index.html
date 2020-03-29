@@ -442,7 +442,6 @@ height:50vh;
 <p>再用ifup eth1  将eth1启起来，运气好的话此时网络已经好了。</p>
 <h1 id="（这部分是抄的，直接借鉴的）"><a href="#（这部分是抄的，直接借鉴的）" class="headerlink" title="（这部分是抄的，直接借鉴的）"></a><code>（这部分是抄的，直接借鉴的）</code></h1><h3 id="4-环境搭建好，进行实际操作"><a href="#4-环境搭建好，进行实际操作" class="headerlink" title="4. 环境搭建好，进行实际操作"></a>4. 环境搭建好，进行实际操作</h3><p>在已经登陆的qemu里输入,查看ip地址</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig -a</span><br></pre></td></tr></table></figure>
-<p><img src="http://pico0ziv8.bkt.clouddn.com/18-12-3/29942034.jpg" alt></p>
 <p>直接操作虚拟机显然比较麻烦，在ubuntu上搞个SSH 连进来</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@192.168.127.141</span><br></pre></td></tr></table></figure>
 <p>再次输入密码即可</p>
@@ -476,11 +475,11 @@ height:50vh;
 <p>直接将固件中负责 UPnP 服务的 upnp 程序扔到 IDA。</p>
 <p>用IDA直接打开 /HG532eV100R001C01B020_upgrade_packet.bin.extracted/squashfs-root/bin</p>
 <p>1.通过字符串 <code>NewStatusURL</code> 对漏洞点进行定位。直接在ida中的空白处按入空格，由流程图模式改为汇编代码模式，按shift+f12打开String Windows窗口，再按入alt+t，然后直接搜索<code>NewStatus</code>来定位该漏洞位置。</p>
-<p><img src="http://pico0ziv8.bkt.clouddn.com/18-12-3/41289211.jpg" alt></p>
+<p><img src="http://qiniu.skywang.fun/18-12-3/41289211.jpg" alt></p>
 <p>2.跟踪数据的引用地址</p>
-<p><img src="http://pico0ziv8.bkt.clouddn.com/18-12-3/72288694.jpg" alt></p>
+<p><img src="http://qiniu.skywang.fun/18-12-3/72288694.jpg" alt></p>
 <p>3.找到漏洞点如下</p>
-<p><img src="http://pico0ziv8.bkt.clouddn.com/18-12-3/78152986.jpg" alt></p>
+<p><img src="http://qiniu.skywang.fun/18-12-3/78152986.jpg" alt></p>
 <h1 id="2-学习IDA-Pro"><a href="#2-学习IDA-Pro" class="headerlink" title="2.学习IDA Pro"></a>2.学习IDA Pro</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ps：先去学习一下ida pro的用法。</span><br><span class="line">我的ida pro链接，直接拖到ubuntu点解idap即可运行</span><br><span class="line">不过64位需要安装一下依赖</span><br><span class="line"></span><br><span class="line">sudo dpkg --add-architecture i386</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install libc6-i686:i386 libexpat1:i386 libffi6:i386 libfontconfig1:i386 libfreetype6:i386 libgcc1:i386 libglib2.0-0:i386 libice6:i386 libpcre3:i386 libpng12-0:i386 libsm6:i386 libstdc++6:i386 libuuid1:i386 libx11-6:i386 libxau6:i386 libxcb1:i386 libxdmcp6:i386 libxext6:i386 libxrender1:i386 zlib1g:i386 libx11-xcb1:i386 libdbus-1-3:i386 libxi6:i386 libsm6:i386 libcurl3:i386</span><br></pre></td></tr></table></figure>
 <p>分析一下upnp中的关键代码:</p>
 <p><a href="https://image.3001.net/images/20180112/15157334268937.png" target="_blank" rel="noopener"><img src="https://image.3001.net/images/20180112/15157334268937.png!small" alt="通过CVE-2017-17215学习路由器漏洞分析"></a></p>
@@ -489,11 +488,11 @@ height:50vh;
 <p>其中a0是拷贝的源字符串的地址，同时a0又是system 调用的第一个参数。所以最后会执行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">system（a0）</span><br></pre></td></tr></table></figure>
 <p>(借的图片Orz)</p>
-<h3 id="IDA-Pro基本知识"><a href="#IDA-Pro基本知识" class="headerlink" title="IDA Pro基本知识"></a>IDA Pro基本知识</h3><h5 id="1-基本常识"><a href="#1-基本常识" class="headerlink" title="1. 基本常识"></a>1. 基本常识</h5><p><img src="http://pico0ziv8.bkt.clouddn.com/18-12-3/55458895.jpg" alt></p>
+<h3 id="IDA-Pro基本知识"><a href="#IDA-Pro基本知识" class="headerlink" title="IDA Pro基本知识"></a>IDA Pro基本知识</h3><h5 id="1-基本常识"><a href="#1-基本常识" class="headerlink" title="1. 基本常识"></a>1. 基本常识</h5><p><img src="http://qiniu.skywang.fun/18-12-3/55458895.jpg" alt></p>
 <p>红色窗口为函数列表，一个文件被反编译后所有的函数列表都可以在此窗格中显示；</p>
 <p>蓝色窗口为汇编代码区，双击每个函数，可以看到对应函数对应的汇编代码段；</p>
 <p>黑色窗口为输出窗口，文件反汇编过程中的信息都可以在此窗口中看到。</p>
-<h3 id="3-安装buildroot的坑"><a href="#3-安装buildroot的坑" class="headerlink" title="3.安装buildroot的坑"></a>3.安装buildroot的坑</h3><p><img src="http://pico0ziv8.bkt.clouddn.com/18-12-8/82814804.jpg" alt></p>
+<h3 id="3-安装buildroot的坑"><a href="#3-安装buildroot的坑" class="headerlink" title="3.安装buildroot的坑"></a>3.安装buildroot的坑</h3><p><img src="http://qiniu.skywang.fun/18-12-8/82814804.jpg" alt></p>
 <p>安装buildroot的时候不要把安装包下载到win10，然后在复制到ubuntu，容易导致hash值发生变化，引发报错。。。。。</p>
 <p>啥系统软件，在啥系统内下载</p>
 <h4 id="1-MIPS交叉编译环境的搭建（Buildroot）"><a href="#1-MIPS交叉编译环境的搭建（Buildroot）" class="headerlink" title="1. MIPS交叉编译环境的搭建（Buildroot）"></a>1. MIPS交叉编译环境的搭建（Buildroot）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1.github的方式</span><br><span class="line"></span><br><span class="line"># 安装依赖库</span><br><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install libncurses5-dev patch</span><br><span class="line"> </span><br><span class="line"># 下载源码</span><br><span class="line">$ git clone https://github.com/buildroot/buildroot.git</span><br><span class="line"> </span><br><span class="line"># 进行编译的配置</span><br><span class="line">$ cd buildroot</span><br><span class="line">$ make clean</span><br></pre></td></tr></table></figure>
@@ -508,7 +507,7 @@ height:50vh;
             <p>原文作者：<a href="https://skywanggg.github.io">devil0x</a>
             <p>原文链接：<a href="https://skywanggg.github.io/2019/11/19/路由器实验复现（1）hg532e/">https://skywanggg.github.io/2019/11/19/路由器实验复现（1）hg532e/</a>
             <p>发表日期：<a href="https://skywanggg.github.io/2019/11/19/路由器实验复现（1）hg532e/">November 19th 2019, 2:15:48 pm</a>
-            <p>更新日期：<a href="https://skywanggg.github.io/2019/11/19/路由器实验复现（1）hg532e/">November 19th 2019, 4:29:15 pm</a>
+            <p>更新日期：<a href="https://skywanggg.github.io/2019/11/19/路由器实验复现（1）hg532e/">March 28th 2020, 11:39:05 pm</a>
             <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -1183,6 +1182,8 @@ top:50vh;
     
     
     
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
         Total : 41
@@ -1201,7 +1202,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/51学习/" >51单片机学习</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/32学习/" >stm32入门学习</a>
         </li>
     
     
@@ -1215,7 +1216,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/32学习/" >stm32入门学习</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/51学习/" >51单片机学习</a>
         </li>
     
     
@@ -1303,6 +1304,11 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">10/21</span><a class="archive-post-title" href= "/2019/10/21/gdb工具pwndbg与peda与gef配置/" >pwn工具配置与使用，并且自动切换gdb脚本</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">10/17</span><a class="archive-post-title" href= "/2019/10/17/ubertooth环境搭建手册/" >搭建ubertooth环境</a>
         </li>
     
@@ -1324,11 +1330,6 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/常用设备配置/" >设备常用配置</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/安洵杯CTF rfid题/" >安洵杯CTF rfid题</a>
         </li>
     
     
@@ -1385,20 +1386,6 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/26/blaedrf GPS欺骗/" >blaedrf GPS欺骗</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/c118 osmocombb/" >Ubuntu编译OsmocomBB 环境</a>
         </li>
     
@@ -1413,7 +1400,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/02/esp8266-arduino开发(二)TCP-&-Client/" >esp8266 arduino开发(二)TCP & Client</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/26/blaedrf GPS欺骗/" >blaedrf GPS欺骗</a>
         </li>
     
     
@@ -1427,7 +1414,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/21</span><a class="archive-post-title" href= "/2019/10/21/gdb工具pwndbg与peda与gef配置/" >pwn工具配置与使用，并且自动切换gdb脚本</a>
+            <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/安洵杯CTF rfid题/" >安洵杯CTF rfid题</a>
         </li>
     
     
@@ -1438,6 +1425,20 @@ top:50vh;
     
         <li class="archive-post-item">
             <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/freebuf第一次/" >freebuf第一次</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/02/esp8266-arduino开发(二)TCP-&-Client/" >esp8266 arduino开发(二)TCP & Client</a>
         </li>
     
     
@@ -1479,7 +1480,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/14/pwn工具配置与使用，并且自动切换gdb脚本/" >pwn工具配置与使用，并且自动切换gdb脚本</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/10/21/pwn入门学习(1)栈溢出基础知识/" >栈溢出基础知识</a>
         </li>
     
     
@@ -1493,7 +1494,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/10/21/pwn入门学习(1)栈溢出基础知识/" >栈溢出基础知识</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/14/pwn工具配置与使用，并且自动切换gdb脚本/" >pwn工具配置与使用，并且自动切换gdb脚本</a>
         </li>
     
     
