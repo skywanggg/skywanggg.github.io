@@ -459,7 +459,7 @@ height:50vh;
 <li>还有一个全局变量区域，设备接收到的RCM消息就存放在全局变量区，如上图所示。</li>
 </ul>
 <h2 id="3-5-接收RCM消息"><a href="#3-5-接收RCM消息" class="headerlink" title="3.5 接收RCM消息"></a>3.5 接收RCM消息</h2><p>我们来看看rcm_receive_message这个函数的功能，rcm_receive_message的伪代码流程如下图所示。</p>
-<p><img src="https://i0.hdslb.com/bfs/article/8c5ff764374823296a22c4bc06f1f38e995bf405.png@1116w_654h.webp" alt="img"></p>
+<p><img src="http://image.skywang.fun//picGO/20200330173026.png" alt></p>
 <p><center>RCM数据接收流程</center></p>
 <ul>
 <li>通过read_ep1_out_async函数通知设备到ep1端点读取数据，前面我们已经知道了RCM有两个端点，其中ep1端点用于批量传输功能，主机就是通过ep1端点来发送数据给设备的。注意这个函数是异步执行的，也就是说只是通知设备去接收数据，并不会等待数据接收完成才返回。同时我们也可以看到每次尝试接收的数据大小是0x4000，这个大小就是一个USB DMA Buffer的大小16kB，也就是每次设备都尝试从主机接收一个USB DMA Buffer的大小的数据。</li>
@@ -469,10 +469,10 @@ height:50vh;
 <li>如果接收的数据大小大于680字节，表示接收的RCM Payload数据，就将数据从USB DMA Buffer拷贝到RCM Payload区域。</li>
 </ul>
 <h2 id="3-6-BootRom处理批量传输流程"><a href="#3-6-BootRom处理批量传输流程" class="headerlink" title="3.6 BootRom处理批量传输流程"></a>3.6 BootRom处理批量传输流程</h2><p>我们来看看设备是如何通过USB来传输数据的，现在我们知道RCM是通过ep1端点来从主机获取数据的，这个伪代码流程如下图所示。</p>
-<p><img src="https://i0.hdslb.com/bfs/article/05394c0a822dffd0aaa2d67ad002b1ce4e493481.png@1116w_554h.webp" alt="img"></p>
+<p><img src="http://image.skywang.fun//picGO/20200330173044.png" alt></p>
 <p><center>RCM批量传输</center><br>还记得我们在USB简介章节说的除了ep0端点之外，USB从机的其他端点在未被主机配置之前是不能和USB主机通讯的么，所以在使用ep1之前需要主机对ep1进行配置。如上图所示，红框内的代码检查ep1端点是否被主机配置过，如果配置过则跳出while循环进行数据读取，如果没有配置过，则调用绿框中的函数等待主机进行配置。</p>
 <h2 id="3-7-BootRom处理控制传输流程"><a href="#3-7-BootRom处理控制传输流程" class="headerlink" title="3.7 BootRom处理控制传输流程"></a>3.7 BootRom处理控制传输流程</h2><p>RCM通过handle_ep0_control_transfer函数来进准备数据和USB主机进行通讯，响应主机的各种请求，比如获取状态、设置地址等等。我们来重点关注下主机获取状态这个请求，如下图所示。</p>
-<p><img src="https://i0.hdslb.com/bfs/article/b66e08b14f2b3f11d2af8871ba529de30b025d52.png@1116w_698h.webp" alt="img"></p>
+<p><img src="http://image.skywang.fun//picGO/20200330173059.png" alt></p>
 <p><center>RCM批量传输流程</center><br>RCM控制传输流程</p>
 <p>流程大致分为以下几步：</p>
 <ul>
@@ -482,14 +482,14 @@ height:50vh;
 <li>当一切准备就绪之后，通过memcpy将数据拷贝到USB DMA Buffer然后发送给主机。这就是图中第五步做的事情。</li>
 </ul>
 <h2 id="3-8-漏洞"><a href="#3-8-漏洞" class="headerlink" title="3.8 漏洞"></a>3.8 漏洞</h2><p>正常情况下，GET_STATUS返回的是2个字节的数据，memcpy其实是将栈中的2个字节数据拷贝到DMA Buffer中，因为status这个变量是函数中的局部变量，对应的内存在栈区，如下图所示。</p>
-<p><img src="https://i0.hdslb.com/bfs/article/7b6f786cad679ea985ecc13fe1e76654b53e85e3.png@1116w_362h.webp" alt="img"></p>
+<p><img src="http://image.skywang.fun//picGO/20200330173114.png" alt></p>
 <p><center>GET_STATUS正常拷贝操作</center><br>但是我们看看RCM控制传输流程的第3步，在这个步骤中，返回的数据长度是由USB请求中的数据长度字段决定的，而这个字段是由主机发送控制的！！！正常情况下，这个wLength应该是2，但是如果这个值不是2而是一个更大的值呢！比如是8kB的话，memcpy就会将栈区后面的Payload区域的数据也拷贝到DMA Buffer中了！如下图所示。</p>
-<p><img src="https://i0.hdslb.com/bfs/article/ac399c615dd52534207d32e4bc67d7a577cf6497.png@1116w_352h.webp" alt="img"></p>
+<p><img src="http://image.skywang.fun//picGO/20200330173129.png" alt></p>
 <p><center>wLenght字段改为8kB大小</center><br>那么如果我们再将wLength改大一点，比如（16+12）kB呢，由于在DMA Buffer区域之后是栈区，那么memcpy会用Payload区域的数据覆盖栈区！如下图所示。</p>
-<p><img src="https://i0.hdslb.com/bfs/article/26de921155adeaaf29bd464b20a4762d66b18861.png@1116w_362h.webp" alt="img"></p>
+<p><img src="http://image.skywang.fun//picGO/20200330173144.png" alt></p>
 <p><center>wLength改为28kB大小</center><br>前面我们说过，栈中除了保存局部变量数据之外还保存了函数调用的返回指针！而覆盖到栈区的是Payload区域的数据，这个区域的数据是我们可以控制的，如果我们精心设计Payload区的数据，让其覆盖栈中的函数返回指针，那么当BootRom的函数执行完返回时就会跳转到我们自己的代码执行了！</p>
 <p>我们来看看到现在为止的整个函数调用链，如下图所示。</p>
-<p><img src="https://i0.hdslb.com/bfs/article/d009cd4d17816742a690df1f15672f7a4e6d4d43.png@1116w_418h.webp" alt="img"></p>
+<p><img src="http://image.skywang.fun//picGO/20200330173159.png" alt></p>
 <p><center>函数调用链</center><br>可以看出，当执行完memcpy函数后，由于返回指针已经被我们给替换，所以不会返回到原来的memcpy之后代码执行，而是跳转执行我们自己的代码了！</p>
 <h1 id="4-利用漏洞执行非法用户代码流程"><a href="#4-利用漏洞执行非法用户代码流程" class="headerlink" title="4. 利用漏洞执行非法用户代码流程"></a>4. 利用漏洞执行非法用户代码流程</h1><p>现在我们来总体看下RCM漏洞执行非法代码的流程。</p>
 <ul>
@@ -518,7 +518,7 @@ height:50vh;
             <p>原文作者：<a href="https://skywanggg.github.io">devil0x</a>
             <p>原文链接：<a href="https://skywanggg.github.io/2020/03/30/Nintendo Switch RCM漏洞分析/">https://skywanggg.github.io/2020/03/30/Nintendo Switch RCM漏洞分析/</a>
             <p>发表日期：<a href="https://skywanggg.github.io/2020/03/30/Nintendo Switch RCM漏洞分析/">March 30th 2020, 4:42:16 pm</a>
-            <p>更新日期：<a href="https://skywanggg.github.io/2020/03/30/Nintendo Switch RCM漏洞分析/">March 30th 2020, 5:28:38 pm</a>
+            <p>更新日期：<a href="https://skywanggg.github.io/2020/03/30/Nintendo Switch RCM漏洞分析/">March 30th 2020, 5:32:04 pm</a>
             <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
