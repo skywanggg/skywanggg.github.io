@@ -346,94 +346,7 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/21/pwn入门学习(1)栈溢出基础知识/" >
-            
-                <span>栈溢出基础知识</span>
-        </a>
-        <div class="abstract-content">
-            0x01栈的介绍栈是一种典型的后进先出 (Last in First Out) 的数据结构，其操作主要有压栈 (push) 与出栈 (pop) 两种操作，如下图所示（维基百科）。两种操作都操作栈顶，当然，它也有栈底。
-
-高级语言在运行时都会被转换为汇编程序，在汇编程序运行过程中，充分利用了这一数据结构。每个程序在运行时都有虚拟地址空间，其中某一部分就是该程序对应的栈，用于保存函数调用信息和局部变量。此外，常见的操作也是压栈与出栈。需要注意的是，程序的栈是从进程地址空间的高地址向低地址增长的。
-函数调用栈需要注意的是，32 位和 64 位程序有以下简单的区别
-
-x86
-函数参数在函数返回地...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/21</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/21/gdb工具pwndbg与peda与gef配置/" >
-            
-                <span>pwn工具配置与使用，并且自动切换gdb脚本</span>
-        </a>
-        <div class="abstract-content">
-            环境安装基础的ubuntu配置1.换国内源1234567891011121314sudo nano /etc/apt/sources.listdeb http://mirrors.aliyun.com/ubuntu/ xenial maindeb-src http://mirrors.aliyun.com/ubuntu/ xenial maindeb http://mirrors.aliyun.com/ubuntu/ xenial-updates maindeb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates maindeb ht...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/21</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/17/ubertooth环境搭建手册/" >
-            
-                <span>搭建ubertooth环境</span>
-        </a>
-        <div class="abstract-content">
-            配置环境Ubuntu16.04.1
-内核版本4.4.0
-需要用到的环境及工具：
-
-libbtbbUbertooth toolsWiresharkFirmwarekismet
-
-官方文档：
-1https://github.com/greatscottgadgets/ubertooth/wiki/Build-Guide
-我的教程可能过时，so一切还是参照官方文档。
-0x01 安装依赖库
-在构建libbtbb和Ubertooth工具之前，需要先安装一些依赖。您可以从操作系统的软件包存储库中找到许多这些文件，例如：
-Debian / Ubuntu
-12sudo apt-get install c...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/17</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/10/14/PWN入门学习(2)基本的ROP/" >
+        <a class="abstract-title" href = "/2019/10/14/pwn入门学习(2)基本的ROP/" >
             
                 <span>pwn入门学习(2)pwn-wiki（basic ROP)</span>
         </a>
@@ -478,33 +391,6 @@ NX保护：你不能执行我就不执行，栈里面的内容只负责把程序
             <!-- date  -->
             <div class="abstract-date">
                 <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/12</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/06/20/路由器·漏洞挖掘/" >
-            
-                <span>路由器pwn环境搭建</span>
-        </a>
-        <div class="abstract-content">
-            1.复现CVE-2017-17215学习路由器漏洞分析然后再复现CVE-2018-17068、CVE-2018-5767、CVE-2016-5367
-华为已经发了漏洞公告，固件已经升级到HG532eV100R001C02B017_upgrade_main.bin。从论坛里找到了带漏洞版本件，HG532eV100R001C02B015_upgrade_main.bin。
-附上下载链接
-1https://ia601506.us.archive.org/22/items/RouterHG532e/router%20HG532e.rar
-2.先补一下这个漏洞的详情零日（CVE-2017-1721...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/20</span>
             </div>
             <!-- tags  -->
             
@@ -614,6 +500,105 @@ NX保护：你不能执行我就不执行，栈里面的内容只负责把程序
 此次第二次面试研究的课题是关于水卡数据的破解以及badusb的wifi版的制作。
 0x01. 初学RFID-三中心(13.14.15.16.17栋)水卡的破解研究0x01.基本知识：Mifare Classic card提供1k-4k的容量，我们经常见到的是Mifare Classic 1k(S50)，也就是所谓的M1卡。M1卡有从0到15共16个扇区，每个扇区配备了从0到3共块个段，每个段分为b0到b15共16个区块，并且可以保存16字节的内容。 
 每个扇区的第4段呢是用来保存KeyA，KeyB和控...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/20</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/06/20/SYC第三次面试报告/" >
+            
+                <span>SYC第三次面试报告</span>
+        </a>
+        <div class="abstract-content">
+            0x01.基础简介1.实验设备：kali，安卓手机，咕咕机(GT1), 蓝牙适配器（没有就用电脑自带的hci0）
+2.剧情介绍在蓝牙开发中，尤其是咕咕机GT1这种只有蓝牙的型号（咕咕机有些机器可以连接wifi），基本上都是手机App与设备间的通信。手机向设备发送数据，然后等待设备的响应。但当数据发出去的时候，却不能确保设备能否准确的响应。设备属于硬件端，一般不受软件端开发人员控制，除非能和硬件端开发人员一起联调，否则很难调试。但在部分Android手机为开发人员提供了保存蓝牙日志的选项，即可保存手机向设备发送的数据和设备响应的数据。 这个log记录了host与controller通信的全...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/20</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/06/20/gsm/" >
+            
+                <span>gsm</span>
+        </a>
+        <div class="abstract-content">
+            0x01.先安装依赖0x01.安装编译依赖包
+1sudo apt-get install git cmake libboost-all-dev libcppunit-dev swig doxygen liblog4cpp5-dev python-scipy
+1apt-get install gnuradio gnuradio-dev rtl-sdr librtlsdr-dev osmo-sdr libosmosdr-dev libosmocore libosmocore-dev cmake libboost-all-dev libcppunit-dev swig doxygen libl...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/20</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/06/20/python study/" >
+            
+                <span>Python入门</span>
+        </a>
+        <div class="abstract-content">
+            1.字符串类型打引号是字符串,
+‘582’字符串  
+582数字
+3. 列表1.列表的操作1234567891011121314151617181.	member.append([&apos;qwe&apos;, &apos;hello&apos;])	#添加成员	member	[&apos;hekki &apos;, &apos;hello world&apos;, &apos;qwe&apos;, [&apos;qwe&apos;, &apos;hello&apos;]]2.	member.extend([&apos;qwe&apos;, &apos;hello&apos;])	#扩...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/20</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/06/20/c118 osmocombb/" >
+            
+                <span>Ubuntu编译OsmocomBB 环境</span>
+        </a>
+        <div class="abstract-content">
+            前提准备OsmocomBB项目的所有文章都在这个地址 https://osmocom.org/projects/baseband/wiki ，这里详细记录了每一个细节，请自行研读，博主只写了环境搭建的部分。
+MS：Mobile Station，移动终端；IMSI：International Mobile Subscriber Identity，国际移动用户标识号，是TD系统分给用户的唯一标识号，它存储在SIM卡、HLR/VLR中，最多由15个数字组成；MCC：Mobile Country Code，是移动用户的国家号，中国是460；MNC：Mobile Network Code ，是移动...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -1125,131 +1110,9 @@ NX保护：你不能执行我就不执行，栈里面的内容只负责把程序
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 41
+        Total : 33
         </div>
         <!-- search  -->
         
@@ -1260,46 +1123,8 @@ NX保护：你不能执行我就不执行，栈里面的内容只负责把程序
     
     
     
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/32学习/" >stm32入门学习</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/51学习/" >51单片机学习</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
     <div class="archive-year"> 2020 </div>
     <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/08</span><a class="archive-post-title" href= "/2020/03/08/avr逆向学习(一)/" >avr逆向学习(一)</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">03/04</span><a class="archive-post-title" href= "/2020/03/04/C++学习基础语法/" >C学习基础语法</a>
-        </li>
     
     
         <li class="archive-post-item">
@@ -1322,11 +1147,6 @@ NX保护：你不能执行我就不执行，栈里面的内容只负责把程序
         </li>
     
     
-        <li class="archive-post-item">
-            <span class="archive-post-date">02/05</span><a class="archive-post-title" href= "/2020/02/05/android studio开发/" >android studio开发(1)</a>
-        </li>
-    
-    
     
     
     
@@ -1342,62 +1162,12 @@ NX保护：你不能执行我就不执行，栈里面的内容只负责把程序
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">12/11</span><a class="archive-post-title" href= "/2019/12/11/固件逆向环境搭建/" >固件逆向环境搭建</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">12/10</span><a class="archive-post-title" href= "/2019/12/10/破解360摄像头固件密码/" >破解360摄像头固件密码</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">12/08</span><a class="archive-post-title" href= "/2019/12/08/orange-pi折腾日记(1)/" >orange pi折腾日记(1)</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">11/21</span><a class="archive-post-title" href= "/2019/11/21/pwn学习(3)jarvisoj_pwn题/" >pwn学习(3)jarvisoj_pwn题</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">11/19</span><a class="archive-post-title" href= "/2019/11/19/路由器实验复现（1）hg532e/" >路由器漏洞实验复现(1)HG532e</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">10/21</span><a class="archive-post-title" href= "/2019/10/21/gdb工具pwndbg与peda与gef配置/" >pwn工具配置与使用，并且自动切换gdb脚本</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/17</span><a class="archive-post-title" href= "/2019/10/17/ubertooth环境搭建手册/" >搭建ubertooth环境</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/14</span><a class="archive-post-title" href= "/2019/10/14/PWN入门学习(2)基本的ROP/" >pwn入门学习(2)pwn-wiki（basic ROP)</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">10/12</span><a class="archive-post-title" href= "/2019/10/12/逆向学习/" >逆向学习</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/路由器·漏洞挖掘/" >路由器pwn环境搭建</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/常用设备配置/" >设备常用配置</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/安洵杯CTF rfid题/" >安洵杯CTF rfid题</a>
         </li>
     
     
@@ -1449,20 +1219,6 @@ NX保护：你不能执行我就不执行，栈里面的内容只负责把程序
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/26/blaedrf GPS欺骗/" >blaedrf GPS欺骗</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/06/20/c118 osmocombb/" >Ubuntu编译OsmocomBB 环境</a>
         </li>
     
@@ -1491,17 +1247,7 @@ NX保护：你不能执行我就不执行，栈里面的内容只负责把程序
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/固定码逆向分析/" >固定码逆向分析</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/gsm/" >gsm</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/freebuf第一次/" >freebuf第一次</a>
         </li>
     
     
@@ -1594,6 +1340,59 @@ NX保护：你不能执行我就不执行，栈里面的内容只负责把程序
     
         </ul>
     
+    <div class="archive-year"> 2020 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/08</span><a class="archive-post-title" href= "/2020/03/08/avr逆向(1)/" >avr逆向(1)</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/10</span><a class="archive-post-title" href= "/2019/12/10/破解360摄像头固件密码/" >破解360摄像头固件密码</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/19</span><a class="archive-post-title" href= "/2019/11/19/路由器实验复现（1）hg532e/" >路由器漏洞实验复现(1)HG532e</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/17</span><a class="archive-post-title" href= "/2019/10/17/ubertooth环境搭建手册/" >搭建ubertooth环境</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/常用设备配置/" >设备常用配置</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/安洵杯CTF rfid题/" >安洵杯CTF rfid题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/20</span><a class="archive-post-title" href= "/2019/06/20/固定码逆向分析/" >固定码逆向分析</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
     <div class="archive-year"> Invalid date </div>
     <ul class="year-list">
     
@@ -1628,6 +1427,39 @@ NX保护：你不能执行我就不执行，栈里面的内容只负责把程序
     
         <li class="archive-post-item">
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2019/11/19/路由器pwn环境搭建/" >固件逆向环境搭建</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/14</span><a class="archive-post-title" href= "/2019/10/14/pwn入门学习(2)基本的ROP/" >pwn入门学习(2)pwn-wiki（basic ROP)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/12</span><a class="archive-post-title" href= "/2019/10/12/逆向学习/" >逆向学习</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/30/pwn入门学习(3)jarvisoj_pwn题/" >pwn入门学习(3)jarvisoj_pwn题</a>
         </li>
     
     </div>
