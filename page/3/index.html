@@ -359,6 +359,35 @@ height:50vh;
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2019/10/21/pwn入门学习(1)栈溢出基础知识/" >
+            
+                <span>栈溢出基础知识</span>
+        </a>
+        <div class="abstract-content">
+            0x01栈的介绍栈是一种典型的后进先出 (Last in First Out) 的数据结构，其操作主要有压栈 (push) 与出栈 (pop) 两种操作，如下图所示（维基百科）。两种操作都操作栈顶，当然，它也有栈底。
+
+高级语言在运行时都会被转换为汇编程序，在汇编程序运行过程中，充分利用了这一数据结构。每个程序在运行时都有虚拟地址空间，其中某一部分就是该程序对应的栈，用于保存函数调用信息和局部变量。此外，常见的操作也是压栈与出栈。需要注意的是，程序的栈是从进程地址空间的高地址向低地址增长的。
+函数调用栈需要注意的是，32 位和 64 位程序有以下简单的区别
+
+x86
+函数参数在函数返回地...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/10/21</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2019/10/21/gdb工具pwndbg与peda与gef配置/" >
             
                 <span>pwn工具配置与使用，并且自动切换gdb脚本</span>
@@ -595,31 +624,6 @@ NX保护：你不能执行我就不执行，栈里面的内容只负责把程序
         <div class="abstract-content">
             0x01.基础简介1.实验设备：kali，安卓手机，咕咕机(GT1), 蓝牙适配器（没有就用电脑自带的hci0）
 2.剧情介绍在蓝牙开发中，尤其是咕咕机GT1这种只有蓝牙的型号（咕咕机有些机器可以连接wifi），基本上都是手机App与设备间的通信。手机向设备发送数据，然后等待设备的响应。但当数据发出去的时候，却不能确保设备能否准确的响应。设备属于硬件端，一般不受软件端开发人员控制，除非能和硬件端开发人员一起联调，否则很难调试。但在部分Android手机为开发人员提供了保存蓝牙日志的选项，即可保存手机向设备发送的数据和设备响应的数据。 这个log记录了host与controller通信的全...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/06/20</span>
-            </div>
-            <!-- tags  -->
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2019/06/20/gsm/" >
-            
-                <span>gsm</span>
-        </a>
-        <div class="abstract-content">
-            0x01.先安装依赖0x01.安装编译依赖包
-1sudo apt-get install git cmake libboost-all-dev libcppunit-dev swig doxygen liblog4cpp5-dev python-scipy
-1apt-get install gnuradio gnuradio-dev rtl-sdr librtlsdr-dev osmo-sdr libosmosdr-dev libosmocore libosmocore-dev cmake libboost-all-dev libcppunit-dev swig doxygen libl...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -1228,9 +1232,24 @@ NX保护：你不能执行我就不执行，栈里面的内容只负责把程序
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 33
+        Total : 34
         </div>
         <!-- search  -->
         
@@ -1578,6 +1597,20 @@ NX保护：你不能执行我就不执行，栈里面的内容只负责把程序
     
         <li class="archive-post-item">
             <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/30/pwn入门学习(3)jarvisoj_pwn题/" >pwn入门学习(3)jarvisoj_pwn题</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2020/03/30/Nintendo Switch RCM漏洞分析/" >Nintendo Switch RCM漏洞分析</a>
         </li>
     
     </div>
